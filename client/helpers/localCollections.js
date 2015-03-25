@@ -1,5 +1,5 @@
 // Local (client-only) collection
-Game = new Mongo.Collection(null);
+Games = new Mongo.Collection(null);
 Errors = new Mongo.Collection(null);
 
 // Function for error message

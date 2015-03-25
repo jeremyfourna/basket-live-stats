@@ -4,12 +4,12 @@
       <div class="navbar-header">
         <a class='navbar-brand' href="{{pathFor 'home'}}">Live Basket-Ball Stats</a>
       </div>
-      <div class='nav navbar-nav navbar-right'> {{> loginButtons}}
+      <div class='nav navbar-nav navbar-right'> {{>loginButtons}}
       </div>
     </header>
-    {{> errors}}
+    {{>errors}}
     <div id='main'>
-      {{> yield}}
+      {{>yield}}
     </div>
   </div>
 </template>
