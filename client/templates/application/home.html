@@ -2,7 +2,11 @@
   <div class='jumbotron'>
     <h1>Prend les stats de ton équipe !</h1>
   </div>
-  <a href="{{pathFor 'addGame'}}">
-    <button class='btn btn-primary' type='button'>Prends les stats !</button>
-  </a>
+  {{#if currentUser}}
+    <a href="{{pathFor 'addGame'}}">
+      <button class='btn btn-primary' type='button'>Prends les stats !</button>
+    </a>
+  {{else}}
+    <h2>Inscrits toi ou connectes toi pour commencer à prendre les stats du match</h2>
+  {{/if}}
 </template>
