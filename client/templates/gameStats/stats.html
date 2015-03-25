@@ -1,0 +1,72 @@
+<template name="stats">
+  <div>
+    <h3>Joueurs en jeu</h3>
+    <p>Cliquez un numéro pour ajouter une action à ce joueur</p>
+    <div>
+      <h4>Equipe domicile : {{gameInfos.homeTeam}}</h4>
+      <div class="row">
+        <button class="btn player btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" data-toggle="modal" data-target="#player1Modal" type="button">
+          Numéro <span class="badge">{{homeTeam.player1.jerseyNumber}}</span>
+        </button>
+        <button class="btn player btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{homeTeam.player2.jerseyNumber}}</span>
+        </button>
+        <button class="btn player btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{homeTeam.player3.jerseyNumber}}</span>
+        </button>
+        <button class="btn player btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{homeTeam.player4.jerseyNumber}}</span>
+        </button>
+        <button class="btn player btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{homeTeam.player5.jerseyNumber}}</span>
+        </button>
+      </div>
+      <div class="row">
+        <button class="btn player btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" data-toggle="modal" data-target="#player6Modal" type="button">
+          Numéro <span class="badge">{{homeTeam.player6.jerseyNumber}}</span>
+        </button>
+        <button class="btn player btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{homeTeam.player7.jerseyNumber}}</span>
+        </button>
+        <button class="btn player btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{homeTeam.player8.jerseyNumber}}</span>
+        </button>
+        <button class="btn player btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{homeTeam.player9.jerseyNumber}}</span>
+        </button>
+        <button class="btn player btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{homeTeam.player10.jerseyNumber}}</span>
+        </button>
+      </div>
+      <div class="row">
+        <button class="btn player btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" data-toggle="modal" data-target="#player11Modal" type="button">
+          Numéro <span class="badge">{{homeTeam.player11.jerseyNumber}}</span>
+        </button>
+        <button class="btn player btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{homeTeam.player12.jerseyNumber}}</span>
+        </button>
+      </div>
+    </div>
+    <div>
+      <h4>Equipe extérieur : {{gameInfos.homeTeam}}</h4>
+      <div class="row">
+        <button class="btn player btn-info col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{#if player1}}{{player1}}{{else}}?{{/if}}</span>
+        </button>
+        <button class="btn player btn-info col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{#if player2}}{{player2}}{{else}}?{{/if}}</span>
+        </button>
+        <button class="btn player btn-info col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{#if player3}}{{player3}}{{else}}?{{/if}}</span>
+        </button>
+        <button class="btn player btn-info col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{#if player4}}{{player4}}{{else}}?{{/if}}</span>
+        </button>
+        <button class="btn player btn-info col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">
+          Numéro <span class="badge">{{#if player5}}{{player5}}{{else}}?{{/if}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  {{>playerModal}}
+</template>
