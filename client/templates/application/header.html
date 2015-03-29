@@ -11,6 +11,13 @@
         <a class='navbar-brand' href="{{pathFor 'home'}}">Live Basket-Ball Stats</a>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          {{#if currentUser}}
+            <li><a href="{{pathFor 'myGames'}}">Mes matches</a></li>
+            <li><a href="#">Live stats</a></li>
+            <li><a href="#">Réglages</a></li>
+          {{/if}}
+        </ul>
         <div class='nav navbar-nav navbar-right'>{{>loginButtons}}</div>
       </div>
     </div>
