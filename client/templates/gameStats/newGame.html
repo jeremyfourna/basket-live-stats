@@ -1,5 +1,49 @@
 <template name="newGame">
-  <a href="{{pathFor 'gameStats'}}">
-    <button class='btn btn-primary newGame' type='button'>Prends les stats !</button>
-  </a>
+  <h2>Choisis le type de match...</h2>
+  <div id="step1" class="show">
+    <div class="row">
+      {{#if hasIVisitedStep2}}
+        <div>
+          <button class='btn btn-primary pull-right clearfix' id="step1next" type='button'>Etape suivante</button>
+        </div>
+      {{/if}}
+    </div>
+    <div class="text-center gameType">
+      <button class='btn btn-primary' id="step1FFBB" type='button'>Match officiel FFBB</button>
+    </div>
+    <div class="text-center gameType">
+      <button class='btn btn-primary' id="step1Amical" type='button'>Match amical</button>
+    </div>
+  </div>
+  <div id="step2" class="hidden">
+    <div class="row">
+      <div>
+        <button class='btn btn-primary pull-left' id="step2previous" type='button'>Etape précédente</button>
+      </div>
+      {{#if hasIVisitedStep3}}
+        <div>
+          <button class='btn btn-primary pull-right clearfix' id="step2next" type='button'>Etape suivante</button>
+        </div>
+      {{/if}}
+    </div>
+    <div class="text-center gameType">
+      <button class='btn btn-primary' id="step2FFBB" type='button'>Match officiel step 2</button>
+    </div>
+    <div class="text-center gameType">
+      <button class='btn btn-primary' id="step2Amical" type='button'>Match amical step 2</button>
+    </div>
+  </div>
+  <div id="step3" class="hidden">
+    <div class="row">
+      <div>
+        <button class='btn btn-primary pull-left' id="step3previous" type='button'>Etape précédente</button>
+      </div>
+    </div>
+    <div class="text-center gameType">
+      <button class='btn btn-primary' id="step3FFBB" type='button'>Match officiel step 3</button>
+    </div>
+    <div class="text-center gameType">
+      <button class='btn btn-primary' id="step3Amical" type='button'>Match amical</button>
+    </div>
+  </div>
 </template>

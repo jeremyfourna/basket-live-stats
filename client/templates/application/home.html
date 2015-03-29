@@ -3,7 +3,9 @@
     <h1>Prend les stats de ton équipe !</h1>
   </div>
   {{#if currentUser}}
-    {{>newGame}}
+    <a href="{{pathFor 'newGame'}}">
+      <button class='btn btn-primary' type='button'>Prends les stats !</button>
+    </a>
   {{else}}
     <h2>Inscrits toi ou connectes toi pour commencer à prendre les stats du match</h2>
   {{/if}}
