@@ -3,36 +3,57 @@
     <h2>Définis les équipes...</h2>
     <div class="row">
       {{#if hasIVisitedStep2}}
-        <button class='btn btn-primary pull-right clearfix' id="step1next" type='button'>Etape suivante</button>
+        <button class='btn btn-primary pull-right clearfix' id="step1Next" type='button'>Etape suivante</button>
       {{/if}}
     </div>
     <div class="officialGame">
       <div class="input-group input-group-sm">
         <span class="input-group-addon">Equipe à domicile</span>
-        <input type="text" class="form-control">
+        <input type="text" id="homeTeam" class="form-control">
       </div>
       <div class="input-group input-group-sm">
         <span class="input-group-addon">Equipe à l'extérieur</span>
-        <input type="text" class="form-control">
+        <input type="text" id="awayTeam" class="form-control">
       </div>
       <div class="input-group input-group-sm">
         <span class="input-group-addon">Catégorie</span>
-        <input type="text" class="form-control" placeholder="Sénior Filles">
+        <input type="text" id="category" class="form-control" placeholder="Sénior Filles">
       </div>
       <div class="input-group input-group-sm">
         <span class="input-group-addon">Niveau</span>
-        <input type="text" class="form-control" placeholder="Excellence régionale">
+        <input type="text" id="level" class="form-control" placeholder="Excellence régionale">
       </div>
       <div class="input-group input-group-sm">
         <span class="input-group-addon">Poule</span>
-        <input type="text" class="form-control" placeholder="A">
+        <input type="text" id="group" class="form-control" placeholder="A">
       </div>
     </div>
     <div class="footer">
-      <button type="button" class="btn pull-left btn-primary">Précédent</button>
-      <button type="button" class="btn pull-right btn-primary">Suivant</button>
+      <a href="{{pathFor 'home'}}">
+        <button type="button" class="btn pull-left btn-primary">Retour</button>
+      </a>
+      <button type="button" id="nextStep" class="btn pull-right btn-primary">Suivant</button>
     </div>
   </div>
   <div id="step2" class="hidden">
+    <h2>Définis les joueurs...</h2>
+    <div class="row">
+      <button class='btn btn-primary pull-left clearfix' id="step2Previous" type='button'>Etape précédente</button>
+    </div>
+    <div class="playerDefinition">
+      <h4>Joueur #1</h4>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">Nom</span>
+        <input type="text" id="player1LastName" class="form-control">
+      </div>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">Prénom</span>
+        <input type="text" id="player1FirstName" class="form-control">
+      </div>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">Numéro</span>
+        <input type="text" id="player1Jersey" class="form-control">
+      </div>
+    </div>
   </div>
 </template>

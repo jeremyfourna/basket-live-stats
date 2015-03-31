@@ -21,3 +21,11 @@
 .footer {
   margin-top: 20px;
 }
+
+.playerDefinition {
+  margin-bottom: 20px;
+}
+
+.playerDefinition div {
+  margin-bottom: 5px;
+}

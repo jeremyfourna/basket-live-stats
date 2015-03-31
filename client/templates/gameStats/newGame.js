@@ -7,32 +7,24 @@ Template.newGame.helpers({
 });
 
 Template.newGame.events({
-	'click #step1FFBB': function() {
+	'click #nextStep': function() {
 		$('#step1').removeClass('show').addClass('hidden');
 		$('#step2').removeClass('hidden').addClass('show').addClass('visited');
 		Session.set('step2Visited', true);
+		Session.set('gameInfos', {
+			'homeTeam': $('#homeTeam').val(),
+			'awayTeam': $('#awayTeam').val(),
+			'categoy': $('#category').val(),
+			'level': $('#level').val(),
+			'group': $('#group').val()
+		});
 	},
-	'click #step1Amical': function() {
+	'click #step1Next': function() {
 		$('#step1').removeClass('show').addClass('hidden');
 		$('#step2').removeClass('hidden').addClass('show').addClass('visited');
-		Session.set('step2Visited', true);
 	},
-	'click #step2FFBB': function() {
-		$('#step2').removeClass('show').addClass('hidden');
-		$('#step3').removeClass('hidden').addClass('show').addClass('visited');
-		Session.set('step3Visited', true);
-	},
-	'click #step2Amical': function() {
-		$('#step2').removeClass('show').addClass('hidden');
-		$('#step3').removeClass('hidden').addClass('show').addClass('visited');
-		Session.set('step3Visited', true);
-	},
-	'click #step2previous': function() {
+	'click #step2Previous': function() {
 		$('#step2').removeClass('show').addClass('hidden');
 		$('#step1').removeClass('hidden').addClass('show');
-	},
-	'click #step3previous': function() {
-		$('#step3').removeClass('show').addClass('hidden');
-		$('#step2').removeClass('hidden').addClass('show');
 	}
 });
