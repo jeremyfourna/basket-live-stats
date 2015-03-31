@@ -9,3 +9,15 @@
 .gameType {
   margin: 20px;
 }
+
+.officialGame {
+  margin-top: 20px;
+}
+
+.officialGame div {
+  margin: 5px;
+}
+
+.footer {
+  margin-top: 20px;
+}

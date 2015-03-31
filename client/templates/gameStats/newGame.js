@@ -1,12 +1,8 @@
 Session.setDefault('step2Visited', false);
-Session.setDefault('step3Visited', false);
 
 Template.newGame.helpers({
 	hasIVisitedStep2: function() {
 		return Session.get('step2Visited');
-	},
-	hasIVisitedStep3: function() {
-		return Session.get('step3Visited');
 	}
 });
 
