@@ -26,6 +26,14 @@
   margin-bottom: 20px;
 }
 
+.coachDefinition {
+  margin-bottom: 20px;
+}
+
 .playerDefinition div {
+  margin-bottom: 5px;
+}
+
+.coachDefinition div {
   margin-bottom: 5px;
 }
