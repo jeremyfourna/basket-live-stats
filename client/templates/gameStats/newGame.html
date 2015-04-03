@@ -30,7 +30,7 @@
     </div>
     <div class="footer">
       <a href="{{pathFor 'home'}}">
-        <button type="button" class="btn pull-left btn-primary">Retour</button>
+        <button type="button" class="btn pull-left btn-info">Retour</button>
       </a>
       <button type="button" id="nextStep" class="btn pull-right btn-primary">Suivant</button>
     </div>
@@ -52,8 +52,44 @@
       </div>
       <div class="input-group input-group-sm">
         <span class="input-group-addon">Numéro</span>
-        <input type="text" id="player1Jersey" class="form-control">
+        <input type="number" id="player1Jersey" min="1" class="form-control" placeholder="1">
       </div>
+    </div>
+    <div class="playerDefinition">
+      <h4>Joueur #2</h4>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">Nom</span>
+        <input type="text" id="player2LastName" class="form-control">
+      </div>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">Prénom</span>
+        <input type="text" id="player2FirstName" class="form-control">
+      </div>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">Numéro</span>
+        <input type="number" id="player2Jersey" min="1" class="form-control" placeholder="2">
+      </div>
+    </div>
+    <div class="playerDefinition">
+      <h4>Joueur #3</h4>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">Nom</span>
+        <input type="text" id="player3LastName" class="form-control">
+      </div>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">Prénom</span>
+        <input type="text" id="player3FirstName" class="form-control">
+      </div>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">Numéro</span>
+        <input type="number" id="player3Jersey" min="1" class="form-control" placeholder="3">
+      </div>
+    </div>
+    <div class="footer">
+      <a href="{{pathFor 'home'}}">
+        <button type="button" class="btn pull-left btn-info">Retour</button>
+      </a>
+      <button type="button" id="nextStep" class="btn pull-right btn-success">Validez votre configuration</button>
     </div>
   </div>
 </template>
