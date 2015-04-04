@@ -3,10 +3,11 @@ Template.home.events({
 		var teamDef = function() {
 			var list = [];
 			for (var i = 0; i < 12; i++) {
+				var j = i + 1;
 				list.push({
 					firstName: null,
 					lastName: null,
-					jersey: i
+					jersey: j
 				});
 			}
 			return list;

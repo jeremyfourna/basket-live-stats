@@ -1,4 +1,5 @@
-.playerRow,
+.player div,
+.coach div,
 .actions {
   margin-bottom: 5px;
 }
@@ -18,13 +19,4 @@
 
 .officialGame div {
   margin: 5px;
-}
-
-.awayTeamPlayerDefinition div,
-.awayTeamCoachDefinition div,
-.awayTeamAssistantCoachDefinition div,
-.homeTeamPlayerDefinition div,
-.homeTeamCoachDefinition div,
-.homeTeamAssistantCoachDefinition div {
-  margin-bottom: 5px;
 }
