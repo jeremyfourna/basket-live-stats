@@ -1,5 +1,6 @@
-.player {
-  margin: 2px;
+.playerRow,
+.actions {
+  margin-bottom: 5px;
 }
 
 .ongoingGames {
@@ -10,7 +11,8 @@
   margin: 20px;
 }
 
-.officialGame {
+.officialGame,
+.footer {
   margin-top: 20px;
 }
 
@@ -18,22 +20,11 @@
   margin: 5px;
 }
 
-.footer {
-  margin-top: 20px;
-}
-
-.playerDefinition {
-  margin-bottom: 20px;
-}
-
-.coachDefinition {
-  margin-bottom: 20px;
-}
-
-.playerDefinition div {
-  margin-bottom: 5px;
-}
-
-.coachDefinition div {
+.awayTeamPlayerDefinition div,
+.awayTeamCoachDefinition div,
+.awayTeamAssistantCoachDefinition div,
+.homeTeamPlayerDefinition div,
+.homeTeamCoachDefinition div,
+.homeTeamAssistantCoachDefinition div {
   margin-bottom: 5px;
 }

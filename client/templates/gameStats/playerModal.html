@@ -4,37 +4,52 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Quelle action a été réalisée par {{homeTeam.player1.firstName}} {{homeTeam.player1.lastName}}</h4>
+          <h4 class="modal-title" id="myModalLabel">Quelle action a été réalisée par...</h4>
         </div>
         <div class="modal-body">
-          {{#if homeTeam.player1.firstName="" homeTeam.player1.lastName="" }}
-            <form class="form-horizontal">
-              <div class="form-group">
-                <label class="col-xs-5 col-sm-5 col-md-5 col-lg-5 control-label" for="firstName">Prénom du joueur</label>
-                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                  <input type="text" class="form-control" id="firstName" placeholder="{{homeTeam.player1.firstName}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-xs-5 col-sm-5 col-md-5 col-lg-5 control-label" for="lastName">Nom du joueur</label>
-                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                  <input type="text" class="form-control" id="lastName" placeholder="{{homeTeam.player1.lastName}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-xs-5 col-sm-5 col-md-5 col-lg-5 control-label" for="lastName">Numéro du joueur</label>
-                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                  <input type="number" min="1" max="15" class="form-control" id="jerseyNumber" placeholder="{{homeTeam.player1.jerseyNumber}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-xs-offset-5 col-xs-10 col-sm-offset-5 col-sm-10 col-md-offset-5 col-md-10 col-lg-offset-5 col-lg-10">
-                  <button type="submit" id="firstLastNumber" class="btn btn-default">Valider</button>
-                </div>
-              </div>
-            </form>
-          {{else}}
-          {{/if}}
+          <div class="OffActions">
+            <h4>Action offensive</h4>
+            <div class="row actions">
+              <button class="btn btn-success col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">1 pt</button>
+              <button class="btn btn-success col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">2 pt</button>
+              <button class="btn btn-success col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">3 pt</button>
+              <button class="btn btn-success col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">P. décisive</button>
+              <button class="btn btn-success col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Reb off</button>
+            </div>
+            <div class="row actions">
+              <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">1 pt</button>
+              <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">2 pt</button>
+              <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">3 pt</button>
+              <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">B. perdues</button>
+              <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Ft. off</button>
+            </div>
+            <div class="row actions">
+              <button class="btn btn-success col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Fte prov</button>
+            </div>
+          </div>
+          <div class="DefActions">
+            <h4>Action défensive</h4>
+            <div class="row actions">
+              <button class="btn btn-success col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Interc</button>
+              <button class="btn btn-success col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Contre</button>
+              <button class="btn btn-success col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Reb def</button>
+              <button class="btn btn-success col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Ft. prov</button>
+              <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Faute</button>
+            </div>
+            <div class="row actions">
+              <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Ft. 1 LF</button>
+              <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Ft. 2 LF</button>
+              <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Ft. 3 LF</button>
+            </div>
+          </div>
+          <div class="OtherActions">
+            <h4>Autres fautes</h4>
+            <div class="row actions">
+              <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Ft. Technique</button>
+              <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Ft. anti-sportive</button>
+              <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2" type="button">Ft. discalifiante</button>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
