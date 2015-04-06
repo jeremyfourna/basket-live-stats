@@ -4,67 +4,18 @@
     <p>Cliquez un numéro pour ajouter une action à ce joueur</p>
     <div>
       <h4>Equipe domicile : {{gameInfos.homeTeam}}</h4>
-      <div class="row playerRow">
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-lg-3" data-toggle="modal" data-target="#player1Modal" type="button">
-          Numéro <span class="badge">{{homeTeam.player1.jerseyNumber}}</span> </button>
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" type="button">
-          Numéro <span class="badge">{{homeTeam.player2.jerseyNumber}}</span>
-        </button>
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" type="button">
-          Numéro <span class="badge">{{homeTeam.player3.jerseyNumber}}</span>
-        </button>
-      </div>
-      <div class="row playerRow">
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-lt-1" type="button">Numéro <span class="badge">{{homeTeam.player4.jerseyNumber}}</span>
-        </button>
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" type="button">Numéro <span class="badge">{{homeTeam.player5.jerseyNumber}}</span>
-        </button>
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" data-toggle="modal" data-target="#player6Modal" type="button">
-          Numéro <span class="badge">{{homeTeam.player6.jerseyNumber}}</span>
-        </button>
-      </div>
-      <div class="row playerRow">
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-lt-1" type="button">Numéro <span class="badge">{{homeTeam.player7.jerseyNumber}}</span>
-        </button>
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" type="button">
-          Numéro <span class="badge">{{homeTeam.player8.jerseyNumber}}</span>
-        </button>
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" type="button">
-          Numéro <span class="badge">{{homeTeam.player9.jerseyNumber}}</span>
-        </button>
-      </div>
-      <div class="row playerRow">
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-lt-1" type="button">
-          Numéro <span class="badge">{{homeTeam.player10.jerseyNumber}}</span>
-        </button>
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" data-toggle="modal" data-target="#player11Modal" type="button">
-          Numéro <span class="badge">{{homeTeam.player11.jerseyNumber}}</span>
-        </button>
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" type="button">
-          Numéro <span class="badge">{{homeTeam.player12.jerseyNumber}}</span>
-        </button>
+      <div class="homeTeam row playerRow">
+        {{#each homeTeam.players}}
+          {{>playerPill}}
+        {{/each}}
       </div>
     </div>
     <div>
       <h4>Equipe extérieur : {{gameInfos.awayTeam}}</h4>
-      <div class="row playerRow">
-        <button class="btn btn-info col-xs-3 col-sm-3 col-md-3 col-lg-3" type="button">
-          Numéro <span class="badge">{{awayTeam.player1.jersey}}</span>
-        </button>
-        <button class="btn btn-info col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" type="button">
-          Numéro <span class="badge">{{awayTeam.player2.jersey}}</span>
-        </button>
-        <button class="btn btn-info col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" type="button">
-          Numéro <span class="badge">{{awayTeam.player3.jersey}}</span>
-        </button>
-      </div>
-      <div class="row playerRow">
-        <button class="btn btn-info col-xs-3 col-sm-3 col-md-3 col-lg-3" type="button">
-          Numéro <span class="badge">{{awayTeam.player4.jersey}}</span>
-        </button>
-        <button class="btn btn-info col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" type="button">
-          Numéro <span class="badge">{{awayTeam.player6.jersey}}</span>
-        </button>
+      <div class="awayTeam row playerRow">
+        {{#each awayTeam.players}}
+          {{>playerPill}}
+        {{/each}}
       </div>
     </div>
   </div>

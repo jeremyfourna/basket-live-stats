@@ -1,7 +1,7 @@
 Template.ongoingGames.helpers({
 	runningGames: function() {
 		return Games.find({
-			state: 'running',
+			state: 'notStarted',
 			userId: Meteor.userId()
 		});
 	}
