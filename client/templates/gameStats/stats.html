@@ -5,17 +5,13 @@
     <div>
       <h4>Equipe domicile : {{gameInfos.homeTeam}}</h4>
       <div class="homeTeam row playerRow">
-        {{#each homeTeam.players}}
-          {{>playerPill}}
-        {{/each}}
+        {{#each homeTeam.players}} {{>homeTeamPlayerPill}} {{/each}}
       </div>
     </div>
     <div>
       <h4>Equipe extérieur : {{gameInfos.awayTeam}}</h4>
       <div class="awayTeam row playerRow">
-        {{#each awayTeam.players}}
-          {{>playerPill}}
-        {{/each}}
+        {{#each awayTeam.players}} {{>awayTeamPlayerPill}} {{/each}}
       </div>
     </div>
   </div>
