@@ -4,6 +4,10 @@
   margin-bottom: 5px;
 }
 
+.actions button {
+  margin: 5px;
+}
+
 .ongoingGames {
   margin: 2px 2px 5px 2px;
 }
