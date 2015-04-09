@@ -14,6 +14,7 @@ Template.ongoingGames.events({
 			for (var i = 0; i < 12; i++) {
 				var j = i + 1;
 				list.push({
+					playerIndex: i,
 					firstName: null,
 					lastName: null,
 					jersey: j
@@ -25,6 +26,7 @@ Template.ongoingGames.events({
 			var list = [];
 			for (var i = 0; i < 2; i++) {
 				list.push({
+					coachIndex: i,
 					firstName: null,
 					lastName: null
 				});
