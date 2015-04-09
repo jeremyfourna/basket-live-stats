@@ -22,6 +22,12 @@ Template.newGame.events({
 	},
 	"click .submitGameConfiguration": function(e) {
 		e.preventDefault();
+
+		var filterInt = function(value) {
+			if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value))
+				return Number(value);
+			return NaN;
+		};
 		var currentGame = this._id;
 		var isFilled = function(element) {
 			if ($(element).val() === "") {
@@ -47,7 +53,8 @@ Template.newGame.events({
 			var player = {
 				firstName: isFilled($(element).find('.firstName')),
 				lastName: isFilled($(element).find('.lastName')),
-				jersey: $(element).find('.jersey').val()
+				jersey: filterInt($(element).find('.jersey').val()),
+				playerIndex: filterInt($(element).find('.playerIndex').val())
 			};
 			if (index < 12) {
 				homeTeamPlayers.push(player);
@@ -58,7 +65,8 @@ Template.newGame.events({
 		$('.coach').each(function(index, element) {
 			var coach = {
 				firstName: isFilled($(element).find('.firstName')),
-				lastName: isFilled($(element).find('.lastName'))
+				lastName: isFilled($(element).find('.lastName')),
+				coachIndex: filterInt($(element).find('.coachIndex').val())
 			};
 			if (index < 2) {
 				homeTeamCoachs.push(coach);
@@ -81,7 +89,6 @@ Template.newGame.events({
 			if (error) {
 				return throwError(error.message);
 			}
-			console.log(result);
 			Router.go('gameStats', {
 				_id: currentGame
 			});
