@@ -16,9 +16,7 @@
     {{else}}
       <p>Oups... Tu n'as pas créé un match pour prendre les stats</p>
       <p>
-        <a href="{{pathFor 'newGame'}}">
-          <button class='btn btn-primary newGameCreator' type='button'>Clique ici pour commencer à prendre les stats d'un match !</button>
-        </a>
+        {{>creationGame}}
       </p>
   {{/each}}
 </template>

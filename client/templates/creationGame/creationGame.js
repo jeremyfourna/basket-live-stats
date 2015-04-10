@@ -1,6 +1,6 @@
-Template.home.events({
-	'click .newGameCreator': function() {
-		var teamDef = function() {
+Template.creationGame.events({
+	'click button': function() {
+		var teamDef = function(team) {
 			var list = [];
 			for (var i = 0; i < 12; i++) {
 				var j = i + 1;
@@ -8,18 +8,20 @@ Template.home.events({
 					playerIndex: i,
 					firstName: null,
 					lastName: null,
-					jersey: j
+					jersey: j,
+					team: team
 				});
 			}
 			return list;
 		};
-		var coachDef = function() {
+		var coachDef = function(team) {
 			var list = [];
 			for (var i = 0; i < 2; i++) {
 				list.push({
 					coachIndex: i,
 					firstName: null,
-					lastName: null
+					lastName: null,
+					team: team
 				});
 			}
 			return list;
@@ -33,12 +35,12 @@ Template.home.events({
 				group: null
 			},
 			homeTeam: {
-				players: teamDef(),
-				coachs: coachDef()
+				players: teamDef("homeTeam"),
+				coachs: coachDef("homeTeam")
 			},
 			awayTeam: {
-				players: teamDef(),
-				coachs: coachDef()
+				players: teamDef("awayTeam"),
+				coachs: coachDef("awayTeam")
 			}
 		};
 

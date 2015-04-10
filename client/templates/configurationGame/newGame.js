@@ -54,7 +54,8 @@ Template.newGame.events({
 				firstName: isFilled($(element).find('.firstName')),
 				lastName: isFilled($(element).find('.lastName')),
 				jersey: filterInt($(element).find('.jersey').val()),
-				playerIndex: filterInt($(element).find('.playerIndex').val())
+				playerIndex: filterInt($(element).find('.playerIndex').val()),
+				team: $(element).find('.team').val()
 			};
 			if (index < 12) {
 				homeTeamPlayers.push(player);
@@ -66,7 +67,8 @@ Template.newGame.events({
 			var coach = {
 				firstName: isFilled($(element).find('.firstName')),
 				lastName: isFilled($(element).find('.lastName')),
-				coachIndex: filterInt($(element).find('.coachIndex').val())
+				coachIndex: filterInt($(element).find('.coachIndex').val()),
+				team: $(element).find('.team').val()
 			};
 			if (index < 2) {
 				homeTeamCoachs.push(coach);

@@ -1,14 +1,13 @@
-Session.setDefault('currentPlayerForModal', null);
-
 Template.homeTeamPlayerPill.events({
 	'click .homeTeamPillForModal': function(e) {
+		this.team = "homeTeam";
 		if (this.firstName === null && this.lastName === null) {
 			return Session.set('currentPlayerForModal', {
 				firstName: "",
 				lastName: "",
 				jersey: this.jersey,
 				playerIndex: this.playerIndex,
-				team: "homeTeam"
+				team: this.team
 			});
 		} else if (this.firstName === null) {
 			return Session.set('currentPlayerForModal', {
@@ -16,7 +15,7 @@ Template.homeTeamPlayerPill.events({
 				lastName: this.lastName,
 				jersey: this.jersey,
 				playerIndex: this.playerIndex,
-				team: "homeTeam"
+				team: this.team
 			});
 		} else if (this.lastName === null) {
 			return Session.set('currentPlayerForModal', {
@@ -24,7 +23,7 @@ Template.homeTeamPlayerPill.events({
 				lastName: "",
 				jersey: this.jersey,
 				playerIndex: this.playerIndex,
-				team: "homeTeam"
+				team: this.team
 			});
 		} else {
 			return Session.set('currentPlayerForModal', {
@@ -32,7 +31,7 @@ Template.homeTeamPlayerPill.events({
 				lastName: this.lastName,
 				jersey: this.jersey,
 				playerIndex: this.playerIndex,
-				team: "homeTeam"
+				team: this.team
 			});
 		}
 	}
@@ -40,13 +39,14 @@ Template.homeTeamPlayerPill.events({
 
 Template.awayTeamPlayerPill.events({
 	'click .awayTeamPillForModal': function(e) {
+		this.team = "awayTeam";
 		if (this.firstName === null && this.lastName === null) {
 			return Session.set('currentPlayerForModal', {
 				firstName: "",
 				lastName: "",
 				jersey: this.jersey,
 				playerIndex: this.playerIndex,
-				team: "awayTeam"
+				team: this.team
 			});
 		} else if (this.firstName === null) {
 			return Session.set('currentPlayerForModal', {
@@ -54,7 +54,7 @@ Template.awayTeamPlayerPill.events({
 				lastName: this.lastName,
 				jersey: this.jersey,
 				playerIndex: this.playerIndex,
-				team: "awayTeam"
+				team: this.team
 			});
 		} else if (this.lastName === null) {
 			return Session.set('currentPlayerForModal', {
@@ -62,7 +62,7 @@ Template.awayTeamPlayerPill.events({
 				lastName: "",
 				jersey: this.jersey,
 				playerIndex: this.playerIndex,
-				team: "awayTeam"
+				team: this.team
 			});
 		} else {
 			return Session.set('currentPlayerForModal', {
@@ -70,7 +70,7 @@ Template.awayTeamPlayerPill.events({
 				lastName: this.lastName,
 				jersey: this.jersey,
 				playerIndex: this.playerIndex,
-				team: "awayTeam"
+				team: this.team
 			});
 		}
 	}
