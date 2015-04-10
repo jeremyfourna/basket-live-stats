@@ -27,7 +27,13 @@ Template.homeTeamPlayerPill.events({
 				team: "homeTeam"
 			});
 		} else {
-			return Session.set('currentPlayerForModal', this);
+			return Session.set('currentPlayerForModal', {
+				firstName: this.firstName,
+				lastName: this.lastName,
+				jersey: this.jersey,
+				playerIndex: this.playerIndex,
+				team: "homeTeam"
+			});
 		}
 	}
 });
@@ -59,7 +65,13 @@ Template.awayTeamPlayerPill.events({
 				team: "awayTeam"
 			});
 		} else {
-			return Session.set('currentPlayerForModal', this);
+			return Session.set('currentPlayerForModal', {
+				firstName: this.firstName,
+				lastName: this.lastName,
+				jersey: this.jersey,
+				playerIndex: this.playerIndex,
+				team: "awayTeam"
+			});
 		}
 	}
 });
