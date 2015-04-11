@@ -8,6 +8,7 @@ Template.playerModal.events({
 	'click #onePoint': function(e) {
 		var team = Session.get('currentPlayerForModal').team;
 		var playerIndex = Session.get('currentPlayerForModal').playerIndex;
+		var parentData = Template.parentData(1);
 		if (Session.get('currentPlayerForModal').playerIndex === 0) {
 			if (Session.get('currentPlayerForModal').team === "homeTeam") {
 				Games.update({

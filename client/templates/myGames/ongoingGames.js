@@ -8,7 +8,7 @@ Template.ongoingGames.helpers({
 });
 
 Template.ongoingGames.events({
-	'click .newGameCreator': function() {
+	'click button': function() {
 		var teamDef = function() {
 			var list = [];
 			for (var i = 0; i < 12; i++) {
@@ -55,7 +55,7 @@ Template.ongoingGames.events({
 			if (error) {
 				return throwError(error.message);
 			}
-			Router.go('newGame', {
+			Router.go('updateGameConfiguration', {
 				_id: result._id
 			});
 		});
