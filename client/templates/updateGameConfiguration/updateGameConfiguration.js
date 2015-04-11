@@ -1,12 +1,12 @@
 Session.setDefault('step2Visited', false);
 
-Template.newGame.helpers({
+Template.updateGameConfiguration.helpers({
 	hasIVisitedStep2: function() {
 		return Session.get('step2Visited');
 	}
 });
 
-Template.newGame.events({
+Template.updateGameConfiguration.events({
 	'click #nextStep': function() {
 		$('#step1').removeClass('show').addClass('hidden');
 		$('#step2').removeClass('hidden').addClass('show').addClass('visited');

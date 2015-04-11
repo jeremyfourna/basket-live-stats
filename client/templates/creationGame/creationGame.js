@@ -3,7 +3,7 @@ Template.creationGame.events({
 		var teamDef = function(team) {
 			var list = [];
 			for (var i = 0; i < 12; i++) {
-				var j = i + 1;
+				var j = i + 4;
 				list.push({
 					playerIndex: i,
 					firstName: null,
@@ -48,7 +48,7 @@ Template.creationGame.events({
 			if (error) {
 				return throwError(error.message);
 			}
-			Router.go('newGame', {
+			Router.go('updateGameConfiguration', {
 				_id: result._id
 			});
 		});
