@@ -39,14 +39,21 @@ Template.summary.helpers({
 		return roundPercentage || 0;
 	},
 	'totalRebounds': function() {
-		return this.stats.rebounds.offReb + this.stats.rebounds.defReb;
+		var offReb = this.stats.rebounds.offReb || 0;
+		var defReb = this.stats.rebounds.defReb || 0;
+		return offReb + defReb;
 	},
 	'provokedFouls': function() {
-		return this.stats.fouls.provFouls.offFouls + this.stats.fouls.provFouls.defFouls || 0;
+		var offFouls = this.stats.fouls.provFouls.offFouls || 0;
+		var defFouls = this.stats.fouls.provFouls.defFouls || 0;
+		var diff = offFouls + defFouls;
+		return diff || 0;
 	},
 	'foulsRatio': function() {
-		var provFouls = this.stats.fouls.provFouls.offFouls + this.stats.fouls.provFouls.defFouls;
-		return provFouls - this.stats.fouls.totalFouls || 0;
+		var offFouls = this.stats.fouls.provFouls.offFouls || 0;
+		var defFouls = this.stats.fouls.provFouls.defFouls || 0;
+		var totalFouls = this.stats.fouls.totalFouls || 0;
+		return offFouls + defFouls - totalFouls;
 	},
 	'totalPoints': function() {
 		return this.stats.points.totalPoints || 0;
@@ -59,5 +66,14 @@ Template.summary.helpers({
 	},
 	'onePointIn': function() {
 		return this.stats.points.onePointIn || 0;
+	},
+	'offReb': function() {
+		return this.stats.rebounds.offReb || 0;
+	},
+	'defReb': function() {
+		return this.stats.rebounds.defReb || 0;
+	},
+	'totalFouls': function() {
+		return this.stats.fouls.totalFouls || 0;
 	}
 });
