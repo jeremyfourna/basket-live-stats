@@ -4154,6 +4154,319 @@ Template.playerModal.events({
 				});
 			}
 		}
-		return console.log("Number " + Session.get('currentPlayerForModal').jersey + " of " + Session.get('currentPlayerForModal').team + " just povoqued a foul from an attacker !");
+		return console.log("Number " + Session.get('currentPlayerForModal').jersey + " of " + Session.get('currentPlayerForModal').team + " just provoqued a foul from an attacker !");
+	},
+	'click #defFoul': function(e) {
+		var team = Session.get('currentPlayerForModal').team;
+		var playerIndex = Session.get('currentPlayerForModal').playerIndex;
+		var parentData = Template.parentData(1);
+		if (Session.get('currentPlayerForModal').playerIndex === 0) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.0.stats.fouls.foul": 1,
+						"homeTeam.players.0.stats.fouls.totalFouls": 1,
+						"homeTeam.players.0.stats.evaluation": -1
+
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.0.stats.fouls.foul": 1,
+						"awayTeam.players.0.stats.fouls.totalFouls": 1,
+						"awayTeam.players.0.stats.evaluation": -1
+
+					}
+				});
+			}
+		} else if (Session.get('currentPlayerForModal').playerIndex === 1) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.1.stats.fouls.foul": 1,
+						"homeTeam.players.1.stats.fouls.totalFouls": 1,
+						"homeTeam.players.1.stats.evaluation": -1
+
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.1.stats.fouls.foul": 1,
+						"awayTeam.players.1.stats.fouls.totalFouls": 1,
+						"awayTeam.players.1.stats.evaluation": -1
+
+					}
+				});
+			}
+		} else if (Session.get('currentPlayerForModal').playerIndex === 2) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.2.stats.fouls.foul": 1,
+						"homeTeam.players.2.stats.fouls.totalFouls": 1,
+						"homeTeam.players.2.stats.evaluation": -1
+
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.2.stats.fouls.foul": 1,
+						"awayTeam.players.2.stats.fouls.totalFouls": 1,
+						"awayTeam.players.2.stats.evaluation": -1
+
+					}
+				});
+			}
+		} else if (Session.get('currentPlayerForModal').playerIndex === 3) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.3.stats.fouls.foul": 1,
+						"homeTeam.players.3.stats.fouls.totalFouls": 1,
+						"homeTeam.players.3.stats.evaluation": -1
+
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.3.stats.fouls.foul": 1,
+						"awayTeam.players.3.stats.fouls.totalFouls": 1,
+						"awayTeam.players.3.stats.evaluation": -1
+
+					}
+				});
+			}
+		} else if (Session.get('currentPlayerForModal').playerIndex === 4) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.4.stats.fouls.foul": 1,
+						"homeTeam.players.4.stats.fouls.totalFouls": 1,
+						"homeTeam.players.4.stats.evaluation": -1
+
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.4.stats.fouls.foul": 1,
+						"awayTeam.players.4.stats.fouls.totalFouls": 1,
+						"awayTeam.players.4.stats.evaluation": -1
+
+					}
+				});
+			}
+		} else if (Session.get('currentPlayerForModal').playerIndex === 5) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.5.stats.fouls.foul": 1,
+						"homeTeam.players.5.stats.fouls.totalFouls": 1,
+						"homeTeam.players.5.stats.evaluation": -1
+
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.5.stats.fouls.foul": 1,
+						"awayTeam.players.5.stats.fouls.totalFouls": 1,
+						"awayTeam.players.5.stats.evaluation": -1
+
+					}
+				});
+			}
+		} else if (Session.get('currentPlayerForModal').playerIndex === 6) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.6.stats.fouls.foul": 1,
+						"homeTeam.players.6.stats.fouls.totalFouls": 1,
+						"homeTeam.players.6.stats.evaluation": -1
+
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.6.stats.fouls.foul": 1,
+						"awayTeam.players.6.stats.fouls.totalFouls": 1,
+						"awayTeam.players.6.stats.evaluation": -1
+
+					}
+				});
+			}
+		} else if (Session.get('currentPlayerForModal').playerIndex === 7) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.7.stats.fouls.foul": 1,
+						"homeTeam.players.7.stats.fouls.totalFouls": 1,
+						"homeTeam.players.7.stats.evaluation": -1
+
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.7.stats.fouls.foul": 1,
+						"awayTeam.players.7.stats.fouls.totalFouls": 1,
+						"awayTeam.players.7.stats.evaluation": -1
+
+					}
+				});
+			}
+		} else if (Session.get('currentPlayerForModal').playerIndex === 8) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.8.stats.fouls.foul": 1,
+						"homeTeam.players.8.stats.fouls.totalFouls": 1,
+						"homeTeam.players.8.stats.evaluation": -1
+
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.8.stats.fouls.foul": 1,
+						"awayTeam.players.8.stats.fouls.totalFouls": 1,
+						"awayTeam.players.8.stats.evaluation": -1
+
+					}
+				});
+			}
+		} else if (Session.get('currentPlayerForModal').playerIndex === 9) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.9.stats.fouls.foul": 1,
+						"homeTeam.players.9.stats.fouls.totalFouls": 1,
+						"homeTeam.players.9.stats.evaluation": -1
+
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.9.stats.fouls.foul": 1,
+						"awayTeam.players.9.stats.fouls.totalFouls": 1,
+						"awayTeam.players.9.stats.evaluation": -1
+
+					}
+				});
+			}
+		} else if (Session.get('currentPlayerForModal').playerIndex === 10) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.10.stats.fouls.foul": 1,
+						"homeTeam.players.10.stats.fouls.totalFouls": 1,
+						"homeTeam.players.10.stats.evaluation": -1
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.10.stats.fouls.foul": 1,
+						"awayTeam.players.10.stats.fouls.totalFouls": 1,
+						"awayTeam.players.10.stats.evaluation": -1
+					}
+				});
+			}
+		} else if (Session.get('currentPlayerForModal').playerIndex === 11) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.11.stats.fouls.foul": 1,
+						"homeTeam.players.11.stats.fouls.totalFouls": 1,
+						"homeTeam.players.11.stats.evaluation": -1
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.11.stats.fouls.foul": 1,
+						"awayTeam.players.11.stats.fouls.totalFouls": 1,
+						"awayTeam.players.11.stats.evaluation": -1
+					}
+				});
+			}
+		} else if (Session.get('currentPlayerForModal').playerIndex === 12) {
+			if (Session.get('currentPlayerForModal').team === "homeTeam") {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"homeTeam.players.12.stats.fouls.foul": 1,
+						"homeTeam.players.12.stats.fouls.totalFouls": 1,
+						"homeTeam.players.12.stats.evaluation": -1
+					}
+				});
+			} else {
+				Games.update({
+					_id: parentData._id
+				}, {
+					$inc: {
+						"awayTeam.players.12.stats.fouls.foul": 1,
+						"awayTeam.players.12.stats.fouls.totalFouls": 1,
+						"awayTeam.players.12.stats.evaluation": -1
+					}
+				});
+			}
+		}
+		return console.log("Number " + Session.get('currentPlayerForModal').jersey + " of " + Session.get('currentPlayerForModal').team + " received a foul !");
 	}
 });
