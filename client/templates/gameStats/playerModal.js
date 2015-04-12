@@ -16,7 +16,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.0.stats.points.onePointIn": 1,
-						"homeTeam.players.0.stats.points.totalPoints": 1
+						"homeTeam.players.0.stats.points.totalPoints": 1,
+						"homeTeam.players.0.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -25,7 +26,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.0.stats.points.onePointIn": 1,
-						"awayTeam.players.0.stats.points.totalPoints": 1
+						"awayTeam.players.0.stats.points.totalPoints": 1,
+						"awayTeam.players.0.stats.evaluation": 1
 					}
 				});
 			}
@@ -36,7 +38,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.1.stats.points.onePointIn": 1,
-						"homeTeam.players.1.stats.points.totalPoints": 1
+						"homeTeam.players.1.stats.points.totalPoints": 1,
+						"homeTeam.players.1.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -45,7 +48,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.1.stats.points.onePointIn": 1,
-						"awayTeam.players.1.stats.points.totalPoints": 1
+						"awayTeam.players.1.stats.points.totalPoints": 1,
+						"awayTeam.players.1.stats.evaluation": 1
 					}
 				});
 			}
@@ -56,7 +60,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.2.stats.points.onePointIn": 1,
-						"homeTeam.players.2.stats.points.totalPoints": 1
+						"homeTeam.players.2.stats.points.totalPoints": 1,
+						"homeTeam.players.2.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -65,7 +70,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.2.stats.points.onePointIn": 1,
-						"awayTeam.players.2.stats.points.totalPoints": 1
+						"awayTeam.players.2.stats.points.totalPoints": 1,
+						"awayTeam.players.2.stats.evaluation": 1
 					}
 				});
 			}
@@ -76,7 +82,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.3.stats.points.onePointIn": 1,
-						"homeTeam.players.3.stats.points.totalPoints": 1
+						"homeTeam.players.3.stats.points.totalPoints": 1,
+						"homeTeam.players.3.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -85,7 +92,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.3.stats.points.onePointIn": 1,
-						"awayTeam.players.3.stats.points.totalPoints": 1
+						"awayTeam.players.3.stats.points.totalPoints": 1,
+						"awayTeam.players.3.stats.evaluation": 1
 					}
 				});
 			}
@@ -96,7 +104,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.4.stats.points.onePointIn": 1,
-						"homeTeam.players.4.stats.points.totalPoints": 1
+						"homeTeam.players.4.stats.points.totalPoints": 1,
+						"homeTeam.players.4.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -105,7 +114,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.4.stats.points.onePointIn": 1,
-						"awayTeam.players.4.stats.points.totalPoints": 1
+						"awayTeam.players.4.stats.points.totalPoints": 1,
+						"awayTeam.players.4.stats.evaluation": 1
 					}
 				});
 			}
@@ -116,7 +126,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.5.stats.points.onePointIn": 1,
-						"homeTeam.players.5.stats.points.totalPoints": 1
+						"homeTeam.players.5.stats.points.totalPoints": 1,
+						"homeTeam.players.5.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -125,7 +136,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.5.stats.points.onePointIn": 1,
-						"awayTeam.players.5.stats.points.totalPoints": 1
+						"awayTeam.players.5.stats.points.totalPoints": 1,
+						"awayTeam.players.5.stats.evaluation": 1
 					}
 				});
 			}
@@ -136,7 +148,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.6.stats.points.onePointIn": 1,
-						"homeTeam.players.6.stats.points.totalPoints": 1
+						"homeTeam.players.6.stats.points.totalPoints": 1,
+						"homeTeam.players.6.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -145,7 +158,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.6.stats.points.onePointIn": 1,
-						"awayTeam.players.6.stats.points.totalPoints": 1
+						"awayTeam.players.6.stats.points.totalPoints": 1,
+						"awayTeam.players.6.stats.evaluation": 1
 					}
 				});
 			}
@@ -156,7 +170,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.7.stats.points.onePointIn": 1,
-						"homeTeam.players.7.stats.points.totalPoints": 1
+						"homeTeam.players.7.stats.points.totalPoints": 1,
+						"homeTeam.players.7.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -165,7 +180,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.7.stats.points.onePointIn": 1,
-						"awayTeam.players.7.stats.points.totalPoints": 1
+						"awayTeam.players.7.stats.points.totalPoints": 1,
+						"awayTeam.players.7.stats.evaluation": 1
 					}
 				});
 			}
@@ -176,7 +192,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.8.stats.points.onePointIn": 1,
-						"homeTeam.players.8.stats.points.totalPoints": 1
+						"homeTeam.players.8.stats.points.totalPoints": 1,
+						"homeTeam.players.8.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -185,7 +202,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.8.stats.points.onePointIn": 1,
-						"awayTeam.players.8.stats.points.totalPoints": 1
+						"awayTeam.players.8.stats.points.totalPoints": 1,
+						"awayTeam.players.8.stats.evaluation": 1
 					}
 				});
 			}
@@ -196,7 +214,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.9.stats.points.onePointIn": 1,
-						"homeTeam.players.9.stats.points.totalPoints": 1
+						"homeTeam.players.9.stats.points.totalPoints": 1,
+						"homeTeam.players.9.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -205,7 +224,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.9.stats.points.onePointIn": 1,
-						"awayTeam.players.9.stats.points.totalPoints": 1
+						"awayTeam.players.9.stats.points.totalPoints": 1,
+						"awayTeam.players.9.stats.evaluation": 1
 					}
 				});
 			}
@@ -216,7 +236,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.10.stats.points.onePointIn": 1,
-						"homeTeam.players.10.stats.points.totalPoints": 1
+						"homeTeam.players.10.stats.points.totalPoints": 1,
+						"homeTeam.players.10.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -225,7 +246,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.10.stats.points.onePointIn": 1,
-						"awayTeam.players.10.stats.points.totalPoints": 1
+						"awayTeam.players.10.stats.points.totalPoints": 1,
+						"awayTeam.players.10.stats.evaluation": 1
 					}
 				});
 			}
@@ -236,7 +258,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.11.stats.points.onePointIn": 1,
-						"homeTeam.players.11.stats.points.totalPoints": 1
+						"homeTeam.players.11.stats.points.totalPoints": 1,
+						"homeTeam.players.11.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -245,7 +268,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.11.stats.points.onePointIn": 1,
-						"awayTeam.players.11.stats.points.totalPoints": 1
+						"awayTeam.players.11.stats.points.totalPoints": 1,
+						"awayTeam.players.11.stats.evaluation": 1
 					}
 				});
 			}
@@ -256,7 +280,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.12.stats.points.onePointIn": 1,
-						"homeTeam.players.12.stats.points.totalPoints": 1
+						"homeTeam.players.12.stats.points.totalPoints": 1,
+						"homeTeam.players.12.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -265,7 +290,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.12.stats.points.onePointIn": 1,
-						"awayTeam.players.12.stats.points.totalPoints": 1
+						"awayTeam.players.12.stats.points.totalPoints": 1,
+						"awayTeam.players.12.stats.evaluation": 1
 					}
 				});
 			}
@@ -283,7 +309,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.0.stats.points.twoPointsIn": 1,
-						"homeTeam.players.0.stats.points.totalPoints": 2
+						"homeTeam.players.0.stats.points.totalPoints": 2,
+						"homeTeam.players.0.stats.evaluation": 2
 					}
 				});
 			} else {
@@ -292,7 +319,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.0.stats.points.twoPointsIn": 1,
-						"awayTeam.players.0.stats.points.totalPoints": 2
+						"awayTeam.players.0.stats.points.totalPoints": 2,
+						"awayTeam.players.0.stats.evaluation": 2
 					}
 				});
 			}
@@ -303,7 +331,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.1.stats.points.twoPointsIn": 1,
-						"homeTeam.players.1.stats.points.totalPoints": 2
+						"homeTeam.players.1.stats.points.totalPoints": 2,
+						"homeTeam.players.1.stats.evaluation": 2
 					}
 				});
 			} else {
@@ -312,7 +341,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.1.stats.points.twoPointsIn": 1,
-						"awayTeam.players.1.stats.points.totalPoints": 2
+						"awayTeam.players.1.stats.points.totalPoints": 2,
+						"awayTeam.players.1.stats.evaluation": 2
 					}
 				});
 			}
@@ -323,7 +353,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.2.stats.points.twoPointsIn": 1,
-						"homeTeam.players.2.stats.points.totalPoints": 2
+						"homeTeam.players.2.stats.points.totalPoints": 2,
+						"homeTeam.players.2.stats.evaluation": 2
 					}
 				});
 			} else {
@@ -332,7 +363,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.2.stats.points.twoPointsIn": 1,
-						"awayTeam.players.2.stats.points.totalPoints": 2
+						"awayTeam.players.2.stats.points.totalPoints": 2,
+						"awayTeam.players.2.stats.evaluation": 2
 					}
 				});
 			}
@@ -343,7 +375,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.3.stats.points.twoPointsIn": 1,
-						"homeTeam.players.3.stats.points.totalPoints": 2
+						"homeTeam.players.3.stats.points.totalPoints": 2,
+						"homeTeam.players.3.stats.evaluation": 2
 					}
 				});
 			} else {
@@ -352,7 +385,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.3.stats.points.twoPointsIn": 1,
-						"awayTeam.players.3.stats.points.totalPoints": 2
+						"awayTeam.players.3.stats.points.totalPoints": 2,
+						"awayTeam.players.3.stats.evaluation": 2
 					}
 				});
 			}
@@ -363,7 +397,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.4.stats.points.twoPointsIn": 1,
-						"homeTeam.players.4.stats.points.totalPoints": 2
+						"homeTeam.players.4.stats.points.totalPoints": 2,
+						"homeTeam.players.4.stats.evaluation": 2
 					}
 				});
 			} else {
@@ -372,7 +407,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.4.stats.points.twoPointsIn": 1,
-						"awayTeam.players.4.stats.points.totalPoints": 2
+						"awayTeam.players.4.stats.points.totalPoints": 2,
+						"awayTeam.players.4.stats.evaluation": 2
 					}
 				});
 			}
@@ -383,7 +419,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.5.stats.points.twoPointsIn": 1,
-						"homeTeam.players.5.stats.points.totalPoints": 2
+						"homeTeam.players.5.stats.points.totalPoints": 2,
+						"homeTeam.players.5.stats.evaluation": 2
 					}
 				});
 			} else {
@@ -392,7 +429,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.5.stats.points.twoPointsIn": 1,
-						"awayTeam.players.5.stats.points.totalPoints": 2
+						"awayTeam.players.5.stats.points.totalPoints": 2,
+						"awayTeam.players.5.stats.evaluation": 2
 					}
 				});
 			}
@@ -403,7 +441,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.6.stats.points.twoPointsIn": 1,
-						"homeTeam.players.6.stats.points.totalPoints": 2
+						"homeTeam.players.6.stats.points.totalPoints": 2,
+						"homeTeam.players.6.stats.evaluation": 2
 					}
 				});
 			} else {
@@ -412,7 +451,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.6.stats.points.twoPointsIn": 1,
-						"awayTeam.players.6.stats.points.totalPoints": 2
+						"awayTeam.players.6.stats.points.totalPoints": 2,
+						"awayTeam.players.6.stats.evaluation": 2
 					}
 				});
 			}
@@ -423,7 +463,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.7.stats.points.twoPointsIn": 1,
-						"homeTeam.players.7.stats.points.totalPoints": 2
+						"homeTeam.players.7.stats.points.totalPoints": 2,
+						"homeTeam.players.7.stats.evaluation": 2
 					}
 				});
 			} else {
@@ -432,7 +473,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.7.stats.points.twoPointsIn": 1,
-						"awayTeam.players.7.stats.points.totalPoints": 2
+						"awayTeam.players.7.stats.points.totalPoints": 2,
+						"awayTeam.players.7.stats.evaluation": 2
 					}
 				});
 			}
@@ -443,7 +485,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.8.stats.points.twoPointsIn": 1,
-						"homeTeam.players.8.stats.points.totalPoints": 2
+						"homeTeam.players.8.stats.points.totalPoints": 2,
+						"homeTeam.players.8.stats.evaluation": 2
 					}
 				});
 			} else {
@@ -452,7 +495,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.8.stats.points.twoPointsIn": 1,
-						"awayTeam.players.8.stats.points.totalPoints": 2
+						"awayTeam.players.8.stats.points.totalPoints": 2,
+						"awayTeam.players.8.stats.evaluation": 2
 					}
 				});
 			}
@@ -463,7 +507,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.9.stats.points.twoPointsIn": 1,
-						"homeTeam.players.9.stats.points.totalPoints": 2
+						"homeTeam.players.9.stats.points.totalPoints": 2,
+						"homeTeam.players.9.stats.evaluation": 2
 					}
 				});
 			} else {
@@ -472,7 +517,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.9.stats.points.twoPointsIn": 1,
-						"awayTeam.players.9.stats.points.totalPoints": 2
+						"awayTeam.players.9.stats.points.totalPoints": 2,
+						"awayTeam.players.9.stats.evaluation": 2
 					}
 				});
 			}
@@ -483,7 +529,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.10.stats.points.twoPointsIn": 1,
-						"homeTeam.players.10.stats.points.totalPoints": 2
+						"homeTeam.players.10.stats.points.totalPoints": 2,
+						"homeTeam.players.10.stats.evaluation": 2
 					}
 				});
 			} else {
@@ -492,7 +539,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.10.stats.points.twoPointsIn": 1,
-						"awayTeam.players.10.stats.points.totalPoints": 2
+						"awayTeam.players.10.stats.points.totalPoints": 2,
+						"awayTeam.players.10.stats.evaluation ": 2
 					}
 				});
 			}
@@ -503,7 +551,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.11.stats.points.twoPointsIn": 1,
-						"homeTeam.players.11.stats.points.totalPoints": 2
+						"homeTeam.players.11.stats.points.totalPoints": 2,
+						"homeTeam.players.11.stats.evaluation ": 2
 					}
 				});
 			} else {
@@ -512,7 +561,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.11.stats.points.twoPointsIn": 1,
-						"awayTeam.players.11.stats.points.totalPoints": 2
+						"awayTeam.players.11.stats.points.totalPoints": 2,
+						"awayTeam.players.11.stats.evaluation ": 2
 					}
 				});
 			}
@@ -523,7 +573,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.12.stats.points.twoPointsIn": 1,
-						"homeTeam.players.12.stats.points.totalPoints": 2
+						"homeTeam.players.12.stats.points.totalPoints": 2,
+						"homeTeam.players.12.stats.evaluation ": 2
 					}
 				});
 			} else {
@@ -532,7 +583,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.12.stats.points.twoPointsIn": 1,
-						"awayTeam.players.12.stats.points.totalPoints": 2
+						"awayTeam.players.12.stats.points.totalPoints": 2,
+						"awayTeam.players.12.stats.evaluation ": 2
 					}
 				});
 			}
@@ -550,7 +602,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.0.stats.points.threePointsIn": 1,
-						"homeTeam.players.0.stats.points.totalPoints": 3
+						"homeTeam.players.0.stats.points.totalPoints": 3,
+						"homeTeam.players.0.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -559,7 +612,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.0.stats.points.threePointsIn": 1,
-						"awayTeam.players.0.stats.points.totalPoints": 3
+						"awayTeam.players.0.stats.points.totalPoints": 3,
+						"awayTeam.players.0.stats.evaluation": 3
 					}
 				});
 			}
@@ -570,7 +624,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.1.stats.points.threePointsIn": 1,
-						"homeTeam.players.1.stats.points.totalPoints": 3
+						"homeTeam.players.1.stats.points.totalPoints": 3,
+						"homeTeam.players.1.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -579,7 +634,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.1.stats.points.threePointsIn": 1,
-						"awayTeam.players.1.stats.points.totalPoints": 3
+						"awayTeam.players.1.stats.points.totalPoints": 3,
+						"awayTeam.players.1.stats.evaluation": 3
 					}
 				});
 			}
@@ -590,7 +646,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.2.stats.points.threePointsIn": 1,
-						"homeTeam.players.2.stats.points.totalPoints": 3
+						"homeTeam.players.2.stats.points.totalPoints": 3,
+						"homeTeam.players.2.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -599,7 +656,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.2.stats.points.threePointsIn": 1,
-						"awayTeam.players.2.stats.points.totalPoints": 3
+						"awayTeam.players.2.stats.points.totalPoints": 3,
+						"awayTeam.players.2.stats.evaluation": 3
 					}
 				});
 			}
@@ -610,7 +668,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.3.stats.points.threePointsIn": 1,
-						"homeTeam.players.3.stats.points.totalPoints": 3
+						"homeTeam.players.3.stats.points.totalPoints": 3,
+						"homeTeam.players.3.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -619,7 +678,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.3.stats.points.threePointsIn": 1,
-						"awayTeam.players.3.stats.points.totalPoints": 3
+						"awayTeam.players.3.stats.points.totalPoints": 3,
+						"awayTeam.players.3.stats.evaluation": 3
 					}
 				});
 			}
@@ -630,7 +690,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.4.stats.points.threePointsIn": 1,
-						"homeTeam.players.4.stats.points.totalPoints": 3
+						"homeTeam.players.4.stats.points.totalPoints": 3,
+						"homeTeam.players.4.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -639,7 +700,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.4.stats.points.threePointsIn": 1,
-						"awayTeam.players.4.stats.points.totalPoints": 3
+						"awayTeam.players.4.stats.points.totalPoints": 3,
+						"awayTeam.players.4.stats.evaluation": 3
 					}
 				});
 			}
@@ -650,7 +712,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.5.stats.points.threePointsIn": 1,
-						"homeTeam.players.5.stats.points.totalPoints": 3
+						"homeTeam.players.5.stats.points.totalPoints": 3,
+						"homeTeam.players.5.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -659,7 +722,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.5.stats.points.threePointsIn": 1,
-						"awayTeam.players.5.stats.points.totalPoints": 3
+						"awayTeam.players.5.stats.points.totalPoints": 3,
+						"awayTeam.players.5.stats.evaluation": 3
 					}
 				});
 			}
@@ -670,7 +734,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.6.stats.points.threePointsIn": 1,
-						"homeTeam.players.6.stats.points.totalPoints": 3
+						"homeTeam.players.6.stats.points.totalPoints": 3,
+						"homeTeam.players.6.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -679,7 +744,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.6.stats.points.threePointsIn": 1,
-						"awayTeam.players.6.stats.points.totalPoints": 3
+						"awayTeam.players.6.stats.points.totalPoints": 3,
+						"awayTeam.players.6.stats.evaluation": 3
 					}
 				});
 			}
@@ -690,7 +756,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.7.stats.points.threePointsIn": 1,
-						"homeTeam.players.7.stats.points.totalPoints": 3
+						"homeTeam.players.7.stats.points.totalPoints": 3,
+						"homeTeam.players.7.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -699,7 +766,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.7.stats.points.threePointsIn": 1,
-						"awayTeam.players.7.stats.points.totalPoints": 3
+						"awayTeam.players.7.stats.points.totalPoints": 3,
+						"awayTeam.players.7.stats.evaluation": 3
 					}
 				});
 			}
@@ -710,7 +778,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.8.stats.points.threePointsIn": 1,
-						"homeTeam.players.8.stats.points.totalPoints": 3
+						"homeTeam.players.8.stats.points.totalPoints": 3,
+						"homeTeam.players.8.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -719,7 +788,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.8.stats.points.threePointsIn": 1,
-						"awayTeam.players.8.stats.points.totalPoints": 3
+						"awayTeam.players.8.stats.points.totalPoints": 3,
+						"awayTeam.players.8.stats.evaluation": 3
 					}
 				});
 			}
@@ -730,7 +800,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.9.stats.points.threePointsIn": 1,
-						"homeTeam.players.9.stats.points.totalPoints": 3
+						"homeTeam.players.9.stats.points.totalPoints": 3,
+						"homeTeam.players.9.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -739,7 +810,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.9.stats.points.threePointsIn": 1,
-						"awayTeam.players.9.stats.points.totalPoints": 3
+						"awayTeam.players.9.stats.points.totalPoints": 3,
+						"awayTeam.players.9.stats.evaluation": 3
 					}
 				});
 			}
@@ -750,7 +822,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.10.stats.points.threePointsIn": 1,
-						"homeTeam.players.10.stats.points.totalPoints": 3
+						"homeTeam.players.10.stats.points.totalPoints": 3,
+						"homeTeam.players.10.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -759,7 +832,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.10.stats.points.threePointsIn": 1,
-						"awayTeam.players.10.stats.points.totalPoints": 3
+						"awayTeam.players.10.stats.points.totalPoints": 3,
+						"awayTeam.players.10.stats.evaluation": 3
 					}
 				});
 			}
@@ -770,7 +844,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.11.stats.points.threePointsIn": 1,
-						"homeTeam.players.11.stats.points.totalPoints": 3
+						"homeTeam.players.11.stats.points.totalPoints": 3,
+						"homeTeam.players.11.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -779,7 +854,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.11.stats.points.threePointsIn": 1,
-						"awayTeam.players.11.stats.points.totalPoints": 3
+						"awayTeam.players.11.stats.points.totalPoints": 3,
+						"awayTeam.players.11.stats.evaluation": 3
 					}
 				});
 			}
@@ -790,7 +866,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.12.stats.points.threePointsIn": 1,
-						"homeTeam.players.12.stats.points.totalPoints": 3
+						"homeTeam.players.12.stats.points.totalPoints": 3,
+						"homeTeam.players.12.stats.evaluation": 3
 					}
 				});
 			} else {
@@ -799,7 +876,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.12.stats.points.threePointsIn": 1,
-						"awayTeam.players.12.stats.points.totalPoints": 3
+						"awayTeam.players.12.stats.points.totalPoints": 3,
+						"awayTeam.players.12.stats.evaluation": 3
 					}
 				});
 			}
@@ -816,7 +894,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.0.stats.points.onePointOut": 1
+						"homeTeam.players.0.stats.points.onePointOut": 1,
+						"homeTeam.players.0.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -824,7 +903,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.0.stats.points.onePointOut": 1
+						"awayTeam.players.0.stats.points.onePointOut": 1,
+						"awayTeam.players.0.stats.evaluation": -1
 					}
 				});
 			}
@@ -834,7 +914,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.1.stats.points.onePointOut": 1
+						"homeTeam.players.1.stats.points.onePointOut": 1,
+						"homeTeam.players.1.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -842,7 +923,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.1.stats.points.onePointOut": 1
+						"awayTeam.players.1.stats.points.onePointOut": 1,
+						"awayTeam.players.1.stats.evaluation": -1
 					}
 				});
 			}
@@ -852,7 +934,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.2.stats.points.onePointOut": 1
+						"homeTeam.players.2.stats.points.onePointOut": 1,
+						"homeTeam.players.2.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -860,7 +943,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.2.stats.points.onePointOut": 1
+						"awayTeam.players.2.stats.points.onePointOut": 1,
+						"awayTeam.players.2.stats.evaluation": -1
 					}
 				});
 			}
@@ -870,7 +954,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.3.stats.points.onePointOut": 1
+						"homeTeam.players.3.stats.points.onePointOut": 1,
+						"homeTeam.players.3.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -878,7 +963,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.3.stats.points.onePointOut": 1
+						"awayTeam.players.3.stats.points.onePointOut": 1,
+						"awayTeam.players.3.stats.evaluation": -1
 					}
 				});
 			}
@@ -888,7 +974,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.4.stats.points.onePointOut": 1
+						"homeTeam.players.4.stats.points.onePointOut": 1,
+						"homeTeam.players.4.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -896,7 +983,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.4.stats.points.onePointOut": 1
+						"awayTeam.players.4.stats.points.onePointOut": 1,
+						"awayTeam.players.4.stats.evaluation": -1
 					}
 				});
 			}
@@ -906,7 +994,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.5.stats.points.onePointOut": 1
+						"homeTeam.players.5.stats.points.onePointOut": 1,
+						"homeTeam.players.5.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -914,7 +1003,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.5.stats.points.onePointOut": 1
+						"awayTeam.players.5.stats.points.onePointOut": 1,
+						"awayTeam.players.5.stats.evaluation": -1
 					}
 				});
 			}
@@ -924,7 +1014,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.6.stats.points.onePointOut": 1
+						"homeTeam.players.6.stats.points.onePointOut": 1,
+						"homeTeam.players.6.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -932,7 +1023,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.6.stats.points.onePointOut": 1
+						"awayTeam.players.6.stats.points.onePointOut": 1,
+						"awayTeam.players.6.stats.evaluation": -1
 					}
 				});
 			}
@@ -942,7 +1034,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.7.stats.points.onePointOut": 1
+						"homeTeam.players.7.stats.points.onePointOut": 1,
+						"homeTeam.players.7.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -950,7 +1043,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.7.stats.points.onePointOut": 1
+						"awayTeam.players.7.stats.points.onePointOut": 1,
+						"awayTeam.players.7.stats.evaluation": -1
 					}
 				});
 			}
@@ -960,7 +1054,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.8.stats.points.onePointOut": 1
+						"homeTeam.players.8.stats.points.onePointOut": 1,
+						"homeTeam.players.8.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -968,7 +1063,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.8.stats.points.onePointOut": 1
+						"awayTeam.players.8.stats.points.onePointOut": 1,
+						"awayTeam.players.8.stats.evaluation": -1
 					}
 				});
 			}
@@ -978,7 +1074,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.9.stats.points.onePointOut": 1
+						"homeTeam.players.9.stats.points.onePointOut": 1,
+						"homeTeam.players.9.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -986,7 +1083,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.9.stats.points.onePointOut": 1
+						"awayTeam.players.9.stats.points.onePointOut": 1,
+						"awayTeam.players.9.stats.evaluation": -1
 					}
 				});
 			}
@@ -996,7 +1094,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.10.stats.points.onePointOut": 1
+						"homeTeam.players.10.stats.points.onePointOut": 1,
+						"homeTeam.players.10.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1004,7 +1103,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.10.stats.points.onePointOut": 1
+						"awayTeam.players.10.stats.points.onePointOut": 1,
+						"awayTeam.players.10.stats.evaluation": -1
 					}
 				});
 			}
@@ -1014,7 +1114,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.11.stats.points.onePointOut": 1
+						"homeTeam.players.11.stats.points.onePointOut": 1,
+						"homeTeam.players.11.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1022,7 +1123,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.11.stats.points.onePointOut": 1
+						"awayTeam.players.11.stats.points.onePointOut": 1,
+						"awayTeam.players.11.stats.evaluation": -1
 					}
 				});
 			}
@@ -1032,7 +1134,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.12.stats.points.onePointOut": 1
+						"homeTeam.players.12.stats.points.onePointOut": 1,
+						"homeTeam.players.12.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1040,7 +1143,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.12.stats.points.onePointOut": 1
+						"awayTeam.players.12.stats.points.onePointOut": 1,
+						"awayTeam.players.12.stats.evaluation": -1
 					}
 				});
 			}
@@ -1057,7 +1161,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.0.stats.points.twoPointsOut": 1
+						"homeTeam.players.0.stats.points.twoPointsOut": 1,
+						"homeTeam.players.0.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1065,7 +1170,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.0.stats.points.twoPointsOut": 1
+						"awayTeam.players.0.stats.points.twoPointsOut": 1,
+						"awayTeam.players.0.stats.evaluation": -1
 					}
 				});
 			}
@@ -1075,7 +1181,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.1.stats.points.twoPointsOut": 1
+						"homeTeam.players.1.stats.points.twoPointsOut": 1,
+						"homeTeam.players.1.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1083,7 +1190,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.1.stats.points.twoPointsOut": 1
+						"awayTeam.players.1.stats.points.twoPointsOut": 1,
+						"awayTeam.players.1.stats.evaluation": -1
 					}
 				});
 			}
@@ -1093,7 +1201,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.2.stats.points.twoPointsOut": 1
+						"homeTeam.players.2.stats.points.twoPointsOut": 1,
+						"homeTeam.players.2.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1101,7 +1210,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.2.stats.points.twoPointsOut": 1
+						"awayTeam.players.2.stats.points.twoPointsOut": 1,
+						"awayTeam.players.2.stats.evaluation": -1
 					}
 				});
 			}
@@ -1111,7 +1221,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.3.stats.points.twoPointsOut": 1
+						"homeTeam.players.3.stats.points.twoPointsOut": 1,
+						"homeTeam.players.3.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1119,7 +1230,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.3.stats.points.twoPointsOut": 1
+						"awayTeam.players.3.stats.points.twoPointsOut": 1,
+						"awayTeam.players.3.stats.evaluation": -1
 
 					}
 				});
@@ -1130,7 +1242,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.4.stats.points.twoPointsOut": 1
+						"homeTeam.players.4.stats.points.twoPointsOut": 1,
+						"homeTeam.players.4.stats.evaluation": -1
 
 					}
 				});
@@ -1139,7 +1252,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.4.stats.points.twoPointsOut": 1
+						"awayTeam.players.4.stats.points.twoPointsOut": 1,
+						"awayTeam.players.4.stats.evaluation": -1
 					}
 				});
 			}
@@ -1149,7 +1263,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.5.stats.points.twoPointsOut": 1
+						"homeTeam.players.5.stats.points.twoPointsOut": 1,
+						"homeTeam.players.5.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1157,7 +1272,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.5.stats.points.twoPointsOut": 1
+						"awayTeam.players.5.stats.points.twoPointsOut": 1,
+						"awayTeam.players.5.stats.evaluation": -1
 					}
 				});
 			}
@@ -1167,7 +1283,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.6.stats.points.twoPointsOut": 1
+						"homeTeam.players.6.stats.points.twoPointsOut": 1,
+						"homeTeam.players.6.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1175,7 +1292,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.6.stats.points.twoPointsOut": 1
+						"awayTeam.players.6.stats.points.twoPointsOut": 1,
+						"awayTeam.players.6.stats.evaluation": -1
 					}
 				});
 			}
@@ -1185,7 +1303,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.7.stats.points.twoPointsOut": 1
+						"homeTeam.players.7.stats.points.twoPointsOut": 1,
+						"homeTeam.players.7.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1193,7 +1312,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.7.stats.points.twoPointsOut": 1
+						"awayTeam.players.7.stats.points.twoPointsOut": 1,
+						"awayTeam.players.7.stats.evaluation": -1
 					}
 				});
 			}
@@ -1203,7 +1323,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.8.stats.points.twoPointsOut": 1
+						"homeTeam.players.8.stats.points.twoPointsOut": 1,
+						"homeTeam.players.8.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1211,7 +1332,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.8.stats.points.twoPointsOut": 1
+						"awayTeam.players.8.stats.points.twoPointsOut": 1,
+						"awayTeam.players.8.stats.evaluation": -1
 					}
 				});
 			}
@@ -1221,7 +1343,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.9.stats.points.twoPointsOut": 1
+						"homeTeam.players.9.stats.points.twoPointsOut": 1,
+						"homeTeam.players.9.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1229,7 +1352,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.9.stats.points.twoPointsOut": 1
+						"awayTeam.players.9.stats.points.twoPointsOut": 1,
+						"awayTeam.players.9.stats.evaluation": -1
 					}
 				});
 			}
@@ -1239,7 +1363,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.10.stats.points.twoPointsOut": 1
+						"homeTeam.players.10.stats.points.twoPointsOut": 1,
+						"homeTeam.players.10.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1247,7 +1372,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.10.stats.points.twoPointsOut": 1
+						"awayTeam.players.10.stats.points.twoPointsOut": 1,
+						"awayTeam.players.10.stats.evaluation": -1
 					}
 				});
 			}
@@ -1257,7 +1383,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.11.stats.points.twoPointsOut": 1
+						"homeTeam.players.11.stats.points.twoPointsOut": 1,
+						"homeTeam.players.11.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1265,7 +1392,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.11.stats.points.twoPointsOut": 1
+						"awayTeam.players.11.stats.points.twoPointsOut": 1,
+						"awayTeam.players.11.stats.evaluation": -1
 					}
 				});
 			}
@@ -1275,7 +1403,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.12.stats.points.twoPointsOut": 1
+						"homeTeam.players.12.stats.points.twoPointsOut": 1,
+						"homeTeam.players.12.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1283,7 +1412,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.12.stats.points.twoPointsOut": 1
+						"awayTeam.players.12.stats.points.twoPointsOut": 1,
+						"awayTeam.players.12.stats.evaluation": -1
 					}
 				});
 			}
@@ -1300,7 +1430,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.0.stats.points.threePointsOut": 1
+						"homeTeam.players.0.stats.points.threePointsOut": 1,
+						"homeTeam.players.0.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1308,7 +1439,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.0.stats.points.threePointsOut": 1
+						"awayTeam.players.0.stats.points.threePointsOut": 1,
+						"awayTeam.players.0.stats.evaluation": -1
 					}
 				});
 			}
@@ -1318,7 +1450,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.1.stats.points.threePointsOut": 1
+						"homeTeam.players.1.stats.points.threePointsOut": 1,
+						"homeTeam.players.1.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1326,7 +1459,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.1.stats.points.threePointsOut": 1
+						"awayTeam.players.1.stats.points.threePointsOut": 1,
+						"awayTeam.players.1.stats.evaluation": -1
 					}
 				});
 			}
@@ -1336,7 +1470,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.2.stats.points.threePointsOut": 1
+						"homeTeam.players.2.stats.points.threePointsOut": 1,
+						"homeTeam.players.2.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1344,7 +1479,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.2.stats.points.threePointsOut": 1
+						"awayTeam.players.2.stats.points.threePointsOut": 1,
+						"awayTeam.players.2.stats.evaluation": -1
 					}
 				});
 			}
@@ -1354,7 +1490,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.3.stats.points.threePointsOut": 1
+						"homeTeam.players.3.stats.points.threePointsOut": 1,
+						"homeTeam.players.3.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1362,7 +1499,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.3.stats.points.threePointsOut": 1
+						"awayTeam.players.3.stats.points.threePointsOut": 1,
+						"awayTeam.players.3.stats.evaluation": -1
 					}
 				});
 			}
@@ -1372,7 +1510,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.4.stats.points.threePointsOut": 1
+						"homeTeam.players.4.stats.points.threePointsOut": 1,
+						"homeTeam.players.4.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1380,7 +1519,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.4.stats.points.threePointsOut": 1
+						"awayTeam.players.4.stats.points.threePointsOut": 1,
+						"awayTeam.players.4.stats.evaluation": -1
 					}
 				});
 			}
@@ -1390,7 +1530,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.5.stats.points.threePointsOut": 1
+						"homeTeam.players.5.stats.points.threePointsOut": 1,
+						"homeTeam.players.5.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1398,7 +1539,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.5.stats.points.threePointsOut": 1
+						"awayTeam.players.5.stats.points.threePointsOut": 1,
+						"awayTeam.players.5.stats.evaluation": -1
 					}
 				});
 			}
@@ -1408,7 +1550,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.6.stats.points.threePointsOut": 1
+						"homeTeam.players.6.stats.points.threePointsOut": 1,
+						"homeTeam.players.6.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1416,7 +1559,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.6.stats.points.threePointsOut": 1
+						"awayTeam.players.6.stats.points.threePointsOut": 1,
+						"awayTeam.players.6.stats.evaluation": -1
 					}
 				});
 			}
@@ -1426,7 +1570,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.7.stats.points.threePointsOut": 1
+						"homeTeam.players.7.stats.points.threePointsOut": 1,
+						"homeTeam.players.7.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1434,7 +1579,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.7.stats.points.threePointsOut": 1
+						"awayTeam.players.7.stats.points.threePointsOut": 1,
+						"awayTeam.players.7.stats.evaluation": -1
 					}
 				});
 			}
@@ -1444,7 +1590,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.8.stats.points.threePointsOut": 1
+						"homeTeam.players.8.stats.points.threePointsOut": 1,
+						"homeTeam.players.8.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1452,7 +1599,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.8.stats.points.threePointsOut": 1
+						"awayTeam.players.8.stats.points.threePointsOut": 1,
+						"awayTeam.players.8.stats.evaluation": -1
 					}
 				});
 			}
@@ -1462,7 +1610,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.9.stats.points.threePointsOut": 1
+						"homeTeam.players.9.stats.points.threePointsOut": 1,
+						"homeTeam.players.9.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1470,7 +1619,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.9.stats.points.threePointsOut": 1
+						"awayTeam.players.9.stats.points.threePointsOut": 1,
+						"awayTeam.players.9.stats.evaluation": -1
 					}
 				});
 			}
@@ -1480,7 +1630,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.10.stats.points.threePointsOut": 1
+						"homeTeam.players.10.stats.points.threePointsOut": 1,
+						"homeTeam.players.10.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1488,7 +1639,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.10.stats.points.threePointsOut": 1
+						"awayTeam.players.10.stats.points.threePointsOut": 1,
+						"awayTeam.players.10.stats.evaluation": -1
 					}
 				});
 			}
@@ -1498,7 +1650,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.11.stats.points.threePointsOut": 1
+						"homeTeam.players.11.stats.points.threePointsOut": 1,
+						"homeTeam.players.11.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -1506,7 +1659,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.11.stats.points.threePointsOut": 1
+						"awayTeam.players.11.stats.points.threePointsOut": 1,
+						"awayTeam.players.11.stats.evaluation": -1
 					}
 				});
 			}
@@ -1516,7 +1670,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.12.stats.points.threePointsOut": 1
+						"homeTeam.players.12.stats.points.threePointsOut": 1,
+						"homeTeam.players.12.stats.evaluation": -1,
 					}
 				});
 			} else {
@@ -1524,7 +1679,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.12.stats.points.threePointsOut": 1
+						"awayTeam.players.12.stats.points.threePointsOut": 1,
+						"awayTeam.players.12.stats.evaluation": -1
 					}
 				});
 			}
@@ -1541,7 +1697,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.0.stats.assists": 1
+						"homeTeam.players.0.stats.assists": 1,
+						"homeTeam.players.0.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1549,7 +1706,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.0.stats.assists": 1
+						"awayTeam.players.0.stats.assists": 1,
+						"awayTeam.players.0.stats.evaluation": 1
 					}
 				});
 			}
@@ -1559,7 +1717,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.1.stats.assists": 1
+						"homeTeam.players.1.stats.assists": 1,
+						"homeTeam.players.1.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1567,7 +1726,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.1.stats.assists": 1
+						"awayTeam.players.1.stats.assists": 1,
+						"awayTeam.players.1.stats.evaluation": 1
 					}
 				});
 			}
@@ -1577,7 +1737,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.2.stats.assists": 1
+						"homeTeam.players.2.stats.assists": 1,
+						"homeTeam.players.2.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1585,7 +1746,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.2.stats.assists": 1
+						"awayTeam.players.2.stats.assists": 1,
+						"awayTeam.players.2.stats.evaluation": 1
 					}
 				});
 			}
@@ -1595,7 +1757,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.3.stats.assists": 1
+						"homeTeam.players.3.stats.assists": 1,
+						"homeTeam.players.3.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1603,7 +1766,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.3.stats.assists": 1
+						"awayTeam.players.3.stats.assists": 1,
+						"awayTeam.players.3.stats.evaluation": 1
 					}
 				});
 			}
@@ -1613,7 +1777,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.4.stats.assists": 1
+						"homeTeam.players.4.stats.assists": 1,
+						"homeTeam.players.4.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1621,7 +1786,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.4.stats.assists": 1
+						"awayTeam.players.4.stats.assists": 1,
+						"awayTeam.players.4.stats.evaluation": 1
 					}
 				});
 			}
@@ -1631,7 +1797,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.5.stats.assists": 1
+						"homeTeam.players.5.stats.assists": 1,
+						"homeTeam.players.5.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1639,7 +1806,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.5.stats.assists": 1
+						"awayTeam.players.5.stats.assists": 1,
+						"awayTeam.players.5.stats.evaluation": 1
 					}
 				});
 			}
@@ -1649,7 +1817,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.6.stats.assists": 1
+						"homeTeam.players.6.stats.assists": 1,
+						"homeTeam.players.6.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1657,7 +1826,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.6.stats.assists": 1
+						"awayTeam.players.6.stats.assists": 1,
+						"awayTeam.players.6.stats.evaluation": 1
 					}
 				});
 			}
@@ -1667,7 +1837,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.7.stats.assists": 1
+						"homeTeam.players.7.stats.assists": 1,
+						"homeTeam.players.7.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1675,7 +1846,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.7.stats.assists": 1
+						"awayTeam.players.7.stats.assists": 1,
+						"awayTeam.players.7.stats.evaluation": 1
 					}
 				});
 			}
@@ -1685,7 +1857,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.8.stats.assists": 1
+						"homeTeam.players.8.stats.assists": 1,
+						"homeTeam.players.8.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1693,7 +1866,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.8.stats.assists": 1
+						"awayTeam.players.8.stats.assists": 1,
+						"awayTeam.players.8.stats.evaluation": 1
 					}
 				});
 			}
@@ -1703,7 +1877,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.9.stats.assists": 1
+						"homeTeam.players.9.stats.assists": 1,
+						"homeTeam.players.9.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1711,7 +1886,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.9.stats.assists": 1
+						"awayTeam.players.9.stats.assists": 1,
+						"awayTeam.players.9.stats.evaluation": 1
 					}
 				});
 			}
@@ -1721,7 +1897,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.10.stats.assists": 1
+						"homeTeam.players.10.stats.assists": 1,
+						"homeTeam.players.10.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1729,7 +1906,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.10.stats.assists": 1
+						"awayTeam.players.10.stats.assists": 1,
+						"awayTeam.players.10.stats.evaluation": 1
 					}
 				});
 			}
@@ -1739,7 +1917,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.11.stats.assists": 1
+						"homeTeam.players.11.stats.assists": 1,
+						"homeTeam.players.11.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1747,7 +1926,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.11.stats.assists": 1
+						"awayTeam.players.11.stats.assists": 1,
+						"awayTeam.players.11.stats.evaluation": 1
 					}
 				});
 			}
@@ -1757,7 +1937,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.12.stats.assists": 1
+						"homeTeam.players.12.stats.assists": 1,
+						"homeTeam.players.12.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1765,7 +1946,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.12.stats.assists": 1
+						"awayTeam.players.12.stats.assists": 1,
+						"awayTeam.players.12.stats.evaluation": 1
 					}
 				});
 			}
@@ -1782,7 +1964,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.0.stats.rebonds.offReb": 1
+						"homeTeam.players.0.stats.rebonds.offReb": 1,
+						"homeTeam.players.0.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1790,7 +1973,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.0.stats.rebonds.offReb": 1
+						"awayTeam.players.0.stats.rebonds.offReb": 1,
+						"awayTeam.players.0.stats.evaluation": 1
 					}
 				});
 			}
@@ -1800,7 +1984,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.1.stats.rebonds.offReb": 1
+						"homeTeam.players.1.stats.rebonds.offReb": 1,
+						"homeTeam.players.1.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1808,7 +1993,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.1.stats.rebonds.offReb": 1
+						"awayTeam.players.1.stats.rebonds.offReb": 1,
+						"awayTeam.players.1.stats.evaluation": 1
 					}
 				});
 			}
@@ -1818,7 +2004,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.2.stats.rebonds.offReb": 1
+						"homeTeam.players.2.stats.rebonds.offReb": 1,
+						"homeTeam.players.2.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1826,7 +2013,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.2.stats.rebonds.offReb": 1
+						"awayTeam.players.2.stats.rebonds.offReb": 1,
+						"awayTeam.players.2.stats.evaluation": 1
 					}
 				});
 			}
@@ -1836,7 +2024,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.3.stats.rebonds.offReb": 1
+						"homeTeam.players.3.stats.rebonds.offReb": 1,
+						"homeTeam.players.3.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1844,7 +2033,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.3.stats.rebonds.offReb": 1
+						"awayTeam.players.3.stats.rebonds.offReb": 1,
+						"awayTeam.players.3.stats.evaluation": 1
 					}
 				});
 			}
@@ -1854,7 +2044,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.4.stats.rebonds.offReb": 1
+						"homeTeam.players.4.stats.rebonds.offReb": 1,
+						"homeTeam.players.4.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1862,7 +2053,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.4.stats.rebonds.offReb": 1
+						"awayTeam.players.4.stats.rebonds.offReb": 1,
+						"awayTeam.players.4.stats.evaluation": 1
 					}
 				});
 			}
@@ -1872,7 +2064,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.5.stats.rebonds.offReb": 1
+						"homeTeam.players.5.stats.rebonds.offReb": 1,
+						"homeTeam.players.5.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1880,7 +2073,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.5.stats.rebonds.offReb": 1
+						"awayTeam.players.5.stats.rebonds.offReb": 1,
+						"awayTeam.players.5.stats.evaluation": 1
 					}
 				});
 			}
@@ -1890,7 +2084,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.6.stats.rebonds.offReb": 1
+						"homeTeam.players.6.stats.rebonds.offReb": 1,
+						"homeTeam.players.6.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1898,7 +2093,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.6.stats.rebonds.offReb": 1
+						"awayTeam.players.6.stats.rebonds.offReb": 1,
+						"awayTeam.players.6.stats.evaluation": 1
 					}
 				});
 			}
@@ -1908,7 +2104,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.7.stats.rebonds.offReb": 1
+						"homeTeam.players.7.stats.rebonds.offReb": 1,
+						"homeTeam.players.7.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1916,7 +2113,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.7.stats.rebonds.offReb": 1
+						"awayTeam.players.7.stats.rebonds.offReb": 1,
+						"awayTeam.players.7.stats.evaluation": 1
 					}
 				});
 			}
@@ -1926,7 +2124,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.8.stats.rebonds.offReb": 1
+						"homeTeam.players.8.stats.rebonds.offReb": 1,
+						"homeTeam.players.8.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1934,7 +2133,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.8.stats.rebonds.offReb": 1
+						"awayTeam.players.8.stats.rebonds.offReb": 1,
+						"awayTeam.players.8.stats.evaluation": 1
 					}
 				});
 			}
@@ -1944,7 +2144,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.9.stats.rebonds.offReb": 1
+						"homeTeam.players.9.stats.rebonds.offReb": 1,
+						"homeTeam.players.9.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1952,7 +2153,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.9.stats.rebonds.offReb": 1
+						"awayTeam.players.9.stats.rebonds.offReb": 1,
+						"awayTeam.players.9.stats.evaluation": 1
 					}
 				});
 			}
@@ -1962,7 +2164,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.10.stats.rebonds.offReb": 1
+						"homeTeam.players.10.stats.rebonds.offReb": 1,
+						"homeTeam.players.10.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1970,7 +2173,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.10.stats.rebonds.offReb": 1
+						"awayTeam.players.10.stats.rebonds.offReb": 1,
+						"awayTeam.players.10.stats.evaluation": 1
 					}
 				});
 			}
@@ -1980,7 +2184,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.11.stats.rebonds.offReb": 1
+						"homeTeam.players.11.stats.rebonds.offReb": 1,
+						"homeTeam.players.11.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -1988,7 +2193,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.11.stats.rebonds.offReb": 1
+						"awayTeam.players.11.stats.rebonds.offReb": 1,
+						"awayTeam.players.11.stats.evaluation": 1
 					}
 				});
 			}
@@ -1998,7 +2204,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.12.stats.rebonds.offReb": 1
+						"homeTeam.players.12.stats.rebonds.offReb": 1,
+						"homeTeam.players.12.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2006,7 +2213,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.12.stats.rebonds.offReb": 1
+						"awayTeam.players.12.stats.rebonds.offReb": 1,
+						"awayTeam.players.12.stats.evaluation": 1
 					}
 				});
 			}
@@ -2023,7 +2231,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.0.stats.rebonds.defReb": 1
+						"homeTeam.players.0.stats.rebonds.defReb": 1,
+						"homeTeam.players.0.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2031,7 +2240,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.0.stats.rebonds.defReb": 1
+						"awayTeam.players.0.stats.rebonds.defReb": 1,
+						"awayTeam.players.0.stats.evaluation": 1
 					}
 				});
 			}
@@ -2041,7 +2251,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.1.stats.rebonds.defReb": 1
+						"homeTeam.players.1.stats.rebonds.defReb": 1,
+						"homeTeam.players.1.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2049,7 +2260,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.1.stats.rebonds.defReb": 1
+						"awayTeam.players.1.stats.rebonds.defReb": 1,
+						"awayTeam.players.1.stats.evaluation": 1
 					}
 				});
 			}
@@ -2059,7 +2271,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.2.stats.rebonds.defReb": 1
+						"homeTeam.players.2.stats.rebonds.defReb": 1,
+						"homeTeam.players.2.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2067,7 +2280,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.2.stats.rebonds.defReb": 1
+						"awayTeam.players.2.stats.rebonds.defReb": 1,
+						"awayTeam.players.2.stats.evaluation": 1
 					}
 				});
 			}
@@ -2077,7 +2291,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.3.stats.rebonds.defReb": 1
+						"homeTeam.players.3.stats.rebonds.defReb": 1,
+						"homeTeam.players.3.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2085,7 +2300,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.3.stats.rebonds.defReb": 1
+						"awayTeam.players.3.stats.rebonds.defReb": 1,
+						"awayTeam.players.3.stats.evaluation": 1
 					}
 				});
 			}
@@ -2095,7 +2311,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.4.stats.rebonds.defReb": 1
+						"homeTeam.players.4.stats.rebonds.defReb": 1,
+						"homeTeam.players.4.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2103,7 +2320,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.4.stats.rebonds.defReb": 1
+						"awayTeam.players.4.stats.rebonds.defReb": 1,
+						"awayTeam.players.4.stats.evaluation": 1
 					}
 				});
 			}
@@ -2113,7 +2331,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.5.stats.rebonds.defReb": 1
+						"homeTeam.players.5.stats.rebonds.defReb": 1,
+						"homeTeam.players.5.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2121,7 +2340,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.5.stats.rebonds.defReb": 1
+						"awayTeam.players.5.stats.rebonds.defReb": 1,
+						"awayTeam.players.5.stats.evaluation": 1
 					}
 				});
 			}
@@ -2131,7 +2351,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.6.stats.rebonds.defReb": 1
+						"homeTeam.players.6.stats.rebonds.defReb": 1,
+						"homeTeam.players.6.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2139,7 +2360,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.6.stats.rebonds.defReb": 1
+						"awayTeam.players.6.stats.rebonds.defReb": 1,
+						"awayTeam.players.6.stats.evaluation": 1
 					}
 				});
 			}
@@ -2149,7 +2371,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.7.stats.rebonds.defReb": 1
+						"homeTeam.players.7.stats.rebonds.defReb": 1,
+						"homeTeam.players.7.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2157,7 +2380,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.7.stats.rebonds.defReb": 1
+						"awayTeam.players.7.stats.rebonds.defReb": 1,
+						"awayTeam.players.7.stats.evaluation": 1
 					}
 				});
 			}
@@ -2167,7 +2391,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.8.stats.rebonds.defReb": 1
+						"homeTeam.players.8.stats.rebonds.defReb": 1,
+						"homeTeam.players.8.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2175,7 +2400,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.8.stats.rebonds.defReb": 1
+						"awayTeam.players.8.stats.rebonds.defReb": 1,
+						"awayTeam.players.8.stats.evaluation": 1
 					}
 				});
 			}
@@ -2185,7 +2411,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.9.stats.rebonds.defReb": 1
+						"homeTeam.players.9.stats.rebonds.defReb": 1,
+						"homeTeam.players.9.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2193,7 +2420,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.9.stats.rebonds.defReb": 1
+						"awayTeam.players.9.stats.rebonds.defReb": 1,
+						"awayTeam.players.9.stats.evaluation": 1
 					}
 				});
 			}
@@ -2203,7 +2431,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.10.stats.rebonds.defReb": 1
+						"homeTeam.players.10.stats.rebonds.defReb": 1,
+						"homeTeam.players.10.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2211,7 +2440,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.10.stats.rebonds.defReb": 1
+						"awayTeam.players.10.stats.rebonds.defReb": 1,
+						"awayTeam.players.10.stats.evaluation": 1
 					}
 				});
 			}
@@ -2221,7 +2451,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.11.stats.rebonds.defReb": 1
+						"homeTeam.players.11.stats.rebonds.defReb": 1,
+						"homeTeam.players.11.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2229,7 +2460,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.11.stats.rebonds.defReb": 1
+						"awayTeam.players.11.stats.rebonds.defReb": 1,
+						"awayTeam.players.11.stats.evaluation": 1
 					}
 				});
 			}
@@ -2239,7 +2471,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.12.stats.rebonds.defReb": 1
+						"homeTeam.players.12.stats.rebonds.defReb": 1,
+						"homeTeam.players.12.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2247,7 +2480,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.12.stats.rebonds.defReb": 1
+						"awayTeam.players.12.stats.rebonds.defReb": 1,
+						"awayTeam.players.12.stats.evaluation": 1
 					}
 				});
 			}
@@ -2264,7 +2498,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.0.stats.turnover": 1
+						"homeTeam.players.0.stats.turnover": 1,
+						"homeTeam.players.0.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2272,7 +2507,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.0.stats.turnover": 1
+						"awayTeam.players.0.stats.turnover": 1,
+						"awayTeam.players.0.stats.evaluation": -1
 					}
 				});
 			}
@@ -2282,7 +2518,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.1.stats.turnover": 1
+						"homeTeam.players.1.stats.turnover": 1,
+						"homeTeam.players.1.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2290,7 +2527,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.1.stats.turnover": 1
+						"awayTeam.players.1.stats.turnover": 1,
+						"awayTeam.players.1.stats.evaluation": -1
 					}
 				});
 			}
@@ -2300,7 +2538,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.2.stats.turnover": 1
+						"homeTeam.players.2.stats.turnover": 1,
+						"homeTeam.players.2.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2308,7 +2547,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.2.stats.turnover": 1
+						"awayTeam.players.2.stats.turnover": 1,
+						"awayTeam.players.2.stats.evaluation": -1
 					}
 				});
 			}
@@ -2318,7 +2558,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.3.stats.turnover": 1
+						"homeTeam.players.3.stats.turnover": 1,
+						"homeTeam.players.3.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2326,7 +2567,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.3.stats.turnover": 1
+						"awayTeam.players.3.stats.turnover": 1,
+						"awayTeam.players.3.stats.evaluation": -1
 					}
 				});
 			}
@@ -2336,7 +2578,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.4.stats.turnover": 1
+						"homeTeam.players.4.stats.turnover": 1,
+						"homeTeam.players.4.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2344,7 +2587,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.4.stats.turnover": 1
+						"awayTeam.players.4.stats.turnover": 1,
+						"awayTeam.players.4.stats.evaluation": -1
 					}
 				});
 			}
@@ -2354,7 +2598,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.5.stats.turnover": 1
+						"homeTeam.players.5.stats.turnover": 1,
+						"homeTeam.players.5.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2362,7 +2607,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.5.stats.turnover": 1
+						"awayTeam.players.5.stats.turnover": 1,
+						"awayTeam.players.5.stats.evaluation": -1
 					}
 				});
 			}
@@ -2372,7 +2618,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.6.stats.turnover": 1
+						"homeTeam.players.6.stats.turnover": 1,
+						"homeTeam.players.6.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2380,7 +2627,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.6.stats.turnover": 1
+						"awayTeam.players.6.stats.turnover": 1,
+						"awayTeam.players.6.stats.evaluation": -1
 					}
 				});
 			}
@@ -2390,7 +2638,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.7.stats.turnover": 1
+						"homeTeam.players.7.stats.turnover": 1,
+						"homeTeam.players.7.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2398,7 +2647,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.7.stats.turnover": 1
+						"awayTeam.players.7.stats.turnover": 1,
+						"awayTeam.players.7.stats.evaluation": -1
 					}
 				});
 			}
@@ -2408,7 +2658,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.8.stats.turnover": 1
+						"homeTeam.players.8.stats.turnover": 1,
+						"homeTeam.players.8.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2416,7 +2667,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.8.stats.turnover": 1
+						"awayTeam.players.8.stats.turnover": 1,
+						"awayTeam.players.8.stats.evaluation": -1
 					}
 				});
 			}
@@ -2426,7 +2678,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.9.stats.turnover": 1
+						"homeTeam.players.9.stats.turnover": 1,
+						"homeTeam.players.9.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2434,7 +2687,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.9.stats.turnover": 1
+						"awayTeam.players.9.stats.turnover": 1,
+						"awayTeam.players.9.stats.evaluation": -1
 					}
 				});
 			}
@@ -2444,7 +2698,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.10.stats.turnover": 1
+						"homeTeam.players.10.stats.turnover": 1,
+						"homeTeam.players.10.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2452,7 +2707,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.10.stats.turnover": 1
+						"awayTeam.players.10.stats.turnover": 1,
+						"awayTeam.players.10.stats.evaluation": -1
 					}
 				});
 			}
@@ -2462,7 +2718,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.11.stats.turnover": 1
+						"homeTeam.players.11.stats.turnover": 1,
+						"homeTeam.players.11.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2470,7 +2727,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.11.stats.turnover": 1
+						"awayTeam.players.11.stats.turnover": 1,
+						"awayTeam.players.11.stats.evaluation": -1
 					}
 				});
 			}
@@ -2480,7 +2738,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.12.stats.turnover": 1
+						"homeTeam.players.12.stats.turnover": 1,
+						"homeTeam.players.12.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2488,7 +2747,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.12.stats.turnover": 1
+						"awayTeam.players.12.stats.turnover": 1,
+						"awayTeam.players.12.stats.evaluation": -1
 					}
 				});
 			}
@@ -2506,7 +2766,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.0.stats.fouls.offFouls": 1,
-						"homeTeam.players.0.stats.fouls.totalFouls": 1
+						"homeTeam.players.0.stats.fouls.totalFouls": 1,
+						"homeTeam.players.0.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2515,7 +2776,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.0.stats.fouls.offFouls": 1,
-						"awayTeam.players.0.stats.fouls.totalFouls": 1
+						"awayTeam.players.0.stats.fouls.totalFouls": 1,
+						"awayTeam.players.0.stats.evaluation": -1
 					}
 				});
 			}
@@ -2526,7 +2788,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.1.stats.fouls.offFouls": 1,
-						"homeTeam.players.1.stats.fouls.totalFouls": 1
+						"homeTeam.players.1.stats.fouls.totalFouls": 1,
+						"homeTeam.players.1.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2535,7 +2798,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.1.stats.fouls.offFouls": 1,
-						"awayTeam.players.1.stats.fouls.totalFouls": 1
+						"awayTeam.players.1.stats.fouls.totalFouls": 1,
+						"awayTeam.players.1.stats.evaluation": -1
 					}
 				});
 			}
@@ -2546,7 +2810,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.2.stats.fouls.offFouls": 1,
-						"homeTeam.players.2.stats.fouls.totalFouls": 1
+						"homeTeam.players.2.stats.fouls.totalFouls": 1,
+						"homeTeam.players.2.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2555,7 +2820,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.2.stats.fouls.offFouls": 1,
-						"awayTeam.players.2.stats.fouls.totalFouls": 1
+						"awayTeam.players.2.stats.fouls.totalFouls": 1,
+						"awayTeam.players.2.stats.evaluation": -1
 					}
 				});
 			}
@@ -2566,7 +2832,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.3.stats.fouls.offFouls": 1,
-						"homeTeam.players.3.stats.fouls.totalFouls": 1
+						"homeTeam.players.3.stats.fouls.totalFouls": 1,
+						"homeTeam.players.3.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2575,7 +2842,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.3.stats.fouls.offFouls": 1,
-						"awayTeam.players.3.stats.fouls.totalFouls": 1
+						"awayTeam.players.3.stats.fouls.totalFouls": 1,
+						"awayTeam.players.3.stats.evaluation": -1
 					}
 				});
 			}
@@ -2586,7 +2854,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.4.stats.fouls.offFouls": 1,
-						"homeTeam.players.4.stats.fouls.totalFouls": 1
+						"homeTeam.players.4.stats.fouls.totalFouls": 1,
+						"homeTeam.players.4.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2595,7 +2864,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.4.stats.fouls.offFouls": 1,
-						"awayTeam.players.4.stats.fouls.totalFouls": 1
+						"awayTeam.players.4.stats.fouls.totalFouls": 1,
+						"awayTeam.players.4.stats.evaluation": -1
 					}
 				});
 			}
@@ -2606,7 +2876,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.5.stats.fouls.offFouls": 1,
-						"homeTeam.players.5.stats.fouls.totalFouls": 1
+						"homeTeam.players.5.stats.fouls.totalFouls": 1,
+						"homeTeam.players.5.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2615,7 +2886,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.5.stats.fouls.offFouls": 1,
-						"awayTeam.players.5.stats.fouls.totalFouls": 1
+						"awayTeam.players.5.stats.fouls.totalFouls": 1,
+						"awayTeam.players.5.stats.evaluation": -1
 					}
 				});
 			}
@@ -2626,7 +2898,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.6.stats.fouls.offFouls": 1,
-						"homeTeam.players.6.stats.fouls.totalFouls": 1
+						"homeTeam.players.6.stats.fouls.totalFouls": 1,
+						"homeTeam.players.6.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2635,7 +2908,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.6.stats.fouls.offFouls": 1,
-						"awayTeam.players.6.stats.fouls.totalFouls": 1
+						"awayTeam.players.6.stats.fouls.totalFouls": 1,
+						"awayTeam.players.6.stats.evaluation": -1
 					}
 				});
 			}
@@ -2646,7 +2920,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.7.stats.fouls.offFouls": 1,
-						"homeTeam.players.7.stats.fouls.totalFouls": 1
+						"homeTeam.players.7.stats.fouls.totalFouls": 1,
+						"homeTeam.players.7.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2655,7 +2930,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.7.stats.fouls.offFouls": 1,
-						"awayTeam.players.7.stats.fouls.totalFouls": 1
+						"awayTeam.players.7.stats.fouls.totalFouls": 1,
+						"awayTeam.players.7.stats.evaluation": -1
 					}
 				});
 			}
@@ -2666,7 +2942,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.8.stats.fouls.offFouls": 1,
-						"homeTeam.players.8.stats.fouls.totalFouls": 1
+						"homeTeam.players.8.stats.fouls.totalFouls": 1,
+						"homeTeam.players.8.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2675,7 +2952,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.8.stats.fouls.offFouls": 1,
-						"awayTeam.players.8.stats.fouls.totalFouls": 1
+						"awayTeam.players.8.stats.fouls.totalFouls": 1,
+						"awayTeam.players.8.stats.evaluation": -1
 					}
 				});
 			}
@@ -2686,7 +2964,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.9.stats.fouls.offFouls": 1,
-						"homeTeam.players.9.stats.fouls.totalFouls": 1
+						"homeTeam.players.9.stats.fouls.totalFouls": 1,
+						"homeTeam.players.9.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2695,7 +2974,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.9.stats.fouls.offFouls": 1,
-						"awayTeam.players.9.stats.fouls.totalFouls": 1
+						"awayTeam.players.9.stats.fouls.totalFouls": 1,
+						"awayTeam.players.9.stats.evaluation": -1
 					}
 				});
 			}
@@ -2706,7 +2986,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.10.stats.fouls.offFouls": 1,
-						"homeTeam.players.10.stats.fouls.totalFouls": 1
+						"homeTeam.players.10.stats.fouls.totalFouls": 1,
+						"homeTeam.players.10.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2715,7 +2996,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.10.stats.fouls.offFouls": 1,
-						"awayTeam.players.10.stats.fouls.totalFouls": 1
+						"awayTeam.players.10.stats.fouls.totalFouls": 1,
+						"awayTeam.players.10.stats.evaluation": -1
 					}
 				});
 			}
@@ -2726,7 +3008,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.11.stats.fouls.offFouls": 1,
-						"homeTeam.players.11.stats.fouls.totalFouls": 1
+						"homeTeam.players.11.stats.fouls.totalFouls": 1,
+						"homeTeam.players.11.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2735,7 +3018,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.11.stats.fouls.offFouls": 1,
-						"awayTeam.players.11.stats.fouls.totalFouls": 1
+						"awayTeam.players.11.stats.fouls.totalFouls": 1,
+						"awayTeam.players.11.stats.evaluation": -1
 					}
 				});
 			}
@@ -2746,7 +3030,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"homeTeam.players.12.stats.fouls.offFouls": 1,
-						"homeTeam.players.12.stats.fouls.totalFouls": 1
+						"homeTeam.players.12.stats.fouls.totalFouls": 1,
+						"homeTeam.players.12.stats.evaluation": -1
 					}
 				});
 			} else {
@@ -2755,7 +3040,8 @@ Template.playerModal.events({
 				}, {
 					$inc: {
 						"awayTeam.players.12.stats.fouls.offFouls": 1,
-						"awayTeam.players.12.stats.fouls.totalFouls": 1
+						"awayTeam.players.12.stats.fouls.totalFouls": 1,
+						"awayTeam.players.12.stats.evaluation": -1
 					}
 				});
 			}
@@ -2772,7 +3058,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.0.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.0.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.0.stats.evaluation": 1
 
 					}
 				});
@@ -2781,7 +3068,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.0.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.0.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.0.stats.evaluation": 1
 
 					}
 				});
@@ -2792,7 +3080,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.1.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.1.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.1.stats.evaluation": 1
 
 					}
 				});
@@ -2801,7 +3090,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.1.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.1.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.1.stats.evaluation": 1
 
 					}
 				});
@@ -2812,7 +3102,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.2.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.2.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.2.stats.evaluation": 1
 
 					}
 				});
@@ -2821,7 +3112,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.2.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.2.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.2.stats.evaluation": 1
 
 					}
 				});
@@ -2832,7 +3124,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.3.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.3.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.3.stats.evaluation": 1
 
 					}
 				});
@@ -2841,7 +3134,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.3.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.3.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.3.stats.evaluation": 1
 
 					}
 				});
@@ -2852,7 +3146,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.4.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.4.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.4.stats.evaluation": 1
 
 					}
 				});
@@ -2861,7 +3156,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.4.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.4.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.4.stats.evaluation": 1
 
 					}
 				});
@@ -2872,7 +3168,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.5.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.5.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.5.stats.evaluation": 1
 
 					}
 				});
@@ -2881,7 +3178,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.5.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.5.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.5.stats.evaluation": 1
 
 					}
 				});
@@ -2892,7 +3190,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.6.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.6.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.6.stats.evaluation": 1
 
 					}
 				});
@@ -2901,7 +3200,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.6.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.6.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.6.stats.evaluation": 1
 
 					}
 				});
@@ -2912,7 +3212,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.7.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.7.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.7.stats.evaluation": 1
 
 					}
 				});
@@ -2921,7 +3222,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.7.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.7.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.7.stats.evaluation": 1
 
 					}
 				});
@@ -2932,7 +3234,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.8.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.8.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.8.stats.evaluation": 1
 
 					}
 				});
@@ -2941,7 +3244,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.8.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.8.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.8.stats.evaluation": 1
 
 					}
 				});
@@ -2952,7 +3256,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.9.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.9.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.9.stats.evaluation": 1
 
 					}
 				});
@@ -2961,7 +3266,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.9.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.9.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.9.stats.evaluation": 1
 
 					}
 				});
@@ -2972,7 +3278,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.10.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.10.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.10.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2980,7 +3287,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.10.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.10.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.10.stats.evaluation": 1
 					}
 				});
 			}
@@ -2990,7 +3298,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.11.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.11.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.11.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -2998,7 +3307,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.11.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.11.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.11.stats.evaluation": 1
 					}
 				});
 			}
@@ -3008,7 +3318,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.12.stats.fouls.provFoul.offFouls": 1
+						"homeTeam.players.12.stats.fouls.provFoul.offFouls": 1,
+						"homeTeam.players.12.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3016,7 +3327,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.12.stats.fouls.provFoul.offFouls": 1
+						"awayTeam.players.12.stats.fouls.provFoul.offFouls": 1,
+						"awayTeam.players.12.stats.evaluation": 1
 					}
 				});
 			}
@@ -3033,7 +3345,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.0.stats.steal": 1
+						"homeTeam.players.0.stats.steal": 1,
+						"homeTeam.players.0.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3041,7 +3354,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.0.stats.steal": 1
+						"awayTeam.players.0.stats.steal": 1,
+						"awayTeam.players.0.stats.evaluation": 1
 					}
 				});
 			}
@@ -3051,7 +3365,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.1.stats.steal": 1
+						"homeTeam.players.1.stats.steal": 1,
+						"homeTeam.players.1.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3059,7 +3374,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.1.stats.steal": 1
+						"awayTeam.players.1.stats.steal": 1,
+						"awayTeam.players.1.stats.evaluation": 1
 					}
 				});
 			}
@@ -3069,7 +3385,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.2.stats.steal": 1
+						"homeTeam.players.2.stats.steal": 1,
+						"homeTeam.players.2.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3077,7 +3394,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.2.stats.steal": 1
+						"awayTeam.players.2.stats.steal": 1,
+						"awayTeam.players.2.stats.evaluation": 1
 					}
 				});
 			}
@@ -3087,7 +3405,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.3.stats.steal": 1
+						"homeTeam.players.3.stats.steal": 1,
+						"homeTeam.players.3.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3095,7 +3414,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.3.stats.steal": 1
+						"awayTeam.players.3.stats.steal": 1,
+						"awayTeam.players.3.stats.evaluation": 1
 					}
 				});
 			}
@@ -3105,7 +3425,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.4.stats.steal": 1
+						"homeTeam.players.4.stats.steal": 1,
+						"homeTeam.players.4.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3113,7 +3434,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.4.stats.steal": 1
+						"awayTeam.players.4.stats.steal": 1,
+						"awayTeam.players.4.stats.evaluation": 1
 					}
 				});
 			}
@@ -3123,7 +3445,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.5.stats.steal": 1
+						"homeTeam.players.5.stats.steal": 1,
+						"homeTeam.players.5.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3131,7 +3454,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.5.stats.steal": 1
+						"awayTeam.players.5.stats.steal": 1,
+						"awayTeam.players.5.stats.evaluation": 1
 					}
 				});
 			}
@@ -3141,7 +3465,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.6.stats.steal": 1
+						"homeTeam.players.6.stats.steal": 1,
+						"homeTeam.players.6.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3149,7 +3474,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.6.stats.steal": 1
+						"awayTeam.players.6.stats.steal": 1,
+						"awayTeam.players.6.stats.evaluation": 1
 					}
 				});
 			}
@@ -3159,7 +3485,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.7.stats.steal": 1
+						"homeTeam.players.7.stats.steal": 1,
+						"homeTeam.players.7.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3167,7 +3494,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.7.stats.steal": 1
+						"awayTeam.players.7.stats.steal": 1,
+						"awayTeam.players.7.stats.evaluation": 1
 					}
 				});
 			}
@@ -3177,7 +3505,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.8.stats.steal": 1
+						"homeTeam.players.8.stats.steal": 1,
+						"homeTeam.players.8.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3185,7 +3514,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.8.stats.steal": 1
+						"awayTeam.players.8.stats.steal": 1,
+						"awayTeam.players.8.stats.evaluation": 1
 					}
 				});
 			}
@@ -3195,7 +3525,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.9.stats.steal": 1
+						"homeTeam.players.9.stats.steal": 1,
+						"homeTeam.players.9.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3203,7 +3534,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.9.stats.steal": 1
+						"awayTeam.players.9.stats.steal": 1,
+						"awayTeam.players.9.stats.evaluation": 1
 					}
 				});
 			}
@@ -3213,7 +3545,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.10.stats.steal": 1
+						"homeTeam.players.10.stats.steal": 1,
+						"homeTeam.players.10.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3221,7 +3554,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.10.stats.steal": 1
+						"awayTeam.players.10.stats.steal": 1,
+						"awayTeam.players.10.stats.evaluation": 1
 					}
 				});
 			}
@@ -3231,7 +3565,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.11.stats.steal": 1
+						"homeTeam.players.11.stats.steal": 1,
+						"homeTeam.players.11.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3239,7 +3574,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.11.stats.steal": 1
+						"awayTeam.players.11.stats.steal": 1,
+						"awayTeam.players.11.stats.evaluation": 1
 					}
 				});
 			}
@@ -3249,7 +3585,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.12.stats.steal": 1
+						"homeTeam.players.12.stats.steal": 1,
+						"homeTeam.players.12.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3257,7 +3594,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.12.stats.steal": 1
+						"awayTeam.players.12.stats.steal": 1,
+						"awayTeam.players.12.stats.evaluation": 1
 					}
 				});
 			}
@@ -3274,7 +3612,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.0.stats.block": 1
+						"homeTeam.players.0.stats.block": 1,
+						"homeTeam.players.0.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3282,7 +3621,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.0.stats.block": 1
+						"awayTeam.players.0.stats.block": 1,
+						"awayTeam.players.0.stats.evaluation": 1
 					}
 				});
 			}
@@ -3292,7 +3632,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.1.stats.block": 1
+						"homeTeam.players.1.stats.block": 1,
+						"homeTeam.players.1.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3300,7 +3641,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.1.stats.block": 1
+						"awayTeam.players.1.stats.block": 1,
+						"awayTeam.players.1.stats.evaluation": 1
 					}
 				});
 			}
@@ -3310,7 +3652,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.2.stats.block": 1
+						"homeTeam.players.2.stats.block": 1,
+						"homeTeam.players.2.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3318,7 +3661,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.2.stats.block": 1
+						"awayTeam.players.2.stats.block": 1,
+						"awayTeam.players.2.stats.evaluation": 1
 					}
 				});
 			}
@@ -3328,7 +3672,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.3.stats.block": 1
+						"homeTeam.players.3.stats.block": 1,
+						"homeTeam.players.3.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3336,7 +3681,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.3.stats.block": 1
+						"awayTeam.players.3.stats.block": 1,
+						"awayTeam.players.3.stats.evaluation": 1
 					}
 				});
 			}
@@ -3346,7 +3692,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.4.stats.block": 1
+						"homeTeam.players.4.stats.block": 1,
+						"homeTeam.players.4.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3354,7 +3701,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.4.stats.block": 1
+						"awayTeam.players.4.stats.block": 1,
+						"awayTeam.players.4.stats.evaluation": 1
 					}
 				});
 			}
@@ -3364,7 +3712,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.5.stats.block": 1
+						"homeTeam.players.5.stats.block": 1,
+						"homeTeam.players.5.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3372,7 +3721,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.5.stats.block": 1
+						"awayTeam.players.5.stats.block": 1,
+						"awayTeam.players.5.stats.evaluation": 1
 					}
 				});
 			}
@@ -3382,7 +3732,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.6.stats.block": 1
+						"homeTeam.players.6.stats.block": 1,
+						"homeTeam.players.6.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3390,7 +3741,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.6.stats.block": 1
+						"awayTeam.players.6.stats.block": 1,
+						"awayTeam.players.6.stats.evaluation": 1
 					}
 				});
 			}
@@ -3400,7 +3752,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.7.stats.block": 1
+						"homeTeam.players.7.stats.block": 1,
+						"homeTeam.players.7.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3408,7 +3761,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.7.stats.block": 1
+						"awayTeam.players.7.stats.block": 1,
+						"awayTeam.players.7.stats.evaluation": 1
 					}
 				});
 			}
@@ -3418,7 +3772,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.8.stats.block": 1
+						"homeTeam.players.8.stats.block": 1,
+						"homeTeam.players.8.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3426,7 +3781,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.8.stats.block": 1
+						"awayTeam.players.8.stats.block": 1,
+						"awayTeam.players.8.stats.evaluation": 1
 					}
 				});
 			}
@@ -3436,7 +3792,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.9.stats.block": 1
+						"homeTeam.players.9.stats.block": 1,
+						"homeTeam.players.9.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3444,7 +3801,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.9.stats.block": 1
+						"awayTeam.players.9.stats.block": 1,
+						"awayTeam.players.9.stats.evaluation": 1
 					}
 				});
 			}
@@ -3454,7 +3812,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.10.stats.block": 1
+						"homeTeam.players.10.stats.block": 1,
+						"homeTeam.players.10.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3462,7 +3821,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.10.stats.block": 1
+						"awayTeam.players.10.stats.block": 1,
+						"awayTeam.players.10.stats.evaluation": 1
 					}
 				});
 			}
@@ -3472,7 +3832,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.11.stats.block": 1
+						"homeTeam.players.11.stats.block": 1,
+						"homeTeam.players.11.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3480,7 +3841,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.11.stats.block": 1
+						"awayTeam.players.11.stats.block": 1,
+						"awayTeam.players.11.stats.evaluation": 1
 					}
 				});
 			}
@@ -3490,7 +3852,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"homeTeam.players.12.stats.block": 1
+						"homeTeam.players.12.stats.block": 1,
+						"homeTeam.players.12.stats.evaluation": 1
 					}
 				});
 			} else {
@@ -3498,7 +3861,8 @@ Template.playerModal.events({
 					_id: parentData._id
 				}, {
 					$inc: {
-						"awayTeam.players.12.stats.block": 1
+						"awayTeam.players.12.stats.block": 1,
+						"awayTeam.players.12.stats.evaluation": 1
 					}
 				});
 			}
