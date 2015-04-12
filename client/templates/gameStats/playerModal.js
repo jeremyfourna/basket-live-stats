@@ -537,7 +537,7 @@ Template.playerModal.events({
 				});
 			}
 		}
-		return console.log("1 point for number " + Session.get('currentPlayerForModal').jersey + " of " + Session.get('currentPlayerForModal').team);
+		return console.log("2 points for number " + Session.get('currentPlayerForModal').jersey + " of " + Session.get('currentPlayerForModal').team);
 	},
 	'click #threePoint': function(e) {
 		var team = Session.get('currentPlayerForModal').team;
@@ -804,7 +804,7 @@ Template.playerModal.events({
 				});
 			}
 		}
-		return console.log("1 point for number " + Session.get('currentPlayerForModal').jersey + " of " + Session.get('currentPlayerForModal').team);
+		return console.log("3 points for number " + Session.get('currentPlayerForModal').jersey + " of " + Session.get('currentPlayerForModal').team);
 	},
 	'click #onePointMiss': function(e) {
 		var team = Session.get('currentPlayerForModal').team;
@@ -1045,6 +1045,6 @@ Template.playerModal.events({
 				});
 			}
 		}
-		return console.log("1 point for number " + Session.get('currentPlayerForModal').jersey + " of " + Session.get('currentPlayerForModal').team);
+		return console.log("Number " + Session.get('currentPlayerForModal').jersey + " of " + Session.get('currentPlayerForModal').team + " just missed a free throw !");
 	}
 });
