@@ -1,0 +1,52 @@
+<template name="summary">
+  <h4>Equipe domicile : {{gameInfos.homeTeam}}</h4>
+  <div class="table-responsive">
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Pts</th>
+          <th>2 pts</th>
+          <th>%</th>
+          <th>3 pts</th>
+          <th>%</th>
+          <th>LF</th>
+          <th>%</th>
+          <th>Reb O/D</th>
+          <th>Tot Reb</th>
+          <th>Passe déc.</th>
+          <th>Interc.</th>
+          <th>Turnover</th>
+          <th>Contre</th>
+          <th>Ft. P/C</th>
+          <th>Ratio Ft.</th>
+          <th>Eval.</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each homeTeam.players}}
+          <tr>
+            <th scope="row">{{jersey}}</th>
+            <td>{{totalPoints}}</td>
+            <td>{{twoPointsIn}}/{{total2pointsShoots}}</td>
+            <td>{{percentage2pointsShoots}} %</td>
+            <td>{{threePointsIn}}/{{total3pointsShoots}}</td>
+            <td>{{percentage3pointsShoots}} %</td>
+            <td>{{onePointIn}}/{{total1pointShoots}}</td>
+            <td>{{percentage1pointShoots}} %</td>
+            <td>{{stats.rebounds.offReb}}/{{stats.rebounds.defReb}}</td>
+            <td>{{totalRebounds}}</td>
+            <td>{{stats.assists}}</td>
+            <td>{{stats.steals}}</td>
+            <td>{{stats.turnovers}}</td>
+            <td>{{stats.blocks}}</td>
+            <td>{{provokedFouls}}/{{stats.fouls.totalFouls}}</td>
+            <td>{{foulsRatio}}</td>
+            <td>{{stats.evaluation}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <h4>Equipe extérieur : {{gameInfos.awayTeam}}</h4>
+</template>

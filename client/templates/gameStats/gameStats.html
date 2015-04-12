@@ -12,10 +12,14 @@
         <div role="tabpanel" class="tab-pane fade in active" id="stats" aria-labelledBy="stats-tab">
           {{>stats}}
         </div>
+        <div role="tabpanel" class="tab-pane fade" id="resume" aria-labelledBy="resume-tab">
+          {{>summary}}
+        </div>
+      {{else}}
+        <div role="tabpanel" class="tab-pane fade in active" id="resume" aria-labelledBy="resume-tab">
+          {{>summary}}
+        </div>
       {{/if}}
-      <div role="tabpanel" class="tab-pane fade" id="resume" aria-labelledBy="resume-tab">
-        <p>Template à créer</p>
-      </div>
       <div role="tabpanel" class="tab-pane fade" id="historic" aria-labelledBy="historic-tab">
         <p>Template à créer</p>
       </div>
