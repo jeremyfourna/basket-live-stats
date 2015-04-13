@@ -5,5 +5,13 @@
 	"liveStats": "Live stats",
 	"myGames": "Mes matches",
 	"settings": "Réglages",
-	"404": "Désolé, nous ne trouvons pas de page à cette adresse..."
+	"404": "Désolé, nous ne trouvons pas de page à cette adresse...",
+	"goStats": "Prends les stats !",
+	"stats": "Stats",
+	"summary": "Résumé",
+	"historical": "Historique",
+	"whoIsDoingThisAction": "Quelle action a été réalisée par ",
+	"offAction": "Action offensive",
+	"defAction": "Action défensive",
+	"closeModal": "Fermer"
 }

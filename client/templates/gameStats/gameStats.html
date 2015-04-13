@@ -2,10 +2,12 @@
   <div role="tabpanel">
     <ul id="gameStatsPills" class="nav nav-pills" role="tablist">
       {{#if isOwnerOfTheGame}}
-        <li role="presentation" class="active"><a href="#stats" id="stats-tab" role="tab" data-toggle="tab" aria-controls="stats" aria-expanded="true">Stats</a></li>
+        <li role="presentation" class="active"><a href="#stats" id="stats-tab" role="tab" data-toggle="tab" aria-controls="stats" aria-expanded="true">{{_ "stats"}}</a></li>
+        <li role="presentation"><a href="#resume" role="tab" id="resume-tab" data-toggle="tab" aria-controls="resume">{{_ "summary"}}</a></li>
+      {{else}}
+        <li role="presentation" class="active"><a href="#resume" role="tab" id="resume-tab" data-toggle="tab" aria-controls="resume">{{_ "summary"}}</a></li>
       {{/if}}
-      <li role="presentation"><a href="#resume" role="tab" id="resume-tab" data-toggle="tab" aria-controls="resume">Résumé</a></li>
-      <li role="presentation"><a href="#historic" id="historic-tab" role="tab" data-toggle="tab" aria-controls="historic" aria-expanded="true">historique</a></li>
+      <li role="presentation"><a href="#historic" id="historic-tab" role="tab" data-toggle="tab" aria-controls="historic" aria-expanded="true">{{_ "historical"}}</a></li>
     </ul>
     <div id="myTabContent" class="tab-content">
       {{#if isOwnerOfTheGame}}
