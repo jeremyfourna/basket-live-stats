@@ -6346,5 +6346,4 @@ Template.playerModal.events({
 		}
 		return console.log("Number " + Session.get('currentPlayerForModal').jersey + " of " + Session.get('currentPlayerForModal').team + " just received a disqualifying foul !");
 	}
-
 });
