@@ -1,10 +1,10 @@
 <template name="home">
   <div class='jumbotron'>
-    <h1>Prend les stats de ton équipe !</h1>
+    <h1>{{_ "welcome"}}</h1>
   </div>
   {{#if currentUser}}
     {{>creationGame}}
   {{else}}
-    <h2>Inscrits toi ou connectes toi pour commencer à prendre les stats du match</h2>
+    <h2>{{_ "loginToBeginTakingStats"}}</h2>
   {{/if}}
 </template>
