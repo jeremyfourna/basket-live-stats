@@ -5,12 +5,15 @@
       <p class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{gameInfos.homeTeam}}</p>
       <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
       <p class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{gameInfos.awayTeam}}</p>
-      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+      <div class="">
         <a href="{{pathFor 'gameStats'}}">
           <button type="button" class="btn btn-default">
             Retour au match <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
           </button>
         </a>
+        <button type="button" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
     {{else}}
