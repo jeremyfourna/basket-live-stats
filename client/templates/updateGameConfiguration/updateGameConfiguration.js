@@ -55,7 +55,42 @@ Template.updateGameConfiguration.events({
 				lastName: isFilled($(element).find('.lastName')),
 				jersey: filterInt($(element).find('.jersey').val()),
 				playerIndex: filterInt($(element).find('.playerIndex').val()),
-				team: $(element).find('.team').val()
+				team: $(element).find('.team').val(),
+				stats: {
+					points: {
+						onePointIn: 0,
+						totalPoints: 0,
+						twoPointsIn: 0,
+						threePointsIn: 0,
+						onePointOut: 0,
+						twoPointsOut: 0,
+						threePointsOut: 0
+					},
+					evaluation: 0,
+					assists: 0,
+					rebounds: {
+						offReb: 0,
+						defReb: 0
+					},
+					turnovers: 0,
+					fouls: {
+						offFouls: 0,
+						totalFouls: 0,
+						provFouls: {
+							offFouls: 0,
+							defFouls: 0
+						},
+						foul: 0,
+						foul1FT: 0,
+						foul2FT: 0,
+						foul3FT: 0,
+						techFoul: 0,
+						antiSportFoul: 0,
+						disqualifyingFoul: 0
+					},
+					steals: 0,
+					blocks: 0
+				}
 			};
 			if (index < 12) {
 				homeTeamPlayers.push(player);
