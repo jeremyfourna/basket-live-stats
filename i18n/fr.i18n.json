@@ -13,5 +13,6 @@
 	"whoIsDoingThisAction": "Quelle action a été réalisée par ",
 	"offAction": "Action offensive",
 	"defAction": "Action défensive",
-	"closeModal": "Fermer"
+	"closeModal": "Fermer",
+	"playersSettings": "Bio des joueurs"
 }
