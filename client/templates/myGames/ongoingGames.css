@@ -1,3 +1,8 @@
 .ongoingGames {
   margin-bottom: 5px;
 }
+
+.ongoingGames div,
+.ongoingGames h3 {
+  border: 1px solid black;
+}

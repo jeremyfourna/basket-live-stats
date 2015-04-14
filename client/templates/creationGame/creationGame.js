@@ -41,6 +41,12 @@ Template.creationGame.events({
 			awayTeam: {
 				players: teamDef("awayTeam"),
 				coachs: coachDef("awayTeam")
+			},
+			gameStats: {
+				score: {
+					homeTeam: 0,
+					awayTeam: 0,
+				}
 			}
 		};
 
