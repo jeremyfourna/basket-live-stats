@@ -14,5 +14,6 @@
 	"offAction": "Action offensive",
 	"defAction": "Action défensive",
 	"closeModal": "Fermer",
-	"playersSettings": "Bio des joueurs"
+	"playersSettings": "Bio des joueurs",
+	"total": "Total"
 }
