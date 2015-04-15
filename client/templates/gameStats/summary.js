@@ -4,9 +4,22 @@ Template.summary.helpers({
 		var twoPointsOut = this.stats.points.twoPointsOut;
 		return twoPointsIn + twoPointsOut;
 	},
+	'homeTeamTotal2pointsShoots': function() {
+		var twoPointsIn = this.gameStats.shoots.homeTeam.twoPointsIn;
+		var twoPointsOut = this.gameStats.shoots.homeTeam.twoPointsOut;
+		return twoPointsIn + twoPointsOut;
+	},
 	'percentage2pointsShoots': function() {
 		var twoPointsIn = this.stats.points.twoPointsIn;
 		var twoPointsOut = this.stats.points.twoPointsOut;
+		var total = twoPointsIn + twoPointsOut;
+		var percentage = twoPointsIn / total * 100;
+		var roundPercentage = Math.floor(percentage);
+		return roundPercentage || 0;
+	},
+	'homeTeamPercentage2pointsShoots': function() {
+		var twoPointsIn = this.gameStats.shoots.homeTeam.twoPointsIn;
+		var twoPointsOut = this.gameStats.shoots.homeTeam.twoPointsOut;
 		var total = twoPointsIn + twoPointsOut;
 		var percentage = twoPointsIn / total * 100;
 		var roundPercentage = Math.floor(percentage);
@@ -17,9 +30,22 @@ Template.summary.helpers({
 		var threePointsOut = this.stats.points.threePointsOut;
 		return threePointsIn + threePointsOut;
 	},
+	'homeTeamTotal3pointsShoots': function() {
+		var threePointsIn = this.gameStats.shoots.homeTeam.threePointsIn;
+		var threePointsOut = this.gameStats.shoots.homeTeam.threePointsOut;
+		return threePointsIn + threePointsOut;
+	},
 	'percentage3pointsShoots': function() {
 		var threePointsIn = this.stats.points.threePointsIn;
 		var threePointsOut = this.stats.points.threePointsOut;
+		var total = threePointsIn + threePointsOut;
+		var percentage = threePointsIn / total * 100;
+		var roundPercentage = Math.floor(percentage);
+		return roundPercentage || 0;
+	},
+	'homeTeamPercentage3pointsShoots': function() {
+		var threePointsIn = this.gameStats.shoots.homeTeam.threePointsIn;
+		var threePointsOut = this.gameStats.shoots.homeTeam.threePointsOut;
 		var total = threePointsIn + threePointsOut;
 		var percentage = threePointsIn / total * 100;
 		var roundPercentage = Math.floor(percentage);
