@@ -3,7 +3,7 @@
   <div class="table-responsive">
     <table class="table table-condensed">
       <thead>
-        <tr>
+        <tr class="active">
           <th>#</th>
           <th>Pts</th>
           <th>2 pts</th>
@@ -45,7 +45,7 @@
             <td>{{stats.evaluation}}</td>
           </tr>
         {{/each}}
-        <tr>
+        <tr class="active">
           <th scope="row">{{_ "total"}}</th>
           <td>{{gameStats.score.homeTeam}}</td>
           <td>{{gameStats.shoots.homeTeam.twoPointsIn}}/{{homeTeamTotal2PointsShoots}}</td>
@@ -71,7 +71,7 @@
   <div class="table-responsive">
     <table class="table table-condensed">
       <thead>
-        <tr>
+        <tr class="active">
           <th>#</th>
           <th>Pts</th>
           <th>2 pts</th>
@@ -113,7 +113,7 @@
             <td>{{stats.evaluation}}</td>
           </tr>
         {{/each}}
-        <tr>
+        <tr class="active">
           <th scope="row">{{_ "total"}}</th>
           <td>{{gameStats.score.awayTeam}}</td>
           <td>{{gameStats.shoots.awayTeam.twoPointsIn}}/{{awayTeamTotal2PointsShoots}}</td>
