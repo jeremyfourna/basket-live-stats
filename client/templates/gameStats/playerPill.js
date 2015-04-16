@@ -1,3 +1,24 @@
+Template.homeTeamPlayerPill.helpers({
+	'endedGames': function() {
+		if (Template.parentData(1).state === "gameEnded") {
+			return 'disabled';
+		} else {
+			return false;
+		}
+	}
+});
+
+Template.awayTeamPlayerPill.helpers({
+	'endedGames': function() {
+		if (Template.parentData(1).state === "gameEnded") {
+			return 'disabled';
+		} else {
+			return false;
+		}
+	}
+});
+
+
 Template.homeTeamPlayerPill.events({
 	'click .homeTeamPillForModal': function(e) {
 		this.team = "homeTeam";

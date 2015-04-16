@@ -25,5 +25,15 @@
 	"offFoul": "Ft. off",
 	"offProvFoul": "Ft. prov.",
 	"noRunningGames": "Tu n'a aucun match en cours... crée s'en un !",
-	"runningGames": "Match en cours"
+	"runningGames": "Match en cours",
+	"notStarted": "Non commencé",
+	"q1Running": "Q1",
+	"q1Ended": "Q1 - Fin",
+	"q2Running": "Q2",
+	"halfTime": "Mi-temps",
+	"q3Running": "Q3",
+	"q3Ended": "Q3 - Fin",
+	"q4Running": "Q4",
+	"endedGames": "Matches terminés",
+	"gameEnded": "Terminé"
 }

@@ -61,7 +61,7 @@ Template.stats.helpers({
 		} else {
 			return false;
 		}
-	},
+	}
 });
 
 Template.stats.events({

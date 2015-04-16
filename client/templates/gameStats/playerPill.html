@@ -1,6 +1,6 @@
 <template name="homeTeamPlayerPill">
-  <button class="homeTeamPillForModal btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" data-toggle="modal" data-target="#playerModal" type="button">Numéro <span class="badge">{{jersey}}</span></button>
+  <button disabled='{{endedGames}}' class="homeTeamPillForModal btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" data-toggle="modal" data-target="#playerModal" type="button">Numéro <span class="badge">{{jersey}}</span></button>
 </template>
 <template name="awayTeamPlayerPill">
-  <button class="awayTeamPillForModal btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" data-toggle="modal" data-target="#playerModal" type="button">Numéro <span class="badge">{{jersey}}</span></button>
+  <button disabled='{{endedGames}}' class="awayTeamPillForModal btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" data-toggle="modal" data-target="#playerModal" type="button">Numéro <span class="badge">{{jersey}}</span></button>
 </template>
