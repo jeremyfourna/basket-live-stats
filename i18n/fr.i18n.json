@@ -15,5 +15,13 @@
 	"defAction": "Action défensive",
 	"closeModal": "Fermer",
 	"playersSettings": "Bio des joueurs",
-	"total": "Total"
+	"total": "Total",
+	"oneFT": "1 LF",
+	"twoPoints": "2 Pts",
+	"threePoints": "3 Pts",
+	"assist": "Passe Déc.",
+	"offReb": "Reb. off.",
+	"turnover": "Balle perdue",
+	"offFoul": "Ft. off",
+	"offProvFoul": "Ft. prov."
 }
