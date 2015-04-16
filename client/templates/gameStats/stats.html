@@ -1,5 +1,9 @@
 <template name="stats">
   <div>
+    <div>
+      <h3>Score du match :</h3> {{gameInfos.homeTeam}} - {{gameStats.score.homeTeam}}
+      <br> {{gameInfos.awayTeam}} - {{gameStats.score.awayTeam}}
+    </div>
     <h3>Joueurs en jeu</h3>
     <p>Cliquez un numéro pour ajouter une action à ce joueur</p>
     <div>
@@ -16,6 +20,38 @@
         {{#each awayTeam.players}}
           {{>awayTeamPlayerPill}} {{>playerModal}}
         {{/each}}
+      </div>
+    </div>
+    <div>
+      <h4>Fait de match :</h4>
+      <div>
+        {{#if notStarted}}
+          <button class="btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" id="notStarted" type="button">Que le match commence !</button>
+        {{/if}}
+        {{#if q1Running}}
+          <button class="btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" id="q1Running" type="button">Fin du 1er quart temps</button>
+        {{/if}}
+        {{#if q1Ended}}
+          <button class="btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" id="q1Ended" type="button">Début du 2ème quart temps</button>
+        {{/if}}
+        {{#if q2Running}}
+          <button class="btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" id="q2Running" type="button">Fin du 2ème quart temps - Mi-temps</button>
+        {{/if}}
+        {{#if halfTime}}
+          <button class="btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" id="halfTime" type="button">Début de la deuxième mi-temps</button>
+        {{/if}}
+        {{#if q3Running}}
+          <button class="btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" id="q3Running" type="button">Fin du 3ème quart temps</button>
+        {{/if}}
+        {{#if q3Ended}}
+          <button class="btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" id="q3Ended" type="button">Début du 4ème quart temps</button>
+        {{/if}}
+        {{#if q4Running}}
+          <button class="btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" id="q4Running" type="button">Fin du match ?</button>
+        {{/if}}
+        {{#if gameEnded}}
+          <button class="btn btn-primary col-xs-4 col-sm-3 col-md-2 col-lg-2" disabled="disabled" id="gameEnded" type="button">Match terminé</button>
+        {{/if}}
       </div>
     </div>
   </div>
