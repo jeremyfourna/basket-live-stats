@@ -1,5 +1,5 @@
 <template name="ongoingGames">
-  <h1>Match en cours</h1>
+  <h1>{{_ "runningGames"}}</h1>
   {{#each runningGames}}
     <div class="row ongoingGames">
       <div class="row vertical-align">
@@ -28,7 +28,7 @@
       </div>
     </div>
     {{else}}
-      <p>Oups... Tu n'as pas créé un match pour prendre les stats</p>
+      <p>{{_ "noRunningGames"}}</p>
       <p>
         {{>creationGame}}
       </p>

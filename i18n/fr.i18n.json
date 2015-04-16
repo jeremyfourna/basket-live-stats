@@ -23,5 +23,7 @@
 	"offReb": "Reb. off.",
 	"turnover": "Balle perdue",
 	"offFoul": "Ft. off",
-	"offProvFoul": "Ft. prov."
+	"offProvFoul": "Ft. prov.",
+	"noRunningGames": "Tu n'a aucun match en cours... crée s'en un !",
+	"runningGames": "Match en cours"
 }
