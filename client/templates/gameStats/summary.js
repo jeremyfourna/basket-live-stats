@@ -1,15 +1,10 @@
 Template.summary.helpers({
-	'total2pointsShoots': function() {
+	'total2PointsShoots': function() {
 		var twoPointsIn = this.stats.points.twoPointsIn;
 		var twoPointsOut = this.stats.points.twoPointsOut;
 		return twoPointsIn + twoPointsOut;
 	},
-	'homeTeamTotal2pointsShoots': function() {
-		var twoPointsIn = this.gameStats.shoots.homeTeam.twoPointsIn;
-		var twoPointsOut = this.gameStats.shoots.homeTeam.twoPointsOut;
-		return twoPointsIn + twoPointsOut;
-	},
-	'percentage2pointsShoots': function() {
+	'percentage2PointsShoots': function() {
 		var twoPointsIn = this.stats.points.twoPointsIn;
 		var twoPointsOut = this.stats.points.twoPointsOut;
 		var total = twoPointsIn + twoPointsOut;
@@ -17,25 +12,12 @@ Template.summary.helpers({
 		var roundPercentage = Math.floor(percentage);
 		return roundPercentage || 0;
 	},
-	'homeTeamPercentage2pointsShoots': function() {
-		var twoPointsIn = this.gameStats.shoots.homeTeam.twoPointsIn;
-		var twoPointsOut = this.gameStats.shoots.homeTeam.twoPointsOut;
-		var total = twoPointsIn + twoPointsOut;
-		var percentage = twoPointsIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
-	},
-	'total3pointsShoots': function() {
+	'total3PointsShoots': function() {
 		var threePointsIn = this.stats.points.threePointsIn;
 		var threePointsOut = this.stats.points.threePointsOut;
 		return threePointsIn + threePointsOut;
 	},
-	'homeTeamTotal3pointsShoots': function() {
-		var threePointsIn = this.gameStats.shoots.homeTeam.threePointsIn;
-		var threePointsOut = this.gameStats.shoots.homeTeam.threePointsOut;
-		return threePointsIn + threePointsOut;
-	},
-	'percentage3pointsShoots': function() {
+	'percentage3PointsShoots': function() {
 		var threePointsIn = this.stats.points.threePointsIn;
 		var threePointsOut = this.stats.points.threePointsOut;
 		var total = threePointsIn + threePointsOut;
@@ -43,20 +25,12 @@ Template.summary.helpers({
 		var roundPercentage = Math.floor(percentage);
 		return roundPercentage || 0;
 	},
-	'homeTeamPercentage3pointsShoots': function() {
-		var threePointsIn = this.gameStats.shoots.homeTeam.threePointsIn;
-		var threePointsOut = this.gameStats.shoots.homeTeam.threePointsOut;
-		var total = threePointsIn + threePointsOut;
-		var percentage = threePointsIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
-	},
-	'total1pointShoots': function() {
+	'total1PointShoots': function() {
 		var onePointIn = this.stats.points.onePointIn;
 		var onePointOut = this.stats.points.onePointOut;
 		return onePointIn + onePointOut;
 	},
-	'percentage1pointShoots': function() {
+	'percentage1PointShoots': function() {
 		var onePointIn = this.stats.points.onePointIn;
 		var onePointOut = this.stats.points.onePointOut;
 		var total = onePointIn + onePointOut;
@@ -81,25 +55,116 @@ Template.summary.helpers({
 		var totalFouls = this.stats.fouls.totalFouls;
 		return offFouls + defFouls - totalFouls;
 	},
-	'totalPoints': function() {
-		return this.stats.points.totalPoints;
+	'homeTeamFoulsRatio': function() {
+		var offFouls = this.gameStats.fouls.homeTeam.provFouls.offFouls;
+		var defFouls = this.gameStats.fouls.homeTeam.provFouls.defFouls;
+		var totalFouls = this.gameStats.fouls.homeTeam.totalFouls;
+		return offFouls + defFouls - totalFouls;
 	},
-	'twoPointsIn': function() {
-		return this.stats.points.twoPointsIn;
+	'homeTeamTotal2PointsShoots': function() {
+		var twoPointsIn = this.gameStats.shoots.homeTeam.twoPointsIn;
+		var twoPointsOut = this.gameStats.shoots.homeTeam.twoPointsOut;
+		return twoPointsIn + twoPointsOut;
 	},
-	'threePointsIn': function() {
-		return this.stats.points.threePointsIn;
+	'homeTeamPercentage2PointsShoots': function() {
+		var twoPointsIn = this.gameStats.shoots.homeTeam.twoPointsIn;
+		var twoPointsOut = this.gameStats.shoots.homeTeam.twoPointsOut;
+		var total = twoPointsIn + twoPointsOut;
+		var percentage = twoPointsIn / total * 100;
+		var roundPercentage = Math.floor(percentage);
+		return roundPercentage || 0;
 	},
-	'onePointIn': function() {
-		return this.stats.points.onePointIn;
+	'homeTeamTotal3PointsShoots': function() {
+		var threePointsIn = this.gameStats.shoots.homeTeam.threePointsIn;
+		var threePointsOut = this.gameStats.shoots.homeTeam.threePointsOut;
+		return threePointsIn + threePointsOut;
 	},
-	'offReb': function() {
-		return this.stats.rebounds.offReb;
+	'homeTeamPercentage3PointsShoots': function() {
+		var threePointsIn = this.gameStats.shoots.homeTeam.threePointsIn;
+		var threePointsOut = this.gameStats.shoots.homeTeam.threePointsOut;
+		var total = threePointsIn + threePointsOut;
+		var percentage = threePointsIn / total * 100;
+		var roundPercentage = Math.floor(percentage);
+		return roundPercentage || 0;
 	},
-	'defReb': function() {
-		return this.stats.rebounds.defReb;
+	'homeTeamTotal1PointShoots': function() {
+		var onePointIn = this.gameStats.shoots.homeTeam.onePointIn;
+		var onePointOut = this.gameStats.shoots.homeTeam.onePointOut;
+		return onePointIn + onePointOut;
 	},
-	'totalFouls': function() {
-		return this.stats.fouls.totalFouls;
+	'homeTeamPercentage1PointShoots': function() {
+		var onePointIn = this.gameStats.shoots.homeTeam.onePointIn;
+		var onePointOut = this.gameStats.shoots.homeTeam.onePointOut;
+		var total = onePointIn + onePointOut;
+		var percentage = onePointIn / total * 100;
+		var roundPercentage = Math.floor(percentage);
+		return roundPercentage || 0;
+	},
+	'homeTeamTotalRebounds': function() {
+		var offReb = this.gameStats.rebounds.homeTeam.offReb;
+		var defReb = this.gameStats.rebounds.homeTeam.defReb;
+		return offReb + defReb;
+	},
+	'homeTeamProvokedFouls': function() {
+		var offFouls = this.gameStats.fouls.homeTeam.provFouls.offFouls;
+		var defFouls = this.gameStats.fouls.homeTeam.provFouls.defFouls;
+		var diff = offFouls + defFouls;
+		return diff;
+	},
+	'awayTeamFoulsRatio': function() {
+		var offFouls = this.gameStats.fouls.awayTeam.provFouls.offFouls;
+		var defFouls = this.gameStats.fouls.awayTeam.provFouls.defFouls;
+		var totalFouls = this.gameStats.fouls.awayTeam.totalFouls;
+		return offFouls + defFouls - totalFouls;
+	},
+	'awayTeamTotal2PointsShoots': function() {
+		var twoPointsIn = this.gameStats.shoots.awayTeam.twoPointsIn;
+		var twoPointsOut = this.gameStats.shoots.awayTeam.twoPointsOut;
+		return twoPointsIn + twoPointsOut;
+	},
+	'awayTeamPercentage2PointsShoots': function() {
+		var twoPointsIn = this.gameStats.shoots.awayTeam.twoPointsIn;
+		var twoPointsOut = this.gameStats.shoots.awayTeam.twoPointsOut;
+		var total = twoPointsIn + twoPointsOut;
+		var percentage = twoPointsIn / total * 100;
+		var roundPercentage = Math.floor(percentage);
+		return roundPercentage || 0;
+	},
+	'awayTeamTotal3PointsShoots': function() {
+		var threePointsIn = this.gameStats.shoots.awayTeam.threePointsIn;
+		var threePointsOut = this.gameStats.shoots.awayTeam.threePointsOut;
+		return threePointsIn + threePointsOut;
+	},
+	'awayTeamPercentage3PointsShoots': function() {
+		var threePointsIn = this.gameStats.shoots.awayTeam.threePointsIn;
+		var threePointsOut = this.gameStats.shoots.awayTeam.threePointsOut;
+		var total = threePointsIn + threePointsOut;
+		var percentage = threePointsIn / total * 100;
+		var roundPercentage = Math.floor(percentage);
+		return roundPercentage || 0;
+	},
+	'awayTeamTotal1PointShoots': function() {
+		var onePointIn = this.gameStats.shoots.awayTeam.onePointIn;
+		var onePointOut = this.gameStats.shoots.awayTeam.onePointOut;
+		return onePointIn + onePointOut;
+	},
+	'awayTeamPercentage1PointShoots': function() {
+		var onePointIn = this.gameStats.shoots.awayTeam.onePointIn;
+		var onePointOut = this.gameStats.shoots.awayTeam.onePointOut;
+		var total = onePointIn + onePointOut;
+		var percentage = onePointIn / total * 100;
+		var roundPercentage = Math.floor(percentage);
+		return roundPercentage || 0;
+	},
+	'awayTeamTotalRebounds': function() {
+		var offReb = this.gameStats.rebounds.awayTeam.offReb;
+		var defReb = this.gameStats.rebounds.awayTeam.defReb;
+		return offReb + defReb;
+	},
+	'awayTeamProvokedFouls': function() {
+		var offFouls = this.gameStats.fouls.awayTeam.provFouls.offFouls;
+		var defFouls = this.gameStats.fouls.awayTeam.provFouls.defFouls;
+		var diff = offFouls + defFouls;
+		return diff;
 	}
 });

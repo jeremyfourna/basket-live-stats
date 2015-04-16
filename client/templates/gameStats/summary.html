@@ -27,20 +27,20 @@
         {{#each homeTeam.players}}
           <tr>
             <th scope="row">{{jersey}}</th>
-            <td>{{totalPoints}}</td>
-            <td>{{twoPointsIn}}/{{total2pointsShoots}}</td>
-            <td>{{percentage2pointsShoots}}</td>
-            <td>{{threePointsIn}}/{{total3pointsShoots}}</td>
-            <td>{{percentage3pointsShoots}}</td>
-            <td>{{onePointIn}}/{{total1pointShoots}}</td>
-            <td>{{percentage1pointShoots}}</td>
-            <td>{{offReb}}/{{defReb}}</td>
+            <td>{{stats.points.totalPoints}}</td>
+            <td>{{stats.points.twoPointsIn}}/{{total2PointsShoots}}</td>
+            <td>{{percentage2PointsShoots}}</td>
+            <td>{{stats.points.threePointsIn}}/{{total3PointsShoots}}</td>
+            <td>{{percentage3PointsShoots}}</td>
+            <td>{{stats.points.onePointIn}}/{{total1PointShoots}}</td>
+            <td>{{percentage1PointShoots}}</td>
+            <td>{{stats.rebounds.offReb}}/{{stats.rebounds.defReb}}</td>
             <td>{{totalRebounds}}</td>
             <td>{{stats.assists}}</td>
             <td>{{stats.steals}}</td>
             <td>{{stats.turnovers}}</td>
             <td>{{stats.blocks}}</td>
-            <td>{{provokedFouls}}/{{totalFouls}}</td>
+            <td>{{provokedFouls}}/{{stats.fouls.totalFouls}}</td>
             <td>{{foulsRatio}}</td>
             <td>{{stats.evaluation}}</td>
           </tr>
@@ -48,20 +48,20 @@
         <tr>
           <th scope="row">{{_ "total"}}</th>
           <td>{{gameStats.score.homeTeam}}</td>
-          <td>{{gameStats.shoots.homeTeam.twoPointsIn}}/{{homeTeamTotal2pointsShoots}}</td>
-          <td>{{homeTeamPercentage2pointsShoots}}</td>
-          <td>{{gameStats.shoots.homeTeam.threePointsIn}}/{{homeTeamTotal3pointsShoots}}</td>
-          <td>{{homeTeamPercentage3pointsShoots}}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{gameStats.shoots.homeTeam.twoPointsIn}}/{{homeTeamTotal2PointsShoots}}</td>
+          <td>{{homeTeamPercentage2PointsShoots}}</td>
+          <td>{{gameStats.shoots.homeTeam.threePointsIn}}/{{homeTeamTotal3PointsShoots}}</td>
+          <td>{{homeTeamPercentage3PointsShoots}}</td>
+          <td>{{gameStats.shoots.homeTeam.onePointIn}}/{{homeTeamTotal1PointShoots}}</td>
+          <td>{{homeTeamPercentage1PointShoots}}</td>
+          <td>{{gameStats.rebounds.homeTeam.offReb}}/{{gameStats.rebounds.homeTeam.defReb}}</td>
+          <td>{{homeTeamTotalRebounds}}</td>
+          <td>{{gameStats.assists.homeTeam}}</td>
+          <td>{{gameStats.steals.homeTeam}}</td>
+          <td>{{gameStats.turnovers.homeTeam}}</td>
+          <td>{{gameStats.blocks.homeTeam}}</td>
+          <td>{{homeTeamProvokedFouls}}/{{gameStats.fouls.homeTeam.totalFouls}}</td>
+          <td>{{homeTeamFoulsRatio}}</td>
           <td>{{gameStats.evaluation.homeTeam}}</td>
         </tr>
       </tbody>
@@ -95,24 +95,43 @@
         {{#each awayTeam.players}}
           <tr>
             <th scope="row">{{jersey}}</th>
-            <td>{{totalPoints}}</td>
-            <td>{{twoPointsIn}}/{{total2pointsShoots}}</td>
-            <td>{{percentage2pointsShoots}}</td>
-            <td>{{threePointsIn}}/{{total3pointsShoots}}</td>
-            <td>{{percentage3pointsShoots}}</td>
-            <td>{{onePointIn}}/{{total1pointShoots}}</td>
-            <td>{{percentage1pointShoots}}</td>
-            <td>{{offReb}}/{{defReb}}</td>
+            <td>{{stats.points.totalPoints}}</td>
+            <td>{{stats.points.twoPointsIn}}/{{total2PointsShoots}}</td>
+            <td>{{percentage2PointsShoots}}</td>
+            <td>{{stats.points.threePointsIn}}/{{total3PointsShoots}}</td>
+            <td>{{percentage3PointsShoots}}</td>
+            <td>{{stats.points.onePointIn}}/{{total1PointShoots}}</td>
+            <td>{{percentage1PointShoots}}</td>
+            <td>{{stats.rebounds.offReb}}/{{stats.rebounds.defReb}}</td>
             <td>{{totalRebounds}}</td>
             <td>{{stats.assists}}</td>
             <td>{{stats.steals}}</td>
             <td>{{stats.turnovers}}</td>
             <td>{{stats.blocks}}</td>
-            <td>{{provokedFouls}}/{{totalFouls}}</td>
+            <td>{{provokedFouls}}/{{stats.fouls.totalFouls}}</td>
             <td>{{foulsRatio}}</td>
             <td>{{stats.evaluation}}</td>
           </tr>
         {{/each}}
+        <tr>
+          <th scope="row">{{_ "total"}}</th>
+          <td>{{gameStats.score.awayTeam}}</td>
+          <td>{{gameStats.shoots.awayTeam.twoPointsIn}}/{{awayTeamTotal2PointsShoots}}</td>
+          <td>{{awayTeamPercentage2PointsShoots}}</td>
+          <td>{{gameStats.shoots.awayTeam.threePointsIn}}/{{awayTeamTotal3PointsShoots}}</td>
+          <td>{{awayTeamPercentage3PointsShoots}}</td>
+          <td>{{gameStats.shoots.awayTeam.onePointIn}}/{{awayTeamTotal1PointShoots}}</td>
+          <td>{{awayTeamPercentage1PointShoots}}</td>
+          <td>{{gameStats.rebounds.awayTeam.offReb}}/{{gameStats.rebounds.awayTeam.defReb}}</td>
+          <td>{{awayTeamTotalRebounds}}</td>
+          <td>{{gameStats.assists.awayTeam}}</td>
+          <td>{{gameStats.steals.awayTeam}}</td>
+          <td>{{gameStats.turnovers.awayTeam}}</td>
+          <td>{{gameStats.blocks.awayTeam}}</td>
+          <td>{{awayTeamProvokedFouls}}/{{gameStats.fouls.awayTeam.totalFouls}}</td>
+          <td>{{awayTeamFoulsRatio}}</td>
+          <td>{{gameStats.evaluation.awayTeam}}</td>
+        </tr>
       </tbody>
     </table>
   </div>
