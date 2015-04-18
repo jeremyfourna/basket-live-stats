@@ -24,6 +24,8 @@
 	"turnover": "Balle perdue",
 	"offFoul": "Ft. off",
 	"offProvFoul": "Ft. prov.",
+	"steal": "Interc.",
+	"block": "Contre",
 	"noRunningGames": "Tu n'a aucun match en cours... crée s'en un !",
 	"runningGames": "Match en cours",
 	"notStarted": "Non commencé",
@@ -36,5 +38,11 @@
 	"q4Running": "Q4",
 	"endedGames": "Matches terminés",
 	"gameEnded": "Terminé",
-	"noCompletedGames": "Vous n'avez terminé pour aucun match la prise de stats."
+	"noCompletedGames": "Vous n'avez terminé pour aucun match la prise de stats.",
+	"coach": "Coach",
+	"name": "Nom",
+	"firstName": "Prénom",
+	"playerDefinition": "Définis les joueurs...",
+	"homeTeam": "Equipe domicile",
+	"awayTeam": "Equipe extérieur"
 }

@@ -1,7 +1,7 @@
 <template name="playerBio">
-  <h2>Définis les joueurs...</h2>
+  <h2>{{_ "playerDefinition"}}</h2>
   <div class="homeTeam clearfix">
-    <h3>Equipe domicile</h3>
+    <h3>{{_ "homeTeam"}}</h3>
     {{#each homeTeam.players}}
       {{>playerUpdate}}
     {{/each}}
@@ -10,7 +10,7 @@
     {{/each}}
   </div>
   <div class="awayTeam clearfix">
-    <h3>Equipe extérieur</h3>
+    <h3>{{_ "awayTeam"}}</h3>
     {{#each awayTeam.players}}
       {{>playerUpdate}}
     {{/each}}
