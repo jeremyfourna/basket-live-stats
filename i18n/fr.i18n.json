@@ -35,5 +35,6 @@
 	"q3Ended": "Q3 - Fin",
 	"q4Running": "Q4",
 	"endedGames": "Matches terminés",
-	"gameEnded": "Terminé"
+	"gameEnded": "Terminé",
+	"noCompletedGames": "Vous n'avez terminé pour aucun match la prise de stats."
 }

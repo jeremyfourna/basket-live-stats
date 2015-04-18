@@ -130,5 +130,15 @@ Template.updateGameConfiguration.events({
 				_id: currentGame
 			});
 		});
+	},
+	"click .returnButton": function() {
+		Games.remove({
+			_id: this._id
+		}, function(error, result) {
+			if (error) {
+				return throwError(error.message);
+			}
+			Router.go('home');
+		});
 	}
 });
