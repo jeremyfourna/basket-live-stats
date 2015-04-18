@@ -1,24 +1,16 @@
 Template.ongoingGames.helpers({
 	'runningGames': function() {
 		return Games.find({
-			$or: [{
-				state: 'notStarted'
-			}, {
-				state: 'q1Running'
-			}, {
-				state: 'q1Ended'
-			}, {
-				state: 'q2Running'
-			}, {
-				state: 'halfTime'
-			}, {
-				state: 'q3Running'
-			}, {
-				state: 'q3Ended'
-			}, {
-				state: 'q4Running'
-			}],
+			state: {
+				$not: "gameEnded"
+			},
 			userId: Meteor.userId()
+		}, {
+			fields: {
+				'gameInfos': 1,
+				'gameStats.score': 1,
+				'state': 1
+			}
 		});
 	},
 	'notStarted': function() {
