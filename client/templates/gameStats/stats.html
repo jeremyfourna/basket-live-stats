@@ -1,58 +1,58 @@
 <template name="stats">
-  <div>
     <div>
-      <h3>Score du match :</h3> {{gameInfos.homeTeam}} - {{gameStats.score.homeTeam}}
-      <br> {{gameInfos.awayTeam}} - {{gameStats.score.awayTeam}}
+        <div>
+            <h3>{{_ "gameScore"}}</h3> {{gameInfos.homeTeam}} - {{gameStats.score.homeTeam}}
+            <br> {{gameInfos.awayTeam}} - {{gameStats.score.awayTeam}}
+        </div>
+        <h3>{{_ "playerInGame"}}</h3>
+        <p>{{_ "explanationHowToAddAStat"}}</p>
+        <div>
+            <h4>{{_ "homeTeam"}} : {{gameInfos.homeTeam}}</h4>
+            <div class="homeTeam row playerRow">
+                {{#each homeTeam.players}}
+                    {{>homeTeamPlayerPill}} {{>playerModal}}
+                {{/each}}
+            </div>
+        </div>
+        <div>
+            <h4>{{_ "awayTeam"}} : {{gameInfos.awayTeam}}</h4>
+            <div class="awayTeam row playerRow">
+                {{#each awayTeam.players}}
+                    {{>awayTeamPlayerPill}} {{>playerModal}}
+                {{/each}}
+            </div>
+        </div>
+        <div>
+            <h4>Fait de match :</h4>
+            <div>
+                {{#if notStarted}}
+                    <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="notStarted" type="button">{{_ "labelNotStarted"}}</button>
+                {{/if}}
+                {{#if q1Running}}
+                    <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="q1Running" type="button">{{_ "labelQ1Running"}}</button>
+                {{/if}}
+                {{#if q1Ended}}
+                    <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="q1Ended" type="button">{{_ "labelQ1Ended"}}</button>
+                {{/if}}
+                {{#if q2Running}}
+                    <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="q2Running" type="button">{{_ "labelQ2Running"}}</button>
+                {{/if}}
+                {{#if halfTime}}
+                    <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="halfTime" type="button">{{_ "labelHalfTime"}}</button>
+                {{/if}}
+                {{#if q3Running}}
+                    <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="q3Running" type="button">{{_ "labelQ3Running"}}</button>
+                {{/if}}
+                {{#if q3Ended}}
+                    <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="q3Ended" type="button">{{_ "labelQ3Ended"}}</button>
+                {{/if}}
+                {{#if q4Running}}
+                    <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="q4Running" type="button">{{_ "labelQ4Running"}}</button>
+                {{/if}}
+                {{#if gameEnded}}
+                    <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" disabled="disabled" id="gameEnded" type="button">{{_ "labelGameEnded"}}</button>
+                {{/if}}
+            </div>
+        </div>
     </div>
-    <h3>Joueurs en jeu</h3>
-    <p>Cliquez un numéro pour ajouter une action à ce joueur</p>
-    <div>
-      <h4>Equipe domicile : {{gameInfos.homeTeam}}</h4>
-      <div class="homeTeam row playerRow">
-        {{#each homeTeam.players}}
-          {{>homeTeamPlayerPill}} {{>playerModal}}
-        {{/each}}
-      </div>
-    </div>
-    <div>
-      <h4>Equipe extérieur : {{gameInfos.awayTeam}}</h4>
-      <div class="awayTeam row playerRow">
-        {{#each awayTeam.players}}
-          {{>awayTeamPlayerPill}} {{>playerModal}}
-        {{/each}}
-      </div>
-    </div>
-    <div>
-      <h4>Fait de match :</h4>
-      <div>
-        {{#if notStarted}}
-          <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="notStarted" type="button">Que le match commence !</button>
-        {{/if}}
-        {{#if q1Running}}
-          <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="q1Running" type="button">Fin du 1er quart temps</button>
-        {{/if}}
-        {{#if q1Ended}}
-          <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="q1Ended" type="button">Début du 2ème quart temps</button>
-        {{/if}}
-        {{#if q2Running}}
-          <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="q2Running" type="button">Fin du 2ème quart temps - Mi-temps</button>
-        {{/if}}
-        {{#if halfTime}}
-          <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="halfTime" type="button">Début de la deuxième mi-temps</button>
-        {{/if}}
-        {{#if q3Running}}
-          <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="q3Running" type="button">Fin du 3ème quart temps</button>
-        {{/if}}
-        {{#if q3Ended}}
-          <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="q3Ended" type="button">Début du 4ème quart temps</button>
-        {{/if}}
-        {{#if q4Running}}
-          <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="q4Running" type="button">Fin du match ?</button>
-        {{/if}}
-        {{#if gameEnded}}
-          <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" disabled="disabled" id="gameEnded" type="button">Match terminé</button>
-        {{/if}}
-      </div>
-    </div>
-  </div>
 </template>

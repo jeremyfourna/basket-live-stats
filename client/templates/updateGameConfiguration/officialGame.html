@@ -1,24 +1,24 @@
 <template name="officialGame">
-  <div class="officialGame">
-    <div class="input-group input-group-sm">
-      <span class="input-group-addon">Equipe à domicile</span>
-      <input type="text" id="homeTeam" class="form-control" value="{{gameInfos.homeTeam}}">
+    <div class="officialGame">
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">{{_ "homeTeam"}}</span>
+            <input type="text" id="homeTeam" class="form-control" value="{{gameInfos.homeTeam}}">
+        </div>
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">{{_ "awayTeam"}}</span>
+            <input type="text" id="awayTeam" class="form-control" value="{{gameInfos.awayTeam}}">
+        </div>
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">{{_ "category"}}</span>
+            <input type="text" id="category" class="form-control" placeholder="Sénior Filles" value="{{gameInfos.category}}">
+        </div>
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">{{_ "level"}}</span>
+            <input type="text" id="level" class="form-control" placeholder="Excellence régionale" value="{{gameInfos.level}}">
+        </div>
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">{{_ "group"}}</span>
+            <input type="text" id="group" class="form-control" placeholder="A" value="{{gameInfos.group}}">
+        </div>
     </div>
-    <div class="input-group input-group-sm">
-      <span class="input-group-addon">Equipe à l'extérieur</span>
-      <input type="text" id="awayTeam" class="form-control" value="{{gameInfos.awayTeam}}">
-    </div>
-    <div class="input-group input-group-sm">
-      <span class="input-group-addon">Catégorie</span>
-      <input type="text" id="category" class="form-control" placeholder="Sénior Filles" value="{{gameInfos.category}}">
-    </div>
-    <div class="input-group input-group-sm">
-      <span class="input-group-addon">Niveau</span>
-      <input type="text" id="level" class="form-control" placeholder="Excellence régionale" value="{{gameInfos.level}}">
-    </div>
-    <div class="input-group input-group-sm">
-      <span class="input-group-addon">Poule</span>
-      <input type="text" id="group" class="form-control" placeholder="A" value="{{gameInfos.group}}">
-    </div>
-  </div>
 </template>

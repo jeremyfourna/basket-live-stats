@@ -1,19 +1,19 @@
 <template name="playerDefinition">
-  <div class="player col-sm-4">
-    <h4>Joueur #{{jersey}}</h4>
-    <input type="number" class="hidden playerIndex" value="{{playerIndex}}">
-    <input type="text" class="hidden team" value="{{team}}">
-    <div class="input-group input-group-sm">
-      <span class="input-group-addon">Nom</span>
-      <input type="text" class="lastName form-control" value="{{lastName}}">
+    <div class="player col-sm-4">
+        <h4>{{_ "player"}} #{{jersey}}</h4>
+        <input type="number" class="hidden playerIndex" value="{{playerIndex}}">
+        <input type="text" class="hidden team" value="{{team}}">
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">{{_ "name"}}</span>
+            <input type="text" class="lastName form-control" value="{{lastName}}">
+        </div>
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">{{_ "firstName"}}</span>
+            <input type="text" class="firstName form-control" value="{{firstName}}">
+        </div>
+        <div class="input-group input-group-sm hidden">
+            <span class="input-group-addon">{{_ "Number"}}</span>
+            <input type="number" min="1" class="jersey form-control" value="{{jersey}}">
+        </div>
     </div>
-    <div class="input-group input-group-sm">
-      <span class="input-group-addon">Prénom</span>
-      <input type="text" class="firstName form-control" value="{{firstName}}">
-    </div>
-    <div class="input-group input-group-sm hidden">
-      <span class="input-group-addon">Numéro</span>
-      <input type="number" min="1" class="jersey form-control" value="{{jersey}}">
-    </div>
-  </div>
 </template>
