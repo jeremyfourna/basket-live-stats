@@ -84,5 +84,6 @@
 	"back": "Retour",
 	"next": "Suivant",
 	"backStep": "Etape précédente",
-	"configurationValidation": "Validez votre configuration"
+	"configurationValidation": "Validez votre configuration",
+	"validate": "Valider"
 }
