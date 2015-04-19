@@ -3,18 +3,30 @@ Template.playerUpdate.helpers({
 		return this.team + this.jersey + 'update';
 	},
 	'validationButton': function() {
-		return this.tema + this.jersey + 'validation';
+		return this.team + this.jersey + 'validation';
+	},
+	'actions': function() {
+		var id = this.team + this.jersey;
+		if (Session.get('id')) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 });
 
 Template.playerUpdate.events({
 	'click .playerUpdate': function() {
+		var id = this.team + this.jersey;
 		var selector = '#' + this.team + this.jersey + 'update';
 		$(selector).closest('.player').find('.firstName').removeAttr('disabled');
 		$(selector).closest('.player').find('.lastName').removeAttr('disabled');
-		$(selector).closest('.player').append("<button class='btn btn-success btn-sm playerValidation' id='{{validationButton}}' type='button'>{{_ 'validate'}}</button>");
-		$(selector).remove();
-
-		return console.log(this);
+		Session.set(id, true);
+		return console.log(id);
 	}
+});
+
+Template.playerUpdate.onCreated(function() {
+	var id = this.data.team + this.data.jersey;
+	Session.setDefault(id, false);
 });

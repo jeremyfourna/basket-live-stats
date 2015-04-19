@@ -10,4 +10,4 @@ Template.registerHelper('ifFill', function(v1, options) {
 		return options.fn(this);
 	}
 	return options.inverse(this);
-})
+});

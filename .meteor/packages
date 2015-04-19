@@ -15,3 +15,5 @@ ian:accounts-ui-bootstrap-3
 meteorhacks:kadira
 tap:i18n
 meteorhacks:cluster
+reactive-var
+reactive-dict

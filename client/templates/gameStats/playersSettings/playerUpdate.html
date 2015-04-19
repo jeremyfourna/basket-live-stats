@@ -11,6 +11,10 @@
             <span class="input-group-addon">{{_ "firstName"}}</span>
             <input type="text" class="firstName form-control" disabled="disabled" value="{{firstName}}">
         </div>
-        <button class="btn btn-info btn-sm playerUpdate" id="{{modifyButton}}" type='button'>{{_ "modify"}}</button>
+        {{#if actions}}
+            <button class='btn btn-success btn-sm playerValidation' id='{{validationButton}}' type='button'>{{_ 'validate'}}</button>
+        {{else}}
+            <button class="btn btn-info btn-sm playerUpdate" id="{{modifyButton}}" type='button'>{{_ "modify"}}</button>
+        {{/if}}
     </div>
 </template>

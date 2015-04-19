@@ -1,11 +1,6 @@
-.runningGames {
+.endedGames {
     background-color: #EEEEEE;
     margin-bottom: 10px;
     border-radius: 2px;
     padding: 5px;
-}
-
-.vertical-align {
-    display: flex;
-    align-items: center;
 }
