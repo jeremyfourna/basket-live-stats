@@ -1,38 +1,38 @@
 <template name='gameStats'>
-  <div role="tabpanel">
-    <ul id="gameStatsPills" class="nav nav-pills" role="tablist">
-      {{#if isOwnerOfTheGame}}
-        <li role="presentation" class="active"><a href="#stats" id="stats-tab" role="tab" data-toggle="tab" aria-controls="stats" aria-expanded="true">{{_ "stats"}}</a></li>
-        <li role="presentation"><a href="#resume" role="tab" id="resume-tab" data-toggle="tab" aria-controls="resume">{{_ "summary"}}</a></li>
-      {{else}}
-        <li role="presentation" class="active"><a href="#resume" role="tab" id="resume-tab" data-toggle="tab" aria-controls="resume">{{_ "summary"}}</a></li>
-      {{/if}}
-      <li role="presentation"><a href="#historic" id="historic-tab" role="tab" data-toggle="tab" aria-controls="historic" aria-expanded="true">{{_ "historical"}}</a></li>
-      {{#if isOwnerOfTheGame}}
-        <li role="presentation"><a href="#playersSettings" id="playersSettings-tab" role="tab" data-toggle="tab" aria-controls="playersSettings" aria-expanded="true">{{_ "playersSettings"}}</a></li>
-      {{/if}}
-    </ul>
-    <div id="myTabContent" class="tab-content">
-      {{#if isOwnerOfTheGame}}
-        <div role="tabpanel" class="tab-pane fade in active" id="stats" aria-labelledBy="stats-tab">
-          {{>stats}}
+    <div role="tabpanel">
+        <ul id="gameStatsPills" class="nav nav-pills" role="tablist">
+            {{#if isOwnerOfTheGame}}
+                <li role="presentation" class="active"><a href="#stats" id="stats-tab" role="tab" data-toggle="tab" aria-controls="stats" aria-expanded="true">{{_ "stats"}}</a></li>
+                <li role="presentation"><a href="#resume" role="tab" id="resume-tab" data-toggle="tab" aria-controls="resume">{{_ "summary"}}</a></li>
+            {{else}}
+                <li role="presentation" class="active"><a href="#resume" role="tab" id="resume-tab" data-toggle="tab" aria-controls="resume">{{_ "summary"}}</a></li>
+                <li role="presentation"><a href="#historic" id="historic-tab" role="tab" data-toggle="tab" aria-controls="historic" aria-expanded="true">{{_ "historical"}}</a></li>
+            {{/if}}
+            {{#if isOwnerOfTheGame}}
+                <li role="presentation"><a href="#playersSettings" id="playersSettings-tab" role="tab" data-toggle="tab" aria-controls="playersSettings" aria-expanded="true">{{_ "playersSettings"}}</a></li>
+            {{/if}}
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            {{#if isOwnerOfTheGame}}
+                <div role="tabpanel" class="tab-pane fade in active" id="stats" aria-labelledBy="stats-tab">
+                    {{>stats}}
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="resume" aria-labelledBy="resume-tab">
+                    {{>summary}}
+                </div>
+            {{else}}
+                <div role="tabpanel" class="tab-pane fade in active" id="resume" aria-labelledBy="resume-tab">
+                    {{>summary}}
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="historic" aria-labelledBy="historic-tab">
+                    <p>Template à créer</p>
+                </div>
+            {{/if}}
+            {{#if isOwnerOfTheGame}}
+                <div role="tabpanel" class="tab-pane fade" id="playersSettings" aria-labelledBy="playersSettings-tab">
+                    {{>playerBio}}
+                </div>
+            {{/if}}
         </div>
-        <div role="tabpanel" class="tab-pane fade" id="resume" aria-labelledBy="resume-tab">
-          {{>summary}}
-        </div>
-      {{else}}
-        <div role="tabpanel" class="tab-pane fade in active" id="resume" aria-labelledBy="resume-tab">
-          {{>summary}}
-        </div>
-      {{/if}}
-      <div role="tabpanel" class="tab-pane fade" id="historic" aria-labelledBy="historic-tab">
-        <p>Template à créer</p>
-      </div>
-      {{#if isOwnerOfTheGame}}
-        <div role="tabpanel" class="tab-pane fade" id="playersSettings" aria-labelledBy="playersSettings-tab">
-          {{>playerBio}}
-        </div>
-      {{/if}}
     </div>
-  </div>
 </template>
