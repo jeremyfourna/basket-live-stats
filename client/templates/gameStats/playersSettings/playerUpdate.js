@@ -4,29 +4,24 @@ Template.playerUpdate.helpers({
 	},
 	'validationButton': function() {
 		return this.team + this.jersey + 'validation';
-	},
-	'actions': function() {
-		var id = this.team + this.jersey;
-		if (Session.get('id')) {
-			return true;
-		} else {
-			return false;
-		}
 	}
 });
 
 Template.playerUpdate.events({
 	'click .playerUpdate': function() {
-		var id = this.team + this.jersey;
-		var selector = '#' + this.team + this.jersey + 'update';
-		$(selector).closest('.player').find('.firstName').removeAttr('disabled');
-		$(selector).closest('.player').find('.lastName').removeAttr('disabled');
-		Session.set(id, true);
-		return console.log(id);
+		var updateSelector = '#' + this.team + this.jersey + 'update';
+		var validateSelector = '#' + this.team + this.jersey + 'validation';
+		$(updateSelector).closest('.player').find('.firstName').removeAttr('disabled');
+		$(updateSelector).closest('.player').find('.lastName').removeAttr('disabled');
+		$(updateSelector).closest('.player').find(validateSelector).removeClass('disabled');
+	},
+	'click .playerValidation': function() {
+		var updateSelector = '#' + this.team + this.jersey + 'update';
+		var validateSelector = '#' + this.team + this.jersey + 'validation';
+		$(validateSelector).closest('.player').find('.firstName').attr('disabled', 'disabled');
+		$(validateSelector).closest('.player').find('.lastName').attr('disabled', 'disabled');
+		$(validateSelector).addClass('disabled');
+		var gameId = Template.parentData(1)._id
+		Meteor.call('playerUpdate', gameId, this, function(error, result) {});
 	}
-});
-
-Template.playerUpdate.onCreated(function() {
-	var id = this.data.team + this.data.jersey;
-	Session.setDefault(id, false);
 });
