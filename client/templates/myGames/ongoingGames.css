@@ -1,8 +1,8 @@
-.ongoingGames {
-  margin-bottom: 5px;
+.displayGames {
+    margin-bottom: 5px;
 }
 
 .vertical-align {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
