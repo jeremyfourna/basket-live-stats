@@ -1,29 +1,11 @@
 <template name="stats">
     <div>
-        <div>
+        <div class="clearfix">
             <h3>{{_ "gameScore"}}</h3> {{gameInfos.homeTeam}} - {{gameStats.score.homeTeam}}
             <br> {{gameInfos.awayTeam}} - {{gameStats.score.awayTeam}}
         </div>
-        <h3>{{_ "playerInGame"}}</h3>
-        <p>{{_ "explanationHowToAddAStat"}}</p>
-        <div>
-            <h4>{{_ "homeTeam"}} : {{gameInfos.homeTeam}}</h4>
-            <div class="homeTeam row playerRow">
-                {{#each homeTeam.players}}
-                    {{>homeTeamPlayerPill}} {{>playerModal}}
-                {{/each}}
-            </div>
-        </div>
-        <div>
-            <h4>{{_ "awayTeam"}} : {{gameInfos.awayTeam}}</h4>
-            <div class="awayTeam row playerRow">
-                {{#each awayTeam.players}}
-                    {{>awayTeamPlayerPill}} {{>playerModal}}
-                {{/each}}
-            </div>
-        </div>
-        <div>
-            <h4>Fait de match :</h4>
+        <div class="clearfix">
+            <h3>Fait de match :</h3>
             <div>
                 {{#if notStarted}}
                     <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" id="notStarted" type="button">{{_ "labelNotStarted"}}</button>
@@ -52,6 +34,24 @@
                 {{#if gameEnded}}
                     <button class="btn btn-primary col-xs-8 col-sm-6 col-md-4 col-lg-4" disabled="disabled" id="gameEnded" type="button">{{_ "labelGameEnded"}}</button>
                 {{/if}}
+            </div>
+        </div>
+        <h3>{{_ "playerInGame"}}</h3>
+        <p>{{_ "explanationHowToAddAStat"}}</p>
+        <div class="clearfix">
+            <h4>{{_ "homeTeam"}} : {{gameInfos.homeTeam}}</h4>
+            <div class="homeTeam row playerRow">
+                {{#each homeTeam.players}}
+                    {{>homeTeamPlayerPill}} {{>playerModal}}
+                {{/each}}
+            </div>
+        </div>
+        <div class="clearfix">
+            <h4>{{_ "awayTeam"}} : {{gameInfos.awayTeam}}</h4>
+            <div class="awayTeam row playerRow">
+                {{#each awayTeam.players}}
+                    {{>awayTeamPlayerPill}} {{>playerModal}}
+                {{/each}}
             </div>
         </div>
     </div>
