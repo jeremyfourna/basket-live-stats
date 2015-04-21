@@ -1,6 +1,6 @@
 <template name="liveMatchs">
     {{#each game}}
-        <div class="row displayLiveGames vertical-align">
+        <div class="row shadow displayLiveGames vertical-align">
             <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10">
                 <div class="row">
                     <div class="text-center col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -47,7 +47,7 @@
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
                 <a href="{{pathFor 'gameStats'}}">
-                    <button type="button" class="pull-right btn btn-default"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></button>
+                    <button type="button" class="shadow pull-right btn btn-default"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></button>
                 </a>
             </div>
         </div>

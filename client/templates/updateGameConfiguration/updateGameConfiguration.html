@@ -3,22 +3,22 @@
         <h2>{{_ "teamDefinition"}}</h2>
         <div class="row">
             {{#if hasIVisitedStep2}}
-                <button class='btn btn-primary pull-right clearfix' id="step1Next" type='button'>{{_ "nextStep"}}</button>
+                <button class='btn shadow btn-primary pull-right clearfix' id="step1Next" type='button'>{{_ "nextStep"}}</button>
             {{/if}}
         </div>
         {{>officialGame}}
         <div class="footer">
             <a href="{{pathFor 'home'}}">
-                <button type="button" class="btn pull-left btn-info">{{_ "back"}}</button>
+                <button type="button" class="btn shadow pull-left btn-info">{{_ "back"}}</button>
             </a>
-            <button type="button" id="nextStep" class="btn pull-right btn-primary">{{_ "next"}}</button>
+            <button type="button" id="nextStep" class="btn shadow pull-right btn-primary">{{_ "next"}}</button>
         </div>
     </div>
     <div id="step2" class="hidden">
         <h2>{{_ "playerDefinition"}}</h2>
         <div class="row">
-            <button class='btn btn-primary pull-left' id="step2Previous" type='button'>{{_ "backStep"}}</button>
-            <button type="button" class="submitGameConfiguration btn pull-right btn-success">{{_ "configurationValidation"}}</button>
+            <button class='btn shadow btn-primary pull-left' id="step2Previous" type='button'>{{_ "backStep"}}</button>
+            <button type="button" class="submitGameConfiguration shadow btn pull-right btn-success">{{_ "configurationValidation"}}</button>
         </div>
         <div class="homeTeam clearfix">
             <h3>{{_ "homeTeam"}}</h3>
@@ -40,9 +40,9 @@
         </div>
         <div class="footer">
             <a href="{{pathFor 'home'}}">
-                <button type="button" class="returnButton btn pull-left btn-info">{{_ "back"}}</button>
+                <button type="button" class="returnButton shadow btn pull-left btn-info">{{_ "back"}}</button>
             </a>
-            <button type="button" class="submitGameConfiguration btn pull-right btn-success">{{_ "configurationValidation"}}</button>
+            <button type="button" class="submitGameConfiguration shadow btn pull-right btn-success">{{_ "configurationValidation"}}</button>
         </div>
     </div>
 </template>

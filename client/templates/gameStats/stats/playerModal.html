@@ -1,58 +1,58 @@
 <template name='playerModal'>
-  <div class="modal fade" id="playerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">{{_ "whoIsDoingThisAction"}}<!--{{currentPlayerDoingAction}}--></h4>
+    <div class="modal fade" id="playerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{_ "whoIsDoingThisAction"}}<!--{{currentPlayerDoingAction}}--></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="OffActions">
+                        <h4>{{_ "offAction"}}</h4>
+                        <div class="row actions">
+                            <button class="btn shadow btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="onePoint" type="button">{{_ "oneFT"}}</button>
+                            <button class="btn shadow btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="twoPoint" type="button">{{_ "twoPoints"}}</button>
+                            <button class="btn shadow btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="threePoint" type="button">{{_ "threePoints"}}</button>
+                            <button class="btn shadow btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="assist" type="button">{{_ "assist"}}</button>
+                            <button class="btn shadow btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="offReb" type="button">{{_ "offReb"}}</button>
+                            <button class="btn shadow btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="offProvFoul" type="button">{{_ "provFoul"}}</button>
+                        </div>
+                        <div class="row actions">
+                            <button class="btn shadow btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="onePointMiss" type="button">{{_ "oneFT"}}</button>
+                            <button class="btn shadow btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="twoPointMiss" type="button">{{_ "twoPoints"}}</button>
+                            <button class="btn shadow btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="threePointMiss" type="button">{{_ "threePoints"}}</button>
+                            <button class="btn shadow btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="turnover" type="button">{{_ "turnover"}}</button>
+                            <button class="btn shadow btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="offFoul" type="button">{{_ "offFoul"}}</button>
+                        </div>
+                    </div>
+                    <div class="DefActions">
+                        <h4>{{_ "defAction"}}</h4>
+                        <div class="row actions">
+                            <button class="btn shadow btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="steal" type="button">{{_ "steal"}}</button>
+                            <button class="btn shadow btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="block" type="button">{{_ "block"}}</button>
+                            <button class="btn shadow btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="defReb" type="button">{{_ "defReb"}}</button>
+                            <button class="btn shadow btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="defProvFoul" type="button">{{_ "provFoul"}}</button>
+                        </div>
+                        <div class="row actions">
+                            <button class="btn shadow btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="defFoul" type="button">{{_ "foul"}}</button>
+                            <button class="btn shadow btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="defFoulOneFT" type="button">{{_ "foul1FT"}}</button>
+                            <button class="btn shadow btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="defFoulTwoFT" type="button">{{_ "foul2FT"}}</button>
+                            <button class="btn shadow btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="defFoulthreeFT" type="button">{{_ "foul3FT"}}</button>
+                        </div>
+                    </div>
+                    <div class="OtherActions">
+                        <h4>{{_ "otherFouls"}}</h4>
+                        <div class="row actions">
+                            <button class="btn shadow btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="techFoul" type="button">{{_ "techFoul"}}</button>
+                            <button class="btn shadow btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="antiSportFoul" type="button">{{_ "antiSportFoul"}}</button>
+                            <button class="btn shadow btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="disqualifyingFoul" type="button">{{_ "disqualifyingFoul"}}</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn shadow btn-default" data-dismiss="modal">{{_ "closeModal"}}</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <div class="OffActions">
-            <h4>{{_ "offAction"}}</h4>
-            <div class="row actions">
-              <button class="btn btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="onePoint" type="button">{{_ "oneFT"}}</button>
-              <button class="btn btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="twoPoint" type="button">{{_ "twoPoints"}}</button>
-              <button class="btn btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="threePoint" type="button">{{_ "threePoints"}}</button>
-              <button class="btn btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="assist" type="button">{{_ "assist"}}</button>
-              <button class="btn btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="offReb" type="button">{{_ "offReb"}}</button>
-              <button class="btn btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="offProvFoul" type="button">{{_ "provFoul"}}</button>
-            </div>
-            <div class="row actions">
-              <button class="btn btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="onePointMiss" type="button">{{_ "oneFT"}}</button>
-              <button class="btn btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="twoPointMiss" type="button">{{_ "twoPoints"}}</button>
-              <button class="btn btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="threePointMiss" type="button">{{_ "threePoints"}}</button>
-              <button class="btn btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="turnover" type="button">{{_ "turnover"}}</button>
-              <button class="btn btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="offFoul" type="button">{{_ "offFoul"}}</button>
-            </div>
-          </div>
-          <div class="DefActions">
-            <h4>{{_ "defAction"}}</h4>
-            <div class="row actions">
-              <button class="btn btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="steal" type="button">{{_ "steal"}}</button>
-              <button class="btn btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="block" type="button">{{_ "block"}}</button>
-              <button class="btn btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="defReb" type="button">{{_ "defReb"}}</button>
-              <button class="btn btn-success col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="defProvFoul" type="button">{{_ "provFoul"}}</button>
-            </div>
-            <div class="row actions">
-              <button class="btn btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="defFoul" type="button">{{_ "foul"}}</button>
-              <button class="btn btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="defFoulOneFT" type="button">{{_ "foul1FT"}}</button>
-              <button class="btn btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="defFoulTwoFT" type="button">{{_ "foul2FT"}}</button>
-              <button class="btn btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="defFoulthreeFT" type="button">{{_ "foul3FT"}}</button>
-            </div>
-          </div>
-          <div class="OtherActions">
-            <h4>{{_ "otherFouls"}}</h4>
-            <div class="row actions">
-              <button class="btn btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="techFoul" type="button">{{_ "techFoul"}}</button>
-              <button class="btn btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="antiSportFoul" type="button">{{_ "antiSportFoul"}}</button>
-              <button class="btn btn-danger col-xs-3 col-sm-2 col-md-2 col-lg-2" data-dismiss="modal" id="disqualifyingFoul" type="button">{{_ "disqualifyingFoul"}}</button>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">{{_ "closeModal"}}</button>
-        </div>
-      </div>
     </div>
-  </div>
 </template>
