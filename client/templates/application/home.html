@@ -1,10 +1,17 @@
 <template name="home">
-  <div class='jumbotron'>
-    <h1>{{_ "welcome"}}</h1>
-  </div>
-  {{#if currentUser}}
-    {{>creationGame}}
-  {{else}}
-    <h2>{{_ "loginToBeginTakingStats"}}</h2>
-  {{/if}}
+    <div class='jumbotron'>
+        <h1>{{_ "welcome"}}</h1>
+    </div>
+    {{#if currentUser}}
+        {{>creationGame}}
+    {{else}}
+        <h2>{{_ "loginToBeginTakingStats"}}</h2>
+    {{/if}}
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                ...
+            </div>
+        </nav>
+    </div>
 </template>
