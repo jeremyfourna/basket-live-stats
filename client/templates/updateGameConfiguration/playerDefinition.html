@@ -1,6 +1,8 @@
 <template name="playerDefinition">
     <div class="player col-sm-4">
         <h4>{{_ "player"}} #{{jersey}}</h4>
+        <input type="text" class="playerIndex hidden form-control" value="{{playerIndex}}">
+        <input type="text" class="jersey hidden form-control" value="{{jersey}}">
         <div class="input-group shadow input-group-sm">
             <span class="input-group-addon">{{_ "name"}}</span>
             <input type="text" class="lastName form-control" value="{{lastName}}">
