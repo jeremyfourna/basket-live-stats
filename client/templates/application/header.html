@@ -1,23 +1,25 @@
 <template name="header">
-    <header class='navbar shadow navbar-default' role='navigation'>
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class='navbar-brand' href="{{pathFor 'home'}}">{{_ "ApplicationName"}}</a>
-        </div>
-        <div class="collapse navbar-collapse" id="navigation">
-            <ul class="nav navbar-nav">
-                <li><a href="{{pathFor 'liveMatchs'}}">{{_ "liveStats"}}</a></li>
-                {{#if currentUser}}
-                    <li><a href="{{pathFor 'myGames'}}">{{_ "myGames"}}</a></li>
-                    <li><a href="#">{{_ "settings"}}</a></li>
-                {{/if}}
-            </ul>
-            <div class='nav navbar-nav navbar-right'>{{>loginButtons}}</div>
+    <header class='navbar shadow navbar-default navbar-fixed' role='navigation'>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class='navbar-brand' href="{{pathFor 'home'}}">{{_ "ApplicationName"}}</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navigation">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{pathFor 'liveMatchs'}}">{{_ "liveStats"}}</a></li>
+                    {{#if currentUser}}
+                        <li><a href="{{pathFor 'myGames'}}">{{_ "myGames"}}</a></li>
+                        <li><a href="#">{{_ "settings"}}</a></li>
+                    {{/if}}
+                </ul>
+                <div class='nav navbar-nav navbar-right'>{{>loginButtons}}</div>
+            </div>
         </div>
     </header>
 </template>

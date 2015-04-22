@@ -85,5 +85,7 @@
 	"next": "Suivant",
 	"backStep": "Etape précédente",
 	"configurationValidation": "Validez votre configuration",
-	"validate": "Valider"
+	"validate": "Valider",
+	"about": "Qui sommes nous ?",
+	"proVersionTest": "Essayez la version PRO ?"
 }
