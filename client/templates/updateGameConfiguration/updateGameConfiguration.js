@@ -55,7 +55,6 @@ Template.updateGameConfiguration.events({
 				lastName: isFilled($(element).find('.lastName')),
 				jersey: filterInt($(element).find('.jersey').val()),
 				playerIndex: filterInt($(element).find('.playerIndex').val()),
-				team: $(element).find('.team').val(),
 				stats: {
 					points: {
 						onePointIn: 0,
@@ -93,8 +92,10 @@ Template.updateGameConfiguration.events({
 				}
 			};
 			if (index < 12) {
+				player.team = "homeTeam";
 				homeTeamPlayers.push(player);
 			} else {
+				player.team = "awayTeam";
 				awayTeamPlayers.push(player);
 			}
 		});
