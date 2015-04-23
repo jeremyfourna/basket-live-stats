@@ -1,0 +1,12 @@
+.loginInfos div,
+.personalInfos div {
+    margin-bottom: 5px;
+}
+
+.loginInfos {
+    margin-top: 20px;
+}
+
+.personalInfos {
+    margin-top: 40px;
+}

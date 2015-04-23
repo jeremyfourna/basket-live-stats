@@ -87,5 +87,15 @@
 	"configurationValidation": "Validez votre configuration",
 	"validate": "Valider",
 	"about": "Qui sommes nous ?",
-	"proVersionTest": "Essayez la version PRO ?"
+	"proVersionTest": "Essayez la version PRO ?",
+	"pseudo": "Pseudo",
+	"email": "Email",
+	"loginInfos": "Informations de connexion",
+	"personalInfos": "Informations personnelles",
+	"club": "Licencié dans le club",
+	"oldPSWD": "Mot de passe actuel",
+	"newPSWD": "Nouveau mot de passe",
+	"newPSWDVerify": "Confirmez votre nouveau mot de passe",
+	"modifyPSWD": "Modifiez votre mot de passe",
+	"actualClub": "Votre club actuel"
 }
