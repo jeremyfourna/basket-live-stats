@@ -97,5 +97,6 @@
 	"newPSWD": "Nouveau mot de passe",
 	"newPSWDVerify": "Confirmez votre nouveau mot de passe",
 	"modifyPSWD": "Modifiez votre mot de passe",
-	"actualClub": "Votre club actuel"
+	"actualClub": "Votre club actuel",
+	"deleteAccount": "Supprimer mon compte"
 }

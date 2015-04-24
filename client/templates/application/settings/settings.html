@@ -3,23 +3,9 @@
         <h1>{{_ "loginInfos"}}</h1>
         <div class="input-group shadow input-group-sm">
             <span class="input-group-addon">{{_ "pseudo"}}</span>
-            <input type="text" id="username" class="form-control" value="{{username}}">
+            <input type="text" id="pseudo" class="form-control" value="{{username}}">
         </div>
         <button class="btn btn-success shadow" id="loginInfosPseudoValidate" type='button'>{{_ "validate"}}</button>
-        <h4>{{_ "modifyPSWD"}}</h4>
-        <div class="input-group shadow input-group-sm">
-            <span class="input-group-addon">{{_ "oldPSWD"}}</span>
-            <input type="password" id="username" class="form-control">
-        </div>
-        <div class="input-group shadow input-group-sm">
-            <span class="input-group-addon">{{_ "newPSWD"}}</span>
-            <input type="password" id="username" class="form-control">
-        </div>
-        <div class="input-group shadow input-group-sm">
-            <span class="input-group-addon">{{_ "newPSWDVerify"}}</span>
-            <input type="password" id="username" class="form-control">
-        </div>
-        <button class="btn btn-success shadow" id="loginInfosPSWDValidate" type='button'>{{_ "validate"}}</button>
     </div>
     <div class="personalInfos">
         <h1>{{_ "personalInfos"}}</h1>
@@ -43,5 +29,8 @@
             </datalist>
         </div>
         <button class="btn btn-success shadow" id="personalInfosClubValidate" type='button'>{{_ "validate"}}</button>
+    </div>
+    <div class="deleteUser">
+        <button class="btn btn-danger shadow" id="deleteAccount" type='button'>{{_ "deleteAccount"}}</button>
     </div>
 </template>
