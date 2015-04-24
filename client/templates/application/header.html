@@ -10,14 +10,17 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- Link for the home page -->
-                <a class='navbar-brand' href="{{pathFor 'home'}}" data-toggle="collapse" data-target=".navbar-collapse">{{_ "ApplicationName"}}</a>
+                <a class='navbar-brand' href="{{pathFor 'home'}}">{{_ "ApplicationName"}}</a>
             </div>
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{pathFor 'liveMatchs'}}" data-toggle="collapse" data-target=".navbar-collapse">{{_ "liveStats"}}</a></li>
+                    <li><a href="{{pathFor 'liveMatchs'}}" class="hidden-xs">{{_ "liveStats"}}</a></li>
+                    <li><a href="{{pathFor 'liveMatchs'}}" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">{{_ "liveStats"}}</a></li>
                     {{#if currentUser}}
-                        <li><a href="{{pathFor 'myGames'}}" data-toggle="collapse" data-target=".navbar-collapse">{{_ "myGames"}}</a></li>
-                        <li><a href="{{pathFor 'settings'}}" data-toggle="collapse" data-target=".navbar-collapse">{{_ "settings"}}</a></li>
+                        <li><a href="{{pathFor 'myGames'}}" class="hidden-xs">{{_ "myGames"}}</a></li>
+                        <li><a href="{{pathFor 'myGames'}}" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">{{_ "myGames"}}</a></li>
+                        <li><a href="{{pathFor 'settings'}}" class="hidden-xs">{{_ "settings"}}</a></li>
+                        <li><a href="{{pathFor 'settings'}}" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">{{_ "settings"}}</a></li>
                     {{/if}}
                 </ul>
                 <div class='nav navbar-nav navbar-right'>{{>loginButtons}}</div>
