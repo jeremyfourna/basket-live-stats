@@ -6,6 +6,9 @@ Template.settings.helpers({
 				city: 1
 			}
 		});
+	},
+	'address': function() {
+		return this.emails[0].address;
 	}
 });
 

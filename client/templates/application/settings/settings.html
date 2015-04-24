@@ -17,12 +17,10 @@
             <span class="input-group-addon">{{_ "firstName"}}</span>
             <input type="text" id="firstName" class="form-control" value="{{profile.firstName}}">
         </div>
-        {{#each emails}}
-            <div class="input-group shadow input-group-sm">
-                <span class="input-group-addon">{{_ "email"}}</span>
-                <input type="text" id="email" class="form-control" value="{{address}}">
-            </div>
-        {{/each}}
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "email"}}</span>
+            <input type="text" id="email" class="form-control" value="{{address}}">
+        </div>
         <button class="btn btn-success shadow" id="personalInfosValidate" type='button'>{{_ "validate"}}</button>
         <h4>{{_ "actualClub"}}</h4>
         <div class="input-group shadow input-group-sm">
