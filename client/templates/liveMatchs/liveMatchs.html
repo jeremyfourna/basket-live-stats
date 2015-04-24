@@ -55,5 +55,10 @@
                 </a>
             </div>
         </div>
+        {{else}}
+            <p>{{_ "noLiveGames"}}</p>
+            <p>
+                {{>creationGame}}
+            </p>
     {{/each}}
 </template>

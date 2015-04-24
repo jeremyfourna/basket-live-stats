@@ -98,5 +98,6 @@
 	"newPSWDVerify": "Confirmez votre nouveau mot de passe",
 	"modifyPSWD": "Modifiez votre mot de passe",
 	"actualClub": "Votre club actuel",
-	"deleteAccount": "Supprimer mon compte"
+	"deleteAccount": "Supprimer mon compte",
+	"noLiveGames": "Aucune prise de stats pour un match n'est en cours..."
 }
