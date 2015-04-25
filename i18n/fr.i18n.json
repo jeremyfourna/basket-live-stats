@@ -99,5 +99,9 @@
 	"modifyPSWD": "Modifiez votre mot de passe",
 	"actualClub": "Votre club actuel",
 	"deleteAccount": "Supprimer mon compte",
-	"noLiveGames": "Aucune prise de stats pour un match n'est en cours..."
+	"noLiveGames": "Aucune prise de stats pour un match n'est en cours...",
+	"admin": "Administration",
+	"nbUsers": "Nombre d'utilisateurs connectés",
+	"nbClubs": "Nombre de clubs",
+	"addClub": "Créez un nouveau club"
 }

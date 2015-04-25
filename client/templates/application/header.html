@@ -22,6 +22,10 @@
                         <li><a href="{{pathFor 'settings'}}" class="hidden-xs">{{_ "settings"}}</a></li>
                         <li><a href="{{pathFor 'settings'}}" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">{{_ "settings"}}</a></li>
                     {{/if}}
+                    {{#if LBBSAdmin}}
+                        <li><a href="{{pathFor 'admin'}}" class="hidden-xs">{{_ "admin"}}</a></li>
+                        <li><a href="{{pathFor 'admin'}}" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">{{_ "admin"}}</a></li>
+                    {{/if}}
                 </ul>
                 <div class='nav navbar-nav navbar-right'>{{>loginButtons}}</div>
             </div>

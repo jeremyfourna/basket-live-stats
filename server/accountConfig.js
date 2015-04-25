@@ -4,6 +4,8 @@ Accounts.onCreateUser(function(options, user) {
 	options.profile.club = "";
 	options.profile.basicUser = true;
 	options.profile.proUser = false;
+	options.profile.clubAdmin = false;
+	options.profile.LBBSAdmin = false;
 	user.emails = [{
 		address: "",
 		verified: false
