@@ -57,5 +57,16 @@ Template.myAccount.events({
 				return throwError(error.message);
 			}
 		});
+	},
+	"click #personalInfosClubValidate": function() {
+		var user = {
+			userId: Meteor.userId(),
+			club: $('#club').val()
+		};
+		Meteor.call('updateClub', user, function(error) {
+			if (error) {
+				return throwError(error.message);
+			}
+		});
 	}
 });
