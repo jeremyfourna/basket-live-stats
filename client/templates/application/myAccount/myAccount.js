@@ -1,4 +1,4 @@
-Template.settings.helpers({
+Template.myAccount.helpers({
 	'clubName': function() {
 		return Clubs.find({}, {
 			fields: {
@@ -12,7 +12,7 @@ Template.settings.helpers({
 	}
 });
 
-Template.settings.events({
+Template.myAccount.events({
 	"click #loginInfosPseudoValidate": function() {
 		var user = {
 			pseudo: $('#pseudo').val(),

@@ -103,5 +103,6 @@
 	"admin": "Administration",
 	"nbUsers": "Nombre d'utilisateurs connectés",
 	"nbClubs": "Nombre de clubs",
-	"addClub": "Créez un nouveau club"
+	"addClub": "Créez un nouveau club",
+	"myAccount": "Mon compte"
 }
