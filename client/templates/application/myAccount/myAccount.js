@@ -2,8 +2,7 @@ Template.myAccount.helpers({
 	'clubName': function() {
 		return Clubs.find({}, {
 			fields: {
-				name: 1,
-				city: 1
+				name: 1
 			}
 		});
 	},

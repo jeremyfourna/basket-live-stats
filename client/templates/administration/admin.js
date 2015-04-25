@@ -15,7 +15,7 @@ Template.admin.helpers({
 		return Meteor.users.find({}).count();
 	},
 	nbClubs: function() {
-		return Clubs.find().count();
+		return Clubs.find({}).count();
 	}
 });
 

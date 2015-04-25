@@ -104,5 +104,12 @@
 	"nbUsers": "Nombre d'utilisateurs connectés",
 	"nbClubs": "Nombre de clubs",
 	"addClub": "Créez un nouveau club",
-	"myAccount": "Mon compte"
+	"myAccount": "Mon compte",
+	"clubName": "Nom du club",
+	"clickToChangeColor": "Cliquez ici pour définir la couleur de votre club",
+	"region": "Région",
+	"department": "Département",
+	"myClub": "Mon club",
+	"city": "Ville",
+	"postalCode": "Code postal"
 }

@@ -5,5 +5,12 @@ Template.header.helpers({
 		} else {
 			return false;
 		}
+	},
+	isClubAdmin: function() {
+		if (Meteor.user().profile.clubAdmin) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 });

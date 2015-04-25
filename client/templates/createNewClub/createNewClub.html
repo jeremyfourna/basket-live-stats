@@ -1,3 +1,40 @@
 <template name="createNewClub">
     <h1>{{_ "addClub"}}</h1>
+    <form>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "clubName"}}</span>
+            <input type="text" id="clubName" class="form-control">
+        </div>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "region"}}</span>
+            <input type="text" id="region" list="regionList" class="awesomplete form-control" value="">
+            <datalist id="regionList">
+                {{#each regions}}
+                    <option>{{val}}</option>
+                {{/each}}
+            </datalist>
+        </div>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "department"}}</span>
+            <input type="text" id="department" list="departmentList" class="awesomplete form-control" value="">
+            <datalist id="departmentList">
+                {{#each departments}}
+                    <option>{{val}}</option>
+                {{/each}}
+            </datalist>
+        </div>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "postalCode"}}</span>
+            <input type="text" id="postalCode" class=" form-control" value="">
+        </div>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "city"}}</span>
+            <input type="text" id="city" class=" form-control" value="">
+        </div>
+        <div class="input-group shadow jerseyClubColor input-group-sm">
+            <input type="text" value="" id="jerseyClubColor" class="form-control" />
+            <span class="input-group-addon">{{_ "clickToChangeColor"}}</span>
+        </div>
+        <button type="submit" id="validateClubCreation" class="btn btn-primary">Submit</button>
+    </form>
 </template>
