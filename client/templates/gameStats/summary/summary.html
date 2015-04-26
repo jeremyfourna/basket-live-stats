@@ -1,4 +1,8 @@
 <template name="summary">
+    <div class="score clearfix">
+        <h3>{{_ "gameScore"}}</h3> {{gameInfos.homeTeam}} - {{gameStats.score.homeTeam}}
+        <br> {{gameInfos.awayTeam}} - {{gameStats.score.awayTeam}}
+    </div>
     <h4>{{_ "homeTeam"}} : {{gameInfos.homeTeam}}</h4>
     <div class="table-responsive">
         <table class="table shadow table-condensed">
