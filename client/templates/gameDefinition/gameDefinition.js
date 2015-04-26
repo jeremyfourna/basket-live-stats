@@ -8,13 +8,13 @@ Template.gameDefinition.events({
 			group: $('#group').val()
 		};
 		var gameId = this._id;
-		Meteor.call('gameInfosUpdate', gameInfo, gameId, function(error, result) {
+		Meteor.call('gameInfosUpdate', gameInfo, gameId, function(error) {
 			if (error) {
 				return throwError(error.message);
 			}
-			Router.go('participantsDefinition', {
-				_id: this._id
-			});
+		});
+		Router.go('participantsDefinition', {
+			_id: this._id
 		});
 	}
 });
