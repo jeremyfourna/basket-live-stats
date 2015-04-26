@@ -1,21 +1,24 @@
 <template name="playerBio">
-  <h2>{{_ "playerDefinition"}}</h2>
-  <div class="homeTeam clearfix">
-    <h3>{{_ "homeTeam"}}</h3>
-    {{#each homeTeam.players}}
-      {{>playerUpdate}}
-    {{/each}}
-    {{#each homeTeam.coachs}}
-      {{>coachUpdate}}
-    {{/each}}
-  </div>
-  <div class="awayTeam clearfix">
-    <h3>{{_ "awayTeam"}}</h3>
-    {{#each awayTeam.players}}
-      {{>playerUpdate}}
-    {{/each}}
-    {{#each awayTeam.coachs}}
-      {{>coachUpdate}}
-    {{/each}}
-  </div>
+    <div class="gameInfos cleafix">
+        <h2>{{_ "gameDefinition"}}</h2> {{>gameInfos}}
+    </div>
+    <h2>{{_ "playerDefinition"}}</h2>
+    <div class="homeTeam clearfix">
+        <h3>{{_ "homeTeam"}}</h3>
+        {{#each homeTeam.players}}
+            {{>playerUpdate}}
+        {{/each}}
+        {{#each homeTeam.coachs}}
+            {{>coachUpdate}}
+        {{/each}}
+    </div>
+    <div class="awayTeam clearfix">
+        <h3>{{_ "awayTeam"}}</h3>
+        {{#each awayTeam.players}}
+            {{>playerUpdate}}
+        {{/each}}
+        {{#each awayTeam.coachs}}
+            {{>coachUpdate}}
+        {{/each}}
+    </div>
 </template>

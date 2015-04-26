@@ -111,5 +111,6 @@
 	"department": "Département",
 	"myClub": "Mon club",
 	"city": "Ville",
-	"postalCode": "Code postal"
+	"postalCode": "Code postal",
+	"gameDefinition": "Definis les équipes..."
 }
