@@ -1,3 +1,13 @@
+Template.gameDefinition.helpers({
+	'clubName': function() {
+		return Clubs.find({}, {
+			fields: {
+				name: 1
+			}
+		});
+	}
+});
+
 Template.gameDefinition.events({
 	'click .next': function() {
 		var gameInfo = {

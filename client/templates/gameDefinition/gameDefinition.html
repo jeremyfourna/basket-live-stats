@@ -9,11 +9,21 @@
     <div class="officialGame">
         <div class="input-group shadow input-group-sm">
             <span class="input-group-addon">{{_ "homeTeam"}}</span>
-            <input type="text" id="homeTeam" class="form-control">
+            <input type="text" id="homeTeam" list="homeClubList" class="awesomplete form-control">
+            <datalist id="homeClubList">
+                {{#each clubName}}
+                    <option>{{name}}</option>
+                {{/each}}
+            </datalist>
         </div>
         <div class="input-group shadow input-group-sm">
             <span class="input-group-addon">{{_ "awayTeam"}}</span>
-            <input type="text" id="awayTeam" class="form-control">
+            <input type="text" id="awayTeam" list="awayClubList" class="awesomplete form-control">
+            <datalist id="awayClubList">
+                {{#each clubName}}
+                    <option>{{name}}</option>
+                {{/each}}
+            </datalist>
         </div>
         <div class="input-group shadow input-group-sm">
             <span class="input-group-addon">{{_ "category"}}</span>

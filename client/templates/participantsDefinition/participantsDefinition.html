@@ -7,7 +7,7 @@
         <button type="button" class="submitGameConfiguration shadow btn pull-right btn-success">{{_ "configurationValidation"}}</button>
     </div>
     <div class="homeTeam clearfix">
-        <h3>{{_ "homeTeam"}}</h3>
+        <h3>{{_ "homeTeam"}} : {{gameInfos.homeTeam}}</h3>
         {{#each homeTeam.players}}
             {{>playerDefinition}}
         {{/each}}
@@ -16,7 +16,7 @@
         {{/each}}
     </div>
     <div class="awayTeam clearfix">
-        <h3>{{_ "awayTeam"}}</h3>
+        <h3>{{_ "awayTeam"}} : {{gameInfos.awayTeam}}</h3>
         {{#each awayTeam.players}}
             {{>playerDefinition}}
         {{/each}}
