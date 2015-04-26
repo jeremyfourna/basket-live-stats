@@ -1,0 +1,33 @@
+<template name="participantsDefinition">
+    <h2>{{_ "playerDefinition"}}</h2>
+    <div class="row">
+        <a href="{{pathFor 'gameDefinition'}}">
+            <button type="button" class="btn shadow pull-left btn-info">{{_ "back"}}</button>
+        </a>
+        <button type="button" class="submitGameConfiguration shadow btn pull-right btn-success">{{_ "configurationValidation"}}</button>
+    </div>
+    <div class="homeTeam clearfix">
+        <h3>{{_ "homeTeam"}}</h3>
+        {{#each homeTeam.players}}
+            {{>playerDefinition}}
+        {{/each}}
+        {{#each homeTeam.coachs}}
+            {{>coachDefinition}}
+        {{/each}}
+    </div>
+    <div class="awayTeam clearfix">
+        <h3>{{_ "awayTeam"}}</h3>
+        {{#each awayTeam.players}}
+            {{>playerDefinition}}
+        {{/each}}
+        {{#each awayTeam.coachs}}
+            {{>coachDefinition}}
+        {{/each}}
+    </div>
+    <div class="footer">
+        <a href="{{pathFor 'gameDefinition'}}">
+            <button type="button" class="btn shadow pull-left btn-info">{{_ "back"}}</button>
+        </a>
+        <button type="button" class="submitGameConfiguration shadow btn pull-right btn-success">{{_ "configurationValidation"}}</button>>
+    </div>
+</template>

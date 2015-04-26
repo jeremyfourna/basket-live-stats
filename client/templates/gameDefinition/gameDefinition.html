@@ -1,0 +1,37 @@
+<template name="gameDefinition">
+    <h2>{{_ "teamDefinition"}}</h2>
+    <div class="row">
+        <a href="{{pathFor 'home'}}">
+            <button type="button" class="returnButton shadow btn pull-left btn-info">{{_ "back"}}</button>
+        </a>
+        <button class='btn shadow btn-primary next pull-right clearfix' type='button'>{{_ "next"}}</button>
+    </div>
+    <div class="officialGame">
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "homeTeam"}}</span>
+            <input type="text" id="homeTeam" class="form-control">
+        </div>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "awayTeam"}}</span>
+            <input type="text" id="awayTeam" class="form-control">
+        </div>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "category"}}</span>
+            <input type="text" id="category" class="form-control">
+        </div>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "level"}}</span>
+            <input type="text" id="level" class="form-control">
+        </div>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "group"}}</span>
+            <input type="text" id="group" class="form-control">
+        </div>
+    </div>
+    <div class="footer">
+        <a href="{{pathFor 'home'}}">
+            <button type="button" class="btn shadow pull-left btn-info">{{_ "back"}}</button>
+        </a>
+        <button class="btn shadow next pull-right btn-primary" type="button">{{_ "next"}}</button>
+    </div>
+</template>

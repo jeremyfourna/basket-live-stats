@@ -1,0 +1,20 @@
+Template.gameDefinition.events({
+	'click .next': function() {
+		var gameInfo = {
+			homeTeam: $('#homeTeam').val(),
+			awayTeam: $('#awayTeam').val(),
+			category: $('#category').val(),
+			level: $('#level').val(),
+			group: $('#group').val()
+		};
+		var gameId = this._id;
+		Meteor.call('gameInfosUpdate', gameInfo, gameId, function(error, result) {
+			if (error) {
+				return throwError(error.message);
+			}
+			Router.go('participantsDefinition', {
+				_id: this._id
+			});
+		});
+	}
+});

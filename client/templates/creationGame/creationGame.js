@@ -48,7 +48,7 @@ Template.creationGame.events({
 			if (error) {
 				return throwError(error.message);
 			}
-			Router.go('updateGameConfiguration', {
+			Router.go('gameDefinition', {
 				_id: result._id
 			});
 		});
