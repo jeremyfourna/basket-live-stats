@@ -101,7 +101,7 @@
 	"deleteAccount": "Supprimer mon compte",
 	"noLiveGames": "Aucune prise de stats pour un match n'est en cours...",
 	"admin": "Administration",
-	"nbUsers": "Nombre d'utilisateurs connectés",
+	"nbUsers": "Nombre d'utilisateurs",
 	"nbClubs": "Nombre de clubs",
 	"addClub": "Créez un nouveau club",
 	"myAccount": "Mon compte",
