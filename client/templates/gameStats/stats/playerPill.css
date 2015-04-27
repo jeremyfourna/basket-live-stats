@@ -1,4 +1,9 @@
-.homeTeamPillForModal,
+.homeTeamPillForModal {
+    margin: 5px;
+    background-color: #FFCF3A;
+}
+
 .awayTeamPillForModal {
-  margin: 5px;
+    margin: 5px;
+    background-color: #FF753A;
 }

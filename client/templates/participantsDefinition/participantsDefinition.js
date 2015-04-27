@@ -87,12 +87,7 @@ Template.participantsDefinition.events({
 		awayTeam.players = awayTeamPlayers;
 		awayTeam.coachs = awayTeamCoachs;
 
-		Games.update(currentGame, {
-			$set: {
-				homeTeam: homeTeam,
-				awayTeam: awayTeam
-			}
-		}, function(error, result) {
+		Meteor.call('participantsUpdate', currentGame, homeTeam, awayTeam, function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
