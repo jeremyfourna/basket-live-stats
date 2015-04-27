@@ -112,5 +112,6 @@
 	"myClub": "Mon club",
 	"city": "Ville",
 	"postalCode": "Code postal",
-	"gameDefinition": "Definis les équipes..."
+	"gameDefinition": "Definis les équipes...",
+	"privateGame": "Ce match sera-t-il privé ? (le match ne sera pas visible dans Live stats)"
 }

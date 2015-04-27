@@ -15,7 +15,8 @@ Template.gameDefinition.events({
 			awayTeam: $('#awayTeam').val(),
 			category: $('#category').val(),
 			level: $('#level').val(),
-			group: $('#group').val()
+			group: $('#group').val(),
+			privateGame: $('#privateGame').is(':checked')
 		};
 		var gameId = this._id;
 		Meteor.call('gameInfosUpdate', gameInfo, gameId, function(error) {

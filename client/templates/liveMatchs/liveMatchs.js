@@ -3,7 +3,8 @@ Template.liveMatchs.helpers({
 		return Games.find({
 			state: {
 				$not: "gameEnded"
-			}
+			},
+			privateGame: false
 		}, {
 			fields: {
 				'gameInfos': 1,
