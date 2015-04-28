@@ -18,3 +18,4 @@ reactive-var
 reactive-dict
 twbs:bootstrap
 risul:bootstrap-colorpicker
+meteorhacks:subs-manager
