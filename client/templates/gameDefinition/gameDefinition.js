@@ -25,7 +25,7 @@ Template.gameDefinition.events({
 			}
 		});
 		Router.go('participantsDefinition', {
-			_id: this._id
+			_id: gameId
 		});
 	}
 });
