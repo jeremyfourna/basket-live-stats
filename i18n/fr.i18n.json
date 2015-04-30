@@ -113,5 +113,7 @@
 	"city": "Ville",
 	"postalCode": "Code postal",
 	"gameDefinition": "Definis les équipes...",
-	"privateGame": "Ce match sera-t-il privé ? (le match ne sera pas visible dans Live stats)"
+	"privateGame": "Ce match sera-t-il privé ? (le match ne sera pas visible dans Live stats)",
+	"correctionAction": "Annuler une action",
+	"cancelCorrectionAction": "Annulez la correction"
 }

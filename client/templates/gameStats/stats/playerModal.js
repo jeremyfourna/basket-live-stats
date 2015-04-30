@@ -5,6 +5,22 @@ Template.playerModal.helpers({
 });
 
 Template.playerModal.events({
+	'click #correctionAction': function() {
+		$('.buttonForAction').prepend('<span class="badge actionBadge">-1</span> ');
+		$('#correctionAction').addClass('cancelCorrectionAction');
+	},
+	'click #closeModalButton': function() {
+		$('.actionBadge').remove();
+		$('#correctionAction').removeClass('cancelCorrectionAction');
+	},
+	'click .cancelCorrectionAction': function() {
+		$('.actionBadge').remove();
+		$('#correctionAction').removeClass('cancelCorrectionAction');
+	},
+	'hide.bs.modal .modal': function() {
+		$('.actionBadge').remove();
+		$('#correctionAction').removeClass('cancelCorrectionAction');
+	},
 	// Positive action
 	'click #onePoint': function(e) {
 		var actionInfo = {
