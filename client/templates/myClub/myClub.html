@@ -1,1 +1,13 @@
-<template name="myClub"></template>
+<template name="myClub">
+    <div id="presentation">
+        <h1>{{name}}</h1>
+        <p>{{_ "region"}} : {{region}}</p>
+        <p>{{_ "department"}} : {{department}}</p>
+        <p>{{_ "city"}} : {{city}}</p>
+        <p>{{_ "jerseyColor"}} :
+            <div class="displayJerseyColor" style="background-color:{{jerseyColor}};"></div>
+        </p>
+    </div>
+    <div id="teams">
+    </div>
+</template>
