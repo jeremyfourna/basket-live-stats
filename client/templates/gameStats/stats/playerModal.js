@@ -6,23 +6,28 @@ Template.playerModal.helpers({
 
 Template.playerModal.events({
 	'click #correctionAction': function() {
-		$('.buttonForAction').prepend('<span class="badge actionBadge">-1</span> ');
+		$('.buttonForAction').prepend('<span class="badge actionBadge">-1</span> ').addClass('cancelAction');
 		$('#correctionAction').addClass('cancelCorrectionAction');
 	},
 	'click #closeModalButton': function() {
 		$('.actionBadge').remove();
 		$('#correctionAction').removeClass('cancelCorrectionAction');
+		$('.buttonForAction').removeClass('cancelAction');
 	},
 	'click .cancelCorrectionAction': function() {
 		$('.actionBadge').remove();
 		$('#correctionAction').removeClass('cancelCorrectionAction');
+		$('.buttonForAction').removeClass('cancelAction');
 	},
-	'hide.bs.modal .modal': function() {
+	'hidden.bs.modal .modal': function() {
 		$('.actionBadge').remove();
 		$('#correctionAction').removeClass('cancelCorrectionAction');
+		$('.buttonForAction').removeClass('cancelAction');
 	},
 	// Positive action
-	'click #onePoint': function(e) {
+	'click #onePoint': function(e, t) {
+		console.log(e);
+		console.log(t);
 		var actionInfo = {
 			gameId: Template.parentData(1)._id,
 			playerIndex: Session.get('currentPlayerForModal').playerIndex,
