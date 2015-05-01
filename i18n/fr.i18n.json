@@ -116,5 +116,8 @@
 	"privateGame": "Ce match sera-t-il privé ? (le match ne sera pas visible dans Live stats)",
 	"correctionAction": "Annuler une action",
 	"cancelCorrectionAction": "Annulez la correction",
-	"jerseyColor": "Couleur de votre club"
+	"jerseyColor": "Couleur de votre club",
+	"shootPercentage": "Pourcentage aux tirs",
+	"mvp": "Meilleur joueur(se)",
+	"num": "N°"
 }

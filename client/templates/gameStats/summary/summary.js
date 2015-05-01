@@ -166,5 +166,67 @@ Template.summary.helpers({
 		var defFouls = this.gameStats.fouls.awayTeam.provFouls.defFouls;
 		var diff = offFouls + defFouls;
 		return diff;
+	},
+	'bestHomeTeamPlayer': function() {
+		var bestPlayer = function(team) {
+			var teamSorting = [];
+			var playersDataRetrieval = function(player) {
+				return {
+					"firstName": player.firstName,
+					"lastName": player.lastName,
+					"jersey": player.jersey,
+					"playerIndex": player.playerIndex,
+					"evaluation": player.stats.evaluation,
+					"totalPoints": player.stats.points.totalPoints
+				};
+			};
+			team.forEach(function(element, index, array) {
+				teamSorting.push(playersDataRetrieval(element));
+			});
+			teamSorting.sort(function(a, b) {
+				if (a.evaluation < b.evaluation) {
+					return 1;
+				}
+				if (a.evaluation > b.evaluation) {
+					return -1;
+				}
+				// a must be equal to b
+				return 0;
+			});
+			return teamSorting[0];
+		};
+		var player = bestPlayer(this.homeTeam.players);
+		return player;
+	},
+	'bestAwayTeamPlayer': function() {
+		var bestPlayer = function(team) {
+			var teamSorting = [];
+			var playersDataRetrieval = function(player) {
+				return {
+					"firstName": player.firstName,
+					"lastName": player.lastName,
+					"jersey": player.jersey,
+					"playerIndex": player.playerIndex,
+					"evaluation": player.stats.evaluation,
+					"totalPoints": player.stats.points.totalPoints
+				};
+			};
+			team.forEach(function(element, index, array) {
+				teamSorting.push(playersDataRetrieval(element));
+			});
+			teamSorting.sort(function(a, b) {
+				if (a.evaluation < b.evaluation) {
+					return 1;
+				}
+				if (a.evaluation > b.evaluation) {
+					return -1;
+				}
+				// a must be equal to b
+				return 0;
+			});
+			return teamSorting[0];
+		};
+		var player = bestPlayer(this.awayTeam.players);
+		return player;
 	}
 });
