@@ -1,10 +1,10 @@
 <template name="playerBio">
     <div class="gameInfos cleafix">
-        <h2>{{_ "gameDefinition"}}</h2> {{>gameInfos}}
+        <h3>{{_ "gameDefinition"}}</h3> {{>gameInfos}}
     </div>
-    <h2>{{_ "playerDefinition"}}</h2>
+    <h3>{{_ "playerDefinition"}}</h3>
     <div class="homeTeam clearfix">
-        <h3>{{_ "homeTeam"}}</h3>
+        <h4>{{_ "homeTeam"}}</h4>
         {{#each homeTeam.players}}
             {{>playerUpdate}}
         {{/each}}
@@ -13,7 +13,7 @@
         {{/each}}
     </div>
     <div class="awayTeam clearfix">
-        <h3>{{_ "awayTeam"}}</h3>
+        <h4>{{_ "awayTeam"}}</h4>
         {{#each awayTeam.players}}
             {{>playerUpdate}}
         {{/each}}
