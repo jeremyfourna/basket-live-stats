@@ -1,18 +1,18 @@
 <template name="summary">
-    <div class="row clearfix">
-        <div class="score col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <h3>{{_ "gameScore"}}</h3> {{gameInfos.homeTeam}} - {{gameStats.score.homeTeam}}
+    <div class="row">
+        <div class="score col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <h4>{{_ "gameScore"}}</h4> {{gameInfos.homeTeam}} - {{gameStats.score.homeTeam}}
             <br> {{gameInfos.awayTeam}} - {{gameStats.score.awayTeam}}
         </div>
-        <div class="score col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <h3>{{_ "shootPercentage"}}</h3>
+        <div class="score col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <h4>{{_ "shootPercentage"}}</h4>
             <div>
-                {{_ "twoPoints"}} {{homeTeamPercentage2PointsShoots}} % - {{_ "threePoints"}} {{homeTeamPercentage3PointsShoots}} % - {{_ "ft"}} {{homeTeamPercentage1PointShoots}} %
-                <br> {{_ "twoPoints"}} {{awayTeamPercentage2PointsShoots}} % - {{_ "threePoints"}} {{awayTeamPercentage3PointsShoots}} % - {{_ "ft"}} {{awayTeamPercentage1PointShoots}} %
+                {{_ "twoPoints"}} {{homeTeamPercentage2PointsShoots}} % - {{_ "threePoints"}} {{homeTeamPercentage3PointsShoots}} %
+                <br> {{_ "twoPoints"}} {{awayTeamPercentage2PointsShoots}} % - {{_ "threePoints"}} {{awayTeamPercentage3PointsShoots}} %
             </div>
         </div>
-        <div class="score col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <h3>{{_ "mvp"}}</h3>
+        <div class="score hidden-xs col-sm-4 col-md-4 col-lg-4">
+            <h4>{{_ "mvp"}}</h4>
             <div>
                 {{_ "num"}}{{bestHomeTeamPlayer.jersey}} - {{bestHomeTeamPlayer.totalPoints}} {{_ "pts"}} - {{bestHomeTeamPlayer.evaluation}} {{_ "eval"}}
                 <br> {{_ "num"}}{{bestAwayTeamPlayer.jersey}} - {{bestAwayTeamPlayer.totalPoints}} {{_ "pts"}} - {{bestAwayTeamPlayer.evaluation}} {{_ "eval"}}

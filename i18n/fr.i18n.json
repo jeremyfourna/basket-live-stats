@@ -59,7 +59,7 @@
 	"modify": "Modifier",
 	"player": "Joueur",
 	"gameScore": "Score du match :",
-	"playerInGame": "Joueurs en jeu",
+	"playerInGame": "Joueurs en jeu :",
 	"explanationHowToAddAStat": "Cliquez un numéro pour ajouter une action à ce joueur",
 	"labelNotStarted": "Que le match commence !",
 	"labelQ1Running": "Fin du 1er quart temps",
@@ -118,6 +118,6 @@
 	"cancelCorrectionAction": "Annulez la correction",
 	"jerseyColor": "Couleur de votre club",
 	"shootPercentage": "Pourcentage aux tirs",
-	"mvp": "Meilleur joueur(se)",
+	"mvp": "Meilleure évaluation",
 	"num": "N°"
 }
