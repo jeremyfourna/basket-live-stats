@@ -1,29 +1,23 @@
 <template name="summary">
     <div class="row">
-        <div class="score col-xs-6 col-sm-4 col-md-4 col-lg-4">
-            <h4>{{_ "gameScore"}}</h4> {{gameInfos.homeTeam}} - {{gameStats.score.homeTeam}}
-            <br> {{gameInfos.awayTeam}} - {{gameStats.score.awayTeam}}
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h4>{{gameInfos.homeTeam}}</h4>
+            <p>{{_ "gameScore"}} : {{gameStats.score.homeTeam}}</p>
+            <p>{{_ "shootPercentage"}} : {{_ "twoPoints"}} {{homeTeamPercentage2PointsShoots}} % - {{_ "threePoints"}} {{homeTeamPercentage3PointsShoots}} %</p>
+            <p>{{_ "mvp"}} : {{_ "num"}}{{bestHomeTeamPlayer.jersey}} - {{bestHomeTeamPlayer.totalPoints}} {{_ "pts"}} - {{bestHomeTeamPlayer.evaluation}} {{_ "eval"}}</p>
         </div>
-        <div class="score col-xs-6 col-sm-4 col-md-4 col-lg-4">
-            <h4>{{_ "shootPercentage"}}</h4>
-            <div>
-                {{_ "twoPoints"}} {{homeTeamPercentage2PointsShoots}} % - {{_ "threePoints"}} {{homeTeamPercentage3PointsShoots}} %
-                <br> {{_ "twoPoints"}} {{awayTeamPercentage2PointsShoots}} % - {{_ "threePoints"}} {{awayTeamPercentage3PointsShoots}} %
-            </div>
-        </div>
-        <div class="score hidden-xs col-sm-4 col-md-4 col-lg-4">
-            <h4>{{_ "mvp"}}</h4>
-            <div>
-                {{_ "num"}}{{bestHomeTeamPlayer.jersey}} - {{bestHomeTeamPlayer.totalPoints}} {{_ "pts"}} - {{bestHomeTeamPlayer.evaluation}} {{_ "eval"}}
-                <br> {{_ "num"}}{{bestAwayTeamPlayer.jersey}} - {{bestAwayTeamPlayer.totalPoints}} {{_ "pts"}} - {{bestAwayTeamPlayer.evaluation}} {{_ "eval"}}
-            </div>
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <h4>{{gameInfos.awayTeam}}</h4>
+            <p>{{_ "gameScore"}} : {{gameStats.score.awayTeam}}</p>
+            <p>{{_ "shootPercentage"}} : {{_ "twoPoints"}} {{awayTeamPercentage2PointsShoots}} % - {{_ "threePoints"}} {{awayTeamPercentage3PointsShoots}} %</p>
+            <p>{{_ "mvp"}} : {{_ "num"}}{{bestAwayTeamPlayer.jersey}} - {{bestAwayTeamPlayer.totalPoints}} {{_ "pts"}} - {{bestAwayTeamPlayer.evaluation}} {{_ "eval"}}</p>
         </div>
     </div>
     <h4>{{_ "homeTeam"}} : {{gameInfos.homeTeam}}</h4>
     <div class="table-responsive">
         <table class="table shadow table-condensed">
             <thead>
-                <tr class="active">
+                <tr class="homeTeamColor">
                     <th>#</th>
                     <th>{{_ "pts"}}</th>
                     <th>{{_ "twoPoints"}}</th>
@@ -65,7 +59,7 @@
                         <td>{{stats.evaluation}}</td>
                     </tr>
                 {{/each}}
-                <tr class="active">
+                <tr class="homeTeamColor">
                     <th scope="row">{{_ "total"}}</th>
                     <td>{{gameStats.score.homeTeam}}</td>
                     <td>{{gameStats.shoots.homeTeam.twoPointsIn}}/{{homeTeamTotal2PointsShoots}}</td>
@@ -91,7 +85,7 @@
     <div class="table-responsive">
         <table class="table shadow table-condensed">
             <thead>
-                <tr class="active">
+                <tr class="awayTeamColor">
                     <th>#</th>
                     <th>{{_ "pts"}}</th>
                     <th>{{_ "twoPoints"}}</th>
@@ -133,7 +127,7 @@
                         <td>{{stats.evaluation}}</td>
                     </tr>
                 {{/each}}
-                <tr class="active">
+                <tr class="awayTeamColor">
                     <th scope="row">{{_ "total"}}</th>
                     <td>{{gameStats.score.awayTeam}}</td>
                     <td>{{gameStats.shoots.awayTeam.twoPointsIn}}/{{awayTeamTotal2PointsShoots}}</td>

@@ -11,3 +11,11 @@
 .score {
     margin-bottom: 20px;
 }
+
+.homeTeamColor {
+    background-color: #FFCF3A;
+}
+
+.awayTeamColor {
+    background-color: #FF753A;
+}

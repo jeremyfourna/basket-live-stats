@@ -14,7 +14,7 @@
 	"offAction": "Action offensive",
 	"defAction": "Action défensive",
 	"closeModal": "Fermer",
-	"playersSettings": "Bio des joueurs",
+	"gameSettings": "Bio du match",
 	"total": "Total",
 	"oneFT": "1 LF",
 	"twoPoints": "2 Pts",
@@ -58,7 +58,7 @@
 	"number": "Numéro",
 	"modify": "Modifier",
 	"player": "Joueur",
-	"gameScore": "Score du match :",
+	"gameScore": "Score du match",
 	"playerInGame": "Joueurs en jeu :",
 	"explanationHowToAddAStat": "Cliquez un numéro pour ajouter une action à ce joueur",
 	"labelNotStarted": "Que le match commence !",
@@ -119,5 +119,6 @@
 	"jerseyColor": "Couleur de votre club",
 	"shootPercentage": "Pourcentage aux tirs",
 	"mvp": "Meilleure évaluation",
-	"num": "N°"
+	"num": "N°",
+	"gameQuarters": "Fait de match :"
 }
