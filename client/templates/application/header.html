@@ -14,18 +14,14 @@
             </div>
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{pathFor 'liveMatchs'}}" class="hidden-xs">{{_ "liveStats"}}</a></li>
-                    <li><a href="{{pathFor 'liveMatchs'}}" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">{{_ "liveStats"}}</a></li>
+                    <li><a href="{{pathFor 'liveGames'}}" class="hidden-xs">{{_ "liveStats"}}</a></li>
+                    <li><a href="{{pathFor 'liveGames'}}" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">{{_ "liveStats"}}</a></li>
                     {{#if currentUser}}
                         <li><a href="{{pathFor 'myGames'}}" class="hidden-xs">{{_ "myGames"}}</a></li>
                         <li><a href="{{pathFor 'myGames'}}" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">{{_ "myGames"}}</a></li>
                         {{#if isClubAdmin}}
                             <li><a href="{{pathFor 'myClub'}}" class="hidden-xs">{{_ "myClub"}}</a></li>
                             <li><a href="{{pathFor 'myClub'}}" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">{{_ "myClub"}}</a></li>
-                        {{/if}}
-                        {{#if LBBSAdmin}}
-                            <li><a href="{{pathFor 'admin'}}" class="hidden-xs">{{_ "admin"}}</a></li>
-                            <li><a href="{{pathFor 'admin'}}" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">{{_ "admin"}}</a></li>
                         {{/if}}
                         <li><a href="{{pathFor 'myAccount'}}" class="hidden-xs">{{_ "myAccount"}}</a></li>
                         <li><a href="{{pathFor 'myAccount'}}" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">{{_ "myAccount"}}</a></li>

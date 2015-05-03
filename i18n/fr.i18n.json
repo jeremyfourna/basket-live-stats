@@ -120,5 +120,6 @@
 	"shootPercentage": "Pourcentage aux tirs",
 	"mvp": "Meilleure évaluation",
 	"num": "N°",
-	"gameQuarters": "Fait de match :"
+	"gameQuarters": "Fait de match :",
+	"noCompletedLiveGames": "Aucune prise de stats publique est terminée..."
 }

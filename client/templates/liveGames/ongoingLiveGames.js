@@ -1,4 +1,4 @@
-Template.liveMatchs.helpers({
+Template.ongoingLiveGames.helpers({
 	game: function() {
 		return Games.find({
 			state: {
