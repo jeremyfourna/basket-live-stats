@@ -15,6 +15,15 @@
             {{>coachDefinition}}
         {{/each}}
     </div>
+    <div class="awayTeam hidden-xs hidden-sm hidden-md hidden-lg clearfix">
+        <h3>{{_ "yourTeam"}} : {{gameInfos.awayTeam}}</h3>
+        {{#each awayTeam.players}}
+            {{>playerDefinition}}
+        {{/each}}
+        {{#each awayTeam.coachs}}
+            {{>coachDefinition}}
+        {{/each}}
+    </div>
     <div class="footer">
         <a href="{{pathFor 'gameDefinition'}}">
             <button type="button" class="btn shadow pull-left btn-info">{{_ "back"}}</button>
