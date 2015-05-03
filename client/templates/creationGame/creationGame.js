@@ -1,3 +1,13 @@
+Template.creationGame.helpers({
+	isConnected: function() {
+		if (Meteor.user()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+});
+
 Template.creationGame.events({
 	'click button': function() {
 		var teamDef = function(team) {
