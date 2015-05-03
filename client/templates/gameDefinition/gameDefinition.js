@@ -5,6 +5,9 @@ Template.gameDefinition.helpers({
 				name: 1
 			}
 		});
+	},
+	'yourClub': function() {
+		return Meteor.user().profile.club;
 	}
 });
 
