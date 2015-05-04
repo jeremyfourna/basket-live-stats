@@ -19,5 +19,5 @@ twbs:bootstrap
 risul:bootstrap-colorpicker
 meteorhacks:subs-manager
 meteorhacks:fast-render
-sanjo:jasmine
 velocity:html-reporter
+mike:mocha
