@@ -1,10 +1,12 @@
 <template name="home">
-    <div class='jumbotron shadow'>
-        <h1>{{_ "welcome"}}</h1>
-    </div>
     {{#if currentUser}}
-        {{>creationGame}}
+        <div class='jumbotron shadow'>
+            <h1>{{_ "welcome"}}</h1> {{>creationGame}}
+        </div>
     {{else}}
+        <div class='jumbotron shadow'>
+            <h1>{{_ "welcome"}}</h1>
+        </div>
         <h2>{{_ "loginToBeginTakingStats"}}</h2>
     {{/if}}
 </template>
