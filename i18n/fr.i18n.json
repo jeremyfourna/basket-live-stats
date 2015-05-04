@@ -57,9 +57,9 @@
 	"awayTeam": "Equipe extérieur",
 	"number": "Numéro",
 	"modify": "Modifier",
-	"player": "Joueur",
+	"player": "Joueur(se)",
 	"gameScore": "Score",
-	"playerInGame": "Joueurs en jeu :",
+	"playerInGame": "Joueurs(ses) en jeu :",
 	"explanationHowToAddAStat": "Cliquez un numéro pour ajouter une action à ce joueur",
 	"labelNotStarted": "Que le match commence !",
 	"labelQ1Running": "Fin du 1er quart temps",
@@ -126,5 +126,9 @@
 	"opponent": "Adversaire",
 	"pointsPartition": "Répartition des points",
 	"bestScorer": "Meilleur(e) marqueur(se)",
-	"yourTeams": "Vos équipes"
+	"yourTeams": "Vos équipes",
+	"goTeamDefinition": "Créer une nouvelle équipe",
+	"teamData": "Informations sur l'équipe",
+	"addPlayer": "Ajoutez un joueur(se)",
+	"addCoach": "Ajoutez un coach"
 }
