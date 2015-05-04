@@ -6,7 +6,6 @@
                 <li role="presentation"><a href="#resume" role="tab" id="resume-tab" data-toggle="tab" aria-controls="resume">{{_ "summary"}}</a></li>
             {{else}}
                 <li role="presentation" class="active"><a href="#resume" role="tab" id="resume-tab" data-toggle="tab" aria-controls="resume">{{_ "summary"}}</a></li>
-                <li role="presentation"><a href="#historic" id="historic-tab" role="tab" data-toggle="tab" aria-controls="historic" aria-expanded="true">{{_ "historical"}}</a></li>
             {{/if}}
             {{#if isOwnerOfTheGame}}
                 <li role="presentation"><a href="#playersSettings" id="playersSettings-tab" role="tab" data-toggle="tab" aria-controls="playersSettings" aria-expanded="true">{{_ "gameSettings"}}</a></li>
@@ -23,9 +22,6 @@
             {{else}}
                 <div role="tabpanel" class="tab-pane fade in active" id="resume" aria-labelledBy="resume-tab">
                     {{>summary}}
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="historic" aria-labelledBy="historic-tab">
-                    <p>Template à créer</p>
                 </div>
             {{/if}}
             {{#if isOwnerOfTheGame}}
