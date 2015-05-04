@@ -123,5 +123,7 @@
 	"gameQuarters": "Fait de match :",
 	"noCompletedLiveGames": "Aucune prise de stats publique est terminée...",
 	"yourTeam": "Votre club",
-	"opponent": "Adversaire"
+	"opponent": "Adversaire",
+	"pointsPartition": "Répartition des points",
+	"bestScorer": "Meilleur(e) marqueur(se)"
 }
