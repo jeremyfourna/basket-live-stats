@@ -1,0 +1,28 @@
+<template name="newTeamDefinition">
+    <h2>{{_ "teamData"}}</h2>
+    <div id="teamData">
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "category"}}</span>
+            <input type="text" id="category" class="form-control">
+        </div>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "level"}}</span>
+            <input type="text" id="level" class="form-control">
+        </div>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "group"}}</span>
+            <input type="text" id="group" class="form-control">
+        </div>
+    </div>
+    <h2>{{_ "playerDefinition"}}</h2>
+    <div id="playerCoachData">
+        <div class="clearfix">
+            <div class="playerDefinition clearfix">{{>teamPlayerDefinition}}</div>
+            <button class="btn btn-primary shadow" type='button'>{{_ "addPlayer"}}</button>
+        </div>
+        <div class="clearfix">
+            <div class="coachDefinition clearfix">{{>teamCoachDefinition}}</div>
+            <button class="btn btn-primary shadow" type='button'>{{_ "addCoach"}}</button>
+        </div>
+    </div>
+</template>

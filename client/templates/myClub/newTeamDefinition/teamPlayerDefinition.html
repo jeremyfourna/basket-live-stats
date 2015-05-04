@@ -1,0 +1,17 @@
+<template name="teamPlayerDefinition">
+    <div class="player col-sm-4">
+        <h4>{{_ "player"}}</h4>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "name"}}</span>
+            <input type="text" class="lastName form-control" value="{{lastName}}">
+        </div>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "firstName"}}</span>
+            <input type="text" class="firstName form-control" value="{{firstName}}">
+        </div>
+        <div class="input-group shadow input-group-sm">
+            <span class="input-group-addon">{{_ "Number"}}</span>
+            <input type="number" min="4" max="15" class="jersey form-control" value="{{jersey}}">
+        </div>
+    </div>
+</template>
