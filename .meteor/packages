@@ -21,3 +21,4 @@ meteorhacks:subs-manager
 meteorhacks:fast-render
 velocity:html-reporter
 mike:mocha
+xolvio:template-isolator
