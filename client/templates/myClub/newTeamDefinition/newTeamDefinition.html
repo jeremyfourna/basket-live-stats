@@ -17,12 +17,12 @@
     <h2>{{_ "playerDefinition"}}</h2>
     <div id="playerCoachData">
         <div class="clearfix playerData">
-            <div class="playerDefinition clearfix">{{>teamPlayerDefinition}}</div>
-            <button class="btn btn-primary addPlayer shadow" type='button'>{{_ "addPlayer"}}</button>
+            {{>teamPlayerDefinition}}
         </div>
+        <button class="btn btn-primary clearfix shadow addPlayer" type='button'>{{_ "addPlayer"}}</button>
         <div class="clearfix coachData">
-            <div class="coachDefinition clearfix">{{>teamCoachDefinition}}</div>
-            <button class="btn btn-primary addCoach shadow" type='button'>{{_ "addCoach"}}</button>
+            {{>teamCoachDefinition}}
         </div>
+        <button class="btn btn-primary clearfix shadow addCoach" type='button'>{{_ "addCoach"}}</button>
     </div>
 </template>
