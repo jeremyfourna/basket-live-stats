@@ -40,7 +40,6 @@ Template.creationGame.events({
 			gameInfos: {
 				homeTeam: null,
 				awayTeam: null,
-				category: null,
 				level: null,
 				group: null
 			},

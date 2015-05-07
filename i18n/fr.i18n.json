@@ -130,5 +130,6 @@
 	"goTeamDefinition": "Créer une nouvelle équipe",
 	"teamData": "Informations sur l'équipe",
 	"addPlayer": "Ajoutez un joueur(se)",
-	"addCoach": "Ajoutez un coach"
+	"addCoach": "Ajoutez un coach",
+	"teamName": "Nom de l'équipe"
 }

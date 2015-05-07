@@ -2,16 +2,26 @@
     <h2>{{_ "teamData"}}</h2>
     <div id="teamData">
         <div class="input-group shadow input-group-sm">
-            <span class="input-group-addon">{{_ "category"}}</span>
-            <input type="text" id="category" class="form-control">
+            <span class="input-group-addon">{{_ "teamName"}}</span>
+            <input type="text" id="teamName" class="form-control">
         </div>
         <div class="input-group shadow input-group-sm">
             <span class="input-group-addon">{{_ "level"}}</span>
-            <input type="text" id="level" class="form-control">
+            <input type="text" id="level" list="levelList" class="awesomplete form-control">
+            <datalist id="levelList">
+                {{#each level}}
+                    <option>{{val}}</option>
+                {{/each}}
+            </datalist>
         </div>
         <div class="input-group shadow input-group-sm">
             <span class="input-group-addon">{{_ "group"}}</span>
-            <input type="text" id="group" class="form-control">
+            <input type="text" id="group" list="groupList" class="awesomplete form-control">
+            <datalist id="groupList">
+                {{#each group}}
+                    <option>{{val}}</option>
+                {{/each}}
+            </datalist>
         </div>
     </div>
     <h2>{{_ "playerDefinition"}}</h2>

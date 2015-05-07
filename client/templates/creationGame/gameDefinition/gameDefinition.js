@@ -8,6 +8,24 @@ Template.gameDefinition.helpers({
 	},
 	'yourClub': function() {
 		return Meteor.user().profile.club;
+	},
+	'level': function() {
+		return FederationConfig.find({
+			def: 'level'
+		}, {
+			sort: {
+				val: 1
+			}
+		});
+	},
+	'group': function() {
+		return FederationConfig.find({
+			def: 'group'
+		}, {
+			sort: {
+				val: 1
+			}
+		});
 	}
 });
 
@@ -16,7 +34,6 @@ Template.gameDefinition.events({
 		var gameInfo = {
 			homeTeam: $('#homeTeam').val(),
 			awayTeam: $('#awayTeam').val(),
-			category: $('#category').val(),
 			level: $('#level').val(),
 			group: $('#group').val(),
 			privateGame: $('#privateGame').is(':checked')

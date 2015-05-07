@@ -7,10 +7,22 @@
         <button class='btn shadow btn-primary next pull-right clearfix' type='button'>{{_ "next"}}</button>
     </div>
     <div class="officialGame">
-        <div class="input-group shadow input-group-sm">
-            <span class="input-group-addon">{{_ "yourTeam"}}</span>
-            <input type="text" id="homeTeam" class="form-control" value="{{yourClub}}">
-        </div>
+        {{#if yourClub}}
+            <div class="input-group shadow input-group-sm">
+                <span class="input-group-addon">{{_ "yourTeam"}}</span>
+                <input type="text" id="homeTeam" class="form-control" value="{{yourClub}}">
+            </div>
+        {{else}}
+            <div class="input-group shadow input-group-sm">
+                <span class="input-group-addon">{{_ "opponent"}}</span>
+                <input type="text" id="homeTeam" list="awayClubList" class="awesomplete form-control">
+                <datalist id="awayClubList">
+                    {{#each clubName}}
+                        <option>{{name}}</option>
+                    {{/each}}
+                </datalist>
+            </div>
+        {{/if}}
         <div class="input-group shadow input-group-sm">
             <span class="input-group-addon">{{_ "opponent"}}</span>
             <input type="text" id="awayTeam" list="awayClubList" class="awesomplete form-control">
@@ -21,16 +33,22 @@
             </datalist>
         </div>
         <div class="input-group shadow input-group-sm">
-            <span class="input-group-addon">{{_ "category"}}</span>
-            <input type="text" id="category" class="form-control">
-        </div>
-        <div class="input-group shadow input-group-sm">
             <span class="input-group-addon">{{_ "level"}}</span>
-            <input type="text" id="level" class="form-control">
+            <input type="text" id="level" list="levelList" class="awesomplete form-control">
+            <datalist id="levelList">
+                {{#each level}}
+                    <option>{{val}}</option>
+                {{/each}}
+            </datalist>
         </div>
         <div class="input-group shadow input-group-sm">
             <span class="input-group-addon">{{_ "group"}}</span>
-            <input type="text" id="group" class="form-control">
+            <input type="text" id="group" list="groupList" class="awesomplete form-control">
+            <datalist id="groupList">
+                {{#each group}}
+                    <option>{{val}}</option>
+                {{/each}}
+            </datalist>
         </div>
         <div class="checkbox">
             <label>
