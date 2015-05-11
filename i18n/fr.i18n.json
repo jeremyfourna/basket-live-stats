@@ -131,5 +131,6 @@
 	"teamData": "Informations sur l'équipe",
 	"addPlayer": "Ajoutez un joueur(se)",
 	"addCoach": "Ajoutez un coach",
-	"teamName": "Nom de l'équipe"
+	"teamName": "Nom de l'équipe",
+	"validateCreationTeam": "Valider la création de l'équipe"
 }

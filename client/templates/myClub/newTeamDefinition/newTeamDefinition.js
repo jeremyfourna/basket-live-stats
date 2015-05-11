@@ -30,5 +30,51 @@ Template.newTeamDefinition.events({
 	},
 	'click .addCoach': function(e, t) {
 		return Blaze.render(Template.teamCoachDefinition, t.$('.coachData').get(0));
+	},
+	'click .createTeam': function() {
+		var filterInt = function(value) {
+			if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value))
+				return Number(value);
+			return NaN;
+		};
+		var isFilled = function(element) {
+			if ($(element).val() === "") {
+				return null;
+			} else {
+				return $(element).val();
+			}
+		};
+		var team = {
+			players: [],
+			coachs: [],
+			teamName: $('#teamName').val(),
+			level: $('#level').val(),
+			group: $('#group').val()
+		};
+		var clubId = this._id;
+		$('.player').each(function(index, element) {
+			var player = {
+				firstName: isFilled($(element).find('.firstName')),
+				lastName: isFilled($(element).find('.lastName')),
+				jersey: filterInt($(element).find('.jersey').val()),
+				playerIndex: index,
+			};
+			team.players.push(player);
+		});
+		$('.coach').each(function(index, element) {
+			var coach = {
+				firstName: isFilled($(element).find('.firstName')),
+				lastName: isFilled($(element).find('.lastName')),
+				coachIndex: index,
+			};
+			team.coachs.push(coach);
+		});
+
+		Meteor.call('createNewTeam', team, clubId, function(error, result) {
+			if (error) {
+				return throwError(error.message);
+			}
+			Router.go('myClub');
+		});
 	}
 });
