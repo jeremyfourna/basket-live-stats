@@ -132,5 +132,7 @@
 	"addPlayer": "Ajoutez un joueur(se)",
 	"addCoach": "Ajoutez un coach",
 	"teamName": "Nom de l'équipe",
-	"validateCreationTeam": "Valider la création de l'équipe"
+	"validateCreationTeam": "Valider la création de l'équipe",
+	"nbPlayers": "Nombre de joueurs(se)",
+	"nbCoachs": "Nombre de coachs"
 }

@@ -44,12 +44,16 @@ Template.newTeamDefinition.events({
 				return $(element).val();
 			}
 		};
+		var generateId = function() {
+			return Math.random().toString(36);
+		};
 		var team = {
 			players: [],
 			coachs: [],
 			teamName: $('#teamName').val(),
 			level: $('#level').val(),
-			group: $('#group').val()
+			group: $('#group').val(),
+			teamId: generateId()
 		};
 		var clubId = this._id;
 		$('.player').each(function(index, element) {
