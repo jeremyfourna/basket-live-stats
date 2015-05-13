@@ -18,5 +18,8 @@ Template.myClub.events({
 				return throwError(error.message);
 			}
 		});
+	},
+	'click .teamEditionButton': function() {
+		Session.set('teamToEdit', this.teamId);
 	}
 });
