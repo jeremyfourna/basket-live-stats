@@ -134,5 +134,6 @@
 	"teamName": "Nom de l'équipe",
 	"validateCreationTeam": "Valider la création de l'équipe",
 	"nbPlayers": "Nombre de joueurs(se)",
-	"nbCoachs": "Nombre de coachs"
+	"nbCoachs": "Nombre de coachs",
+	"teamToEdit": "Edition de l'équipe"
 }
