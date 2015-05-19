@@ -1,12 +1,12 @@
 {
 	"welcome": "Prends les stats de ton équipe !",
-	"loginToBeginTakingStats": "Inscrit toi ou connecte toi pour commencer à prendre les stats du match",
+	"loginToBeginTakingStats": "Inscrit toi ou connecte toi pour commencer à prendre les stats d'un match",
 	"ApplicationName": "Live Basket-Ball Stats",
 	"liveStats": "Live stats",
 	"myGames": "Mes matches",
 	"settings": "Réglages",
 	"404": "Désolé, nous ne trouvons pas de page à cette adresse...",
-	"goStats": "Prends les stats !",
+	"goStats": "Prends les stats d'un match !",
 	"stats": "Stats",
 	"summary": "Résumé",
 	"historical": "Historique",
@@ -137,5 +137,6 @@
 	"nbCoachs": "Nombre de coachs",
 	"teamToEdit": "Edition de l'équipe",
 	"validateUpdateTeam": "Valider la mise à jour de l'équipe",
-	"nonAutorized": "Vous n'êtes pas autorisé à pénétrer dans cette zone !"
+	"nonAutorized": "Vous n'êtes pas autorisé à pénétrer dans cette zone !",
+	"seeLiveGames": "Voir l'ensemble des matchs en cours"
 }
