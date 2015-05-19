@@ -136,5 +136,6 @@
 	"nbPlayers": "Nombre de joueurs(se)",
 	"nbCoachs": "Nombre de coachs",
 	"teamToEdit": "Edition de l'équipe",
-	"validateUpdateTeam": "Valider la mise à jour de l'équipe"
+	"validateUpdateTeam": "Valider la mise à jour de l'équipe",
+	"nonAutorized": "Vous n'êtes pas autorisé à pénétrer dans cette zone !"
 }

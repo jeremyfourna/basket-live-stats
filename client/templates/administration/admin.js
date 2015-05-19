@@ -16,6 +16,13 @@ Template.admin.helpers({
 	},
 	nbClubs: function() {
 		return Clubs.find({}).count();
+	},
+	userIsAdmin: function() {
+		if (Meteor.user().profile.LBBSAdmin) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 });
 
