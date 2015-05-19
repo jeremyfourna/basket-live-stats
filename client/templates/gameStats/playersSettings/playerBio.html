@@ -4,7 +4,7 @@
     </div>
     <h3>{{_ "playerDefinition"}}</h3>
     <div class="homeTeam clearfix">
-        <h4>{{_ "homeTeam"}}</h4>
+        <h4>{{_ "homeTeam"}} : {{gameInfos.homeTeam}}</h4>
         {{#each homeTeam.players}}
             {{>playerUpdate}}
         {{/each}}
@@ -12,7 +12,7 @@
             {{>coachUpdate}}
         {{/each}}
     </div>
-    <div class="awayTeam clearfix">
+    <div class="awayTeam clearfix hidden">
         <h4>{{_ "awayTeam"}}</h4>
         {{#each awayTeam.players}}
             {{>playerUpdate}}
