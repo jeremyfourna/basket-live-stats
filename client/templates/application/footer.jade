@@ -1,0 +1,13 @@
+template(name='footer')
+	.navbar.hidden-xs.hidden-sm.shadow.navbar-default.navbar-fixed-bottom(role='navigation')
+		.container
+			ul.nav.navbar-nav
+				// Link for the about page
+				li
+					a(href="{{pathFor 'about'}}") {{_ "about"}}
+				// Link for the page description of the PRO version
+				li
+					a(href="{{pathFor 'proVersionTest'}}") {{_ "proVersionTest"}}
+			ul.nav.navbar-nav.navbar-right
+				li.pull-right
+					a(href='#') v0.7.0-alpha

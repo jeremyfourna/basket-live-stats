@@ -1,0 +1,29 @@
+template(name="myAccount")
+	.loginInfos
+		h1 {{_ "loginInfos"}}
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "pseudo"}}
+			input#pseudo.form-control(type="text" value="#{username}")
+		button.btn.btn-success.shadow#loginInfosPseudoValidate(type='button') {{_ "validate"}}
+	.personalInfos
+		h1 {{_ "personalInfos"}}
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "name"}}
+			input#name.form-control(type="text" value="#{profile.name}")
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "firstName"}}
+			input#firstName.form-control(type="text" value="#{profile.firstName}")
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "email"}}
+			input#email.form-control(type="text" value="#{address}")
+		button.btn.btn-success.shadow#personalInfosValidate(type='button') {{_ "validate"}}
+		h4 {{_ "actualClub"}}
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "club"}}
+			input#club.awesomplete.form-control(type="text" list="clubList" value="#{profile.club}")
+			datalist#clubList
+				each clubName
+					option #{name}}
+		button.btn.btn-success.shadow#personalInfosClubValidate(type='button') {{_ "validate"}}
+	div.deleteUser
+		button.btn.btn-danger.shadow#deleteAccount(type='button') {{_ "deleteAccount"}}

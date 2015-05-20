@@ -1,0 +1,99 @@
+template(name='home')
+	.jumbotron.shadow.text-center
+		h1 {{_ "ApplicationName"}}
+		p Prenez les stats de votre équipe de Basket-Ball et diffusez en direct le match !
+		if currentUser
+			+creationGame
+		else
+			{{_ "loginToBeginTakingStats"}}
+	div
+		h2 Suivez en direct le match de ces équipes
+		each game
+			.row.shadow.displayLiveGames.vertical-align
+				.col-xs-9.col-sm-9.col-md-9.col-lg-10
+					.row
+						h4 {{_ "level"}} : #{gameInfos.level} / {{_ "group"}} : #{gameInfos.group}
+					.row
+						.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
+							h3 #{gameInfos.homeTeam}
+						.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
+							h3 #{gameInfos.awayTeam}
+					.row
+						.text-center.col-xs-5.col-sm-5.col-md-5.col-lg-5
+							h4 #{gameStats.score.homeTeam}
+						.text-center.col-xs-2.col-sm-2.col-md-2.col-lg-2
+							if notStarted
+								h4 {{_ "notStarted"}}
+							if q1Running
+								h4 {{_ "q1Running"}}
+							if q1Ended
+								h4 {{_ "q1Ended"}}
+							if q2Running
+								h4 {{_ "q2Running"}}
+							if halfTime
+								h4 {{_ "halfTime"}}
+							if q3Running
+								h4 {{_ "q3Running"}}
+							if q3Ended
+								h4 {{_ "q3Ended"}}
+							if q4Running
+								h4 {{_ "q4Running"}}
+						.text-center.col-xs-5.col-sm-5.col-md-5.col-lg-5
+							h4 #{gameStats.score.awayTeam}
+				.col-xs-3.col-sm-3.col-md-3.col-lg-2
+					a(href="{{pathFor 'gameStats'}}")
+						button.shadow.pull-right.btn.btn-default(type='button')
+							span.glyphicon.glyphicon-log-in(aria-hidden='true')
+		else
+			p {{_ "noLiveGames"}}
+		p
+			a(href="{{pathFor 'liveGames'}}") Ou faites votre choix parmi tous les matchs en cours
+	div
+		h2 Regardez la feuille de statistiques d'un match terminé
+		each endedGame
+			.row.shadow.displayLiveGames.vertical-align
+				.col-xs-9.col-sm-9.col-md-9.col-lg-10
+					.row
+						h4 {{_ "level"}} : #{gameInfos.level} / {{_ "group"}} : #{gameInfos.group}
+					.row
+						.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
+							h3 #{gameInfos.homeTeam}
+						.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
+							h3 #{gameInfos.awayTeam}
+					.row
+						.text-center.col-xs-5.col-sm-5.col-md-5.col-lg-5
+							h4 #{gameStats.score.homeTeam}
+						.text-center.col-xs-2.col-sm-2.col-md-2.col-lg-2
+							if notStarted
+								h4 {{_ "notStarted"}}
+							if q1Running
+
+								h4 {{_ "q1Running"}}
+							if q1Ended
+
+								h4 {{_ "q1Ended"}}
+							if q2Running
+
+								h4 {{_ "q2Running"}}
+							if halfTime
+
+								h4 {{_ "halfTime"}}
+							if q3Running
+
+								h4 {{_ "q3Running"}}
+							if q3Ended
+
+								h4 {{_ "q3Ended"}}
+							if q4Running
+								h4 {{_ "q4Running"}}
+						.text-center.col-xs-5.col-sm-5.col-md-5.col-lg-5
+							h4 #{gameStats.score.awayTeam}
+				.col-xs-3.col-sm-3.col-md-3.col-lg-2
+					a(href="{{pathFor 'gameStats'}}")
+						button.shadow.pull-right.btn.btn-default(type='button')
+							span.glyphicon.glyphicon-log-in(aria-hidden='true')
+		else
+			p {{_ "noLiveGames"}}
+		p
+			a(href="{{pathFor 'liveGames'}}")
+				| Ou faites votre choix parmi tous les matchs terminés

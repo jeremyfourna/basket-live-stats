@@ -1,0 +1,12 @@
+template(name="admin")
+	if userIsAdmin
+		h1 {{_ "admin"}}
+		p {{_ "runningGames"}} : #{runningGames}
+		p {{_ "endedGames"}} : #{endedGames}
+		p {{_ "nbUsers"}} : #{nbUsers}
+		p {{_ "nbClubs"}} : #{nbClubs}
+		button#addNewClub.btn.btn-primary.shadow(type='button')
+			{{_ "addClub"}}
+	else
+		{{_ "nonAutorized"}}
+
