@@ -1,0 +1,96 @@
+template(name='summary')
+	.row
+		.col-xs-6.col-sm-6.col-md-6.col-lg-6
+			h4 #{gameInfos.homeTeam}
+			p {{_ "gameScore"}} : #{gameStats.score.homeTeam}
+			p {{_ "shootPercentage"}} : {{_ "twoPoints"}} #{homeTeamPercentage2PointsShoots} % - {{_ "threePoints"}} #{homeTeamPercentage3PointsShoots} %
+			p {{_ "mvp"}} : {{_ "num"}}#{bestHomeTeamPlayer.jersey} - #{bestHomeTeamPlayer.totalPoints} {{_ "pts"}} - #{bestHomeTeamPlayer.evaluation} {{_ "eval"}}
+		.col-xs-6.col-sm-6.col-md-6.col-lg-6
+			h4 #{gameInfos.awayTeam}
+			p {{_ "gameScore"}} : #{gameStats.score.awayTeam}
+			p {{_ "pointsPartition"}} : {{_ "twoPoints"}} #{awayTeamTwoPointsPartition} % - {{_ "threePoints"}} #{awayTeamThreePointsPartition} %
+			p {{_ "bestScorer"}} : {{_ "num"}}#{bestAwayTeamPlayer.jersey} - #{bestAwayTeamPlayer.totalPoints} {{_ "pts"}}
+	h4 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
+		.table-responsive
+			table.table.shadow.table-condensed
+				thead
+					tr.homeTeamColor
+						th {{_ "num"}}
+						th {{_ "pts"}}
+						th {{_ "twoPoints"}}
+						th %
+						th {{_ "threePoints"}}
+						th %
+						th {{_ "ft"}}
+						th %
+						th {{_ "rebOffDef"}}
+						th {{_ "totalRebounds"}}
+						th {{_ "assist"}}
+						th {{_ "steal"}}
+						th {{_ "turnover"}}
+						th {{_ "block"}}
+						th {{_ "foulProvComm"}}
+						th {{_ "foulRatio"}}
+						th {{_ "eval"}}
+				tbody
+					each homeTeam.players
+						tr
+							th(scope='row') #{jersey}
+							td #{stats.points.totalPoints}
+							td #{stats.points.twoPointsIn}/#{total2PointsShoots}
+							td #{percentage2PointsShoots}
+							td #{stats.points.threePointsIn}/#{total3PointsShoots}
+							td #{percentage3PointsShoots}
+							td #{stats.points.onePointIn}/#{total1PointShoots}
+							td #{percentage1PointShoots}
+							td #{stats.rebounds.offReb}-#{stats.rebounds.defReb}
+							td #{totalRebounds}
+							td #{stats.assists}
+							td #{stats.steals}
+							td #{stats.turnovers}
+							td #{stats.blocks}
+							td #{provokedFouls}/#{stats.fouls.totalFouls}
+							td #{foulsRatio}
+							td #{stats.evaluation}
+					tr.homeTeamColor
+						th(scope='row') {{_ "total"}}
+						td #{gameStats.score.homeTeam}
+						td #{gameStats.shoots.homeTeam.twoPointsIn}/#{homeTeamTotal2PointsShoots}
+						td #{homeTeamPercentage2PointsShoots}
+						td #{gameStats.shoots.homeTeam.threePointsIn}/#{homeTeamTotal3PointsShoots}
+						td #{homeTeamPercentage3PointsShoots}
+						td #{gameStats.shoots.homeTeam.onePointIn}/#{homeTeamTotal1PointShoots}
+						td #{homeTeamPercentage1PointShoots}
+						td #{gameStats.rebounds.homeTeam.offReb}-#{gameStats.rebounds.homeTeam.defReb}
+						td #{homeTeamTotalRebounds}
+						td #{gameStats.assists.homeTeam}
+						td #{gameStats.steals.homeTeam}
+						td #{gameStats.turnovers.homeTeam}
+						td #{gameStats.blocks.homeTeam}
+						td #{homeTeamProvokedFouls}/#{gameStats.fouls.homeTeam.totalFouls}
+						td #{homeTeamFoulsRatio}
+						td #{gameStats.evaluation.homeTeam}
+	h4 {{_ "awayTeam"}} : {{gameInfos.awayTeam}}
+		.table-responsive
+			table.table.shadow.table-condensed
+				thead
+					tr.awayTeamColor
+						th {{_ "num"}}
+						th {{_ "pts"}}
+						th {{_ "twoPoints"}}
+						th {{_ "threePoints"}}
+						th {{_ "ft"}}
+				tbody
+					each awayTeam.players
+						tr
+							th(scope='row') #{jersey}
+							td #{stats.points.totalPoints}
+							td #{stats.points.twoPointsIn}
+							td #{stats.points.threePointsIn}
+							td #{stats.points.onePointIn}
+					tr.awayTeamColor
+						th(scope='row') {{_ "total"}}
+						td #{gameStats.score.awayTeam}
+						td #{gameStats.shoots.awayTeam.twoPointsIn}
+						td #{gameStats.shoots.awayTeam.threePointsIn}
+						td #{gameStats.shoots.awayTeam.onePointIn}

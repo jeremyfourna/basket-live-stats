@@ -1,0 +1,12 @@
+template(name='liveGames')
+	div(role='tabpanel')
+		ul.nav.nav-pills.liveGamesPills(role='tablist')
+			li.active(role='presentation')
+				a#ongoingGames-tab(href='#ongoingGames', role='tab', data-toggle='tab', aria-controls='ongoingGames', aria-expanded='true') {{_ "runningGames"}}
+			li(role='presentation')
+				a#completedGames-tab(href='#completedGames', role='tab', data-toggle='tab', aria-controls='completedGames') {{_ "endedGames"}}
+	#myTabContent.tab-content
+		#ongoingGames.tab-pane.fade.in.active(role='tabpanel', aria-labelledby='ongoingGames-tab')
+			+ongoingLiveGames
+		#completedGames.tab-pane.fade(role='tabpanel', aria-labelledby='completedGames-tab')
+			+completedLiveGames

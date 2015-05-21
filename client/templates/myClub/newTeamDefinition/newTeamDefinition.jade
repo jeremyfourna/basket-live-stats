@@ -1,0 +1,27 @@
+template(name='newTeamDefinition')
+	h2 {{_ "teamData"}}
+		#teamData
+			.input-group.shadow.input-group-sm
+				span.input-group-addon {{_ "teamName"}}
+				input#teamName.form-control(type='text')
+			.input-group.shadow.input-group-sm
+				span.input-group-addon {{_ "level"}}
+				input#level.awesomplete.form-control(type='text', list='levelList')
+				datalist#levelList
+					each level
+						option #{val}
+			.input-group.shadow.input-group-sm
+				span.input-group-addon {{_ "group"}}
+				input#group.awesomplete.form-control(type='text', list='groupList')
+				datalist#groupList
+					each group
+						option #{val}
+		h2 {{_ "playerDefinition"}}
+			#playerCoachData.clearfix
+				.clearfix.playerData
+					+teamPlayerDefinition
+					button.btn.btn-primary.clearfix.shadow.addPlayer(type='button') {{_ "addPlayer"}}
+				.clearfix.coachData
+					+teamCoachDefinition
+					button.btn.btn-primary.clearfix.shadow.addCoach(type='button') {{_ "addCoach"}}
+				button.btn.btn-success.col-xs-12.col-sm-12.col-md-12.col-lg-12.clearfix.shadow.createTeam(type='button') {{_ "validateCreationTeam"}}

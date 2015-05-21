@@ -1,0 +1,26 @@
+template(name='gameStats')
+	div(role='tabpanel')
+		ul#gameStatsPills.nav.nav-pills(role='tablist')
+			if isOwnerOfTheGame
+				li.active(role='presentation')
+					a#stats-tab(href='#stats', role='tab', data-toggle='tab', aria-controls='stats', aria-expanded='true') {{_ "stats"}}
+				li(role='presentation')
+					a#resume-tab(href='#resume', role='tab', data-toggle='tab', aria-controls='resume') {{_ "summary"}}
+			else
+				li.active(role='presentation')
+					a#resume-tab(href='#resume', role='tab', data-toggle='tab', aria-controls='resume') {{_ "summary"}}
+			if isOwnerOfTheGame
+				li(role='presentation')
+					a#playersSettings-tab(href='#playersSettings', role='tab', data-toggle='tab', aria-controls='playersSettings', aria-expanded='true') {{_ "gameSettings"}}
+	#myTabContent.tab-content
+		if isOwnerOfTheGame
+			#stats.tab-pane.fade.in.active(role='tabpanel', aria-labelledby='stats-tab')
+				+stats
+			#resume.tab-pane.fade(role='tabpanel', aria-labelledby='resume-tab')
+				+summary
+		else
+			#resume.tab-pane.fade.in.active(role='tabpanel', aria-labelledby='resume-tab')
+				+summary
+		if isOwnerOfTheGame
+			#playersSettings.tab-pane.fade(role='tabpanel', aria-labelledby='playersSettings-tab')
+				+playerBio
