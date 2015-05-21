@@ -1,13 +1,13 @@
 template(name='home')
 	.jumbotron.shadow.text-center
 		h1 {{_ "ApplicationName"}}
-		p Prenez les stats de votre équipe de Basket-Ball et diffusez en direct le match !
+		p {{_ "appTeaserPhrase"}}
 		if currentUser
 			+creationGame
 		else
 			{{_ "loginToBeginTakingStats"}}
 	div
-		h2 Suivez en direct le match de ces équipes
+		h2 {{_ "followDirect"}}
 		each game
 			.row.shadow.displayLiveGames.vertical-align
 				.col-xs-9.col-sm-9.col-md-9.col-lg-10
@@ -47,9 +47,9 @@ template(name='home')
 		else
 			p {{_ "noLiveGames"}}
 		p
-			a(href="{{pathFor 'liveGames'}}") Ou faites votre choix parmi tous les matchs en cours
+			a(href="{{pathFor 'liveGames'}}") {{_ "orSelectARunningGame"}}
 	div
-		h2 Regardez la feuille de statistiques d'un match terminé
+		h2 {{_ "seeEndedGames"}}
 		each endedGame
 			.row.shadow.displayLiveGames.vertical-align
 				.col-xs-9.col-sm-9.col-md-9.col-lg-10
@@ -95,5 +95,4 @@ template(name='home')
 		else
 			p {{_ "noLiveGames"}}
 		p
-			a(href="{{pathFor 'liveGames'}}")
-				| Ou faites votre choix parmi tous les matchs terminés
+			a(href="{{pathFor 'liveGames'}}") {{_ "orSelectAnEndedGame"}}

@@ -138,5 +138,10 @@
 	"teamToEdit": "Edition de l'équipe",
 	"validateUpdateTeam": "Valider la mise à jour de l'équipe",
 	"nonAutorized": "Vous n'êtes pas autorisé à pénétrer dans cette zone !",
-	"seeLiveGames": "Voir l'ensemble des matchs en cours"
+	"seeLiveGames": "Voir l'ensemble des matchs en cours",
+	"appTeaserPhrase": "Prenez les stats de votre équipe de Basket-Ball et diffusez en direct le match !",
+	"followDirect": "Suivez en direct le match de ces équipes",
+	"orSelectARunningGame": "Ou faites votre choix parmi tous les matchs en cours",
+	"seeEndedGames": "Regardez la feuille de statistiques d'un match terminé",
+	"orSelectAnEndedGame": "Ou faites votre choix parmi tous les matchs terminés"
 }
