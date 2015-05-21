@@ -1,0 +1,36 @@
+template(name='gameDefinition')
+	h2 {{_ "teamDefinition"}}
+	.clearfix
+		a(href="{{pathFor 'home'}}")
+			button.returnButton.shadow.btn.pull-left.btn-info(type='button') {{_ "back"}}
+		button.btn.shadow.btn-primary.next.pull-right.clearfix(type='button') {{_ "next"}}
+	.officialGame
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "yourTeam"}}
+			input#homeTeam.form-control(type='text', value='{{yourClub}}')
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "opponent"}}
+			input#homeTeam.awesomplete.form-control(type='text', list='awayClubList')
+			datalist#awayClubList
+				each clubName
+					option #{name}
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "level"}}
+			input#level.awesomplete.form-control(type='text', list='levelList')
+			datalist#levelList
+				each level
+					option #{val}
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "group"}}
+			input#group.awesomplete.form-control(type='text', list='groupList')
+			datalist#groupList
+				each group
+					option #{val}
+		.checkbox
+			label
+				input#privateGame(type='checkbox')
+				| {{_ "privateGame"}}
+	.footer
+		a(href="{{pathFor 'home'}}")
+			button.btn.shadow.pull-left.btn-info(type='button') {{_ "back"}}
+		button.btn.shadow.next.pull-right.btn-primary(type='button') {{_ "next"}}

@@ -1,0 +1,4 @@
+template(name='creationGame')
+	if isConnected
+		a(href="{{pathFor 'gameDefinition'}}")
+			button.btn.btn-primary.shadow(type='button') {{_ "goStats"}}

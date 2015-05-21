@@ -1,0 +1,11 @@
+template(name='playerBio')
+	h3 {{_ "gameDefinition"}}
+	.gameInfos.cleafix
+			+gameInfos
+	h3 {{_ "playerDefinition"}}
+	.homeTeam.clearfix
+		h4 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
+		each homeTeam.players
+			+playerUpdate
+		each homeTeam.coachs
+			+coachUpdate

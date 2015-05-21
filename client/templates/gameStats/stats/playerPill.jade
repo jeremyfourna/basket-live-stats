@@ -1,0 +1,7 @@
+template(name='homeTeamPlayerPill')
+	button.homeTeamPillForModal.shadow.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}', data-toggle='modal', data-target='#homeTeamPlayerModal', type='button') {{_ "number"}}
+		span.badge #{jersey}
+
+template(name='awayTeamPlayerPill')
+	button.awayTeamPillForModal.shadow.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}', data-toggle='modal', data-target='#awayTeamPlayerModal', type='button') {{_ "number"}}
+		span.badge #{jersey}

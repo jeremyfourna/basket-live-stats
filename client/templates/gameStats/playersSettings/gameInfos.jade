@@ -1,0 +1,16 @@
+template(name='gameInfos')
+	.gameInfos
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "homeTeam"}}
+			input.teamHome.form-control(type='text', disabled='disabled', value='#{gameInfos.homeTeam}')
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "awayTeam"}}
+			input.teamAway.form-control(type='text', disabled='disabled', value='#{gameInfos.awayTeam}')
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "level"}}
+			input.level.form-control(type='text', disabled='disabled', value='#{gameInfos.level}')
+		.input-group.shadow.input-group-sm
+			span.input-group-addon {{_ "group"}}
+			input.group.form-control(type='text', disabled='disabled', value='#{gameInfos.group}')
+		button.btn.btn-primary.shadow.btn-sm.gameInfosUpdate(type='button') {{_ "modify"}}
+		button.btn.btn-success.shadow.disabled.btn-sm.gameInfosValidation(type='button') {{_ "validate"}}
