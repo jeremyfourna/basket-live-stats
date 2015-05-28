@@ -254,3 +254,9 @@ Template.stats.events({
 		});
 	}
 });
+
+
+Template.stats.onRendered(function() {
+	dragula(this.find('#OnBenchPlayers'));
+	//dragula([this.find('#inGamePlayers'), this.find('#OnBenchPlayers')]);
+});

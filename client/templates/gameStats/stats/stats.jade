@@ -23,13 +23,15 @@ template(name='stats')
 		h4 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
 		p {{_ "explanationHowToAddAStat"}}
 		.homeTeam.row.playerRow
-			each homeTeam.players
-				+homeTeamPlayerPill
+			#inGamePlayers
+			#OnBenchPlayers
+				each homeTeam.players
+					+homeTeamPlayerPill
 			+homeTeamPlayerModal
 	.clearfix
 		h4 {{_ "awayTeam"}} : #{gameInfos.awayTeam}
 		p {{_ "explanationHowToAddAStat"}}
 		.awayTeam.row.playerRow
-			each awayTeam.players}}
+			each awayTeam.players
 				+awayTeamPlayerPill
 			+awayTeamPlayerModal
