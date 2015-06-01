@@ -252,11 +252,9 @@ Template.stats.events({
 				"state": "gameEnded"
 			}
 		});
+	},
+	'click .makeAReplacement': function() {
+		$('#gameStats').addClass('hidden');
+		$('#replacementAction').removeClass('hidden');
 	}
-});
-
-
-Template.stats.onRendered(function() {
-	dragula(this.find('#OnBenchPlayers'));
-	//dragula([this.find('#inGamePlayers'), this.find('#OnBenchPlayers')]);
 });

@@ -11,6 +11,8 @@ template(name='gameStats')
 					a#resume-tab(href='#resume', role='tab', data-toggle='tab', aria-controls='resume') {{_ "summary"}}
 			if isOwnerOfTheGame
 				li(role='presentation')
+					a#replacement-tab(href='#replacement', role='tab', data-toggle='tab', aria-controls='replacement', aria-expanded='true') {{_ "replacement"}}
+				li(role='presentation')
 					a#playersSettings-tab(href='#playersSettings', role='tab', data-toggle='tab', aria-controls='playersSettings', aria-expanded='true') {{_ "gameSettings"}}
 	#myTabContent.tab-content
 		if isOwnerOfTheGame
@@ -22,5 +24,7 @@ template(name='gameStats')
 			#resume.tab-pane.fade.in.active(role='tabpanel', aria-labelledby='resume-tab')
 				+summary
 		if isOwnerOfTheGame
+			#replacement.tab-pane.fade(role='tabpanel', aria-labelledby='replacement-tab')
+				+replacement
 			#playersSettings.tab-pane.fade(role='tabpanel', aria-labelledby='playersSettings-tab')
 				+playerBio

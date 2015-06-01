@@ -23,10 +23,9 @@ template(name='stats')
 		h4 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
 		p {{_ "explanationHowToAddAStat"}}
 		.homeTeam.row.playerRow
-			#inGamePlayers
-			#OnBenchPlayers
-				each homeTeam.players
-					+homeTeamPlayerPill
+			each homeTeam.players
+				+homeTeamPlayerPill
+			// button.makeAReplacement.btn.shadow.btn-primary(type='button') {{_ "makeAReplacement"}}
 			+homeTeamPlayerModal
 	.clearfix
 		h4 {{_ "awayTeam"}} : #{gameInfos.awayTeam}
@@ -34,4 +33,5 @@ template(name='stats')
 		.awayTeam.row.playerRow
 			each awayTeam.players
 				+awayTeamPlayerPill
+			// button.makeAReplacement.btn.shadow.btn-primary(type='button') {{_ "makeAReplacement"}}
 			+awayTeamPlayerModal

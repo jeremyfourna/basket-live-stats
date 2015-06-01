@@ -1,3 +1,20 @@
 .inlineClass {
     display: inline;
 }
+
+.makeAReplacement {
+    margin: 5px;
+}
+
+#homeTeamOnTheBench,
+#homeTeamInPlay,
+#awayTeamInPlay,
+#awayTeamOnTheBench {
+    min-height: 50px;
+    min-width: 50px;
+    border: 1px black solid;
+}
+
+.validateInPlayPlayers {
+    margin-top: 10px;
+}
