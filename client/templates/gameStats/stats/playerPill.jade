@@ -11,9 +11,11 @@ template(name='awayTeamPlayerPill')
 template(name='homeTeamPlayerReplacement')
 	div
 		.homeTeamPillForModal.shadow.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}') {{_ "number"}}
+			span.playerIndex.hidden #{playerIndex}
 			span.badge #{jersey}
 
 template(name='awayTeamPlayerReplacement')
 	div
 		.awayTeamPillForModal.shadow.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}') {{_ "number"}}
+			span.playerIndex.hidden #{playerIndex}
 			span.badge #{jersey}
