@@ -6,16 +6,20 @@ template(name="replacement")
 			p {{_ "explanationHowToMakeAReplacement"}}
 			h4 {{_ "inPlay"}}
 			#homeTeamInPlay.row.playerRow
+				each homeTeamPlayersPlaying
+					+homeTeamPlayerReplacement
 			h4 {{_ "onTheBench"}}
 			#homeTeamOnTheBench.row.playerRow
-				each homeTeam.players
+				each homeTeamPlayersOnTheBench
 					+homeTeamPlayerReplacement
 		.clearfix
 			h4 {{_ "awayTeam"}} : #{gameInfos.awayTeam}
 			p {{_ "explanationHowToMakeAReplacement"}}
 			h4 {{_ "inPlay"}}
 			#awayTeamInPlay.row.playerRow
+				each awayTeamPlayersPlaying
+					+awayTeamPlayerReplacement
 			h4 {{_ "onTheBench"}}
 			#awayTeamOnTheBench.row.playerRow
-				each awayTeam.players
+				each awayTeamPlayersOnTheBench
 					+awayTeamPlayerReplacement

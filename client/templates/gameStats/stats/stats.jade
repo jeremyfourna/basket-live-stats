@@ -1,5 +1,8 @@
 template(name='stats')
 	.clearfix
+		h4 {{_ "gameScore"}} :
+		p {{gameInfos.homeTeam}} : {{gameStats.score.homeTeam}} - {{gameStats.score.awayTeam}} : {{gameInfos.awayTeam}}
+	.clearfix
 		h4 {{_ "gameQuarters"}}
 		if notStarted
 			button#notStarted.btn.shadow.btn-primary(type='button') {{_ "labelNotStarted"}}
@@ -23,15 +26,17 @@ template(name='stats')
 		h4 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
 		p {{_ "explanationHowToAddAStat"}}
 		.homeTeam.row.playerRow
-			each homeTeam.players
+			each homeTeamPlayersPlaying
 				+homeTeamPlayerPill
-			// button.makeAReplacement.btn.shadow.btn-primary(type='button') {{_ "makeAReplacement"}}
+			else
+				button.DisplayReplacement.btn.shadow.btn-warning(type='button') {{_ "fiveStarter"}}
 			+homeTeamPlayerModal
 	.clearfix
 		h4 {{_ "awayTeam"}} : #{gameInfos.awayTeam}
 		p {{_ "explanationHowToAddAStat"}}
 		.awayTeam.row.playerRow
-			each awayTeam.players
+			each awayTeamPlayersPlaying
 				+awayTeamPlayerPill
-			// button.makeAReplacement.btn.shadow.btn-primary(type='button') {{_ "makeAReplacement"}}
+			else
+				button.DisplayReplacement.btn.shadow.btn-warning(type='button') {{_ "fiveStarter"}}
 			+awayTeamPlayerModal
