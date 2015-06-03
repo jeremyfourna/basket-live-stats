@@ -10,7 +10,7 @@ template(name='gameDefinition')
 			input#homeTeam.form-control(type='text', value='{{yourClub}}')
 		.input-group.shadow.input-group-sm
 			span.input-group-addon {{_ "opponent"}}
-			input#homeTeam.awesomplete.form-control(type='text', list='awayClubList')
+			input#awayTeam.awesomplete.form-control(type='text', list='awayClubList')
 			datalist#awayClubList
 				each clubName
 					option #{name}
