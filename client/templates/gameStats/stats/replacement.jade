@@ -10,7 +10,6 @@ template(name="replacement")
 			#homeTeamOnTheBench.row.playerRow
 				each homeTeam.players
 					+homeTeamPlayerReplacement
-			button.validateInPlayPlayers.btn.shadow.btn-primary(type='button') {{_ "validateReplacement"}}
 		.clearfix
 			h4 {{_ "awayTeam"}} : #{gameInfos.awayTeam}
 			p {{_ "explanationHowToMakeAReplacement"}}
@@ -20,4 +19,3 @@ template(name="replacement")
 			#awayTeamOnTheBench.row.playerRow
 				each awayTeam.players
 					+awayTeamPlayerReplacement
-			button.validateInPlayPlayers.btn.shadow.btn-primary(type='button') {{_ "validateReplacement"}}
