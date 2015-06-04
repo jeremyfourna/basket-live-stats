@@ -1,0 +1,25 @@
+template(name="replacement")
+	#replacementAction
+		h3 {{_ "whoReplaceWho"}}
+		.clearfix
+			h4 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
+			p {{_ "explanationHowToMakeAReplacement"}}
+			h4 {{_ "inPlay"}}
+			#homeTeamInPlay.row.playerRow
+				each homeTeamPlayersPlaying
+					+homeTeamPlayerReplacement
+			h4 {{_ "onTheBench"}}
+			#homeTeamOnTheBench.row.playerRow
+				each homeTeamPlayersOnTheBench
+					+homeTeamPlayerReplacement
+		.clearfix
+			h4 {{_ "awayTeam"}} : #{gameInfos.awayTeam}
+			p {{_ "explanationHowToMakeAReplacement"}}
+			h4 {{_ "inPlay"}}
+			#awayTeamInPlay.row.playerRow
+				each awayTeamPlayersPlaying
+					+awayTeamPlayerReplacement
+			h4 {{_ "onTheBench"}}
+			#awayTeamOnTheBench.row.playerRow
+				each awayTeamPlayersOnTheBench
+					+awayTeamPlayerReplacement
