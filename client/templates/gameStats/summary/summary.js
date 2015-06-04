@@ -200,5 +200,12 @@ Template.summary.helpers({
 		var percentage = threePointsIn / (threePointsIn + twoPointsIn) * 100;
 		var roundPercentage = Math.floor(percentage);
 		return roundPercentage || 0;
+	},
+	'isInPlay': function() {
+		if (this.inPlay) {
+			return 'inPlay';
+		} else {
+			return false;
+		}
 	}
 });

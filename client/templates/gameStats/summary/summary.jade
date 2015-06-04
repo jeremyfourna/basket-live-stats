@@ -32,9 +32,9 @@ template(name='summary')
 					th {{_ "foulProvComm"}}
 					th {{_ "foulRatio"}}
 					th {{_ "eval"}}
-			tbody
+			tbody.homeTeamPlayers
 				each homeTeam.players
-					tr
+					tr(class='#{isInPlay}')
 						th(scope='row') #{jersey}
 						td #{stats.points.totalPoints}
 						td #{stats.points.twoPointsIn}/#{total2PointsShoots}
@@ -80,9 +80,9 @@ template(name='summary')
 					th {{_ "twoPoints"}}
 					th {{_ "threePoints"}}
 					th {{_ "ft"}}
-			tbody
+			tbody.awayTeamPlayers
 				each awayTeam.players
-					tr
+					tr(class='#{isInPlay}')
 						th(scope='row') #{jersey}
 						td #{stats.points.totalPoints}
 						td #{stats.points.twoPointsIn}
