@@ -29,8 +29,9 @@ template(name='stats')
 			each homeTeamPlayersPlaying
 				+homeTeamPlayerPill
 			else
-				button.DisplayReplacement.btn.shadow.btn-warning(type='button') {{_ "fiveStarter"}}
-			+homeTeamPlayerModal
+				button.displayReplacement.btn.shadow.btn-warning(type='button') {{_ "fiveStarter"}}
+		button.doReplacement.btn.shadow.btn-primary(type='button', class='#{fiveStarterOrReplacementHomeTeam}') {{_ "makeAReplacement"}}
+		+homeTeamPlayerModal
 	.clearfix
 		h4 {{_ "awayTeam"}} : #{gameInfos.awayTeam}
 		p {{_ "explanationHowToAddAStat"}}
@@ -39,4 +40,5 @@ template(name='stats')
 				+awayTeamPlayerPill
 			else
 				button.DisplayReplacement.btn.shadow.btn-warning(type='button') {{_ "fiveStarter"}}
-			+awayTeamPlayerModal
+		button.doReplacement.btn.shadow.btn-primary(type='button', class='#{fiveStarterOrReplacementAwayTeam}') {{_ "makeAReplacement"}}
+		+awayTeamPlayerModal

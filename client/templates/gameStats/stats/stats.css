@@ -2,23 +2,15 @@
     display: inline;
 }
 
-.makeAReplacement {
-    margin: 5px;
+.displayReplacement {
+    margin-top: 10px;
+    margin-left: 15px;
 }
 
-#homeTeamOnTheBench,
-#homeTeamInPlay,
-#awayTeamInPlay,
-#awayTeamOnTheBench {
-    min-height: 50px;
-    min-width: 50px;
-    border: 1px black solid;
+.doReplacement {
+    margin-top: 10px;
 }
 
 .validateInPlayPlayers {
     margin-top: 10px;
-}
-
-.DisplayReplacement {
-    margin-left: 15px;
 }

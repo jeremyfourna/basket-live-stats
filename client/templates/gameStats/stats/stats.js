@@ -81,6 +81,34 @@ Template.stats.helpers({
 			}
 		});
 		return inPlayTeam;
+	},
+	'fiveStarterOrReplacementHomeTeam': function() {
+		var team = this.homeTeam.players;
+		var inPlayTeam = [];
+		team.forEach(function(element, index, array) {
+			if (element.inPlay) {
+				inPlayTeam.push(element);
+			}
+		});
+		if (inPlayTeam.length > 0) {
+			return 'fiveStarterOrReplacementHomeTeam';
+		} else {
+			return 'hidden';
+		}
+	},
+	'fiveStarterOrReplacementAwayTeam': function() {
+		var team = this.awayTeam.players;
+		var inPlayTeam = [];
+		team.forEach(function(element, index, array) {
+			if (element.inPlay) {
+				inPlayTeam.push(element);
+			}
+		});
+		if (inPlayTeam.length > 0) {
+			return 'fiveStarterOrReplacementAwayTeam';
+		} else {
+			return 'hidden';
+		}
 	}
 });
 
@@ -165,7 +193,10 @@ Template.stats.events({
 			}
 		});
 	},
-	'click .DisplayReplacement': function() {
+	'click .displayReplacement': function() {
+		$('#replacement-tab').tab('show');
+	},
+	'click .doReplacement': function() {
 		$('#replacement-tab').tab('show');
 	}
 });
