@@ -1,3 +1,16 @@
 .inlineClass {
     display: inline;
 }
+
+.displayReplacement {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.doReplacement {
+    margin-top: 10px;
+}
+
+.validateInPlayPlayers {
+    margin-top: 10px;
+}

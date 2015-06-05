@@ -143,5 +143,13 @@
 	"followDirect": "Suivez en direct le match de ces équipes",
 	"orSelectARunningGame": "Ou faites votre choix parmi tous les matchs en cours",
 	"seeEndedGames": "Regardez la feuille de statistiques d'un match terminé",
-	"orSelectAnEndedGame": "Ou faites votre choix parmi tous les matchs terminés"
+	"orSelectAnEndedGame": "Ou faites votre choix parmi tous les matchs terminés",
+	"makeAReplacement": "Effectuez un remplacement",
+	"explanationHowToMakeAReplacement": "Cliquez sur un joueur pour le faire passer de \"En jeu\" à \"Sur le banc\" et vice versa",
+	"whoReplaceWho": "Qui remplace qui ?",
+	"replacement": "Remplacement",
+	"inPlay": "En jeu",
+	"onTheBench": "Sur le banc",
+	"validateReplacement": "Valider le changement",
+	"fiveStarter": "Définissez le 5 majeur"
 }

@@ -62,113 +62,53 @@ Template.stats.helpers({
 			return false;
 		}
 	},
-	'bestHomeTeamPlayer': function() {
-		var bestPlayer = function(team) {
-			var teamSorting = [];
-			var playersDataRetrieval = function(player) {
-				return {
-					"firstName": player.firstName,
-					"lastName": player.lastName,
-					"jersey": player.jersey,
-					"playerIndex": player.playerIndex,
-					"evaluation": player.stats.evaluation,
-					"totalPoints": player.stats.points.totalPoints
-				};
-			};
-			team.forEach(function(element, index, array) {
-				teamSorting.push(playersDataRetrieval(element));
-			});
-			teamSorting.sort(function(a, b) {
-				if (a.evaluation < b.evaluation) {
-					return 1;
-				}
-				if (a.evaluation > b.evaluation) {
-					return -1;
-				}
-				// a must be equal to b
-				return 0;
-			});
-			return teamSorting[0];
-		};
-		return bestPlayer(this.homeTeam.players);
+	'homeTeamPlayersPlaying': function() {
+		var team = this.homeTeam.players;
+		var inPlayTeam = [];
+		team.forEach(function(element, index, array) {
+			if (element.inPlay) {
+				inPlayTeam.push(element);
+			}
+		});
+		return inPlayTeam;
 	},
-	'bestAwayTeamPlayer': function() {
-		var bestPlayer = function(team) {
-			var teamSorting = [];
-			var playersDataRetrieval = function(player) {
-				return {
-					"firstName": player.firstName,
-					"lastName": player.lastName,
-					"jersey": player.jersey,
-					"playerIndex": player.playerIndex,
-					"evaluation": player.stats.evaluation,
-					"totalPoints": player.stats.points.totalPoints
-				};
-			};
-			team.forEach(function(element, index, array) {
-				teamSorting.push(playersDataRetrieval(element));
-			});
-			teamSorting.sort(function(a, b) {
-				if (a.evaluation < b.evaluation) {
-					return 1;
-				}
-				if (a.evaluation > b.evaluation) {
-					return -1;
-				}
-				// a must be equal to b
-				return 0;
-			});
-			return teamSorting[0];
-		};
-		return bestPlayer(this.awayTeam.players);
+	'awayTeamPlayersPlaying': function() {
+		var team = this.awayTeam.players;
+		var inPlayTeam = [];
+		team.forEach(function(element, index, array) {
+			if (element.inPlay) {
+				inPlayTeam.push(element);
+			}
+		});
+		return inPlayTeam;
 	},
-	'awayTeamPercentage2PointsShoots': function() {
-		var twoPointsIn = this.gameStats.shoots.awayTeam.twoPointsIn;
-		var twoPointsOut = this.gameStats.shoots.awayTeam.twoPointsOut;
-		var total = twoPointsIn + twoPointsOut;
-		var percentage = twoPointsIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
+	'fiveStarterOrReplacementHomeTeam': function() {
+		var team = this.homeTeam.players;
+		var inPlayTeam = [];
+		team.forEach(function(element, index, array) {
+			if (element.inPlay) {
+				inPlayTeam.push(element);
+			}
+		});
+		if (inPlayTeam.length > 0) {
+			return 'fiveStarterOrReplacementHomeTeam';
+		} else {
+			return 'hidden';
+		}
 	},
-	'awayTeamPercentage3PointsShoots': function() {
-		var threePointsIn = this.gameStats.shoots.awayTeam.threePointsIn;
-		var threePointsOut = this.gameStats.shoots.awayTeam.threePointsOut;
-		var total = threePointsIn + threePointsOut;
-		var percentage = threePointsIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
-	},
-	'awayTeamPercentage1PointShoots': function() {
-		var onePointIn = this.gameStats.shoots.awayTeam.onePointIn;
-		var onePointOut = this.gameStats.shoots.awayTeam.onePointOut;
-		var total = onePointIn + onePointOut;
-		var percentage = onePointIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
-	},
-	'homeTeamPercentage2PointsShoots': function() {
-		var twoPointsIn = this.gameStats.shoots.homeTeam.twoPointsIn;
-		var twoPointsOut = this.gameStats.shoots.homeTeam.twoPointsOut;
-		var total = twoPointsIn + twoPointsOut;
-		var percentage = twoPointsIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
-	},
-	'homeTeamPercentage3PointsShoots': function() {
-		var threePointsIn = this.gameStats.shoots.homeTeam.threePointsIn;
-		var threePointsOut = this.gameStats.shoots.homeTeam.threePointsOut;
-		var total = threePointsIn + threePointsOut;
-		var percentage = threePointsIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
-	},
-	'homeTeamPercentage1PointShoots': function() {
-		var onePointIn = this.gameStats.shoots.homeTeam.onePointIn;
-		var onePointOut = this.gameStats.shoots.homeTeam.onePointOut;
-		var total = onePointIn + onePointOut;
-		var percentage = onePointIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
+	'fiveStarterOrReplacementAwayTeam': function() {
+		var team = this.awayTeam.players;
+		var inPlayTeam = [];
+		team.forEach(function(element, index, array) {
+			if (element.inPlay) {
+				inPlayTeam.push(element);
+			}
+		});
+		if (inPlayTeam.length > 0) {
+			return 'fiveStarterOrReplacementAwayTeam';
+		} else {
+			return 'hidden';
+		}
 	}
 });
 
@@ -252,5 +192,11 @@ Template.stats.events({
 				"state": "gameEnded"
 			}
 		});
+	},
+	'click .displayReplacement': function() {
+		$('#replacement-tab').tab('show');
+	},
+	'click .doReplacement': function() {
+		$('#replacement-tab').tab('show');
 	}
 });

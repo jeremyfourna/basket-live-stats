@@ -19,3 +19,8 @@
 .awayTeamColor {
     background-color: #FF753A;
 }
+
+.homeTeamPlayers > .inPlay,
+.awayTeamPlayers > .inPlay {
+    background-color: #ADF5FF;
+}

@@ -25,6 +25,7 @@ Template.participantsDefinition.events({
 				lastName: isFilled($(element).find('.lastName')),
 				jersey: filterInt($(element).find('.jersey').val()),
 				playerIndex: filterInt($(element).find('.playerIndex').val()),
+				inPlay: false,
 				stats: {
 					points: {
 						onePointIn: 0,
