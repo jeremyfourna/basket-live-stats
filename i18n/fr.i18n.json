@@ -145,7 +145,7 @@
 	"seeEndedGames": "Regardez la feuille de statistiques d'un match terminé",
 	"orSelectAnEndedGame": "Ou faites votre choix parmi tous les matchs terminés",
 	"makeAReplacement": "Effectuez un remplacement",
-	"explanationHowToMakeAReplacement": "Faite un drag & drop entre les parties \"En jeu\" et \"Sur le banc\"",
+	"explanationHowToMakeAReplacement": "Cliquez sur un joueur pour le faire passer de \"En jeu\" à \"Sur le banc\" et vice versa",
 	"whoReplaceWho": "Qui remplace qui ?",
 	"replacement": "Remplacement",
 	"inPlay": "En jeu",
