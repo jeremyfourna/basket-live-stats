@@ -2,7 +2,6 @@ Template.gameInfos.events({
 	'click .gameInfosUpdate': function() {
 		$('.teamHome').removeAttr('disabled');
 		$('.teamAway').removeAttr('disabled');
-		$('.category').removeAttr('disabled');
 		$('.level').removeAttr('disabled');
 		$('.group').removeAttr('disabled');
 		$('.gameInfosValidation').removeClass('disabled');
@@ -12,13 +11,12 @@ Template.gameInfos.events({
 		var gameInfos = {
 			homeTeam: $('.teamHome').val(),
 			awayTeam: $('.teamAway').val(),
-			category: $('.category').val(),
 			level: $('.level').val(),
-			group: $('.group').val()
+			group: $('.group').val(),
+			privateGame: Template.currentData().privateGame
 		};
 		$('.teamHome').attr('disabled', 'disabled');
 		$('.teamAway').attr('disabled', 'disabled');
-		$('.category').attr('disabled', 'disabled');
 		$('.level').attr('disabled', 'disabled');
 		$('.group').attr('disabled', 'disabled');
 		$('.gameInfosValidation').addClass('disabled');
