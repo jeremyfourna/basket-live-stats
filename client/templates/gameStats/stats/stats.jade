@@ -39,6 +39,6 @@ template(name='stats')
 			each awayTeamPlayersPlaying
 				+awayTeamPlayerPill
 			else
-				button.DisplayReplacement.btn.shadow.btn-warning(type='button') {{_ "fiveStarter"}}
+				button.displayReplacement.btn.shadow.btn-warning(type='button') {{_ "fiveStarter"}}
 		button.doReplacement.btn.shadow.btn-primary(type='button', class='#{fiveStarterOrReplacementAwayTeam}') {{_ "makeAReplacement"}}
 		+awayTeamPlayerModal
