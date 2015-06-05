@@ -9,10 +9,13 @@ Template.completedGames.helpers({
 
 Template.completedGames.events({
 	'click .btn-danger': function(e, t) {
-		var currentGame = this._id;
-		Games.remove({
-			_id: currentGame
+		var currentGame = {
+			id: this._id
+		};
+		Meteor.call('gameDelete', currentGame, function(error, result) {
+			if (error) {
+				return throwError(error.message);
+			}
 		});
-		return throwError("Le match a bien été supprimé...");
 	}
 });
