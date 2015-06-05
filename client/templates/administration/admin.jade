@@ -5,8 +5,7 @@ template(name="admin")
 		p {{_ "endedGames"}} : #{endedGames}
 		p {{_ "nbUsers"}} : #{nbUsers}
 		p {{_ "nbClubs"}} : #{nbClubs}
-		button#addNewClub.btn.btn-primary.shadow(type='button')
-			{{_ "addClub"}}
+		button#addNewClub.btn.btn-primary.shadow(type='button') {{_ "addClub"}}
 	else
-		{{_ "nonAutorized"}}
+		p {{_ "nonAutorized"}}
 
