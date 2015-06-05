@@ -10,16 +10,16 @@ template(name='completedLiveGames')
 					a(href="{{pathFor 'gameStats'}}")
 						button.pull-right.shadow.btn.btn-default(type='button')
 							span.glyphicon.glyphicon-log-in(aria-hidden='true')
-				.row.vertical-align
-					.text-center.col-xs-3.col-sm-3.col-md-3.col-lg-4
-						h4 #{gameStats.score.homeTeam}
-					.text-center.col-xs-2.col-sm-2.col-md-2.col-lg-2
-						h4 #{_ "gameEnded"}
-					.text-center.col-xs-3.col-sm-3.col-md-3.col-lg-4
-						h4 #{gameStats.score.awayTeam}
-					if ownerOfTheGame
-						.col-xs-3.col-sm-3.col-md-3.col-lg-2
-							button.pull-right.shadow.btn.btn-danger(type='button')
-								span.glyphicon.glyphicon-remove(aria-hidden='true')
+			.row.vertical-align
+				.text-center.col-xs-3.col-sm-3.col-md-3.col-lg-4
+					h4 #{gameStats.score.homeTeam}
+				.text-center.col-xs-2.col-sm-2.col-md-2.col-lg-2
+					h4 {{_ "gameEnded"}}
+				.text-center.col-xs-3.col-sm-3.col-md-3.col-lg-4
+					h4 #{gameStats.score.awayTeam}
+				if ownerOfTheGame
+					.col-xs-3.col-sm-3.col-md-3.col-lg-2
+						button.pull-right.shadow.btn.btn-danger(type='button')
+							span.glyphicon.glyphicon-remove(aria-hidden='true')
 	else
 		p {{_ "noCompletedLiveGames"}}
