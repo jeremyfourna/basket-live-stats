@@ -26,6 +26,7 @@ Template.participantsDefinition.events({
 				jersey: filterInt($(element).find('.jersey').val()),
 				playerIndex: filterInt($(element).find('.playerIndex').val()),
 				inPlay: false,
+				gameTime: [],
 				stats: {
 					points: {
 						onePointIn: 0,
