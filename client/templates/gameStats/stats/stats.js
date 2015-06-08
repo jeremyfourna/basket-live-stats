@@ -115,81 +115,113 @@ Template.stats.helpers({
 Template.stats.events({
 	'click #notStarted': function(e) {
 		e.preventDefault();
-		Games.update({
-			_id: this._id
-		}, {
-			$set: {
-				"state": "q1Running"
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'q1Running'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
 			}
 		});
 	},
 	'click #q1Running': function(e) {
 		e.preventDefault();
-		Games.update({
-			_id: this._id
-		}, {
-			$set: {
-				"state": "q1Ended"
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'q1Ended'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
 			}
 		});
 	},
 	'click #q1Ended': function(e) {
 		e.preventDefault();
-		Games.update({
-			_id: this._id
-		}, {
-			$set: {
-				"state": "q2Running"
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'q2Running'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
 			}
 		});
 	},
 	'click #q2Running': function(e) {
 		e.preventDefault();
-		Games.update({
-			_id: this._id
-		}, {
-			$set: {
-				"state": "halfTime"
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'halfTime'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
 			}
 		});
 	},
 	'click #halfTime': function(e) {
 		e.preventDefault();
-		Games.update({
-			_id: this._id
-		}, {
-			$set: {
-				"state": "q3Running"
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'q3Running'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
 			}
 		});
 	},
 	'click #q3Running': function(e) {
 		e.preventDefault();
-		Games.update({
-			_id: this._id
-		}, {
-			$set: {
-				"state": "q3Ended"
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'q3Ended'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
 			}
 		});
 	},
 	'click #q3Ended': function(e) {
 		e.preventDefault();
-		Games.update({
-			_id: this._id
-		}, {
-			$set: {
-				"state": "q4Running"
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'q4Running'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
 			}
 		});
 	},
 	'click #q4Running': function(e) {
 		e.preventDefault();
-		Games.update({
-			_id: this._id
-		}, {
-			$set: {
-				"state": "gameEnded"
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'gameEnded'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
 			}
 		});
 	},
