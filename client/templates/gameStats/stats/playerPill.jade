@@ -1,17 +1,7 @@
 template(name='homeTeamPlayerPill')
-	.homeTeamPillForModal.shadow.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}', data-toggle='modal', data-target='#homeTeamPlayerModal') {{_ "number"}}
-			span.badge #{jersey}
+	button.homeTeamPillForModal.shadow.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}', data-toggle='modal', data-target='#homeTeamPlayerModal') {{_ "number"}}
+		span.badge #{jersey}
 
 template(name='awayTeamPlayerPill')
-	.awayTeamPillForModal.shadow.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}', data-toggle='modal', data-target='#awayTeamPlayerModal') {{_ "number"}}
-			span.badge #{jersey}
-
-template(name='homeTeamPlayerReplacement')
-	.homeTeamPillForModal.shadow.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}') {{_ "number"}}
-			span.playerIndex.hidden #{playerIndex}
-			span.badge #{jersey}
-
-template(name='awayTeamPlayerReplacement')
-	.awayTeamPillForModal.shadow.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}') {{_ "number"}}
-			span.playerIndex.hidden #{playerIndex}
-			span.badge #{jersey}
+	button.awayTeamPillForModal.shadow.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}', data-toggle='modal', data-target='#awayTeamPlayerModal') {{_ "number"}}
+		span.badge #{jersey}
