@@ -43,59 +43,35 @@ Template.replacement.helpers({
 
 Template.replacement.events({
 	'click #homeTeamInPlay > .homeTeamPillForModal': function(e, t) {
-		var gameId = {
-			_id: Template.currentData()._id
-		};
-		var playerData = {
+		var switchData = {
+			_id: Template.currentData()._id,
 			team: 'homeTeam',
 			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML)
 		};
-		Meteor.call('goingOnTheBench', gameId, playerData, function(error, result) {
-			if (error) {
-				return throwError(error.message);
-			}
-		});
+		Session.set('switchData', switchData);
 	},
 	'click #homeTeamOnTheBench > .homeTeamPillForModal': function(e, t) {
-		var gameId = {
-			_id: Template.currentData()._id
-		};
-		var playerData = {
+		var switchData = {
+			_id: Template.currentData()._id,
 			team: 'homeTeam',
 			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML)
 		};
-		Meteor.call('goingInPlay', gameId, playerData, function(error, result) {
-			if (error) {
-				return throwError(error.message);
-			}
-		});
+		Session.set('switchData', switchData);
 	},
 	'click #awayTeamInPlay > .awayTeamPillForModal': function(e, t) {
-		var gameId = {
-			_id: Template.currentData()._id
-		};
-		var playerData = {
-			team: 'awayTeam',
+		var switchData = {
+			_id: Template.currentData()._id,
+			team: 'homeTeam',
 			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML)
 		};
-		Meteor.call('goingOnTheBench', gameId, playerData, function(error, result) {
-			if (error) {
-				return throwError(error.message);
-			}
-		});
+		Session.set('switchData', switchData);
 	},
 	'click #awayTeamOnTheBench > .awayTeamPillForModal': function(e, t) {
-		var gameId = {
-			_id: Template.currentData()._id
-		};
-		var playerData = {
-			team: 'awayTeam',
+		var switchData = {
+			_id: Template.currentData()._id,
+			team: 'homeTeam',
 			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML)
 		};
-		Meteor.call('goingInPlay', gameId, playerData, function(error, result) {
-			if (error) {
-				return throwError(error.message);
-			}
-		});
+		Session.set('switchData', switchData);
 	}
 });
