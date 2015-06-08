@@ -12,6 +12,7 @@ template(name="replacement")
 			#homeTeamOnTheBench.row.playerRow.shadow
 				each homeTeamPlayersOnTheBench
 					+homeTeamPlayerReplacement
+			+homeTeamReplacementModal
 		.clearfix
 			h4 {{_ "awayTeam"}} : #{gameInfos.awayTeam}
 			p {{_ "explanationHowToMakeAReplacement"}}
