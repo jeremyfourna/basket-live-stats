@@ -45,6 +45,7 @@ Template.replacement.events({
 	'click #homeTeamInPlay > .homeTeamPillForModal': function(e, t) {
 		var switchData = {
 			_id: Template.currentData()._id,
+			state: Template.currentData().state,
 			team: 'homeTeam',
 			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML),
 			call: 'goingOnTheBench'
@@ -54,6 +55,7 @@ Template.replacement.events({
 	'click #homeTeamOnTheBench > .homeTeamPillForModal': function(e, t) {
 		var switchData = {
 			_id: Template.currentData()._id,
+			state: Template.currentData().state,
 			team: 'homeTeam',
 			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML),
 			call: 'goingInPlay'
@@ -63,6 +65,7 @@ Template.replacement.events({
 	'click #awayTeamInPlay > .awayTeamPillForModal': function(e, t) {
 		var switchData = {
 			_id: Template.currentData()._id,
+			state: Template.currentData().state,
 			team: 'awayTeam',
 			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML),
 			call: 'goingOnTheBench'
@@ -72,6 +75,7 @@ Template.replacement.events({
 	'click #awayTeamOnTheBench > .awayTeamPillForModal': function(e, t) {
 		var switchData = {
 			_id: Template.currentData()._id,
+			state: Template.currentData().state,
 			team: 'awayTeam',
 			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML),
 			call: 'goingInPlay'
