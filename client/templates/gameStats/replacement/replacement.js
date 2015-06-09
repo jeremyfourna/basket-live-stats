@@ -46,7 +46,8 @@ Template.replacement.events({
 		var switchData = {
 			_id: Template.currentData()._id,
 			team: 'homeTeam',
-			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML)
+			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML),
+			call: 'goingOnTheBench'
 		};
 		Session.set('switchData', switchData);
 	},
@@ -54,23 +55,26 @@ Template.replacement.events({
 		var switchData = {
 			_id: Template.currentData()._id,
 			team: 'homeTeam',
-			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML)
+			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML),
+			call: 'goingInPlay'
 		};
 		Session.set('switchData', switchData);
 	},
 	'click #awayTeamInPlay > .awayTeamPillForModal': function(e, t) {
 		var switchData = {
 			_id: Template.currentData()._id,
-			team: 'homeTeam',
-			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML)
+			team: 'awayTeam',
+			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML),
+			call: 'goingOnTheBench'
 		};
 		Session.set('switchData', switchData);
 	},
 	'click #awayTeamOnTheBench > .awayTeamPillForModal': function(e, t) {
 		var switchData = {
 			_id: Template.currentData()._id,
-			team: 'homeTeam',
-			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML)
+			team: 'awayTeam',
+			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML),
+			call: 'goingInPlay'
 		};
 		Session.set('switchData', switchData);
 	}
