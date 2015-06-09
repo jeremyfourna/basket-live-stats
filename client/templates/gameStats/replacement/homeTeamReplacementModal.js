@@ -8,7 +8,8 @@ Template.homeTeamReplacementModal.events({
 			team: data.team,
 			playerIndex: data.playerIndex,
 			minutes: Number($('#homeTeamMinutes').val()),
-			secondes: Number($('#homeTeamSecondes').val())
+			secondes: Number($('#homeTeamSecondes').val()),
+			state: data.state
 		};
 		if (data.call === 'goingInPlay') {
 			Meteor.call('goingInPlay', gameId, playerData, function(error, result) {
@@ -23,7 +24,8 @@ Template.homeTeamReplacementModal.events({
 				}
 			});
 		}
-
-
+	},
+	'click #cancelSwitch': function() {
+		$('#homeTeamReplacementModal').modal('hide');
 	}
 });
