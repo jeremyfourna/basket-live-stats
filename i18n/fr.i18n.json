@@ -156,5 +156,6 @@
 	"minutes": "Minutes",
 	"secondes": "Secondes",
 	"cancelSwitch": "Annuler le remplacement",
-	"switchProcess": "Renseignez le temps qu'il reste dans le quart-temps pour terminer le remplacement."
+	"switchProcess": "Renseignez le temps qu'il reste dans le quart-temps pour terminer le remplacement.",
+	"gameTime": "Tps Jeu"
 }
