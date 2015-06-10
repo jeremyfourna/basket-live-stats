@@ -207,5 +207,13 @@ Template.summary.helpers({
 		} else {
 			return false;
 		}
+	},
+	'playerTime': function() {
+		var playerTimeMinutes = 0;
+		var playerTimeSecondes = 0;
+		var gameState = Template.parentData(1).state;
+		if (gameState === "notStarted") {
+			return "00:00";
+		} else if (gameState === "q1Running") {}
 	}
 });

@@ -16,6 +16,7 @@ template(name='summary')
 			thead
 				tr.homeTeamColor
 					th {{_ "num"}}
+					th {{_ "gameTime"}}
 					th {{_ "pts"}}
 					th {{_ "twoPoints"}}
 					th %
@@ -36,6 +37,7 @@ template(name='summary')
 				each homeTeam.players
 					tr(class='#{isInPlay}')
 						th(scope='row') #{jersey}
+						td #{playerTime}
 						td #{stats.points.totalPoints}
 						td #{stats.points.twoPointsIn}/#{total2PointsShoots}
 						td #{percentage2PointsShoots}
@@ -54,6 +56,7 @@ template(name='summary')
 						td #{stats.evaluation}
 				tr.homeTeamColor
 					th(scope='row') {{_ "total"}}
+					td -
 					td #{gameStats.score.homeTeam}
 					td #{gameStats.shoots.homeTeam.twoPointsIn}/#{homeTeamTotal2PointsShoots}
 					td #{homeTeamPercentage2PointsShoots}
@@ -76,6 +79,7 @@ template(name='summary')
 			thead
 				tr.awayTeamColor
 					th {{_ "num"}}
+					th {{_ "gameTime"}}
 					th {{_ "pts"}}
 					th {{_ "twoPoints"}}
 					th {{_ "threePoints"}}
@@ -84,12 +88,14 @@ template(name='summary')
 				each awayTeam.players
 					tr(class='#{isInPlay}')
 						th(scope='row') #{jersey}
+						td #{playerTime}
 						td #{stats.points.totalPoints}
 						td #{stats.points.twoPointsIn}
 						td #{stats.points.threePointsIn}
 						td #{stats.points.onePointIn}
 				tr.awayTeamColor
 					th(scope='row') {{_ "total"}}
+					td -
 					td #{gameStats.score.awayTeam}
 					td #{gameStats.shoots.awayTeam.twoPointsIn}
 					td #{gameStats.shoots.awayTeam.threePointsIn}
