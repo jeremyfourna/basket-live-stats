@@ -214,16 +214,32 @@ Template.stats.events({
 	'click #q4Running': function(e) {
 		e.preventDefault();
 		var gameId = {
-			id: this._id
+			_id: this._id
 		};
-		var status = {
-			state: 'gameEnded'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
-			if (error) {
-				return throwError(error.message);
+		var i = 0;
+		var playerData = {};
+		for (i = 0; i < this.homeTeam.players.length; i++) {
+			if (this.homeTeam.players[i].inPlay === true) {
+				playerData.team = 'homeTeam';
+				playerData.playerIndex = i;
+				Meteor.call('stateSwitchEndedGames', gameId, playerData, function(error, result) {
+					if (error) {
+						return throwError(error.message);
+					}
+				});
 			}
-		});
+		}
+		for (i = 0; i < this.awayTeam.players.length; i++) {
+			if (this.awayTeam.players[i].inPlay === true) {
+				playerData.team = 'awayTeam';
+				playerData.playerIndex = i;
+				Meteor.call('stateSwitchEndedGames', gameId, playerData, function(error, result) {
+					if (error) {
+						return throwError(error.message);
+					}
+				});
+			}
+		}
 	},
 	'click .displayReplacement': function() {
 		$('#replacement-tab').tab('show');
