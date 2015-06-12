@@ -259,6 +259,10 @@ Template.summary.helpers({
 					playerTimeMinutes -= this.gameTime[i].minutes;
 					playerTimeSecondes -= this.gameTime[i].secondes;
 					playerTimeMinutes += quarterPower;
+					if (playerTimeSecondes < 0) {
+						playerTimeMinutes -= 1;
+						playerTimeSecondes += 60;
+					}
 				}
 			}
 			if (playerTimeSecondes < 10) {
@@ -313,6 +317,10 @@ Template.summary.helpers({
 					playerTimeMinutes -= this.gameTime[i].minutes;
 					playerTimeSecondes -= this.gameTime[i].secondes;
 					playerTimeMinutes += quarterPower;
+					if (playerTimeSecondes < 0) {
+						playerTimeMinutes -= 1;
+						playerTimeSecondes += 60;
+					}
 				}
 			}
 			if (playerTimeSecondes < 10) {
