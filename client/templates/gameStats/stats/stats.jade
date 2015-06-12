@@ -29,7 +29,7 @@ template(name='stats')
 			each homeTeamPlayersPlaying
 				+homeTeamPlayerPill
 			else
-				button.displayReplacement.btn.shadow.btn-warning(type='button') {{_ "fiveStarter"}}
+				button.displayReplacement.btn.shadow.btn-warning(type='button', class='#{gameEndedOrNot}') {{_ "fiveStarter"}}
 		button.doReplacement.btn.shadow.btn-primary(type='button', class='#{fiveStarterOrReplacementHomeTeam}') {{_ "makeAReplacement"}}
 		+homeTeamPlayerModal
 	.clearfix
@@ -39,6 +39,6 @@ template(name='stats')
 			each awayTeamPlayersPlaying
 				+awayTeamPlayerPill
 			else
-				button.displayReplacement.btn.shadow.btn-warning(type='button') {{_ "fiveStarter"}}
+				button.displayReplacement.btn.shadow.btn-warning(type='button', class='#{gameEndedOrNot}') {{_ "fiveStarter"}}
 		button.doReplacement.btn.shadow.btn-primary(type='button', class='#{fiveStarterOrReplacementAwayTeam}') {{_ "makeAReplacement"}}
 		+awayTeamPlayerModal

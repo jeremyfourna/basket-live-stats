@@ -109,6 +109,11 @@ Template.stats.helpers({
 		} else {
 			return 'hidden';
 		}
+	},
+	'gameEndedOrNot': function() {
+		if (this.state === 'gameEnded') {
+			return 'hidden';
+		}
 	}
 });
 
