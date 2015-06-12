@@ -212,8 +212,124 @@ Template.summary.helpers({
 		var playerTimeMinutes = 0;
 		var playerTimeSecondes = 0;
 		var gameState = Template.parentData(1).state;
-		if (gameState === "notStarted") {
+		var modulo = this.gameTime.length % 2;
+		var i = 0;
+		var quarterPower = 0;
+		if (this.gameTime.length === 0) {
 			return "00:00";
-		} else if (gameState === "q1Running") {}
+		} else if (modulo === 0) {
+			for (i = 0; i < this.gameTime.length; i++) {
+				quarterPower = 0;
+				switch (this.gameTime[i].state) {
+					case "notStarted":
+						quarterPower = 10;
+						break;
+					case "q1Running":
+						quarterPower = 10;
+						break;
+					case "q1Ended":
+						quarterPower = 10;
+						break;
+					case "q2Running":
+						quarterPower = 20;
+						break;
+					case "halfTime":
+						quarterPower = 20;
+						break;
+					case "q3Running":
+						quarterPower = 30;
+						break;
+					case "q3Ended":
+						quarterPower = 30;
+						break;
+					case "q4Running":
+						quarterPower = 40;
+						break;
+					case "gameEnded":
+						quarterPower = 40;
+						break;
+					default:
+						quarterPower = 0;
+				}
+				if (this.gameTime[i].way === 'in') {
+					playerTimeMinutes += this.gameTime[i].minutes;
+					playerTimeSecondes += this.gameTime[i].secondes;
+					playerTimeMinutes -= quarterPower;
+				} else if (this.gameTime[i].way === 'out') {
+					playerTimeMinutes -= this.gameTime[i].minutes;
+					playerTimeSecondes -= this.gameTime[i].secondes;
+					playerTimeMinutes += quarterPower;
+					if (playerTimeSecondes < 0) {
+						playerTimeMinutes -= 1;
+						playerTimeSecondes += 60;
+					}
+				}
+			}
+			if (playerTimeSecondes < 10) {
+				playerTimeSecondes = '0' + playerTimeSecondes;
+			}
+			if (playerTimeMinutes < 10) {
+				playerTimeMinutes = '0' + playerTimeMinutes;
+			}
+			return playerTimeMinutes + ":" + playerTimeSecondes;
+		} else if (modulo === 1) {
+			for (i = 0; i < this.gameTime.length - 1; i++) {
+				quarterPower = 0;
+				switch (this.gameTime[i].state) {
+					case "notStarted":
+						quarterPower = 10;
+						break;
+					case "q1Running":
+						quarterPower = 10;
+						break;
+					case "q1Ended":
+						quarterPower = 10;
+						break;
+					case "q2Running":
+						quarterPower = 20;
+						break;
+					case "halfTime":
+						quarterPower = 20;
+						break;
+					case "q3Running":
+						quarterPower = 30;
+						break;
+					case "q3Ended":
+						quarterPower = 30;
+						break;
+					case "q4Running":
+						quarterPower = 40;
+						break;
+					case "gameEnded":
+						quarterPower = 40;
+						break;
+					default:
+						quarterPower = 0;
+				}
+				if (i === this.gameTime.length - 1) {
+					playerTimeMinutes += this.gameTime[i].minutes;
+					playerTimeSecondes += this.gameTime[i].secondes;
+				} else if (this.gameTime[i].way === 'in') {
+					playerTimeMinutes += this.gameTime[i].minutes;
+					playerTimeSecondes += this.gameTime[i].secondes;
+					playerTimeMinutes -= quarterPower;
+				} else if (this.gameTime[i].way === 'out') {
+					playerTimeMinutes -= this.gameTime[i].minutes;
+					playerTimeSecondes -= this.gameTime[i].secondes;
+					playerTimeMinutes += quarterPower;
+					if (playerTimeSecondes < 0) {
+						playerTimeMinutes -= 1;
+						playerTimeSecondes += 60;
+					}
+				}
+			}
+			if (playerTimeSecondes < 10) {
+				playerTimeSecondes = '0' + playerTimeSecondes;
+			}
+			if (playerTimeMinutes < 10) {
+				playerTimeMinutes = '0' + playerTimeMinutes;
+			}
+			return playerTimeMinutes + ":" + playerTimeSecondes;
+		}
 	}
 });
