@@ -2,6 +2,10 @@
     margin-bottom: 5px;
 }
 
-#playerCoachData button {
+#playerCoachData {
     margin-bottom: 10px;
+}
+
+#playerCoachData > button {
+    margin-top: 10px;
 }
