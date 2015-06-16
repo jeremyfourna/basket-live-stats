@@ -1,6 +1,8 @@
 template(name='completedLiveGames')
 	each endedGames
 		.row.shadow.endedGames
+			.row
+				h4.gameData {{_ "level"}} : #{gameInfos.level} / {{_ "group"}} : #{gameInfos.group}
 			.row.vertical-align
 				.text-center.col-xs-4.col-sm-4.col-md-4.col-lg-5
 					h3 #{gameInfos.homeTeam}
