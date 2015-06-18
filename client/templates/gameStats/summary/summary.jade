@@ -11,6 +11,8 @@ template(name='summary')
 			p {{_ "pointsPartition"}} : {{_ "twoPoints"}} #{awayTeamTwoPointsPartition} % - {{_ "threePoints"}} #{awayTeamThreePointsPartition} %
 			p {{_ "bestScorer"}} : {{_ "num"}}#{bestAwayTeamPlayer.jersey} - #{bestAwayTeamPlayer.totalPoints} {{_ "pts"}}
 	#scoreChart.col-xs-12.col-sm-12.col-md-12.col-lg-12
+	#scoreChart1.col-xs-12.col-sm-12.col-md-12.col-lg-12
+	#scoreChart2.col-xs-12.col-sm-12.col-md-12.col-lg-12
 	h4 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
 	.table-responsive
 		table.table.shadow.table-condensed
