@@ -333,3 +333,24 @@ Template.summary.helpers({
 		}
 	}
 });
+
+Template.summary.onRendered(function() {
+	var w = $('#scoreChart').innerWidth();
+	console.log(w);
+	var barPadding = 1;
+	var dataset = [5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 11, 12, 15, 20, 18, 17, 16, 18, 23, 25];
+	var svg = d3.select("#scoreChart")
+		.append("svg")
+		.classed('col-xs-12 col-sm-12 col-md-12 col-lg-12', true);
+
+	svg.selectAll("rect")
+		.data(dataset)
+		.enter()
+		.append("rect")
+		.attr("x", function(d, i) {
+			return i * 21; //Bar width of 20 plus 1 for padding
+		})
+		.attr("y", 0)
+		.attr("width", 20)
+		.attr("height", 100);
+});

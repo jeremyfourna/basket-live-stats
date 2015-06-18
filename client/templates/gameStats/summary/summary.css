@@ -24,3 +24,14 @@
 .awayTeamPlayers > .inPlay {
     background-color: #ADF5FF;
 }
+
+.bar {
+    display: inline-block;
+    width: 25px;
+    background-color: red;
+    margin: 1px;
+}
+
+#scoreChart {
+    margin: 20px;
+}
