@@ -448,4 +448,107 @@ Template.summary.onRendered(function() {
 		.attr("class", "axis")
 		.attr("transform", "translate(" + padding + ",0)")
 		.call(yAxis);
+
+	var dataset2 = [
+		["1-May-12", 582.13],
+		["30-Apr-12", 583.98],
+		["27-Apr-12", 603.00],
+		["26-Apr-12", 607.70],
+		["25-Apr-12", 610.00],
+		["24-Apr-12", 560.28],
+		["23-Apr-12", 571.70],
+		["20-Apr-12", 572.98],
+		["19-Apr-12", 587.44],
+		["18-Apr-12", 608.34],
+		["17-Apr-12", 609.70],
+		["16-Apr-12", 580.13],
+		["13-Apr-12", 605.23],
+		["12-Apr-12", 622.77],
+		["11-Apr-12", 626.20],
+		["10-Apr-12", 628.44],
+		["9-Apr-12", 636.23],
+		["5-Apr-12", 633.68],
+		["4-Apr-12", 624.31],
+		["3-Apr-12", 629.32],
+		["2-Apr-12", 618.63],
+		["30-Mar-12", 599.55],
+		["29-Mar-12", 609.86],
+		["28-Mar-12", 617.62],
+		["27-Mar-12", 614.48],
+		["26-Mar-12", 606.98],
+		["23-Mar-12", 596.05],
+		["22-Mar-12", 599.34],
+		["21-Mar-12", 602.50],
+		["20-Mar-12", 605.96],
+		["19-Mar-12", 601.10],
+		["16-Mar-12", 585.57],
+		["15-Mar-12", 585.56]
+	];
+	dataset2.forEach(function(d) {
+		d[0] = d3.time.format("%d-%b-%y").parse(d[0]);
+		d[1] = +d[1];
+	});
+	var margin = {
+		top: 20,
+		right: 20,
+		bottom: 30,
+		left: 50
+	};
+	var width = 960 - margin.left - margin.right;
+	var height = 500 - margin.top - margin.bottom;
+
+	var x = d3.time.scale()
+		.range([0, width]);
+
+	var y = d3.scale.linear()
+		.range([height, 0]);
+
+	var xAxis2 = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+
+	var yAxis2 = d3.svg.axis()
+		.scale(y)
+		.orient("left");
+
+	var line = d3.svg.line()
+		.x(function(d) {
+			return x(d[0]);
+		})
+		.y(function(d) {
+			return y(d[1]);
+		});
+
+	var svg2 = d3.select("#scoreChart2").append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+		.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	x.domain(d3.extent(dataset2, function(d) {
+		return d[0];
+	}));
+	y.domain(d3.extent(dataset2, function(d) {
+		return d[1];
+	}));
+
+	svg2.append("g")
+		.attr("class", "x axis")
+		.attr("transform", "translate(0," + height + ")")
+		.call(xAxis2);
+
+	svg2.append("g")
+		.attr("class", "y axis")
+		.call(yAxis2)
+		.append("text")
+		.attr("transform", "rotate(-90)")
+		.attr("y", 6)
+		.attr("dy", ".71em")
+		.style("text-anchor", "end")
+		.text("Price ($)");
+
+	svg2.append("path")
+		.data(dataset2)
+		.attr("class", "line")
+		.attr("d", line);
 });
