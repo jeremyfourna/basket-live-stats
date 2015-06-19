@@ -548,7 +548,7 @@ Template.summary.onRendered(function() {
 		.text("Price ($)");
 
 	svg2.append("path")
-		.data(dataset2)
+		.datum(dataset2)
 		.attr("class", "line")
 		.attr("d", line);
 });
