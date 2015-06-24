@@ -335,167 +335,55 @@ Template.summary.helpers({
 });
 
 Template.summary.onRendered(function() {
-	var w = 1000;
-	var h = 300;
-	var barPadding = 1;
-	var dataset = [5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 11, 12, 15, 20, 18, 17, 16, 18, 23, 25];
-	var svg = d3.select("#scoreChart")
-		.append("svg")
-		.attr('width', w)
-		.attr('height', h)
-		.classed('col-xs-12 col-sm-12 col-md-12 col-lg-12', true);
-
-	svg.selectAll("rect")
-		.data(dataset)
-		.enter()
-		.append("rect")
-		.attr("x", function(d, i) {
-			return i * (w / dataset.length);
-		})
-		.attr("y", function(d) {
-			return h - (d * 4);
-		})
-		.attr("width", w / dataset.length - barPadding)
-		.attr("height", function(d) {
-			return d * 4;
-		})
-		.attr("fill", function(d) {
-			return "rgb(0, 0, " + (d * 10) + ")";
-		});
-
-	svg.selectAll("text")
-		.data(dataset)
-		.enter()
-		.append("text")
-		.text(function(d) {
-			return d;
-		})
-		.attr("x", function(d, i) {
-			return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
-		})
-		.attr("y", function(d) {
-			return h - (d * 4) + 14;
-		})
-		.attr("text-anchor", "middle")
-		.attr("font-family", "sans-serif")
-		.attr("font-size", "11px")
-		.attr("fill", "white");
-
-
-	var dataset1 = [];
-	var numDataPoints = 50;
-	var xRange = Math.random() * 1000;
-	var yRange = Math.random() * 1000;
-	for (var i = 0; i < numDataPoints; i++) {
-		var newNumber1 = Math.round(Math.random() * xRange);
-		var newNumber2 = Math.round(Math.random() * yRange);
-		dataset1.push([newNumber1, newNumber2]);
-	}
-
-	var svg1 = d3.select("#scoreChart1")
-		.append("svg")
-		.attr("width", w)
-		.attr("height", h);
-
-	var padding = 30;
-
-	var xScale = d3.scale.linear()
-		.domain([0, d3.max(dataset1, function(d) {
-			return d[0];
-		})])
-		.range([padding, w - padding * 2]);
-	var yScale = d3.scale.linear()
-		.domain([0, d3.max(dataset1, function(d) {
-			return d[1];
-		})])
-		.range([h - padding, padding]);
-	var rScale = d3.scale.linear()
-		.domain([0, d3.max(dataset1, function(d) {
-			return d[1];
-		})])
-		.range([2, 5]);
-
-	var xAxis = d3.svg.axis()
-		.scale(xScale)
-		.orient("bottom")
-		.ticks(5);
-
-	var yAxis = d3.svg.axis()
-		.scale(yScale)
-		.orient("left")
-		.ticks(5);
-
-	svg1.selectAll("circle")
-		.data(dataset1)
-		.enter()
-		.append("circle")
-		.attr("cx", function(d) {
-			return xScale(d[0]);
-		})
-		.attr("cy", function(d) {
-			return yScale(d[1]);
-		})
-		.attr("r", function(d) {
-			return rScale(d[1]);
-		});
-
-	svg1.append("g")
-		.attr("class", "axis")
-		.attr("transform", "translate(0," + (h - padding) + ")")
-		.call(xAxis);
-
-	svg1.append("g")
-		.attr("class", "axis")
-		.attr("transform", "translate(" + padding + ",0)")
-		.call(yAxis);
-
 	var dataset2 = [
-		["1-May-12", 582.13],
-		["30-Apr-12", 583.98],
-		["27-Apr-12", 603.00],
-		["26-Apr-12", 607.70],
-		["25-Apr-12", 610.00],
-		["24-Apr-12", 560.28],
-		["23-Apr-12", 571.70],
-		["20-Apr-12", 572.98],
-		["19-Apr-12", 587.44],
-		["18-Apr-12", 608.34],
-		["17-Apr-12", 609.70],
-		["16-Apr-12", 580.13],
-		["13-Apr-12", 605.23],
-		["12-Apr-12", 622.77],
-		["11-Apr-12", 626.20],
-		["10-Apr-12", 628.44],
-		["9-Apr-12", 636.23],
-		["5-Apr-12", 633.68],
-		["4-Apr-12", 624.31],
-		["3-Apr-12", 629.32],
-		["2-Apr-12", 618.63],
-		["30-Mar-12", 599.55],
-		["29-Mar-12", 609.86],
-		["28-Mar-12", 617.62],
-		["27-Mar-12", 614.48],
-		["26-Mar-12", 606.98],
-		["23-Mar-12", 596.05],
-		["22-Mar-12", 599.34],
-		["21-Mar-12", 602.50],
-		["20-Mar-12", 605.96],
-		["19-Mar-12", 601.10],
-		["16-Mar-12", 585.57],
-		["15-Mar-12", 585.56]
+		["Wed Jun 24 2015 13:11:49 GMT+0200 (CEST)", 0],
+		["Wed Jun 24 2015 13:12:49 GMT+0200 (CEST)", 2],
+		["Wed Jun 24 2015 13:13:49 GMT+0200 (CEST)", 0],
+		["Wed Jun 24 2015 13:14:49 GMT+0200 (CEST)", -3],
+		["Wed Jun 24 2015 13:15:49 GMT+0200 (CEST)", -2],
+		["Wed Jun 24 2015 13:16:49 GMT+0200 (CEST)", 0],
+		["Wed Jun 24 2015 13:17:49 GMT+0200 (CEST)", 2],
+		["Wed Jun 24 2015 13:18:49 GMT+0200 (CEST)", 4],
+		["Wed Jun 24 2015 13:19:49 GMT+0200 (CEST)", 6],
+		["Wed Jun 24 2015 13:20:49 GMT+0200 (CEST)", 8],
+		["Wed Jun 24 2015 13:21:49 GMT+0200 (CEST)", 5],
+		["Wed Jun 24 2015 13:22:49 GMT+0200 (CEST)", 7],
+		["Wed Jun 24 2015 13:23:49 GMT+0200 (CEST)", 4],
+		["Wed Jun 24 2015 13:24:49 GMT+0200 (CEST)", 2],
+		["Wed Jun 24 2015 13:25:49 GMT+0200 (CEST)", 5],
+		["Wed Jun 24 2015 13:26:49 GMT+0200 (CEST)", 6],
+		["Wed Jun 24 2015 13:26:49 GMT+0200 (CEST)", 8],
+		["Wed Jun 24 2015 13:27:49 GMT+0200 (CEST)", 9],
+		["Wed Jun 24 2015 13:28:49 GMT+0200 (CEST)", 10],
+		["Wed Jun 24 2015 13:29:49 GMT+0200 (CEST)", 12],
+		["Wed Jun 24 2015 13:30:49 GMT+0200 (CEST)", 10],
+		["Wed Jun 24 2015 13:31:49 GMT+0200 (CEST)", 13],
+		["Wed Jun 24 2015 13:32:49 GMT+0200 (CEST)", 10],
+		["Wed Jun 24 2015 13:33:49 GMT+0200 (CEST)", 9],
+		["Wed Jun 24 2015 13:34:49 GMT+0200 (CEST)", 8],
+		["Wed Jun 24 2015 13:35:49 GMT+0200 (CEST)", 5],
+		["Wed Jun 24 2015 13:36:49 GMT+0200 (CEST)", 8],
+		["Wed Jun 24 2015 13:37:49 GMT+0200 (CEST)", 6],
+		["Wed Jun 24 2015 13:38:49 GMT+0200 (CEST)", 8],
+		["Wed Jun 24 2015 13:39:49 GMT+0200 (CEST)", 6],
+		["Wed Jun 24 2015 13:40:49 GMT+0200 (CEST)", 7],
+		["Wed Jun 24 2015 13:41:49 GMT+0200 (CEST)", 4],
+		["Wed Jun 24 2015 13:42:49 GMT+0200 (CEST)", 5]
 	];
+	var parseDate = d3.time.format.iso.parse;
+
 	dataset2.forEach(function(d) {
-		d[0] = d3.time.format("%d-%b-%y").parse(d[0]);
+		d[0] = parseDate(d[0]);
 		d[1] = +d[1];
 	});
 	var margin = {
 		top: 20,
 		right: 20,
-		bottom: 30,
-		left: 50
+		bottom: 20,
+		left: 25
 	};
-	var width = 960 - margin.left - margin.right;
-	var height = 500 - margin.top - margin.bottom;
+	var width = $('.container').width() - 55;
+	var height = 200 - margin.top - margin.bottom;
 
 	var x = d3.time.scale()
 		.range([0, width]);
@@ -519,8 +407,8 @@ Template.summary.onRendered(function() {
 			return y(d[1]);
 		});
 
-	var svg2 = d3.select("#scoreChart2").append("svg")
-		.attr("width", width + margin.left + margin.right)
+	var svg2 = d3.select("#scoreChart").append("svg")
+		.attr("width", width)
 		.attr("height", height + margin.top + margin.bottom)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -532,10 +420,10 @@ Template.summary.onRendered(function() {
 		return d[1];
 	}));
 
-	svg2.append("g")
+	/*svg2.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(0," + height + ")")
-		.call(xAxis2);
+		.call(xAxis2);*/
 
 	svg2.append("g")
 		.attr("class", "y axis")
@@ -545,7 +433,7 @@ Template.summary.onRendered(function() {
 		.attr("y", 6)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
-		.text("Price ($)");
+		.text("Ecart du match");
 
 	svg2.append("path")
 		.datum(dataset2)

@@ -32,20 +32,30 @@
     margin: 1px;
 }
 
-#scoreChart,
-#scoreChart1,
-#scoreChart2 {
-    margin: 20px;
+#scoreChart {
+    margin-bottom: 20px;
 }
 
 .axis path,
 .axis line {
     fill: none;
-    stroke: black;
+    stroke: steelblue;
+    stroke-width: 1.5px;
     shape-rendering: crispEdges;
 }
 
 .axis text {
     font-family: sans-serif;
     font-size: 11px;
+}
+
+.x.axis path {
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 3px;
 }
