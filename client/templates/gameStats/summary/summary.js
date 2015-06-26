@@ -336,46 +336,42 @@ Template.summary.helpers({
 
 Template.summary.onRendered(function() {
 	var dataset2 = [
-		["Wed Jun 24 2015 13:11:49 GMT+0200 (CEST)", 0],
-		["Wed Jun 24 2015 13:12:49 GMT+0200 (CEST)", 2],
-		["Wed Jun 24 2015 13:13:49 GMT+0200 (CEST)", 0],
-		["Wed Jun 24 2015 13:14:49 GMT+0200 (CEST)", -3],
-		["Wed Jun 24 2015 13:15:49 GMT+0200 (CEST)", -2],
-		["Wed Jun 24 2015 13:16:49 GMT+0200 (CEST)", 0],
-		["Wed Jun 24 2015 13:17:49 GMT+0200 (CEST)", 2],
-		["Wed Jun 24 2015 13:18:49 GMT+0200 (CEST)", 4],
-		["Wed Jun 24 2015 13:19:49 GMT+0200 (CEST)", 6],
-		["Wed Jun 24 2015 13:20:49 GMT+0200 (CEST)", 8],
-		["Wed Jun 24 2015 13:21:49 GMT+0200 (CEST)", 5],
-		["Wed Jun 24 2015 13:22:49 GMT+0200 (CEST)", 7],
-		["Wed Jun 24 2015 13:23:49 GMT+0200 (CEST)", 4],
-		["Wed Jun 24 2015 13:24:49 GMT+0200 (CEST)", 2],
-		["Wed Jun 24 2015 13:25:49 GMT+0200 (CEST)", 5],
-		["Wed Jun 24 2015 13:26:49 GMT+0200 (CEST)", 6],
-		["Wed Jun 24 2015 13:26:49 GMT+0200 (CEST)", 8],
-		["Wed Jun 24 2015 13:27:49 GMT+0200 (CEST)", 9],
-		["Wed Jun 24 2015 13:28:49 GMT+0200 (CEST)", 10],
-		["Wed Jun 24 2015 13:29:49 GMT+0200 (CEST)", 12],
-		["Wed Jun 24 2015 13:30:49 GMT+0200 (CEST)", 10],
-		["Wed Jun 24 2015 13:31:49 GMT+0200 (CEST)", 13],
-		["Wed Jun 24 2015 13:32:49 GMT+0200 (CEST)", 10],
-		["Wed Jun 24 2015 13:33:49 GMT+0200 (CEST)", 9],
-		["Wed Jun 24 2015 13:34:49 GMT+0200 (CEST)", 8],
-		["Wed Jun 24 2015 13:35:49 GMT+0200 (CEST)", 5],
-		["Wed Jun 24 2015 13:36:49 GMT+0200 (CEST)", 8],
-		["Wed Jun 24 2015 13:37:49 GMT+0200 (CEST)", 6],
-		["Wed Jun 24 2015 13:38:49 GMT+0200 (CEST)", 8],
-		["Wed Jun 24 2015 13:39:49 GMT+0200 (CEST)", 6],
-		["Wed Jun 24 2015 13:40:49 GMT+0200 (CEST)", 7],
-		["Wed Jun 24 2015 13:41:49 GMT+0200 (CEST)", 4],
-		["Wed Jun 24 2015 13:42:49 GMT+0200 (CEST)", 5]
+		[0, 0],
+		[1, 2],
+		[2, 0],
+		[3, -3],
+		[4, -2],
+		[5, 0],
+		[6, 2],
+		[7, 4],
+		[8, 6],
+		[9, 8],
+		[10, 5],
+		[11, 7],
+		[12, 4],
+		[13, 2],
+		[14, 5],
+		[15, 6],
+		[16, 8],
+		[17, 9],
+		[18, 10],
+		[19, 12],
+		[20, 10],
+		[21, 13],
+		[22, 10],
+		[23, 9],
+		[24, 8],
+		[25, 5],
+		[26, 8],
+		[27, 6],
+		[28, 8],
+		[29, 6],
+		[30, 7],
+		[31, 4],
+		[32, 5]
 	];
 	var parseDate = d3.time.format.iso.parse;
 
-	dataset2.forEach(function(d) {
-		d[0] = parseDate(d[0]);
-		d[1] = +d[1];
-	});
 	var margin = {
 		top: 20,
 		right: 20,
@@ -385,7 +381,7 @@ Template.summary.onRendered(function() {
 	var width = $('.container').width() - 55;
 	var height = 200 - margin.top - margin.bottom;
 
-	var x = d3.time.scale()
+	var x = d3.scale.linear()
 		.range([0, width]);
 
 	var y = d3.scale.linear()
