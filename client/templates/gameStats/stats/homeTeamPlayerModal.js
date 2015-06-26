@@ -31,6 +31,10 @@ Template.homeTeamPlayerModal.events({
 			playerIndex: Session.get('currentPlayerForModal').playerIndex,
 			team: Session.get('currentPlayerForModal').team
 		};
+		var evolScore = {
+			gameIndex: Template.parentData(1).gameStats.evolution.length,
+			scoreGap: Template.parentData(1).gameStats.score.homeTeam - Template.parentData(1).gameStats.score.awayTeam + 1
+		};
 		if ($('#onePoint').hasClass('cancelAction')) {
 			Meteor.call('correctionOnePoint', actionInfo, function(error) {
 				if (error) {
@@ -38,7 +42,7 @@ Template.homeTeamPlayerModal.events({
 				}
 			});
 		} else {
-			Meteor.call('onePoint', actionInfo, function(error) {
+			Meteor.call('onePoint', actionInfo, evolScore, function(error) {
 				if (error) {
 					return throwError(error.message);
 				}
@@ -51,6 +55,10 @@ Template.homeTeamPlayerModal.events({
 			playerIndex: Session.get('currentPlayerForModal').playerIndex,
 			team: Session.get('currentPlayerForModal').team
 		};
+		var evolScore = {
+			gameIndex: Template.parentData(1).gameStats.evolution.length,
+			scoreGap: Template.parentData(1).gameStats.score.homeTeam - Template.parentData(1).gameStats.score.awayTeam + 2
+		};
 		if ($('#twoPoint').hasClass('cancelAction')) {
 			Meteor.call('correctionTwoPoints', actionInfo, function(error) {
 				if (error) {
@@ -58,7 +66,7 @@ Template.homeTeamPlayerModal.events({
 				}
 			});
 		} else {
-			Meteor.call('twoPoints', actionInfo, function(error) {
+			Meteor.call('twoPoints', actionInfo, evolScore, function(error) {
 				if (error) {
 					return throwError(error.message);
 				}
@@ -71,6 +79,10 @@ Template.homeTeamPlayerModal.events({
 			playerIndex: Session.get('currentPlayerForModal').playerIndex,
 			team: Session.get('currentPlayerForModal').team
 		};
+		var evolScore = {
+			gameIndex: Template.parentData(1).gameStats.evolution.length,
+			scoreGap: Template.parentData(1).gameStats.score.homeTeam - Template.parentData(1).gameStats.score.awayTeam + 3
+		};
 		if ($('#threePoint').hasClass('cancelAction')) {
 			Meteor.call('correctionThreePoints', actionInfo, function(error) {
 				if (error) {
@@ -78,7 +90,7 @@ Template.homeTeamPlayerModal.events({
 				}
 			});
 		} else {
-			Meteor.call('threePoints', actionInfo, function(error) {
+			Meteor.call('threePoints', actionInfo, evolScore, function(error) {
 				if (error) {
 					return throwError(error.message);
 				}
