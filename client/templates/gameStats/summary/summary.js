@@ -335,50 +335,16 @@ Template.summary.helpers({
 });
 
 Template.summary.onRendered(function() {
-	var dataset2 = [
-		[0, 0],
-		[1, 2],
-		[2, 0],
-		[3, -3],
-		[4, -2],
-		[5, 0],
-		[6, 2],
-		[7, 4],
-		[8, 6],
-		[9, 8],
-		[10, 5],
-		[11, 7],
-		[12, 4],
-		[13, 2],
-		[14, 5],
-		[15, 6],
-		[16, 8],
-		[17, 9],
-		[18, 10],
-		[19, 12],
-		[20, 10],
-		[21, 13],
-		[22, 10],
-		[23, 9],
-		[24, 8],
-		[25, 5],
-		[26, 8],
-		[27, 6],
-		[28, 8],
-		[29, 6],
-		[30, 7],
-		[31, 4],
-		[32, 5]
-	];
-	var parseDate = d3.time.format.iso.parse;
+	var data = new ReactiveVar(Template.currentData().gameStats.evolution);
+	var dataset = data.get();
 
 	var margin = {
 		top: 20,
 		right: 20,
 		bottom: 20,
-		left: 25
+		left: 30
 	};
-	var width = $('.container').width() - 55;
+	var width = $('.container').width() - 60;
 	var height = 200 - margin.top - margin.bottom;
 
 	var x = d3.scale.linear()
@@ -387,13 +353,14 @@ Template.summary.onRendered(function() {
 	var y = d3.scale.linear()
 		.range([height, 0]);
 
-	var xAxis2 = d3.svg.axis()
+	var xAxis = d3.svg.axis()
 		.scale(x)
 		.orient("bottom");
 
-	var yAxis2 = d3.svg.axis()
+	var yAxis = d3.svg.axis()
 		.scale(y)
-		.orient("left");
+		.orient("left")
+		.ticks(5);
 
 	var line = d3.svg.line()
 		.x(function(d) {
@@ -403,27 +370,27 @@ Template.summary.onRendered(function() {
 			return y(d[1]);
 		});
 
-	var svg2 = d3.select("#scoreChart").append("svg")
+	var svg = d3.select("#scoreChart").append("svg")
 		.attr("width", width)
 		.attr("height", height + margin.top + margin.bottom)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	x.domain(d3.extent(dataset2, function(d) {
+	x.domain(d3.extent(dataset, function(d) {
 		return d[0];
 	}));
-	y.domain(d3.extent(dataset2, function(d) {
+	y.domain(d3.extent(dataset, function(d) {
 		return d[1];
 	}));
 
-	/*svg2.append("g")
+	/*svg.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(0," + height + ")")
-		.call(xAxis2);*/
+		.call(xAxis);*/
 
-	svg2.append("g")
+	svg.append("g")
 		.attr("class", "y axis")
-		.call(yAxis2)
+		.call(yAxis)
 		.append("text")
 		.attr("transform", "rotate(-90)")
 		.attr("y", 6)
@@ -431,8 +398,8 @@ Template.summary.onRendered(function() {
 		.style("text-anchor", "end")
 		.text("Ecart du match");
 
-	svg2.append("path")
-		.datum(dataset2)
+	svg.append("path")
+		.datum(dataset)
 		.attr("class", "line")
 		.attr("d", line);
 });
