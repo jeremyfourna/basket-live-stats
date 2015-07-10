@@ -25,37 +25,8 @@
     background-color: #ADF5FF;
 }
 
-.bar {
-    display: inline-block;
-    width: 25px;
-    background-color: red;
-    margin: 1px;
-}
-
-#scoreChart {
-    margin-bottom: 20px;
-}
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: steelblue;
-    stroke-width: 1.5px;
-    shape-rendering: crispEdges;
-}
-
-.axis text {
-    font-family: sans-serif;
-    font-size: 11px;
-}
-
-.x.axis path {
-    stroke: steelblue;
-    stroke-width: 1.5px;
-}
-
-.line {
-    fill: none;
-    stroke: steelblue;
-    stroke-width: 3px;
+.highcharts-axis,
+.highcharts-axis-labels,
+.highcharts-xaxis-labels {
+    visibility: hidden;
 }

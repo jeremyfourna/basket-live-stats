@@ -1,3 +1,4 @@
+/*
 Template.graph.onRendered(function() {
 	var data = new ReactiveVar(Template.currentData().gameStats.evolution);
 	var dataset = data.get();
@@ -47,11 +48,6 @@ Template.graph.onRendered(function() {
 		return d[1];
 	}));
 
-	/*svg.append("g")
-		.attr("class", "x axis")
-		.attr("transform", "translate(0," + height + ")")
-		.call(xAxis);*/
-
 	svg.append("g")
 		.attr("class", "y axis")
 		.call(yAxis)
@@ -67,3 +63,34 @@ Template.graph.onRendered(function() {
 		.attr("class", "line")
 		.attr("d", line);
 });
+*/
+
+Template.graph.helpers({
+	graphWidth: function() {
+		return $('.container').width();
+	}
+});
+
+Template.graph.topGenresChart = function() {
+	return {
+		chart: {
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: false
+		},
+		title: {
+			text: "Ecart du match"
+		},
+		plotOptions: {
+			line: {
+				allowPointSelect: false,
+				cursor: 'pointer',
+			}
+		},
+		series: [{
+			type: 'line',
+			name: 'Ecart du match',
+			data: Template.currentData().gameStats.evolution
+		}]
+	};
+};
