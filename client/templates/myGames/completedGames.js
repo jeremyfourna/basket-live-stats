@@ -10,7 +10,7 @@ Template.completedGames.helpers({
 Template.completedGames.events({
 	'click .btn-danger': function(e, t) {
 		var currentGame = {
-			id: this._id
+			_id: this._id
 		};
 		Meteor.call('gameDelete', currentGame, function(error, result) {
 			if (error) {
