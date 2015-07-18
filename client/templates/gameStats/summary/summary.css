@@ -24,9 +24,3 @@
 .awayTeamPlayers > .inPlay {
     background-color: #ADF5FF;
 }
-
-.highcharts-axis,
-.highcharts-axis-labels,
-.highcharts-xaxis-labels {
-    visibility: hidden;
-}
