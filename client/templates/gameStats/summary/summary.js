@@ -333,3 +333,39 @@ Template.summary.helpers({
 		}
 	}
 });
+
+Template.summary.rendered = function() {
+	var self = this;
+	var chart = c3.generate({
+		bindto: this.find('#gameGapChart'),
+		data: {
+			xs: {
+				'data1': 'x'
+			},
+			columns: [
+				['data1']
+			]
+		},
+		axis: {
+			x: {
+				show: false
+			}
+		}
+	});
+
+	this.autorun(function(tracker) {
+		var gameData = self.data.gameStats.evolution;
+		var xArray = ['x'];
+		var yArray = ['data1'];
+		for (var i = 0; i < gameData.length; i++) {
+			xArray.push(gameData[i][0]);
+			yArray.push(gameData[i][1]);
+		}
+		chart.load({
+			columns: [
+				xArray,
+				yArray, []
+			]
+		});
+	});
+};
