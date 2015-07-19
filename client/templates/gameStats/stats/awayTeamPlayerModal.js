@@ -45,14 +45,6 @@ Template.awayTeamPlayerModal.events({
 			Meteor.call('onePoint', actionInfo, evolScore, function(error) {
 				if (error) {
 					return throwError(error.message);
-				} else {
-					var a = Session.get('x');
-					var b = Session.get('data1');
-					c = b[b.length - 1];
-					a.push(a.length);
-					b.push(c - 1)
-					Session.set('x', a);
-					Session.set('data1', b);
 				}
 			});
 		}
@@ -77,14 +69,6 @@ Template.awayTeamPlayerModal.events({
 			Meteor.call('twoPoints', actionInfo, evolScore, function(error) {
 				if (error) {
 					return throwError(error.message);
-				} else {
-					var a = Session.get('x');
-					var b = Session.get('data1');
-					c = b[b.length - 1];
-					a.push(a.length);
-					b.push(c - 2)
-					Session.set('x', a);
-					Session.set('data1', b);
 				}
 			});
 		}
@@ -109,14 +93,6 @@ Template.awayTeamPlayerModal.events({
 			Meteor.call('threePoints', actionInfo, evolScore, function(error) {
 				if (error) {
 					return throwError(error.message);
-				} else {
-					var a = Session.get('x');
-					var b = Session.get('data1');
-					c = b[b.length - 1];
-					a.push(a.length);
-					b.push(c - 3)
-					Session.set('x', a);
-					Session.set('data1', b);
 				}
 			});
 		}
