@@ -334,6 +334,7 @@ Template.summary.helpers({
 	}
 });
 
+/*
 Template.summary.rendered = function() {
 	var self = this;
 	var chart = c3.generate({
@@ -369,3 +370,4 @@ Template.summary.rendered = function() {
 		});
 	});
 };
+*/
