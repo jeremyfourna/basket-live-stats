@@ -1,8 +1,4 @@
-Template.graph.helpers({
-	graphWidth: function() {
-		return $('.container').width();
-	}
-});
+Template.graph.helpers({});
 
 Template.graph.rendered = function() {
 	var gameData = Template.currentData().gameStats.evolution;
@@ -40,4 +36,4 @@ Template.graph.rendered = function() {
 			]
 		});
 	});
-}
+};
