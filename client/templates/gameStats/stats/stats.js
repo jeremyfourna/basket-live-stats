@@ -114,6 +114,12 @@ Template.stats.helpers({
 		if (this.state === 'gameEnded') {
 			return 'hidden';
 		}
+	},
+	'pageUrl': function() {
+		return Router.current().originalUrl;
+	},
+	'tweetText': function() {
+		return "Suivez en direct le match entre " + this.gameInfos.homeTeam + " et " + this.gameInfos.awayTeam;
 	}
 });
 

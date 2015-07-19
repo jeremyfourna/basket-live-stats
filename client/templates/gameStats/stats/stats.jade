@@ -42,3 +42,6 @@ template(name='stats')
 				button.displayReplacement.btn.shadow.btn-warning(type='button', class='#{gameEndedOrNot}') {{_ "fiveStarter"}}
 		button.doReplacement.btn.shadow.btn-primary(type='button', class='#{fiveStarterOrReplacementAwayTeam}') {{_ "makeAReplacement"}}
 		+awayTeamPlayerModal
+	.clearfix
+		h4 {{_ "shareTheGame"}}
+		a(href="https://twitter.com/share" class="twitter-share-button" data-url="#{pageUrl}" data-text="#{tweetText}" data-size="large" data-count="none" data-hashtags="LiveBBStats")
