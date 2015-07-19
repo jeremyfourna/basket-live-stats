@@ -5,6 +5,7 @@
 		[
 			[
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"gam",
 				"gameGapData"
 			],
@@ -41,6 +42,32 @@
 				"margin-bottom"
 			],
 			[
+=======
+				"wi",
+				"width	Style CSS"
+			],
+			[
+				"process",
+				"process.argv"
+			],
+			[
+				"readFile",
+				"fs.readFileSync"
+			],
+			[
+				"ho",
+				"homeTeamPlayerPill"
+			],
+			[
+				"game",
+				"gameId"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+>>>>>>> master
 =======
 				"wi",
 				"width	Style CSS"
@@ -133,6 +160,7 @@
 			[
 				"coach",
 				"coachInfo"
+<<<<<<< HEAD
 <<<<<<< HEAD
 			],
 			[
@@ -256,6 +284,70 @@
 				"totalFouls"
 			],
 			[
+=======
+			],
+			[
+				"play",
+				"playerInfo"
+			],
+			[
+				"pla",
+				"playerInfo"
+			],
+			[
+				"las",
+				"lastName"
+			],
+			[
+				"first",
+				"firstName"
+			],
+			[
+				"player",
+				"playerInfo"
+			],
+			[
+				"vali",
+				"validateSelector"
+			],
+			[
+				"upda",
+				"updateSelector"
+			],
+			[
+				"paddin",
+				"padding"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"validati",
+				"validationButton"
+			],
+			[
+				"plae",
+				"playerUpdate"
+			],
+			[
+				"hom",
+				"homeTeam"
+			],
+			[
+				"q3",
+				"q3Ended"
+			],
+			[
+				"q1",
+				"q1Ended"
+			],
+			[
+				"total",
+				"totalFouls"
+			],
+			[
+>>>>>>> master
 				"def",
 				"defReb"
 			],
@@ -276,6 +368,7 @@
 				"step2Visited"
 			],
 			[
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"add",
 				"addClass"
@@ -302,10 +395,27 @@
 				"events	Meteor: Template.myTemplate.events(eventMap)"
 			],
 			[
+=======
+				"new",
+				"newGame"
+			],
+			[
+				"add",
+				"addClass"
+			],
+			[
+				"event",
+				"events	Meteor: Template.myTemplate.events(eventMap)"
+			],
+			[
+>>>>>>> master
 				"current",
 				"currentRoute"
 			],
 			[
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 				"wid",
 				"width"
@@ -604,6 +714,7 @@
 	[
 		{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"file": "client/templates/gameStats/summary/graph/graph.js",
 			"settings":
 			{
@@ -637,19 +748,33 @@
 			{
 				"buffer_size": 827,
 >>>>>>> master
+=======
+			"file": "client/templates/gameStats/summary/summary.jade",
+			"settings":
+			{
+				"buffer_size": 3830,
+>>>>>>> master
 				"line_ending": "Unix"
 			}
 		},
 		{
+<<<<<<< HEAD
 			"file": "client/templates/gameStats/summary/summary.js",
 			"settings":
 			{
 <<<<<<< HEAD
 				"buffer_size": 10869,
+=======
+			"file": "client/templates/gameStats/summary/summary.css",
+			"settings":
+			{
+				"buffer_size": 827,
+>>>>>>> master
 				"line_ending": "Unix"
 			}
 		},
 		{
+<<<<<<< HEAD
 			"file": "client/templates/gameStats/summary/summary.css",
 			"settings":
 			{
@@ -673,6 +798,12 @@
 =======
 				"buffer_size": 12284,
 >>>>>>> master
+=======
+			"file": "client/templates/gameStats/summary/summary.js",
+			"settings":
+			{
+				"buffer_size": 12284,
+>>>>>>> master
 				"line_ending": "Unix"
 			}
 		}
@@ -685,8 +816,13 @@
 	"command_palette":
 	{
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"height": 400.0,
 		"last_filter": "",
+=======
+		"height": 203.0,
+		"last_filter": "python",
+>>>>>>> master
 =======
 		"height": 203.0,
 		"last_filter": "python",
@@ -703,6 +839,7 @@
 			],
 			[
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"pa",
 				"Package Control: Remove Channel"
 			],
@@ -711,6 +848,8 @@
 				"Build With: Python - Syntax Check"
 			],
 			[
+=======
+>>>>>>> master
 =======
 >>>>>>> master
 				"tab",
@@ -771,6 +910,7 @@
 		"/home/dexterneo/liveBBStats/client/templates",
 		"/home/dexterneo/liveBBStats/client/templates/gameStats",
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/summary",
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/summary/graph",
 		"/home/dexterneo/liveBBStats/i18n"
@@ -791,10 +931,15 @@
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/summary/summary.css",
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/summary/summary.jade",
 =======
+=======
+>>>>>>> master
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/summary"
 	],
 	"file_history":
 	[
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 		"/home/dexterneo/marketplace/server/kadira.js",
 		"/home/dexterneo/marketplace/marketplace.jade",
@@ -811,7 +956,13 @@
 		"/home/dexterneo/learnyounode/fs_sync.js",
 		"/home/dexterneo/learnyounode/program.js",
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"/home/dexterneo/Dropbox/Prestashop.txt",
+=======
+		"/home/dexterneo/.config/sublime-text-3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/home/dexterneo/Dropbox/Prestashop.txt",
+		"/home/dexterneo/.config/sublime-text-3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+>>>>>>> master
 =======
 		"/home/dexterneo/.config/sublime-text-3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
 		"/home/dexterneo/Dropbox/Prestashop.txt",
@@ -830,6 +981,10 @@
 		"/home/dexterneo/liveBBStats/client/templates/liveGames/completedLiveGames.jade",
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/gameStats.jade",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		"/home/dexterneo/liveBBStats/client/templates/gameStats/summary/summary.jade",
+>>>>>>> master
 =======
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/summary/summary.jade",
 >>>>>>> master
@@ -846,6 +1001,10 @@
 		"/home/dexterneo/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/dexterneo/.config/sublime-text-3/Packages/Search in Project/README.md",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		"/home/dexterneo/liveBBStats/lib/collections/games.js",
+>>>>>>> master
 =======
 		"/home/dexterneo/liveBBStats/lib/collections/games.js",
 >>>>>>> master
@@ -863,6 +1022,10 @@
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/stats/playerModal.js",
 		"/home/dexterneo/liveBBStats/client/templates/application/myAccount/myAccount.js",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		"/home/dexterneo/liveBBStats/client/templates/gameStats/summary/summary.css",
+>>>>>>> master
 =======
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/summary/summary.css",
 >>>>>>> master
@@ -929,8 +1092,11 @@
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/stats/playerModal.html",
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/playersSettings/coachUpdate.html",
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"/home/dexterneo/liveBBStats/client/templates/application/home.html"
 =======
+=======
+>>>>>>> master
 		"/home/dexterneo/liveBBStats/client/templates/application/home.html",
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/playersSettings/coachUpdate.css",
 		"/home/dexterneo/liveBBStats/client/stylesheets/bootstrap.css",
@@ -940,6 +1106,9 @@
 		"/home/dexterneo/liveBBStats/client/templates/gameStats/stats.html",
 		"/home/dexterneo/liveBBStats/client/templates/myGames/ongoingGames.js",
 		"/home/dexterneo/liveBBStats/client/templates/myGames/completedGames.js"
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 	],
 	"find":
@@ -960,9 +1129,12 @@
 		"find_history":
 		[
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"data1",
 			"i",
 			"homeTeam",
+=======
+>>>>>>> master
 =======
 >>>>>>> master
 			"writehead",
@@ -1090,12 +1262,18 @@
 			"         ",
 			"        ",
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"       "
 =======
+=======
+>>>>>>> master
 			"       ",
 			"      ",
 			"     ",
 			"    "
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 		],
 		"highlight": true,
@@ -1157,7 +1335,11 @@
 	[
 		{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"selected": 0,
+=======
+			"selected": 1,
+>>>>>>> master
 =======
 			"selected": 1,
 >>>>>>> master
@@ -1166,17 +1348,23 @@
 				{
 					"buffer": 0,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					"file": "client/templates/gameStats/summary/graph/graph.js",
 					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 735,
 =======
+=======
+>>>>>>> master
 					"file": "client/templates/gameStats/summary/summary.jade",
 					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 3830,
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 						"regions":
 						{
@@ -1185,8 +1373,13 @@
 						[
 							[
 <<<<<<< HEAD
+<<<<<<< HEAD
 								508,
 								508
+=======
+								0,
+								0
+>>>>>>> master
 =======
 								0,
 								0
@@ -1195,6 +1388,7 @@
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 <<<<<<< HEAD
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
@@ -1205,6 +1399,8 @@
 					},
 					"stack_index": 0,
 =======
+=======
+>>>>>>> master
 							"color_scheme": "Packages/Seti_UI/Scheme/Seti_monokai.tmTheme",
 							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
 						},
@@ -1213,17 +1409,28 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 					"type": "text"
 				},
 				{
 					"buffer": 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					"file": "client/templates/gameStats/gameStats.js",
 					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 177,
+=======
+					"file": "client/templates/gameStats/summary/summary.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 827,
+>>>>>>> master
 =======
 					"file": "client/templates/gameStats/summary/summary.css",
 					"semi_transient": false,
@@ -1238,8 +1445,13 @@
 						[
 							[
 <<<<<<< HEAD
+<<<<<<< HEAD
 								177,
 								177
+=======
+								494,
+								494
+>>>>>>> master
 =======
 								494,
 								494
@@ -1249,10 +1461,18 @@
 						"settings":
 						{
 <<<<<<< HEAD
+<<<<<<< HEAD
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+=======
+							"color_scheme": "Packages/Seti_UI/Scheme/Seti_monokai.tmTheme",
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 424.0,
+>>>>>>> master
 =======
 							"color_scheme": "Packages/Seti_UI/Scheme/Seti_monokai.tmTheme",
 							"syntax": "Packages/CSS/CSS.tmLanguage"
@@ -1273,6 +1493,7 @@
 			[
 				{
 					"buffer": 2,
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"file": "client/templates/gameStats/gameStats.jade",
 					"semi_transient": false,
@@ -1314,6 +1535,13 @@
 					{
 						"buffer_size": 12284,
 >>>>>>> master
+=======
+					"file": "client/templates/gameStats/summary/summary.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12284,
+>>>>>>> master
 						"regions":
 						{
 						},
@@ -1326,6 +1554,7 @@
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 <<<<<<< HEAD
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
@@ -1424,6 +1653,15 @@
 >>>>>>> master
 						"zoom_level": 1.0
 					},
+=======
+							"color_scheme": "Packages/Seti_UI/Scheme/Seti_monokai.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1785.0,
+						"zoom_level": 1.0
+					},
+>>>>>>> master
 					"stack_index": 0,
 					"type": "text"
 				}
@@ -1603,7 +1841,11 @@
 	"show_tabs": true,
 	"side_bar_visible": true,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	"side_bar_width": 296.0,
+=======
+	"side_bar_width": 250.0,
+>>>>>>> master
 =======
 	"side_bar_width": 250.0,
 >>>>>>> master
