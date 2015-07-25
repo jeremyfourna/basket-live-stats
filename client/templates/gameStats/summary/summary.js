@@ -338,6 +338,9 @@ Template.summary.helpers({
 Template.summary.rendered = function() {
 	var self = this;
 	var chart = c3.generate({
+		size: {
+			height: 240
+		},
 		bindto: this.find('#gameGapChart'),
 		data: {
 			xs: {
