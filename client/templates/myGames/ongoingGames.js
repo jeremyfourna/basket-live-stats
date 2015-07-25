@@ -2,7 +2,7 @@ Template.ongoingGames.helpers({
 	'runningGames': function() {
 		return Games.find({
 			state: {
-				$not: "gameEnded"
+				$nin: ["gameEnded"]
 			},
 			userId: Meteor.userId()
 		}, {

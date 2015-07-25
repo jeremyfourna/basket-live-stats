@@ -1,15 +1,15 @@
 Template.ongoingLiveGames.helpers({
 	game: function() {
 		return Games.find({
+			privateGame: false,
 			state: {
-				$not: "gameEnded"
-			},
-			privateGame: false
+				$nin: ['notStarted', 'gameEnded']
+			}
 		}, {
 			fields: {
 				'gameInfos': 1,
-				'gameStats.score': 1,
-				'state': 1
+				'state': 1,
+				'gameStats.score': 1
 			}
 		});
 	},

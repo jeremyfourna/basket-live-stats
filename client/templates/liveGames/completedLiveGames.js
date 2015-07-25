@@ -1,7 +1,14 @@
 Template.completedLiveGames.helpers({
 	'endedGames': function() {
 		return Games.find({
-			state: 'gameEnded'
+			state: 'gameEnded',
+			privateGame: false
+		}, {
+			fields: {
+				'gameInfos': 1,
+				'state': 1,
+				'gameStats.score': 1
+			}
 		});
 	},
 	'ownerOfTheGame': function() {
