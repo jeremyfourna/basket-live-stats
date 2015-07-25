@@ -334,7 +334,7 @@ Template.summary.helpers({
 	}
 });
 
-/*
+
 Template.summary.rendered = function() {
 	var self = this;
 	var chart = c3.generate({
@@ -355,12 +355,18 @@ Template.summary.rendered = function() {
 	});
 
 	this.autorun(function(tracker) {
-		var gameData = self.data.gameStats.evolution;
+		var gameData = Games.find({
+			_id: self.data._id
+		}, {
+			fields: {
+				'gameStats.evolution': 1
+			}
+		}).fetch();
 		var xArray = ['x'];
 		var yArray = ['data1'];
-		for (var i = 0; i < gameData.length; i++) {
-			xArray.push(gameData[i][0]);
-			yArray.push(gameData[i][1]);
+		for (var i = 0; i < gameData[0].gameStats.evolution.length; i++) {
+			xArray.push(gameData[0].gameStats.evolution[i][0]);
+			yArray.push(gameData[0].gameStats.evolution[i][1]);
 		}
 		chart.load({
 			columns: [
@@ -370,4 +376,3 @@ Template.summary.rendered = function() {
 		});
 	});
 };
-*/

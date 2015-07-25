@@ -10,8 +10,8 @@ template(name='summary')
 			p {{_ "gameScore"}} : #{gameStats.score.awayTeam}
 			p {{_ "pointsPartition"}} : {{_ "twoPoints"}} #{awayTeamTwoPointsPartition} % - {{_ "threePoints"}} #{awayTeamThreePointsPartition} %
 			p {{_ "bestScorer"}} : {{_ "num"}}#{bestAwayTeamPlayer.jersey} - #{bestAwayTeamPlayer.totalPoints} {{_ "pts"}}
-	//h4 {{_ "gameGap"}}
-	//#gameGapChart
+	h4 {{_ "gameGap"}}
+	#gameGapChart
 	h4 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
 	.table-responsive
 		table.table.shadow.table-condensed
