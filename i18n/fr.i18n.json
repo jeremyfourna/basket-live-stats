@@ -159,5 +159,6 @@
 	"switchProcess": "Renseignez le temps qu'il reste dans le quart-temps pour terminer le remplacement.",
 	"gameTime": "Tps Jeu",
 	"gameGap": "Ecart du match",
-	"shareTheGame": "Partager le match sur les réseaux sociaux"
+	"shareTheGame": "Partager le match sur les réseaux sociaux",
+	"twitter": "Partager le match"
 }
