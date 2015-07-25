@@ -22,4 +22,5 @@ meteorhacks:fast-render
 mquandalle:jade
 peernohell:c3
 sanjo:jasmine
-velocity:html-reporter
+velocity:console-reporter
+momentjs:moment
