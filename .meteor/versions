@@ -23,7 +23,7 @@ geojson-utils@1.0.3
 html-tools@1.0.4
 htmljs@1.0.4
 http@1.1.0
-ian:accounts-ui-bootstrap-3@1.2.74
+ian:accounts-ui-bootstrap-3@1.2.76
 id-map@1.0.3
 iron:controller@1.0.8
 iron:core@1.0.8
@@ -73,8 +73,8 @@ retry@1.0.3
 risul:bootstrap-colorpicker@2.2.0
 routepolicy@1.0.5
 sacha:spin@2.3.1
-sanjo:jasmine@0.14.0
-sanjo:karma@1.5.1
+sanjo:jasmine@0.15.1
+sanjo:karma@1.6.1
 sanjo:long-running-child-process@1.0.3
 sanjo:meteor-files-helpers@1.1.0_6
 sanjo:meteor-version@1.0.0
@@ -95,7 +95,7 @@ underscore@1.0.3
 url@1.0.4
 velocity:chokidar@1.0.3_1
 velocity:core@0.7.1
-velocity:html-reporter@0.7.0
+velocity:html-reporter@0.7.2
 velocity:meteor-internals@1.1.0_7
 velocity:meteor-stubs@1.1.0
 velocity:shim@0.1.0
