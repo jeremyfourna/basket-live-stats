@@ -1,24 +1,24 @@
 template(name='completedGames')
-	h1 {{_ "endedGames"}}
 	each endedGames
-		.row.shadow.endedGames
+		.row.shadow.displayLiveGames
+			.row.vertical-align
+				.col-xs-9.col-sm-9.col-md-9.col-lg-10
+					h4 {{_ "level"}} : #{gameInfos.level} / {{_ "group"}} : #{gameInfos.group}
 			.row.vertical-align
 				.text-center.col-xs-4.col-sm-4.col-md-4.col-lg-5
 					h3 #{gameInfos.homeTeam}
 				.text-center.col-xs-4.col-sm-4.col-md-4.col-lg-5
 					h3 #{gameInfos.awayTeam}
-				.col-xs-3.col-sm-3.col-md-3.col-lg-2
+				.col-xs-3.col-sm-3.col-md-3.col-lg-1
 					a(href="{{pathFor 'gameStats'}}")
 						button.pull-right.shadow.btn.btn-default(type='button')
 							span.glyphicon.glyphicon-log-in(aria-hidden='true')
 			.row.vertical-align
-				.text-center.col-xs-3.col-sm-3.col-md-3.col-lg-4
+				.text-center.col-xs-4.col-sm-4.col-md-4.col-lg-5
 					h4 #{gameStats.score.homeTeam}
-				.text-center.col-xs-2.col-sm-2.col-md-2.col-lg-2
-					h4 {{_ "gameEnded"}}
-				.text-center.col-xs-3.col-sm-3.col-md-3.col-lg-4
+				.text-center.col-xs-4.col-sm-4.col-md-4.col-lg-5
 					h4 #{gameStats.score.awayTeam}
-				.col-xs-3.col-sm-3.col-md-3.col-lg-2
+				.col-xs-3.col-sm-3.col-md-3.col-lg-1
 					button.pull-right.shadow.btn.btn-danger(type='button')
 						span.glyphicon.glyphicon-remove(aria-hidden='true')
 	else
