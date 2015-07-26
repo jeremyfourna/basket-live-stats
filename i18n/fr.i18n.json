@@ -160,5 +160,7 @@
 	"gameTime": "Tps Jeu",
 	"gameGap": "Ecart du match",
 	"shareTheGame": "Partager le match sur les réseaux sociaux",
-	"twitter": "Partager le match"
+	"twitter": "Partager le match",
+	"myRunningGames": "Mes matchs en cours",
+	"myEndedGames": "Mes matchs terminés"
 }
