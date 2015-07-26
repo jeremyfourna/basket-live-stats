@@ -29,6 +29,16 @@ template(name='ongoingLiveGames')
 							h4 {{_ "q3Ended"}}
 						if q4Running
 							h4 {{_ "q4Running"}}
+						if oT1
+							h4 {{_ "oT1"}}
+						if oT2
+							h4 {{_ "oT2"}}
+						if oT3
+							h4 {{_ "oT3"}}
+						if oT4
+							h4 {{_ "oT4"}}
+						if oT5
+							h4 {{_ "oT5"}}
 					.text-center.col-xs-5.col-sm-5.col-md-5.col-lg-5
 						h4 #{gameStats.score.awayTeam}
 			.col-xs-3.col-sm-3.col-md-3.col-lg-1

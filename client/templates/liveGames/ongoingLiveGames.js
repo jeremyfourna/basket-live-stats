@@ -68,5 +68,41 @@ Template.ongoingLiveGames.helpers({
 		} else {
 			return false;
 		}
+	},
+	'oT1': function() {
+		if (this.state === 'oT1') {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	'oT2': function() {
+		if (this.state === 'oT2') {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	'oT3': function() {
+		if (this.state === 'oT3') {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	'oT4': function() {
+		if (this.state === 'oT4') {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	'oT5': function() {
+		if (this.state === 'oT5') {
+			return true;
+		} else {
+			return false;
+		}
 	}
+
 });
