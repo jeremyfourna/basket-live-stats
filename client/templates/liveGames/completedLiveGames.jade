@@ -1,25 +1,22 @@
 template(name='completedLiveGames')
 	each endedGames
-		.row.shadow.endedGames
-			.row.vertical-align
-				.text-center.col-xs-4.col-sm-4.col-md-4.col-lg-5
-					h3 #{gameInfos.homeTeam}
-				.text-center.col-xs-4.col-sm-4.col-md-4.col-lg-5
-					h3 #{gameInfos.awayTeam}
-				.col-xs-3.col-sm-3.col-md-3.col-lg-2
-					a(href="{{pathFor 'gameStats'}}")
-						button.pull-right.shadow.btn.btn-default(type='button')
-							span.glyphicon.glyphicon-log-in(aria-hidden='true')
-			.row.vertical-align
-				.text-center.col-xs-3.col-sm-3.col-md-3.col-lg-4
-					h4 #{gameStats.score.homeTeam}
-				.text-center.col-xs-2.col-sm-2.col-md-2.col-lg-2
-					h4 {{_ "gameEnded"}}
-				.text-center.col-xs-3.col-sm-3.col-md-3.col-lg-4
-					h4 #{gameStats.score.awayTeam}
-				if ownerOfTheGame
-					.col-xs-3.col-sm-3.col-md-3.col-lg-2
-						button.pull-right.shadow.btn.btn-danger(type='button')
-							span.glyphicon.glyphicon-remove(aria-hidden='true')
+		.row.shadow.displayLiveGames.vertical-align
+			.col-xs-9.col-sm-9.col-md-9.col-lg-10
+				.row.vertical-align
+					h4 {{_ "level"}} : #{gameInfos.level} / {{_ "group"}} : #{gameInfos.group}
+				.row.vertical-align
+					.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
+						h3 #{gameInfos.homeTeam}
+					.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
+						h3 #{gameInfos.awayTeam}
+				.row.vertical-align
+					.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
+						h4 #{gameStats.score.homeTeam}
+					.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
+						h4 #{gameStats.score.awayTeam}
+			.col-xs-3.col-sm-3.col-md-3.col-lg-2
+				a(href="{{pathFor 'gameStats'}}")
+					button.shadow.pull-right.btn.btn-default(type='button')
+						span.glyphicon.glyphicon-log-in(aria-hidden='true')
 	else
 		p {{_ "noCompletedLiveGames"}}

@@ -2,14 +2,14 @@ template(name='ongoingLiveGames')
 	each game
 		.row.shadow.displayLiveGames.vertical-align
 			.col-xs-9.col-sm-9.col-md-9.col-lg-10
-				.row
+				.row.vertical-align
 					h4 {{_ "level"}} : #{gameInfos.level} / {{_ "group"}} : #{gameInfos.group}
-				.row
+				.row.vertical-align
 					.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
 						h3 #{gameInfos.homeTeam}
 					.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
 						h3 #{gameInfos.awayTeam}
-				.row
+				.row.vertical-align
 					.text-center.col-xs-5.col-sm-5.col-md-5.col-lg-5
 						h4 #{gameStats.score.homeTeam}
 					.text-center.col-xs-2.col-sm-2.col-md-2.col-lg-2
