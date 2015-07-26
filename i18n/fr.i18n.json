@@ -68,7 +68,7 @@
 	"labelHalfTime": "Début de la deuxième mi-temps",
 	"labelQ3Running": "Fin du 3ème quart temps",
 	"labelQ3Ended": "Début du 4ème quart temps",
-	"labelQ4Running": "Fin du match ?",
+	"labelEndedGames": "Fin du match ?",
 	"labelGameEnded": "Match terminé",
 	"pts": "Pts",
 	"ft": "LF",
@@ -162,5 +162,16 @@
 	"shareTheGame": "Partager le match sur les réseaux sociaux",
 	"twitter": "Partager le match",
 	"myRunningGames": "Mes matchs en cours",
-	"myEndedGames": "Mes matchs terminés"
+	"myEndedGames": "Mes matchs terminés",
+	"stateOfTheGame": "Etat du match",
+	"oT1": "1ère prolongation",
+	"oT2": "2ème prolongation",
+	"oT3": "3ème prolongation",
+	"oT4": "4ème prolongation",
+	"oT5": "5ème prolongation",
+	"labelOT": "Prolongations ?",
+	"labelOT1": "2ème prolongation ?",
+	"labelOT2": "3ème prolongation ?",
+	"labelOT3": "4ème prolongation ?",
+	"labelOT4": "5ème prolongation ?"
 }
