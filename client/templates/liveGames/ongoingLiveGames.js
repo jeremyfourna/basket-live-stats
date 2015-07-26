@@ -104,5 +104,4 @@ Template.ongoingLiveGames.helpers({
 			return false;
 		}
 	}
-
 });

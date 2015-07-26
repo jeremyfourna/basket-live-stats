@@ -19,9 +19,24 @@ template(name='stats')
 		if q3Ended
 			button#q3Ended.btn.shadow.btn-primary(type='button') {{_ "labelQ3Ended"}}
 		if q4Running
-			button#q4Running.btn.shadow.btn-primary(type='button') {{_ "labelQ4Running"}}
+			button#endedGames.btn.shadow.btn-primary(type='button') {{_ "labelEndedGames"}}
+			button#oT.oT.btn.shadow.btn-warning(type='button') {{_ "labelOT"}}
 		if gameEnded
 			button#gameEnded.btn.shadow.btn-primary(disabled='disabled', type='button') {{_ "labelGameEnded"}}
+		if oT1
+			button#oT1.oT.btn.shadow.btn-warning(type='button') {{_ "labelOT1"}}
+			button#endedGames.btn.shadow.btn-primary(type='button') {{_ "labelEndedGames"}}
+		if oT2
+			button#oT2.oT.btn.shadow.btn-warning(type='button') {{_ "labelOT2"}}
+			button#endedGames.btn.shadow.btn-primary(type='button') {{_ "labelEndedGames"}}
+		if oT3
+			button#oT3.oT.btn.shadow.btn-warning(type='button') {{_ "labelOT3"}}
+			button#endedGames.btn.shadow.btn-primary(type='button') {{_ "labelEndedGames"}}
+		if oT4
+			button#oT4.oT.btn.shadow.btn-warning(type='button') {{_ "labelOT4"}}
+			button#endedGames.btn.shadow.btn-primary(type='button') {{_ "labelEndedGames"}}
+		if oT5
+			button#endedGames.btn.shadow.btn-primary(type='button') {{_ "labelEndedGames"}}
 	.clearfix
 		h3 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
 		p.italic {{_ "explanationHowToAddAStat"}}

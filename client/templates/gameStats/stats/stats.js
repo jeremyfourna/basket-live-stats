@@ -62,6 +62,41 @@ Template.stats.helpers({
 			return false;
 		}
 	},
+	'oT1': function() {
+		if (this.state === 'oT1') {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	'oT2': function() {
+		if (this.state === 'oT2') {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	'oT3': function() {
+		if (this.state === 'oT3') {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	'oT4': function() {
+		if (this.state === 'oT4') {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	'oT5': function() {
+		if (this.state === 'oT5') {
+			return true;
+		} else {
+			return false;
+		}
+	},
 	'homeTeamPlayersPlaying': function() {
 		var team = this.homeTeam.players;
 		var inPlayTeam = [];
@@ -222,7 +257,77 @@ Template.stats.events({
 			}
 		});
 	},
-	'click #q4Running': function(e) {
+	'click #oT': function(e) {
+		e.preventDefault();
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'oT1'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
+			}
+		});
+	},
+	'click #oT1': function(e) {
+		e.preventDefault();
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'oT2'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
+			}
+		});
+	},
+	'click #oT2': function(e) {
+		e.preventDefault();
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'oT3'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
+			}
+		});
+	},
+	'click #oT3': function(e) {
+		e.preventDefault();
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'oT4'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
+			}
+		});
+	},
+	'click #oT4': function(e) {
+		e.preventDefault();
+		var gameId = {
+			id: this._id
+		};
+		var status = {
+			state: 'oT5'
+		};
+		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+			if (error) {
+				return throwError(error.message);
+			}
+		});
+	},
+	'click #endedGames': function(e) {
 		e.preventDefault();
 		var gameId = {
 			_id: this._id
