@@ -3,7 +3,7 @@ template(name="replacement")
 		h3 {{_ "whoReplaceWho"}}
 		.clearfix
 			h4 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
-			p {{_ "explanationHowToMakeAReplacement"}}
+			p.italic {{_ "explanationHowToMakeAReplacement"}}
 			h4 {{_ "inPlay"}}
 			#homeTeamInPlay.row.playerRow.shadow
 				each homeTeamPlayersPlaying
@@ -15,7 +15,7 @@ template(name="replacement")
 			+homeTeamReplacementModal
 		.clearfix
 			h4 {{_ "awayTeam"}} : #{gameInfos.awayTeam}
-			p {{_ "explanationHowToMakeAReplacement"}}
+			p.italic {{_ "explanationHowToMakeAReplacement"}}
 			h4 {{_ "inPlay"}}
 			#awayTeamInPlay.row.playerRow.shadow
 				each awayTeamPlayersPlaying

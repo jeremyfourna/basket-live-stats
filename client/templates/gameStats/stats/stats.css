@@ -14,3 +14,7 @@
 .validateInPlayPlayers {
     margin-top: 10px;
 }
+
+.italic {
+    font-style: italic;
+}

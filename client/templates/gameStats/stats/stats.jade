@@ -24,7 +24,7 @@ template(name='stats')
 			button#gameEnded.btn.shadow.btn-primary(disabled='disabled', type='button') {{_ "labelGameEnded"}}
 	.clearfix
 		h3 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
-		p {{_ "explanationHowToAddAStat"}}
+		p.italic {{_ "explanationHowToAddAStat"}}
 		.homeTeam.row.playerRow
 			each homeTeamPlayersPlaying
 				+homeTeamPlayerPill
@@ -34,7 +34,7 @@ template(name='stats')
 		+homeTeamPlayerModal
 	.clearfix
 		h3 {{_ "awayTeam"}} : #{gameInfos.awayTeam}
-		p {{_ "explanationHowToAddAStat"}}
+		p.italic {{_ "explanationHowToAddAStat"}}
 		.awayTeam.row.playerRow
 			each awayTeamPlayersPlaying
 				+awayTeamPlayerPill
