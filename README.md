@@ -57,6 +57,20 @@ This is a tool to take the stats of a basket-ball game, you can share the url of
 }
 ```
 
+## Coach schema
+
+```json
+{
+	"_id": "String",
+	"gameId": "String",
+	"teamId": "String",
+	"firstName": "String",
+	"lastName": "String",
+	"primaryCoach": "Boolean",
+	"techFouls" : "Number",
+}
+```
+
 ## Game schema
 
 ```json
