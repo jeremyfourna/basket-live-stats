@@ -67,7 +67,7 @@ This is a tool to take the stats of a basket-ball game, you can share the url of
 	"firstName": "String",
 	"lastName": "String",
 	"primaryCoach": "Boolean",
-	"techFouls" : "Number",
+	"techFouls" : "Number"
 }
 ```
 
