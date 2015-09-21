@@ -9,7 +9,7 @@ This is a tool to take the stats of a basket-ball game, you can share the url of
 	"_id": "String",
 	"gameId": "String",
 	"teamId": "String",
-	"firstName:" "String",
+	"firstName": "String",
 	"lastName": "String",
 	"jersey": "Number",
 	"inPlay": "Boolean",
