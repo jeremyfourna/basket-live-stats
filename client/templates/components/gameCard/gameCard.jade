@@ -1,0 +1,13 @@
+template(name="gameCard")
+	.panel.panel-default
+		.panel-heading
+			.panel-title
+				h3.text-center #{gameData.gameInfos.homeTeam} - #{gameData.gameInfos.awayTeam}
+		.panel-body
+			p.text-center #{gameData.stats.homeTeam.score} - #{gameData.stats.awayTeam.score}
+			.pull-right
+				a(href="{{pathFor 'gameStats'}}")
+					button.btn.btn-default(type='button')
+						span.glyphicon.glyphicon-log-in(aria-hidden='true')
+		.panel-footer
+			p.text-center #{gameState} - #{gameData.gameInfos.level} - #{gameData.gameInfos.group}
