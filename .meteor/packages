@@ -37,3 +37,5 @@ random
 ejson
 spacebars
 check
+stylus
+peerlibrary:blaze-components
