@@ -80,6 +80,7 @@ This is a tool to take the stats of a basket-ball game, you can share the url of
 	"createdAt": "Date",
 	"gameState": "String",
 	"privateGame": "Boolean",
+	"setupComplete": "Boolean"
 	"gameInfos": {
 		"homeTeam": "String",
 		"awayTeam": "String",
