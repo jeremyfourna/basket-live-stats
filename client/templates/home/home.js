@@ -4,7 +4,8 @@ Template.home.helpers({
 			gameState: {
 				$nin: ['gameEnded', 'notStarted']
 			},
-			privateGame: false
+			privateGame: false,
+			setupComplete: true
 		}, {
 			fields: {
 				'gameInfos': 1,
@@ -18,7 +19,8 @@ Template.home.helpers({
 	endedGame: function() {
 		return Games.find({
 			gameState: 'gameEnded',
-			privateGame: false
+			privateGame: false,
+			setupComplete: true
 		}, {
 			fields: {
 				'gameInfos': 1,
