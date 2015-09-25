@@ -80,15 +80,14 @@ This is a tool to take the stats of a basket-ball game, you can share the url of
 	"createdAt": "Date",
 	"gameState": "String",
 	"privateGame": "Boolean",
-	"setupComplete": "Boolean"
 	"gameInfos": {
-		"homeTeam": "String",
-		"awayTeam": "String",
+		"yourClub": "String",
+		"opponent": "String",
 		"level": "String",
 		"group": "String"
 	},
 	"stats": {
-		"homeTeam": {
+		"yourClub": {
 			"score" : "Number",
 			"evaluation" : "Number",
 			"shoots" : {
@@ -123,7 +122,7 @@ This is a tool to take the stats of a basket-ball game, you can share the url of
 			"blocks" : "Number",
 			"turnovers" : "Number"
 		},
-		"awayTeam": {
+		"opponent": {
 			"score" : "Number",
 			"evaluation" : "Number",
 			"shoots" : {
