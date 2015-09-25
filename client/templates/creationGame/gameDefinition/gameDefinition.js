@@ -30,22 +30,44 @@ Template.gameDefinition.helpers({
 });
 
 Template.gameDefinition.events({
-	'click .next': function() {
-		var gameInfo = {
-			homeTeam: $('#homeTeam').val(),
-			awayTeam: $('#awayTeam').val(),
-			level: $('#level').val(),
-			group: $('#group').val(),
-			privateGame: $('#privateGame').is(':checked')
-		};
-		var gameId = this._id;
-		Meteor.call('gameInfosUpdate', gameInfo, gameId, function(error) {
-			if (error) {
-				return throwError(error.message);
+	'click .addPlayer': function(e, t) {
+		return Blaze.render(Template.playerDefinition, t.$('.playerData').get(0));
+	},
+	'click .addCoach': function(e, t) {
+		return Blaze.render(Template.coachDefinition, t.$('.coachData').get(0));
+	},
+	'click .removePlayer': function() {
+		if ($('.player').length !== 1) {
+			$('.player').get(-1).remove();
+		}
+	},
+	'click .removeCoach': function() {
+		if ($('.coach').length !== 1) {
+			$('.coach').get(-1).remove();
+		}
+	},
+	'click .configurationValidation': function() {
+		var game = {
+			userId: Meteor.userId(),
+			privateGame: $('#privateGame').is(':checked'),
+			gameInfos: {
+				yourClub: $('#yourClub').val(),
+				opponent: $('#opponent').val(),
+				level: $('#level').val(),
+				group: $('#group').val()
 			}
-		});
-		Router.go('participantsDefinition', {
-			_id: gameId
-		});
+		};
+		var players = [];
+		var coachs = [];
+		for (var i = 0, len = $('.player').length; i < len; i++) {
+			var player = {
+				teamId: 'yourClub',
+				firstName: $('.player').get(i).find('.firstName').val(),
+				lastName: $('.player').get(i).find('.lastName').val(),
+				jersey: $('.player').get(i).find('.jersey').val()
+			};
+			players.push(player);
+		}
+		return false;
 	}
 });
