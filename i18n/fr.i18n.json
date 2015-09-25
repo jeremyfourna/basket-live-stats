@@ -51,7 +51,7 @@
 	"coach": "Coach",
 	"name": "Nom",
 	"firstName": "Prénom",
-	"playerDefinition": "Définis les joueurs...",
+	"playerDefinition": "Définis les joueurs de ton club",
 	"teamDefinition": "Définis les équipes...",
 	"homeTeam": "Equipe domicile",
 	"awayTeam": "Equipe extérieur",
@@ -173,5 +173,9 @@
 	"labelOT1": "2ème prolongation ?",
 	"labelOT2": "3ème prolongation ?",
 	"labelOT3": "4ème prolongation ?",
-	"labelOT4": "5ème prolongation ?"
+	"labelOT4": "5ème prolongation ?",
+	"coachDefinition": "Definis les coachs de ton club",
+	"removeCoach": "Supprimer un coach",
+	"removePlayer": "Supprimer un joueur",
+	"primaryCoach": "Coach principal ?"
 }
