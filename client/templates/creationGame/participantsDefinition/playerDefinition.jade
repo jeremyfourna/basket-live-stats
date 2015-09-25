@@ -1,11 +1,12 @@
 template(name='playerDefinition')
 	.player.col-sm-4
 		h4 {{_ "player"}} #{jersey}
-		input.playerIndex.hidden.form-control(type='text', value='#{playerIndex}')
-		input.jersey.hidden.form-control(type='text', value='#{jersey}')
-		.input-group.shadow.input-group-sm
+		.input-group.input-group-sm
+			span.input-group-addon {{_ "num"}}
+			input.jersey.form-control(type='number', min="4", max="15", value='#{jersey}')
+		.input-group.input-group-sm
 			span.input-group-addon {{_ "name"}}
 			input.lastName.form-control(type='text', value='#{lastName}')
-		.input-group.shadow.input-group-sm
+		.input-group.input-group-sm
 			span.input-group-addon {{_ "firstName"}}
 			input.firstName.form-control(type='text', value='#{firstName}')
