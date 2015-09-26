@@ -1,8 +1,15 @@
 Template.completedGames.helpers({
 	'endedGames': function() {
 		return Games.find({
-			state: 'gameEnded',
-			userId: Meteor.userId()
+			userId: Meteor.userId(),
+			gameState: 'gameEnded'
+		}, {
+			fields: {
+				'gameInfos': 1,
+				'stats.yourClub.score': 1,
+				'stats.opponent.score': 1,
+				'gameState': 1
+			}
 		});
 	}
 });

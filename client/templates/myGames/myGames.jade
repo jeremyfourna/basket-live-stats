@@ -1,12 +1,14 @@
 template(name='myGames')
 	div(role='tabpanel')
-		ul#myGamesPills.nav.nav-pills(role='tablist')
+		ul.nav.nav-pills(role='tablist')
 			li.active(role='presentation')
 				a#ongoingGames-tab(href='#ongoingGames', role='tab', data-toggle='tab', aria-controls='ongoingGames', aria-expanded='true') {{_ "myRunningGames"}}
 			li(role='presentation')
 				a#completedGames-tab(href='#completedGames', role='tab', data-toggle='tab', aria-controls='completedGames') {{_ "myEndedGames"}}
 		#myTabContent.tab-content
 			#ongoingGames.tab-pane.fade.in.active(role='tabpanel', aria-labelledby='ongoingGames-tab')
-				+ongoingGames
+				.row
+					+ongoingGames
 			#completedGames.tab-pane.fade(role='tabpanel', aria-labelledby='completedGames-tab')
-				+completedGames
+				.row
+					+completedGames
