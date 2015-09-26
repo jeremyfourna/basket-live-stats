@@ -4,6 +4,10 @@ Template.gameDefinition.helpers({
 			fields: {
 				name: 1
 			}
+		}, {
+			sort: {
+				name: 1
+			}
 		});
 	},
 	'yourClub': function() {
@@ -47,6 +51,9 @@ Template.gameDefinition.events({
 		}
 	},
 	'click .configurationValidation': function() {
+		if ($('.player').length < 5) {
+			return throwError("Your team must have a minimum of 5 players");
+		}
 		var game = {
 			userId: Meteor.userId(),
 			privateGame: $('#privateGame').is(':checked'),
@@ -59,15 +66,50 @@ Template.gameDefinition.events({
 		};
 		var players = [];
 		var coachs = [];
-		for (var i = 0, len = $('.player').length; i < len; i++) {
+		$('.player').each(function(index, element) {
 			var player = {
 				teamId: 'yourClub',
-				firstName: $('.player').get(i).find('.firstName').val(),
-				lastName: $('.player').get(i).find('.lastName').val(),
-				jersey: $('.player').get(i).find('.jersey').val()
+				firstName: $(element).find('.firstName').val(),
+				lastName: $(element).find('.lastName').val(),
+				jersey: $(element).find('.jersey').val()
 			};
 			players.push(player);
-		}
-		return false;
+		});
+		$('.coach').each(function(index, element) {
+			var coach = {
+				teamId: 'yourClub',
+				firstName: $(element).find('.firstName').val(),
+				lastName: $(element).find('.lastName').val(),
+				primaryCoach: $(element).find('.primaryCoach').is(':checked')
+			};
+			coachs.push(coach);
+		});
+		Meteor.call('gameInsert', game, function(error, result) {
+			var gameId;
+			var playersId;
+			var coachsId;
+			if (error) {
+				return throwError(error.message);
+			} else {
+				gameId = result._id;
+				Meteor.call('playerInsert', gameId, players, function(error, result) {
+					if (error) {
+						return throwError(error.message);
+					} else {
+						playersId = result.ids;
+						Meteor.call('coachInsert', gameId, coachs, function(error, result) {
+							if (error) {
+								return throwError(error.message);
+							} else {
+								coachsId = result.ids;
+								Router.go('gameStats', {
+									_id: gameId
+								});
+							}
+						});
+					}
+				});
+			}
+		});
 	}
 });
