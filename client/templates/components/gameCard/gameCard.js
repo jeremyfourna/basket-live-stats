@@ -5,6 +5,13 @@ var GameCard = BlazeComponent.extendComponent({
 	gameData: function() {
 		return this.data();
 	},
+	notStarted: function() {
+		if (this.data().gameState === 'notStarted') {
+			return true;
+		} else {
+			return false;
+		}
+	},
 	q1Running: function() {
 		if (this.data().gameState === 'q1Running') {
 			return true;
