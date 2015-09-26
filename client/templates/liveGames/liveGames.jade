@@ -7,6 +7,8 @@ template(name='liveGames')
 				a#completedGames-tab(href='#completedGames', role='tab', data-toggle='tab', aria-controls='completedGames') {{_ "endedGames"}}
 	#myTabContent.tab-content
 		#ongoingGames.tab-pane.fade.in.active(role='tabpanel', aria-labelledby='ongoingGames-tab')
-			+ongoingLiveGames
+			.row
+				+ongoingLiveGames
 		#completedGames.tab-pane.fade(role='tabpanel', aria-labelledby='completedGames-tab')
-			+completedLiveGames
+			.row
+				+completedLiveGames
