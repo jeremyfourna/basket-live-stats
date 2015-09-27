@@ -1,0 +1,67 @@
+template(name='homeTeamPlayerModal')
+	.modal.fade(id='#{modalId}' ,tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+		.modal-dialog.modal-lg
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+						span(aria-hidden='true') &times;
+					h4#myModalLabel.modal-title {{_ "whoIsDoingThisAction"}} #{firstName} #{lastName} {{_ "num"}}#{jersey}
+				.modal-body
+					.offActions
+						h4 {{_ "offAction"}}
+						.row.actions
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#onePoint.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "oneFT"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#twoPoint.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "twoPoints"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#threePoint.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "threePoints"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#assist.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "assist"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#offReb.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "offReb"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#offProvFoul.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "provFoul"}}
+						.row.actions
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#onePointMiss.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "oneFT"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#twoPointMiss.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "twoPoints"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#threePointMiss.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "threePoints"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#turnover.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "turnover"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#offFoul.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "offFoul"}}
+					.defActions
+						h4 {{_ "defAction"}}
+						.row.actions
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#steal.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "steal"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#block.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "block"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#defReb.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "defReb"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#defProvFoul.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "provFoul"}}
+						.row.actions
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#defFoul.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "foul"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#defFoulOneFT.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "foul1FT"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#defFoulTwoFT.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "foul2FT"}}
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								button#defFoulthreeFT.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "foul3FT"}}
+					.otherActions
+						h4 {{_ "otherFouls"}}
+						.row.actions
+							.col-xs-6.col-sm-3.col-md-3.col-lg-3
+								button#techFoul.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "techFoul"}}
+							.col-xs-6.col-sm-3.col-md-3.col-lg-3
+								button#antiSportFoul.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "antiSportFoul"}}
+							.col-xs-6.col-sm-3.col-md-3.col-lg-3
+								button#disqualifyingFoul.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "disqualifyingFoul"}}
+				.modal-footer
+					button#correctionAction.btn.pull-left.btn-warning(type='button') {{_ "correctionAction"}}
+					button#closeModalButton.btn.btn-default(type='button', data-dismiss='modal') {{_ "closeModal"}}
