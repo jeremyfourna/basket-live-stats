@@ -1,173 +1,162 @@
 Template.stats.helpers({
+	'gameData': function() {
+		return Games.findOne(Router.current().params._id);
+	},
 	'notStarted': function() {
-		if (this.state === 'notStarted') {
+		if (this.gameState === 'notStarted') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'q1Running': function() {
-		if (this.state === 'q1Running') {
+		if (this.gameState === 'q1Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'q1Ended': function() {
-		if (this.state === 'q1Ended') {
+		if (this.gameState === 'q1Ended') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'q2Running': function() {
-		if (this.state === 'q2Running') {
+		if (this.gameState === 'q2Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'halfTime': function() {
-		if (this.state === 'halfTime') {
+		if (this.gameState === 'halfTime') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'q3Running': function() {
-		if (this.state === 'q3Running') {
+		if (this.gameState === 'q3Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'q3Ended': function() {
-		if (this.state === 'q3Ended') {
+		if (this.gameState === 'q3Ended') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'q4Running': function() {
-		if (this.state === 'q4Running') {
+		if (this.gameState === 'q4Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'gameEnded': function() {
-		if (this.state === 'gameEnded') {
+		if (this.gameState === 'gameEnded') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'oT1': function() {
-		if (this.state === 'oT1') {
+		if (this.gameState === 'oT1') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'oT2': function() {
-		if (this.state === 'oT2') {
+		if (this.gameState === 'oT2') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'oT3': function() {
-		if (this.state === 'oT3') {
+		if (this.gameState === 'oT3') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'oT4': function() {
-		if (this.state === 'oT4') {
+		if (this.gameState === 'oT4') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'oT5': function() {
-		if (this.state === 'oT5') {
+		if (this.gameState === 'oT5') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'homeTeamPlayersPlaying': function() {
-		var team = this.homeTeam.players;
-		var inPlayTeam = [];
-		team.forEach(function(element, index, array) {
-			if (element.inPlay) {
-				inPlayTeam.push(element);
+	'yourClubPlayersPlaying': function() {
+		return Players.find({
+			gameId: Router.current().params._id,
+			teamId: 'yourClub',
+			inPlay: true
+		}, {
+			sort: {
+				jersey: 1
 			}
 		});
-		return inPlayTeam;
 	},
-	'awayTeamPlayersPlaying': function() {
-		var team = this.awayTeam.players;
-		var inPlayTeam = [];
-		team.forEach(function(element, index, array) {
-			if (element.inPlay) {
-				inPlayTeam.push(element);
+	'opponentPlayersPlaying': function() {
+		return Players.find({
+			gameId: Router.current().params._id,
+			teamId: 'opponent',
+			inPlay: true
+		}, {
+			sort: {
+				jersey: 1
 			}
 		});
-		return inPlayTeam;
 	},
-	'fiveStarterOrReplacementHomeTeam': function() {
-		var team = this.homeTeam.players;
-		var inPlayTeam = [];
-		team.forEach(function(element, index, array) {
-			if (element.inPlay) {
-				inPlayTeam.push(element);
-			}
-		});
-		if (inPlayTeam.length > 0) {
-			return 'fiveStarterOrReplacementHomeTeam';
+	'doReplacementYourClub': function() {
+		var team = Players.find({
+			gameId: Router.current().params._id,
+			teamId: 'yourClub',
+			inPlay: true
+		}).fetch();
+		if (team.length > 0) {
+			return 'doReplacementPlayer';
 		} else {
 			return 'hidden';
 		}
 	},
-	'fiveStarterOrReplacementAwayTeam': function() {
-		var team = this.awayTeam.players;
-		var inPlayTeam = [];
-		team.forEach(function(element, index, array) {
-			if (element.inPlay) {
-				inPlayTeam.push(element);
-			}
-		});
-		if (inPlayTeam.length > 0) {
-			return 'fiveStarterOrReplacementAwayTeam';
+	'doReplacementOpponent': function() {
+		var team = Players.find({
+			gameId: Router.current().params._id,
+			teamId: 'opponent',
+			inPlay: true
+		}).fetch();
+		if (team.length > 0) {
+			return 'doReplacementPlayer';
 		} else {
 			return 'hidden';
 		}
 	},
 	'gameEndedOrNot': function() {
-		if (this.state === 'gameEnded') {
+		if (this.gameState === 'gameEnded') {
 			return 'hidden';
 		}
-	},
-	'pageUrl': function() {
-		return Router.current().originalUrl;
-	},
-	'tweetText': function() {
-		return "Suivez en direct le match entre " + this.gameInfos.homeTeam + " et " + this.gameInfos.awayTeam;
 	}
 });
 
 Template.stats.events({
 	'click #notStarted': function(e) {
 		e.preventDefault();
-		var gameId = {
-			id: this._id
-		};
-		var status = {
-			state: 'q1Running'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+		Meteor.call('GameStateSwitch', this._id, 'q1Running', function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
@@ -175,13 +164,7 @@ Template.stats.events({
 	},
 	'click #q1Running': function(e) {
 		e.preventDefault();
-		var gameId = {
-			id: this._id
-		};
-		var status = {
-			state: 'q1Ended'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+		Meteor.call('GameStateSwitch', this._id, 'q1Ended', function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
@@ -189,13 +172,7 @@ Template.stats.events({
 	},
 	'click #q1Ended': function(e) {
 		e.preventDefault();
-		var gameId = {
-			id: this._id
-		};
-		var status = {
-			state: 'q2Running'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+		Meteor.call('GameStateSwitch', this._id, 'q2Running', function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
@@ -203,13 +180,7 @@ Template.stats.events({
 	},
 	'click #q2Running': function(e) {
 		e.preventDefault();
-		var gameId = {
-			id: this._id
-		};
-		var status = {
-			state: 'halfTime'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+		Meteor.call('GameStateSwitch', this._id, 'halfTime', function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
@@ -217,13 +188,7 @@ Template.stats.events({
 	},
 	'click #halfTime': function(e) {
 		e.preventDefault();
-		var gameId = {
-			id: this._id
-		};
-		var status = {
-			state: 'q3Running'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+		Meteor.call('GameStateSwitch', this._id, 'q3Running', function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
@@ -231,13 +196,7 @@ Template.stats.events({
 	},
 	'click #q3Running': function(e) {
 		e.preventDefault();
-		var gameId = {
-			id: this._id
-		};
-		var status = {
-			state: 'q3Ended'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+		Meteor.call('GameStateSwitch', this._id, 'q3Ended', function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
@@ -245,13 +204,7 @@ Template.stats.events({
 	},
 	'click #q3Ended': function(e) {
 		e.preventDefault();
-		var gameId = {
-			id: this._id
-		};
-		var status = {
-			state: 'q4Running'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+		Meteor.call('GameStateSwitch', this._id, 'q4Running', function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
@@ -259,13 +212,7 @@ Template.stats.events({
 	},
 	'click #oT': function(e) {
 		e.preventDefault();
-		var gameId = {
-			id: this._id
-		};
-		var status = {
-			state: 'oT1'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+		Meteor.call('GameStateSwitch', this._id, 'oT1', function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
@@ -273,13 +220,7 @@ Template.stats.events({
 	},
 	'click #oT1': function(e) {
 		e.preventDefault();
-		var gameId = {
-			id: this._id
-		};
-		var status = {
-			state: 'oT2'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+		Meteor.call('GameStateSwitch', this._id, 'oT2', function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
@@ -287,13 +228,7 @@ Template.stats.events({
 	},
 	'click #oT2': function(e) {
 		e.preventDefault();
-		var gameId = {
-			id: this._id
-		};
-		var status = {
-			state: 'oT3'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+		Meteor.call('GameStateSwitch', this._id, 'oT3', function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
@@ -301,13 +236,7 @@ Template.stats.events({
 	},
 	'click #oT3': function(e) {
 		e.preventDefault();
-		var gameId = {
-			id: this._id
-		};
-		var status = {
-			state: 'oT4'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+		Meteor.call('GameStateSwitch', this._id, 'oT4', function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
@@ -315,13 +244,7 @@ Template.stats.events({
 	},
 	'click #oT4': function(e) {
 		e.preventDefault();
-		var gameId = {
-			id: this._id
-		};
-		var status = {
-			state: 'oT5'
-		};
-		Meteor.call('stateSwitch', gameId, status, function(error, result) {
+		Meteor.call('GameStateSwitch', this._id, 'oT5', function(error, result) {
 			if (error) {
 				return throwError(error.message);
 			}
@@ -329,33 +252,18 @@ Template.stats.events({
 	},
 	'click #endedGames': function(e) {
 		e.preventDefault();
-		var gameId = {
-			_id: this._id
-		};
-		var i = 0;
-		var playerData = {};
-		for (i = 0; i < this.homeTeam.players.length; i++) {
-			if (this.homeTeam.players[i].inPlay === true) {
-				playerData.team = 'homeTeam';
-				playerData.playerIndex = i;
-				Meteor.call('stateSwitchEndedGames', gameId, playerData, function(error, result) {
+		var gameId = this._id;
+		Meteor.call('GameStateSwitch', gameId, 'gameEnded', function(error, result) {
+			if (error) {
+				return throwError(error.message);
+			} else {
+				Meteor.call('endedGamesPlayers', gameId, function(error, result) {
 					if (error) {
 						return throwError(error.message);
 					}
 				});
 			}
-		}
-		for (i = 0; i < this.awayTeam.players.length; i++) {
-			if (this.awayTeam.players[i].inPlay === true) {
-				playerData.team = 'awayTeam';
-				playerData.playerIndex = i;
-				Meteor.call('stateSwitchEndedGames', gameId, playerData, function(error, result) {
-					if (error) {
-						return throwError(error.message);
-					}
-				});
-			}
-		}
+		});
 	},
 	'click .displayReplacement': function() {
 		$('#replacement-tab').tab('show');

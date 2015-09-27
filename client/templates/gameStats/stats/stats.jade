@@ -1,62 +1,67 @@
 template(name='stats')
-	.clearfix
-		h3 {{_ "gameScore"}} :
-		p {{gameInfos.homeTeam}} : {{gameStats.score.homeTeam}} - {{gameStats.score.awayTeam}} : {{gameInfos.awayTeam}}
-	.clearfix
-		h3 {{_ "gameQuarters"}}
-		if notStarted
-			button#notStarted.btn.shadow.btn-primary(type='button') {{_ "labelNotStarted"}}
-		if q1Running
-			button#q1Running.btn.shadow.btn-primary(type='button') {{_ "labelQ1Running"}}
-		if q1Ended
-			button#q1Ended.btn.shadow.btn-primary(type='button') {{_ "labelQ1Ended"}}
-		if q2Running
-			button#q2Running.btn.shadow.btn-primary(type='button') {{_ "labelQ2Running"}}
-		if halfTime
-			button#halfTime.btn.shadow.btn-primary(type='button') {{_ "labelHalfTime"}}
-		if q3Running
-			button#q3Running.btn.shadow.btn-primary(type='button') {{_ "labelQ3Running"}}
-		if q3Ended
-			button#q3Ended.btn.shadow.btn-primary(type='button') {{_ "labelQ3Ended"}}
-		if q4Running
-			button#endedGames.btn.shadow.btn-primary(type='button') {{_ "labelEndedGames"}}
-			button#oT.oT.btn.shadow.btn-warning(type='button') {{_ "labelOT"}}
-		if gameEnded
-			button#gameEnded.btn.shadow.btn-primary(disabled='disabled', type='button') {{_ "labelGameEnded"}}
-		if oT1
-			button#oT1.oT.btn.shadow.btn-warning(type='button') {{_ "labelOT1"}}
-			button#endedGames.btn.shadow.btn-primary(type='button') {{_ "labelEndedGames"}}
-		if oT2
-			button#oT2.oT.btn.shadow.btn-warning(type='button') {{_ "labelOT2"}}
-			button#endedGames.btn.shadow.btn-primary(type='button') {{_ "labelEndedGames"}}
-		if oT3
-			button#oT3.oT.btn.shadow.btn-warning(type='button') {{_ "labelOT3"}}
-			button#endedGames.btn.shadow.btn-primary(type='button') {{_ "labelEndedGames"}}
-		if oT4
-			button#oT4.oT.btn.shadow.btn-warning(type='button') {{_ "labelOT4"}}
-			button#endedGames.btn.shadow.btn-primary(type='button') {{_ "labelEndedGames"}}
-		if oT5
-			button#endedGames.btn.shadow.btn-primary(type='button') {{_ "labelEndedGames"}}
-	.clearfix
-		h3 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
-		p.italic {{_ "explanationHowToAddAStat"}}
-		.homeTeam.row.playerRow
-			each homeTeamPlayersPlaying
-				+homeTeamPlayerPill
-			else
-				button.displayReplacement.btn.shadow.btn-warning(type='button', class='#{gameEndedOrNot}') {{_ "fiveStarter"}}
-		button.doReplacement.btn.shadow.btn-primary(type='button', class='#{fiveStarterOrReplacementHomeTeam}') {{_ "makeAReplacement"}}
-		+homeTeamPlayerModal
-	.clearfix
-		h3 {{_ "awayTeam"}} : #{gameInfos.awayTeam}
-		p.italic {{_ "explanationHowToAddAStat"}}
-		.awayTeam.row.playerRow
-			each awayTeamPlayersPlaying
-				+awayTeamPlayerPill
-			else
-				button.displayReplacement.btn.shadow.btn-warning(type='button', class='#{gameEndedOrNot}') {{_ "fiveStarter"}}
-		button.doReplacement.btn.shadow.btn-primary(type='button', class='#{fiveStarterOrReplacementAwayTeam}') {{_ "makeAReplacement"}}
-		+awayTeamPlayerModal
-	//.clearfix
-		h4 {{_ "shareTheGame"}}
-		a(href="https://twitter.com/share" class="twitter-share-button" data-url="#{pageUrl}" data-text="#{tweetText}" data-size="large" data-count="none" data-hashtags="LiveBBStats") {{_ "twitter"}}
+	.panel.panel-default
+			.panel-heading
+				.panel-title
+					with gameData
+						.clearfix
+							h2 #{gameInfos.yourClub} : #{stats.yourClub.score} - #{stats.opponent.score} : #{gameInfos.opponent}
+						.clearfix
+							p {{_ "stateOfTheGame"}} :
+								if notStarted
+									button#notStarted.btn.btn-primary(type='button') {{_ "labelNotStarted"}}
+								if q1Running
+									button#q1Running.btn.btn-primary(type='button') {{_ "labelQ1Running"}}
+								if q1Ended
+									button#q1Ended.btn.btn-primary(type='button') {{_ "labelQ1Ended"}}
+								if q2Running
+									button#q2Running.btn.btn-primary(type='button') {{_ "labelQ2Running"}}
+								if halfTime
+									button#halfTime.btn.btn-primary(type='button') {{_ "labelHalfTime"}}
+								if q3Running
+									button#q3Running.btn.btn-primary(type='button') {{_ "labelQ3Running"}}
+								if q3Ended
+									button#q3Ended.btn.btn-primary(type='button') {{_ "labelQ3Ended"}}
+								if q4Running
+									button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
+									button#oT.oT.btn.btn-warning(type='button') {{_ "labelOT"}}
+								if gameEnded
+									button#gameEnded.btn.btn-primary(disabled='disabled', type='button') {{_ "labelGameEnded"}}
+								if oT1
+									button#oT1.oT.btn.btn-warning(type='button') {{_ "labelOT1"}}
+									button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
+								if oT2
+									button#oT2.oT.btn.btn-warning(type='button') {{_ "labelOT2"}}
+									button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
+								if oT3
+									button#oT3.oT.btn.btn-warning(type='button') {{_ "labelOT3"}}
+									button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
+								if oT4
+									button#oT4.oT.btn.btn-warning(type='button') {{_ "labelOT4"}}
+									button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
+								if oT5
+									button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
+			.panel-body
+				.clearfix
+					with gameData
+						h3 {{_ "yourClub"}} : #{gameInfos.yourClub}
+					p.italic {{_ "explanationHowToAddAStat"}}
+					.yourClub.row.playerRow
+						each yourClubPlayersPlaying
+							+homeTeamPlayerPill
+							+homeTeamPlayerModal
+						else
+							with gameData
+								button.displayReplacement.btn.btn-warning(type='button', class='#{gameEndedOrNot}') {{_ "fiveStarter"}}
+					button.doReplacement.btn.btn-primary(type='button', class='#{doReplacementYourClub}') {{_ "makeAReplacement"}}
+				.clearfix
+					with gameData
+						h3 {{_ "opponent"}} : #{gameInfos.opponent}
+					p.italic {{_ "explanationHowToAddAStat"}}
+					.opponent.row.playerRow
+						each opponentPlayersPlaying
+							+awayTeamPlayerPill
+							+awayTeamPlayerModal
+						else
+							with gameData
+								button.displayReplacement.btn.btn-warning(type='button', class='#{gameEndedOrNot}') {{_ "fiveStarter"}}
+					button.doReplacement.btn.btn-primary(type='button', class='#{doReplacementOpponent}') {{_ "makeAReplacement"}}

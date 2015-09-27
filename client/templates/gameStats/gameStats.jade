@@ -19,12 +19,12 @@ template(name='gameStats')
 			#stats.tab-pane.fade.in.active(role='tabpanel', aria-labelledby='stats-tab')
 				+stats
 			#resume.tab-pane.fade(role='tabpanel', aria-labelledby='resume-tab')
-				+summary
+				//+summary
 		else
 			#resume.tab-pane.fade.in.active(role='tabpanel', aria-labelledby='resume-tab')
-				+summary
+				//+summary
 		if isOwnerOfTheGame
 			#replacement.tab-pane.fade(role='tabpanel', aria-labelledby='replacement-tab')
-				+replacement
+				//+replacement
 			#playersSettings.tab-pane.fade(role='tabpanel', aria-labelledby='playersSettings-tab')
-				+playerBio
+				//+playerBio

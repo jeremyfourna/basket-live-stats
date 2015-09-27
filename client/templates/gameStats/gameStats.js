@@ -1,6 +1,7 @@
 Template.gameStats.helpers({
 	'isOwnerOfTheGame': function() {
-		if (Meteor.userId() === Template.currentData().userId) {
+		var gameAuthor = Games.findOne(Router.current().params._id);
+		if (Meteor.userId() === gameAuthor.userId) {
 			return true;
 		} else {
 			return false;
