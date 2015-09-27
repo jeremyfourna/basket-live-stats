@@ -1,5 +1,8 @@
 body
 	padding 70px 0 70px 0
+	@-moz-document url-prefix()
+		fieldset
+			display table-cell
 	.no-games
 		margin 0 0 0 15px
 	.officialGame
@@ -16,8 +19,41 @@ body
 		margin 0 0 0 5px
 	.actions
 		button
-			margin 10px 0 0 0
+			margin 5px 0 0 0
 	.nav-pills
 		margin 0 0 20px 0
+	.inlineClass
+		display inline
+	.displayReplacement
+		margin 10px 0 0 15px
+	.doReplacement,
+	.validateInPlayPlayers
+		margin 10px 0 0 0
+	.italic
+		font-style italic
+	.oT
+		margin 0 10px 0 10px
+	.homeTeamPillForModal
+		margin 5px 5px 5px 5px
+		background-color #FFCF3A
+	.awayTeamPillForModal
+		margin 5px 5px 5px 5px
+		background-color #FF753A
+	.modal-body
+		margin 0 10px 0 10px
+	.table-responsive
+		margin 20px 0 0 0
+	.score
+		margin 0 0 20px 0
+	.homeTeamColor
+		background-color #FFCF3A
+	.awayTeamColor
+		background-color #FF753A
+	.homeTeamPlayers > .inPlay,
+	.awayTeamPlayers > .inPlay
+		background-color #ADF5FF
+
+
+
 
 
