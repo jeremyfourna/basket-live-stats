@@ -25,14 +25,14 @@ Template.awayTeamPlayerModal.events({
 		$('.buttonForAction').removeClass('cancelAction');
 	},
 	// Positive action
-	'click #onePoint': function() {
+	'click .onePoint': function() {
 		var gameData = Games.findOne(Router.current().params._id);
 		var playerData = this;
 		var evolScore = {
 			gameIndex: gameData.stats.evolution.length,
 			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score - 1
 		};
-		if ($('#onePoint').hasClass('cancelAction')) {
+		if ($('#' + playerData._id).find('.onePoint').hasClass('cancelAction')) {
 			Meteor.call('correctionOnePointTeamOpponent', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
@@ -58,31 +58,40 @@ Template.awayTeamPlayerModal.events({
 			});
 		}
 	},
-	'click #twoPoint': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
+	'click .twoPoint': function() {
+		var gameData = Games.findOne(Router.current().params._id);
+		var playerData = this;
 		var evolScore = {
-			gameIndex: Template.parentData(1).gameStats.evolution.length,
-			scoreGap: Template.parentData(1).gameStats.score.homeTeam - Template.parentData(1).gameStats.score.awayTeam - 2
+			gameIndex: gameData.stats.evolution.length,
+			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score - 2
 		};
-		if ($('#twoPoint').hasClass('cancelAction')) {
-			Meteor.call('correctionTwoPoints', actionInfo, function(error) {
+		if ($('.twoPoints').hasClass('cancelAction')) {
+			Meteor.call('correctionTwoPointsTeamOpponent', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionTwoPoints', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('twoPoints', actionInfo, evolScore, function(error) {
+			Meteor.call('twoPointsTeamOpponent', gameData._id, evolScore, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('twoPoints', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}
 	},
-	'click #threePoint': function() {
+	'click .threePoint': function() {
 		var actionInfo = {
 			gameId: Template.parentData(1)._id,
 			playerIndex: Session.get('currentPlayerForModal').playerIndex,
@@ -92,7 +101,7 @@ Template.awayTeamPlayerModal.events({
 			gameIndex: Template.parentData(1).gameStats.evolution.length,
 			scoreGap: Template.parentData(1).gameStats.score.homeTeam - Template.parentData(1).gameStats.score.awayTeam - 3
 		};
-		if ($('#threePoint').hasClass('cancelAction')) {
+		if ($('.threePoints').hasClass('cancelAction')) {
 			Meteor.call('correctionThreePoints', actionInfo, function(error) {
 				if (error) {
 					return throwError(error.message);
