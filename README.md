@@ -90,7 +90,7 @@ This is a tool to take the stats of a basket-ball game, you can share the url of
 		"yourClub": {
 			"score" : "Number",
 			"evaluation" : "Number",
-			"shoots" : {
+			"points" : {
 				"onePointIn" : "Number",
 				"onePointOut" : "Number",
 				"twoPointsIn" : "Number",
@@ -125,7 +125,7 @@ This is a tool to take the stats of a basket-ball game, you can share the url of
 		"opponent": {
 			"score" : "Number",
 			"evaluation" : "Number",
-			"shoots" : {
+			"points" : {
 				"onePointIn" : "Number",
 				"onePointOut" : "Number",
 				"twoPointsIn" : "Number",
