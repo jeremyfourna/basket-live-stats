@@ -26,25 +26,34 @@ Template.awayTeamPlayerModal.events({
 	},
 	// Positive action
 	'click #onePoint': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
+		var gameData = Games.findOne(Router.current().params._id);
+		var playerData = this;
 		var evolScore = {
-			gameIndex: Template.parentData(1).gameStats.evolution.length,
-			scoreGap: Template.parentData(1).gameStats.score.homeTeam - Template.parentData(1).gameStats.score.awayTeam - 1
+			gameIndex: gameData.stats.evolution.length,
+			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score - 1
 		};
 		if ($('#onePoint').hasClass('cancelAction')) {
-			Meteor.call('correctionOnePoint', actionInfo, function(error) {
+			Meteor.call('correctionOnePointTeamOpponent', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionOnePoint', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('onePoint', actionInfo, evolScore, function(error) {
+			Meteor.call('onePointTeamOpponent', gameData._id, evolScore, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('onePoint', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}
