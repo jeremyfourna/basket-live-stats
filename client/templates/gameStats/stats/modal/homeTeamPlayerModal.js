@@ -58,14 +58,14 @@ Template.homeTeamPlayerModal.events({
 			});
 		}
 	},
-	'click .twoPoint': function() {
+	'click .twoPoints': function() {
 		var gameData = Games.findOne(Router.current().params._id);
 		var playerData = this;
 		var evolScore = {
 			gameIndex: gameData.stats.evolution.length,
 			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score + 2
 		};
-		if ($('.twoPoints').hasClass('cancelAction')) {
+		if ($('#' + playerData._id).find('.twoPoints').hasClass('cancelAction')) {
 			Meteor.call('correctionTwoPointsTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
@@ -92,45 +92,63 @@ Template.homeTeamPlayerModal.events({
 		}
 	},
 	'click .threePoints': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
+		var gameData = Games.findOne(Router.current().params._id);
+		var playerData = this;
 		var evolScore = {
-			gameIndex: Template.parentData(1).gameStats.evolution.length,
-			scoreGap: Template.parentData(1).gameStats.score.homeTeam - Template.parentData(1).gameStats.score.awayTeam + 3
+			gameIndex: gameData.stats.evolution.length,
+			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score + 2
 		};
-		if ($('.threePoint').hasClass('cancelAction')) {
-			Meteor.call('correctionThreePoints', actionInfo, function(error) {
+		if ($('#' + playerData._id).find('.threePoints').hasClass('cancelAction')) {
+			Meteor.call('correctionThreePointsTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionThreePoints', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('threePoints', actionInfo, evolScore, function(error) {
+			Meteor.call('threePointsTeamYourClub', gameData._id, evolScore, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('threePoints', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}
 	},
 	'click .assist': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
-		if ($('.assist').hasClass('cancelAction')) {
-			Meteor.call('correctionAssists', actionInfo, function(error) {
+		var gameData = Games.findOne(Router.current().params._id);
+		var playerData = this;
+		if ($('#' + playerData._id).find('.assist').hasClass('cancelAction')) {
+			Meteor.call('correctionAssistsTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionAssists', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('assists', actionInfo, function(error) {
+			Meteor.call('assistsTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('assists', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}

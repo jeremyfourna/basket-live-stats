@@ -58,14 +58,14 @@ Template.awayTeamPlayerModal.events({
 			});
 		}
 	},
-	'click .twoPoint': function() {
+	'click .twoPoints': function() {
 		var gameData = Games.findOne(Router.current().params._id);
 		var playerData = this;
 		var evolScore = {
 			gameIndex: gameData.stats.evolution.length,
 			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score - 2
 		};
-		if ($('.twoPoints').hasClass('cancelAction')) {
+		if ($('#' + playerData._id).find('.twoPoints').hasClass('cancelAction')) {
 			Meteor.call('correctionTwoPointsTeamOpponent', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
@@ -91,26 +91,35 @@ Template.awayTeamPlayerModal.events({
 			});
 		}
 	},
-	'click .threePoint': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
+	'click .threePoints': function() {
+		var gameData = Games.findOne(Router.current().params._id);
+		var playerData = this;
 		var evolScore = {
-			gameIndex: Template.parentData(1).gameStats.evolution.length,
-			scoreGap: Template.parentData(1).gameStats.score.homeTeam - Template.parentData(1).gameStats.score.awayTeam - 3
+			gameIndex: gameData.stats.evolution.length,
+			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score - 2
 		};
-		if ($('.threePoints').hasClass('cancelAction')) {
-			Meteor.call('correctionThreePoints', actionInfo, function(error) {
+		if ($('#' + playerData._id).find('.threePoints').hasClass('cancelAction')) {
+			Meteor.call('correctionThreePointsTeamOpponent', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionThreePoints', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('threePoints', actionInfo, evolScore, function(error) {
+			Meteor.call('threePointsTeamOpponent', gameData._id, evolScore, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('threePoints', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}
