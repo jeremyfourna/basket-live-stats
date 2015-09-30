@@ -26,7 +26,15 @@ Template.homeTeamPlayerModal.events({
 	},
 	// Positive action
 	'click .onePoint': function() {
-		var gameData = Games.findOne(Router.current().params._id);
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				"stats.evolution": 1,
+				"stats.yourClub.score": 1,
+				"stats.opponent.score": 1
+			}
+		});
 		var playerData = this;
 		var evolScore = {
 			gameIndex: gameData.stats.evolution.length,
@@ -59,7 +67,15 @@ Template.homeTeamPlayerModal.events({
 		}
 	},
 	'click .twoPoints': function() {
-		var gameData = Games.findOne(Router.current().params._id);
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				"stats.evolution": 1,
+				"stats.yourClub.score": 1,
+				"stats.opponent.score": 1
+			}
+		});
 		var playerData = this;
 		var evolScore = {
 			gameIndex: gameData.stats.evolution.length,
@@ -92,11 +108,19 @@ Template.homeTeamPlayerModal.events({
 		}
 	},
 	'click .threePoints': function() {
-		var gameData = Games.findOne(Router.current().params._id);
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				"stats.evolution": 1,
+				"stats.yourClub.score": 1,
+				"stats.opponent.score": 1
+			}
+		});
 		var playerData = this;
 		var evolScore = {
 			gameIndex: gameData.stats.evolution.length,
-			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score + 2
+			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score + 3
 		};
 		if ($('#' + playerData._id).find('.threePoints').hasClass('cancelAction')) {
 			Meteor.call('correctionThreePointsTeamYourClub', gameData._id, function(error) {
@@ -125,7 +149,13 @@ Template.homeTeamPlayerModal.events({
 		}
 	},
 	'click .assist': function() {
-		var gameData = Games.findOne(Router.current().params._id);
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				_id: 1
+			}
+		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.assist').hasClass('cancelAction')) {
 			Meteor.call('correctionAssistsTeamYourClub', gameData._id, function(error) {
@@ -154,41 +184,71 @@ Template.homeTeamPlayerModal.events({
 		}
 	},
 	'click .offReb': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
-		if ($('.offReb').hasClass('cancelAction')) {
-			Meteor.call('correctionOffRebs', actionInfo, function(error) {
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				_id: 1
+			}
+		});
+		var playerData = this;
+		if ($('#' + playerData._id).find('.offReb').hasClass('cancelAction')) {
+			Meteor.call('correctionOffRebTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionOffReb', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('offRebs', actionInfo, function(error) {
+			Meteor.call('offRebTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('offReb', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}
 	},
 	'click .defReb': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
-		if ($('.defReb').hasClass('cancelAction')) {
-			Meteor.call('correctionDefRebs', actionInfo, function(error) {
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				_id: 1
+			}
+		});
+		var playerData = this;
+		if ($('#' + playerData._id).find('.defReb').hasClass('cancelAction')) {
+			Meteor.call('correctionDefRebTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionDefReb', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('defRebs', actionInfo, function(error) {
+			Meteor.call('defRebTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('defReb', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}

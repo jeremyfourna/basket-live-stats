@@ -26,7 +26,15 @@ Template.awayTeamPlayerModal.events({
 	},
 	// Positive action
 	'click .onePoint': function() {
-		var gameData = Games.findOne(Router.current().params._id);
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				"stats.evolution": 1,
+				"stats.yourClub.score": 1,
+				"stats.opponent.score": 1
+			}
+		});
 		var playerData = this;
 		var evolScore = {
 			gameIndex: gameData.stats.evolution.length,
@@ -59,7 +67,15 @@ Template.awayTeamPlayerModal.events({
 		}
 	},
 	'click .twoPoints': function() {
-		var gameData = Games.findOne(Router.current().params._id);
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				"stats.evolution": 1,
+				"stats.yourClub.score": 1,
+				"stats.opponent.score": 1
+			}
+		});
 		var playerData = this;
 		var evolScore = {
 			gameIndex: gameData.stats.evolution.length,
@@ -92,11 +108,19 @@ Template.awayTeamPlayerModal.events({
 		}
 	},
 	'click .threePoints': function() {
-		var gameData = Games.findOne(Router.current().params._id);
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				"stats.evolution": 1,
+				"stats.yourClub.score": 1,
+				"stats.opponent.score": 1
+			}
+		});
 		var playerData = this;
 		var evolScore = {
 			gameIndex: gameData.stats.evolution.length,
-			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score - 2
+			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score - 3
 		};
 		if ($('#' + playerData._id).find('.threePoints').hasClass('cancelAction')) {
 			Meteor.call('correctionThreePointsTeamOpponent', gameData._id, function(error) {
