@@ -254,21 +254,36 @@ Template.homeTeamPlayerModal.events({
 		}
 	},
 	'click .offProvFoul': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
-		if ($('.offProvFoul').hasClass('cancelAction')) {
-			Meteor.call('correctionOffProvFouls', actionInfo, function(error) {
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				_id: 1
+			}
+		});
+		var playerData = this;
+		if ($('#' + playerData._id).find('.defReb').hasClass('cancelAction')) {
+			Meteor.call('correctionOffProvFoulTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionOffProvFoul', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('offProvFouls', actionInfo, function(error) {
+			Meteor.call('offProvFoulTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('offProvFoul', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}
