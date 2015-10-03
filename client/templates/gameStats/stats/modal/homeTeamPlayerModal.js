@@ -429,42 +429,72 @@ Template.homeTeamPlayerModal.events({
 			});
 		}
 	},
-	'click .twoPointMiss': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
-		if ($('.twoPointMiss').hasClass('cancelAction')) {
-			Meteor.call('correctionTwoPointsMiss', actionInfo, function(error) {
+	'click .twoPointsMiss': function() {
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				_id: 1
+			}
+		});
+		var playerData = this;
+		if ($('#' + playerData._id).find('.twoPointsMiss').hasClass('cancelAction')) {
+			Meteor.call('correctionTwoPointsMissTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionTwoPointsMiss', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('twoPointsMiss', actionInfo, function(error) {
+			Meteor.call('twoPointsMissTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('twoPointsMiss', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}
 	},
-	'click .threePointMiss': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
-		if ($('.threePointMiss').hasClass('cancelAction')) {
-			Meteor.call('correctionThreePointsMiss', actionInfo, function(error) {
+	'click .threePointsMiss': function() {
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				_id: 1
+			}
+		});
+		var playerData = this;
+		if ($('#' + playerData._id).find('.threePointsMiss').hasClass('cancelAction')) {
+			Meteor.call('correctionThreePointsMissTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionThreePointsMiss', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('threePointsMiss', actionInfo, function(error) {
+			Meteor.call('threePointsMissTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('threePointsMiss', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}
