@@ -1,296 +1,178 @@
 Template.summary.helpers({
+	'gameData': function() {
+		return Games.findOne(Router.current().params._id);
+	},
+	playerDataYourClub: function() {
+		return Players.find({
+			gameId: Router.current().params._id,
+			teamId: 'yourClub'
+		}, {
+			sort: {
+				jersey: 1
+			}
+		});
+	},
+	playerDataOpponent: function() {
+		return Players.find({
+			gameId: Router.current().params._id,
+			teamId: 'opponent'
+		}, {
+			sort: {
+				jersey: 1
+			}
+		});
+	},
 	'notStarted': function() {
-		if (this.state === 'notStarted') {
+		if (this.gameState === 'notStarted') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'q1Running': function() {
-		if (this.state === 'q1Running') {
+		if (this.gameState === 'q1Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'q1Ended': function() {
-		if (this.state === 'q1Ended') {
+		if (this.gameState === 'q1Ended') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'q2Running': function() {
-		if (this.state === 'q2Running') {
+		if (this.gameState === 'q2Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'halfTime': function() {
-		if (this.state === 'halfTime') {
+		if (this.gameState === 'halfTime') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'q3Running': function() {
-		if (this.state === 'q3Running') {
+		if (this.gameState === 'q3Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'q3Ended': function() {
-		if (this.state === 'q3Ended') {
+		if (this.gameState === 'q3Ended') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'q4Running': function() {
-		if (this.state === 'q4Running') {
+		if (this.gameState === 'q4Running') {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	'gameEnded': function() {
+		if (this.gameState === 'gameEnded') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'oT1': function() {
-		if (this.state === 'oT1') {
+		if (this.gameState === 'oT1') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'oT2': function() {
-		if (this.state === 'oT2') {
+		if (this.gameState === 'oT2') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'oT3': function() {
-		if (this.state === 'oT3') {
+		if (this.gameState === 'oT3') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'oT4': function() {
-		if (this.state === 'oT4') {
+		if (this.gameState === 'oT4') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'oT5': function() {
-		if (this.state === 'oT5') {
+		if (this.gameState === 'oT5') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	'total2PointsShoots': function() {
-		var twoPointsIn = this.stats.points.twoPointsIn;
-		var twoPointsOut = this.stats.points.twoPointsOut;
-		return twoPointsIn + twoPointsOut;
+		return this.stats.points.twoPointsIn + this.stats.points.twoPointsOut;
 	},
 	'percentage2PointsShoots': function() {
-		var twoPointsIn = this.stats.points.twoPointsIn;
-		var twoPointsOut = this.stats.points.twoPointsOut;
-		var total = twoPointsIn + twoPointsOut;
-		var percentage = twoPointsIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
+		return Math.floor(this.stats.points.twoPointsIn / (this.stats.points.twoPointsIn + this.stats.points.twoPointsOut) * 100) || 0;
 	},
 	'total3PointsShoots': function() {
-		var threePointsIn = this.stats.points.threePointsIn;
-		var threePointsOut = this.stats.points.threePointsOut;
-		return threePointsIn + threePointsOut;
+		return this.stats.points.threePointsIn + this.stats.points.threePointsOut;
 	},
 	'percentage3PointsShoots': function() {
-		var threePointsIn = this.stats.points.threePointsIn;
-		var threePointsOut = this.stats.points.threePointsOut;
-		var total = threePointsIn + threePointsOut;
-		var percentage = threePointsIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
+		return Math.floor(this.stats.points.threePointsIn / (this.stats.points.threePointsIn + this.stats.points.threePointsOut) * 100) || 0;
 	},
 	'total1PointShoots': function() {
-		var onePointIn = this.stats.points.onePointIn;
-		var onePointOut = this.stats.points.onePointOut;
-		return onePointIn + onePointOut;
+		return this.stats.points.onePointIn + this.stats.points.onePointOut;
 	},
 	'percentage1PointShoots': function() {
-		var onePointIn = this.stats.points.onePointIn;
-		var onePointOut = this.stats.points.onePointOut;
-		var total = onePointIn + onePointOut;
-		var percentage = onePointIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
+		return Math.floor(this.stats.points.onePointIn / (this.stats.points.onePointIn + this.stats.points.onePointOut) * 100) || 0;
 	},
 	'totalRebounds': function() {
-		var offReb = this.stats.rebounds.offReb;
-		var defReb = this.stats.rebounds.defReb;
-		return offReb + defReb;
+		return this.stats.rebounds.offReb + this.stats.rebounds.defReb;
 	},
 	'provokedFouls': function() {
-		var offFouls = this.stats.fouls.provFouls.offFouls;
-		var defFouls = this.stats.fouls.provFouls.defFouls;
-		var diff = offFouls + defFouls;
-		return diff;
+		return this.stats.fouls.provFouls.offFouls + this.stats.fouls.provFouls.defFouls;
 	},
 	'foulsRatio': function() {
-		var offFouls = this.stats.fouls.provFouls.offFouls;
-		var defFouls = this.stats.fouls.provFouls.defFouls;
-		var totalFouls = this.stats.fouls.totalFouls;
-		return offFouls + defFouls - totalFouls;
+		return this.stats.fouls.provFouls.offFouls + this.stats.fouls.provFouls.defFouls - this.stats.fouls.totalFouls;
 	},
-	'homeTeamFoulsRatio': function() {
-		var offFouls = this.gameStats.fouls.homeTeam.provFouls.offFouls;
-		var defFouls = this.gameStats.fouls.homeTeam.provFouls.defFouls;
-		var totalFouls = this.gameStats.fouls.homeTeam.totalFouls;
-		return offFouls + defFouls - totalFouls;
+	'yourClubFoulsRatio': function() {
+		return this.stats.yourClub.fouls.provFouls.offFouls + this.stats.yourClub.fouls.provFouls.defFouls - this.stats.yourClub.fouls.totalFouls;
 	},
-	'homeTeamTotal2PointsShoots': function() {
-		var twoPointsIn = this.gameStats.shoots.homeTeam.twoPointsIn;
-		var twoPointsOut = this.gameStats.shoots.homeTeam.twoPointsOut;
-		return twoPointsIn + twoPointsOut;
+	'yourClubTotal2PointsShoots': function() {
+		return this.stats.yourClub.points.twoPointsIn + this.stats.yourClub.points.twoPointsOut;
 	},
-	'homeTeamPercentage2PointsShoots': function() {
-		var twoPointsIn = this.gameStats.shoots.homeTeam.twoPointsIn;
-		var twoPointsOut = this.gameStats.shoots.homeTeam.twoPointsOut;
-		var total = twoPointsIn + twoPointsOut;
-		var percentage = twoPointsIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
+	'yourClubPercentage2PointsShoots': function() {
+		return Math.floor(this.stats.yourClub.points.twoPointsIn / (this.stats.yourClub.points.twoPointsIn + this.stats.yourClub.points.twoPointsOut) * 100) || 0;
 	},
-	'homeTeamTotal3PointsShoots': function() {
-		var threePointsIn = this.gameStats.shoots.homeTeam.threePointsIn;
-		var threePointsOut = this.gameStats.shoots.homeTeam.threePointsOut;
-		return threePointsIn + threePointsOut;
+	'yourClubTotal3PointsShoots': function() {
+		return this.stats.yourClub.points.threePointsIn + this.stats.yourClub.points.threePointsOut;
 	},
-	'homeTeamPercentage3PointsShoots': function() {
-		var threePointsIn = this.gameStats.shoots.homeTeam.threePointsIn;
-		var threePointsOut = this.gameStats.shoots.homeTeam.threePointsOut;
-		var total = threePointsIn + threePointsOut;
-		var percentage = threePointsIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
+	'yourClubPercentage3PointsShoots': function() {
+		return Math.floor(this.stats.yourClub.points.threePointsIn / (this.stats.yourClub.points.threePointsIn + this.stats.yourClub.points.threePointsOut) * 100) || 0;
 	},
-	'homeTeamTotal1PointShoots': function() {
-		var onePointIn = this.gameStats.shoots.homeTeam.onePointIn;
-		var onePointOut = this.gameStats.shoots.homeTeam.onePointOut;
-		return onePointIn + onePointOut;
+	'yourClubTotal1PointShoots': function() {
+		return this.stats.yourClub.points.onePointIn + this.stats.yourClub.points.onePointOut;
 	},
-	'homeTeamPercentage1PointShoots': function() {
-		var onePointIn = this.gameStats.shoots.homeTeam.onePointIn;
-		var onePointOut = this.gameStats.shoots.homeTeam.onePointOut;
-		var total = onePointIn + onePointOut;
-		var percentage = onePointIn / total * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
+	'yourClubPercentage1PointShoots': function() {
+		return Math.floor(this.stats.yourClub.points.onePointIn / (this.stats.yourClub.points.onePointIn + this.stats.yourClub.points.onePointOut) * 100) || 0;
 	},
-	'homeTeamTotalRebounds': function() {
-		var offReb = this.gameStats.rebounds.homeTeam.offReb;
-		var defReb = this.gameStats.rebounds.homeTeam.defReb;
-		return offReb + defReb;
+	'yourClubTotalRebounds': function() {
+		return this.stats.yourClub.rebounds.offReb + this.stats.yourClub.rebounds.defReb;
 	},
-	'homeTeamProvokedFouls': function() {
-		var offFouls = this.gameStats.fouls.homeTeam.provFouls.offFouls;
-		var defFouls = this.gameStats.fouls.homeTeam.provFouls.defFouls;
-		var diff = offFouls + defFouls;
-		return diff;
-	},
-	'awayTeamTotal2PointsShoots': function() {
-		var twoPointsIn = this.gameStats.shoots.awayTeam.twoPointsIn;
-		var twoPointsOut = this.gameStats.shoots.awayTeam.twoPointsOut;
-		return twoPointsIn + twoPointsOut;
-	},
-	'awayTeamTotal3PointsShoots': function() {
-		var threePointsIn = this.gameStats.shoots.awayTeam.threePointsIn;
-		var threePointsOut = this.gameStats.shoots.awayTeam.threePointsOut;
-		return threePointsIn + threePointsOut;
-	},
-	'awayTeamTotal1PointShoots': function() {
-		var onePointIn = this.gameStats.shoots.awayTeam.onePointIn;
-		var onePointOut = this.gameStats.shoots.awayTeam.onePointOut;
-		return onePointIn + onePointOut;
-	},
-	'bestHomeTeamPlayer': function() {
-		var bestPlayer = function(team) {
-			var teamSorting = [];
-			var playersDataRetrieval = function(player) {
-				return {
-					"firstName": player.firstName,
-					"lastName": player.lastName,
-					"jersey": player.jersey,
-					"playerIndex": player.playerIndex,
-					"evaluation": player.stats.evaluation,
-					"totalPoints": player.stats.points.totalPoints
-				};
-			};
-			team.forEach(function(element, index, array) {
-				teamSorting.push(playersDataRetrieval(element));
-			});
-			teamSorting.sort(function(a, b) {
-				if (a.evaluation < b.evaluation) {
-					return 1;
-				}
-				if (a.evaluation > b.evaluation) {
-					return -1;
-				}
-				// a must be equal to b
-				return 0;
-			});
-			return teamSorting[0];
-		};
-		var player = bestPlayer(this.homeTeam.players);
-		return player;
-	},
-	'bestAwayTeamPlayer': function() {
-		var bestPlayer = function(team) {
-			var teamSorting = [];
-			var playersDataRetrieval = function(player) {
-				return {
-					"firstName": player.firstName,
-					"lastName": player.lastName,
-					"jersey": player.jersey,
-					"playerIndex": player.playerIndex,
-					"totalPoints": player.stats.points.totalPoints
-				};
-			};
-			team.forEach(function(element, index, array) {
-				teamSorting.push(playersDataRetrieval(element));
-			});
-			teamSorting.sort(function(a, b) {
-				if (a.totalPoints < b.totalPoints) {
-					return 1;
-				}
-				if (a.totalPoints > b.totalPoints) {
-					return -1;
-				}
-				// a must be equal to b
-				return 0;
-			});
-			return teamSorting[0];
-		};
-		var player = bestPlayer(this.awayTeam.players);
-		return player;
-	},
-	'awayTeamTwoPointsPartition': function() {
-		var threePointsIn = this.gameStats.shoots.awayTeam.threePointsIn;
-		var twoPointsIn = this.gameStats.shoots.awayTeam.twoPointsIn;
-		var percentage = twoPointsIn / (threePointsIn + twoPointsIn) * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
-	},
-	'awayTeamThreePointsPartition': function() {
-		var threePointsIn = this.gameStats.shoots.awayTeam.threePointsIn;
-		var twoPointsIn = this.gameStats.shoots.awayTeam.twoPointsIn;
-		var percentage = threePointsIn / (threePointsIn + twoPointsIn) * 100;
-		var roundPercentage = Math.floor(percentage);
-		return roundPercentage || 0;
+	'yourClubProvokedFouls': function() {
+		return this.stats.yourClub.fouls.provFouls.offFouls + this.stats.yourClub.fouls.provFouls.defFouls;
 	},
 	'isInPlay': function() {
 		if (this.inPlay) {
@@ -302,7 +184,6 @@ Template.summary.helpers({
 	'playerTime': function() {
 		var playerTimeMinutes = 0;
 		var playerTimeSecondes = 0;
-		var gameState = Template.parentData(1).state;
 		var modulo = this.gameTime.length % 2;
 		var i = 0;
 		var quarterPower = 0;
@@ -442,7 +323,6 @@ Template.summary.helpers({
 
 
 Template.summary.rendered = function() {
-	var self = this;
 	var chart = c3.generate({
 		size: {
 			height: 240
@@ -450,32 +330,48 @@ Template.summary.rendered = function() {
 		bindto: this.find('#gameGapChart'),
 		data: {
 			xs: {
-				'data1': 'x'
+				'Ecart du match': 'x'
 			},
 			columns: [
-				['data1']
-			]
+				['Ecart du match']
+			],
+			axes: {
+				'Ecart du match': 'y2'
+			}
 		},
 		axis: {
 			x: {
 				show: false
+			},
+			y: {
+				show: false
+			},
+			y2: {
+				show: true
+			}
+		},
+		tooltip: {
+			format: {
+				title: function(x) {
+					return 'Ecart du match';
+				}
 			}
 		}
 	});
 
 	this.autorun(function(tracker) {
 		var gameData = Games.find({
-			_id: self.data._id
+			_id: Router.current().params._id
 		}, {
 			fields: {
-				'gameStats.evolution': 1
+				'stats.evolution': 1
 			}
 		}).fetch();
 		var xArray = ['x'];
-		var yArray = ['data1'];
-		for (var i = 0; i < gameData[0].gameStats.evolution.length; i++) {
-			xArray.push(gameData[0].gameStats.evolution[i][0]);
-			yArray.push(gameData[0].gameStats.evolution[i][1]);
+		var yArray = ['Ecart du match'];
+		for (var i = 0; i < gameData[0].stats.evolution.length; i++) {
+			xArray.push(gameData[0].stats.evolution[i][0]);
+			yArray.push(gameData[0].stats.evolution[i][1]);
 		}
 		chart.load({
 			columns: [
