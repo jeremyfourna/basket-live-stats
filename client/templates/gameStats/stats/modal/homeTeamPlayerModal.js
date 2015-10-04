@@ -604,62 +604,107 @@ Template.homeTeamPlayerModal.events({
 			});
 		}
 	},
-	'click .defFoulOneFT': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
-		if ($('.defFoulOneFT').hasClass('cancelAction')) {
-			Meteor.call('correctionDefFoulsOneFT', actionInfo, function(error) {
+	'click .defFoulsOneFT': function() {
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				_id: 1
+			}
+		});
+		var playerData = this;
+		if ($('#' + playerData._id).find('.defFoulsOneFT').hasClass('cancelAction')) {
+			Meteor.call('correctionDefFoulsOneFTTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionDefFoulsOneFT', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('defFoulsOneFT', actionInfo, function(error) {
+			Meteor.call('defFoulsOneFTTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('defFoulsOneFT', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}
 	},
-	'click .defFoulTwoFT': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
-		if ($('.defFoulTwoFT').hasClass('cancelAction')) {
-			Meteor.call('correctionDefFoulsTwoFT', actionInfo, function(error) {
+	'click .defFoulsTwoFT': function() {
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				_id: 1
+			}
+		});
+		var playerData = this;
+		if ($('#' + playerData._id).find('.defFoulsTwoFT').hasClass('cancelAction')) {
+			Meteor.call('correctionDefFoulsTwoFTTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionDefFoulsTwoFT', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('defFoulsTwoFT', actionInfo, function(error) {
+			Meteor.call('defFoulsTwoFTTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('defFoulsTwoFT', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}
 	},
-	'click .defFoulthreeFT': function() {
-		var actionInfo = {
-			gameId: Template.parentData(1)._id,
-			playerIndex: Session.get('currentPlayerForModal').playerIndex,
-			team: Session.get('currentPlayerForModal').team
-		};
-		if ($('.defFoulthreeFT').hasClass('cancelAction')) {
-			Meteor.call('correctionDefFoulsThreeFT', actionInfo, function(error) {
+	'click .defFoulsThreeFT': function() {
+		var gameData = Games.findOne({
+			_id: Router.current().params._id
+		}, {
+			fields: {
+				_id: 1
+			}
+		});
+		var playerData = this;
+		if ($('#' + playerData._id).find('.defFoulsThreeFT').hasClass('cancelAction')) {
+			Meteor.call('correctionDefFoulsThreeFTTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('correctionDefFoulsThreeFT', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		} else {
-			Meteor.call('defFoulsThreeFT', actionInfo, function(error) {
+			Meteor.call('defFoulsThreeFTTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
+				} else {
+					Meteor.call('defFoulsThreeFT', playerData._id, function(error) {
+						if (error) {
+							return throwError(error.message);
+						}
+					});
 				}
 			});
 		}
