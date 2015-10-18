@@ -47,8 +47,8 @@ template(name='stats')
 					p.italic {{_ "explanationHowToAddAStat"}}
 					.yourClub.row.playerRow
 						each yourClubPlayersPlaying
-							+homeTeamPlayerPill
-							+homeTeamPlayerModal
+							+yourClubPlayerPill
+							+yourClubPlayerModal
 						else
 							with gameData
 								button.displayReplacement.btn.btn-warning(type='button', class='#{gameEndedOrNot}') {{_ "fiveStarter"}}
@@ -59,8 +59,8 @@ template(name='stats')
 					p.italic {{_ "explanationHowToAddAStat"}}
 					.opponent.row.playerRow
 						each opponentPlayersPlaying
-							+awayTeamPlayerPill
-							+awayTeamPlayerModal
+							+opponentPlayerPill
+							+opponentPlayerModal
 						else
 							with gameData
 								button.displayReplacement.btn.btn-warning(type='button', class='#{gameEndedOrNot}') {{_ "fiveStarter"}}
