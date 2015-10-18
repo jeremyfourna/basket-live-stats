@@ -1,4 +1,4 @@
-Template.homeTeamPlayerPill.helpers({
+Template.yourClubPlayerPill.helpers({
 	'modalId': function() {
 		return '#' + this._id;
 	},
@@ -12,7 +12,7 @@ Template.homeTeamPlayerPill.helpers({
 	}
 });
 
-Template.awayTeamPlayerPill.helpers({
+Template.opponentPlayerPill.helpers({
 	'modalId': function() {
 		return '#' + this._id;
 	},
