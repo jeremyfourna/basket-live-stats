@@ -220,6 +220,21 @@ Template.summary.helpers({
 					case "gameEnded":
 						quarterPower = 40;
 						break;
+					case "oT1":
+						quarterPower = 45;
+						break;
+					case "oT2":
+						quarterPower = 50;
+						break;
+					case "oT3":
+						quarterPower = 55;
+						break;
+					case "oT4":
+						quarterPower = 60;
+						break;
+					case "oT5":
+						quarterPower = 65;
+						break;
 					default:
 						quarterPower = 0;
 				}
