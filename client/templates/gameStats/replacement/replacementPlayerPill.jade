@@ -1,9 +1,7 @@
-template(name='homeTeamPlayerReplacement')
-	button.homeTeamPillForModal.shadow.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}', data-toggle='modal', data-target='#homeTeamReplacementModal') {{_ "number"}}
-		span.playerIndex.hidden #{playerIndex}
+template(name='yourClubPlayerReplacement')
+	button.yourClubPillForModal.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}', data-toggle='modal', data-target='#yourClubReplacementModal') {{_ "number"}}
 		span.badge #{jersey}
 
-template(name='awayTeamPlayerReplacement')
-	button.awayTeamPillForModal.shadow.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}', data-toggle='modal', data-target='#awayTeamReplacementModal') {{_ "number"}}
-		span.playerIndex.hidden #{playerIndex}
+template(name='opponentPlayerReplacement')
+	button.opponentPillForModal.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled='{{endedGames}}', data-toggle='modal', data-target='#opponentReplacementModal') {{_ "number"}}
 		span.badge #{jersey}

@@ -1,6 +1,6 @@
-Template.homeTeamPlayerReplacement.helpers({
+Template.yourClubPlayerReplacement.helpers({
 	'endedGames': function() {
-		if (Template.parentData(1).state === "gameEnded") {
+		if (getGameState(this.gameId) === "gameEnded") {
 			return 'disabled';
 		} else {
 			return false;
@@ -8,9 +8,9 @@ Template.homeTeamPlayerReplacement.helpers({
 	}
 });
 
-Template.awayTeamPlayerReplacement.helpers({
+Template.opponentPlayerReplacement.helpers({
 	'endedGames': function() {
-		if (Template.parentData(1).state === "gameEnded") {
+		if (getGameState(this.gameId) === "gameEnded") {
 			return 'disabled';
 		} else {
 			return false;
