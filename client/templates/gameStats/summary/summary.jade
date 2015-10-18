@@ -44,7 +44,7 @@ template(name='summary')
 						.table-responsive
 							table.table.table-condensed.table-bordered
 								thead
-									tr.homeTeamColor.active
+									tr.active
 										th.text-center {{_ "num"}}
 										th.text-center {{_ "gameTime"}}
 										th.text-center {{_ "pts"}}
@@ -63,7 +63,7 @@ template(name='summary')
 										th.text-center {{_ "foulProvComm"}}
 										th.text-center {{_ "foulRatio"}}
 										th.text-center {{_ "eval"}}
-								tbody.homeTeamPlayers
+								tbody.yourClubPlayers
 									each playerDataYourClub
 										tr(class='#{isInPlay}')
 											th(scope='row') #{jersey}
@@ -84,7 +84,7 @@ template(name='summary')
 											td.text-center #{provokedFouls}/#{stats.fouls.totalFouls}
 											td.text-center #{foulsRatio}
 											td.text-center #{stats.evaluation}
-									tr.homeTeamColor.active
+									tr.active
 										with gameData
 											th(scope='row') {{_ "total"}}
 											td.text-center -
@@ -113,14 +113,14 @@ template(name='summary')
 						.table-responsive
 							table.table.table-condensed.table-bordered
 								thead
-									tr.awayTeamColor.active
+									tr.active
 										th.text-center {{_ "num"}}
 										th.text-center {{_ "gameTime"}}
 										th.text-center {{_ "pts"}}
 										th.text-center {{_ "twoPoints"}}
 										th.text-center {{_ "threePoints"}}
 										th.text-center {{_ "ft"}}
-								tbody.awayTeamPlayers
+								tbody.opponentPlayers
 									each playerDataOpponent
 										tr(class='#{isInPlay}')
 											th.text-center(scope='row') #{jersey}
@@ -129,7 +129,7 @@ template(name='summary')
 											td.text-center #{stats.points.twoPointsIn}
 											td.text-center #{stats.points.threePointsIn}
 											td.text-center #{stats.points.onePointIn}
-									tr.awayTeamColor.active
+									tr.active
 										with gameData
 											th.text-center(scope='row') {{_ "total"}}
 											td.text-center -
