@@ -1,11 +1,13 @@
 template(name='playerUpdate')
 	.player.col-sm-4
 		h4 {{_ "player"}} #{jersey}
-		.input-group.input-group-sm
-			span.input-group-addon {{_ "name"}}
-			input.lastName.form-control(type='text', disabled='disabled', value='#{lastName}')
-		.input-group.input-group-sm
-			span.input-group-addon {{_ "firstName"}}
-			input.firstName.form-control(type='text', disabled='disabled', value='#{firstName}')
-		button.btn.btn-primary.btn-sm.playerUpdate(id='#{modifyButton}', type='button') {{_ "modify"}}
-		button.btn.btn-success.disabled.btn-sm.playerValidation(id='#{validationButton}', type='button') {{_ "validate"}}
+		form
+			.form-group
+				.input-group.input-group-sm
+					span.input-group-addon {{_ "name"}}
+					input.lastName.form-control(type='text', value='#{lastName}')
+			.form-group
+				.input-group.input-group-sm
+					span.input-group-addon {{_ "firstName"}}
+					input.firstName.form-control(type='text', value='#{firstName}')
+			button.btn.btn-success.btn-sm.playerValidation(type='submit') {{_ "validate"}}
