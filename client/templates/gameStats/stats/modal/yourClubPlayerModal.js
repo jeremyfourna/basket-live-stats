@@ -1,10 +1,10 @@
-Template.homeTeamPlayerModal.helpers({
+Template.yourClubPlayerModal.helpers({
 	modalId: function() {
 		return this._id;
 	}
 });
 
-Template.homeTeamPlayerModal.events({
+Template.yourClubPlayerModal.events({
 	'click #correctionAction': function() {
 		$('.buttonForAction').prepend('<span class="badge actionBadge">-1</span> ').addClass('cancelAction');
 		$('.correctionAction').addClass('cancelCorrectionAction');
