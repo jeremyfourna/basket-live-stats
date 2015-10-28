@@ -1,16 +1,16 @@
 template(name='gameInfos')
 	.gameInfos
-		.input-group.shadow.input-group-sm
-			span.input-group-addon {{_ "homeTeam"}}
-			input.teamHome.form-control(type='text', disabled='disabled', value='#{gameInfos.homeTeam}')
-		.input-group.shadow.input-group-sm
-			span.input-group-addon {{_ "awayTeam"}}
-			input.teamAway.form-control(type='text', disabled='disabled', value='#{gameInfos.awayTeam}')
-		.input-group.shadow.input-group-sm
+		.input-group.input-group-sm
+			span.input-group-addon {{_ "yourClub"}}
+			input.teamHome.form-control(type='text', value='#{gameInfos.yourClub}')
+		.input-group.input-group-sm
+			span.input-group-addon {{_ "opponent"}}
+			input.teamAway.form-control(type='text', value='#{gameInfos.opponent}')
+		.input-group.input-group-sm
 			span.input-group-addon {{_ "level"}}
-			input.level.form-control(type='text', disabled='disabled', value='#{gameInfos.level}')
-		.input-group.shadow.input-group-sm
+			input.level.form-control(type='text', value='#{gameInfos.level}')
+		.input-group.input-group-sm
 			span.input-group-addon {{_ "group"}}
-			input.group.form-control(type='text', disabled='disabled', value='#{gameInfos.group}')
-		button.btn.btn-primary.shadow.btn-sm.gameInfosUpdate(type='button') {{_ "modify"}}
-		button.btn.btn-success.shadow.disabled.btn-sm.gameInfosValidation(type='button') {{_ "validate"}}
+			input.group.form-control(type='text', value='#{gameInfos.group}')
+		button.btn.btn-primary.btn-sm.gameInfosUpdate(type='button') {{_ "modify"}}
+		button.btn.btn-success.btn-sm.gameInfosValidation(type='button') {{_ "validate"}}

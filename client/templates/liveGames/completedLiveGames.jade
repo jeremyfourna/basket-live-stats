@@ -1,22 +1,5 @@
 template(name='completedLiveGames')
 	each endedGames
-		.row.shadow.displayLiveGames.vertical-align
-			.col-xs-9.col-sm-9.col-md-9.col-lg-10
-				.row.vertical-align
-					h4 {{_ "level"}} : #{gameInfos.level} / {{_ "group"}} : #{gameInfos.group}
-				.row.vertical-align
-					.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
-						h3 #{gameInfos.homeTeam}
-					.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
-						h3 #{gameInfos.awayTeam}
-				.row.vertical-align
-					.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
-						h4 #{gameStats.score.homeTeam}
-					.text-center.col-xs-6.col-sm-6.col-md-6.col-lg-6
-						h4 #{gameStats.score.awayTeam}
-			.col-xs-3.col-sm-3.col-md-3.col-lg-1
-				a(href="{{pathFor 'gameStats'}}")
-					button.shadow.pull-right.btn.btn-default(type='button')
-						span.glyphicon.glyphicon-log-in(aria-hidden='true')
+		+GameCard
 	else
 		p {{_ "noCompletedLiveGames"}}

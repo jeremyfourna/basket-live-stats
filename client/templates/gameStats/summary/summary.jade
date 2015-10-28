@@ -1,131 +1,139 @@
 template(name='summary')
-	h3 {{_ "stateOfTheGame"}}
-	if notStarted
-		p {{_ "notStarted"}}
-	if q1Running
-		p {{_ "q1Running"}}
-	if q1Ended
-		p {{_ "q1Ended"}}
-	if q2Running
-		p {{_ "q2Running"}}
-	if halfTime
-		p {{_ "halfTime"}}
-	if q3Running
-		p {{_ "q3Running"}}
-	if q3Ended
-		p {{_ "q3Ended"}}
-	if q4Running
-		p {{_ "q4Running"}}
-	if oT1
-		p {{_ "oT1"}}
-	if oT2
-		p {{_ "oT2"}}
-	if oT3
-		p {{_ "oT3"}}
-	if oT4
-		p {{_ "oT4"}}
-	if oT5
-		p {{_ "oT5"}}
-	.row
-		.col-xs-6.col-sm-6.col-md-6.col-lg-6
-			h3 #{gameInfos.homeTeam}
-			p {{_ "gameScore"}} : #{gameStats.score.homeTeam}
-			p {{_ "shootPercentage"}} : {{_ "twoPoints"}} #{homeTeamPercentage2PointsShoots} % - {{_ "threePoints"}} #{homeTeamPercentage3PointsShoots} %
-			p {{_ "mvp"}} : {{_ "num"}}#{bestHomeTeamPlayer.jersey} - #{bestHomeTeamPlayer.totalPoints} {{_ "pts"}} - #{bestHomeTeamPlayer.evaluation} {{_ "eval"}}
-		.col-xs-6.col-sm-6.col-md-6.col-lg-6
-			h3 #{gameInfos.awayTeam}
-			p {{_ "gameScore"}} : #{gameStats.score.awayTeam}
-			p {{_ "pointsPartition"}} : {{_ "twoPoints"}} #{awayTeamTwoPointsPartition} % - {{_ "threePoints"}} #{awayTeamThreePointsPartition} %
-			p {{_ "bestScorer"}} : {{_ "num"}}#{bestAwayTeamPlayer.jersey} - #{bestAwayTeamPlayer.totalPoints} {{_ "pts"}}
-	h3 {{_ "gameGap"}}
-	#gameGapChart
-	h3 {{_ "homeTeam"}} : #{gameInfos.homeTeam}
-	.table-responsive
-		table.table.shadow.table-condensed
-			thead
-				tr.homeTeamColor
-					th {{_ "num"}}
-					th {{_ "gameTime"}}
-					th {{_ "pts"}}
-					th {{_ "twoPoints"}}
-					th %
-					th {{_ "threePoints"}}
-					th %
-					th {{_ "ft"}}
-					th %
-					th {{_ "rebOffDef"}}
-					th {{_ "totalRebounds"}}
-					th {{_ "assist"}}
-					th {{_ "steal"}}
-					th {{_ "turnover"}}
-					th {{_ "block"}}
-					th {{_ "foulProvComm"}}
-					th {{_ "foulRatio"}}
-					th {{_ "eval"}}
-			tbody.homeTeamPlayers
-				each homeTeam.players
-					tr(class='#{isInPlay}')
-						th(scope='row') #{jersey}
-						td #{playerTime}
-						td #{stats.points.totalPoints}
-						td #{stats.points.twoPointsIn}/#{total2PointsShoots}
-						td #{percentage2PointsShoots}
-						td #{stats.points.threePointsIn}/#{total3PointsShoots}
-						td #{percentage3PointsShoots}
-						td #{stats.points.onePointIn}/#{total1PointShoots}
-						td #{percentage1PointShoots}
-						td #{stats.rebounds.offReb}-#{stats.rebounds.defReb}
-						td #{totalRebounds}
-						td #{stats.assists}
-						td #{stats.steals}
-						td #{stats.turnovers}
-						td #{stats.blocks}
-						td #{provokedFouls}/#{stats.fouls.totalFouls}
-						td #{foulsRatio}
-						td #{stats.evaluation}
-				tr.homeTeamColor
-					th(scope='row') {{_ "total"}}
-					td -
-					td #{gameStats.score.homeTeam}
-					td #{gameStats.shoots.homeTeam.twoPointsIn}/#{homeTeamTotal2PointsShoots}
-					td #{homeTeamPercentage2PointsShoots}
-					td #{gameStats.shoots.homeTeam.threePointsIn}/#{homeTeamTotal3PointsShoots}
-					td #{homeTeamPercentage3PointsShoots}
-					td #{gameStats.shoots.homeTeam.onePointIn}/#{homeTeamTotal1PointShoots}
-					td #{homeTeamPercentage1PointShoots}
-					td #{gameStats.rebounds.homeTeam.offReb}-#{gameStats.rebounds.homeTeam.defReb}
-					td #{homeTeamTotalRebounds}
-					td #{gameStats.assists.homeTeam}
-					td #{gameStats.steals.homeTeam}
-					td #{gameStats.turnovers.homeTeam}
-					td #{gameStats.blocks.homeTeam}
-					td #{homeTeamProvokedFouls}/#{gameStats.fouls.homeTeam.totalFouls}
-					td #{homeTeamFoulsRatio}
-					td #{gameStats.evaluation.homeTeam}
-	h3 {{_ "awayTeam"}} : {{gameInfos.awayTeam}}
-	.table-responsive
-		table.table.shadow.table-condensed
-			thead
-				tr.awayTeamColor
-					th {{_ "num"}}
-					th {{_ "gameTime"}}
-					th {{_ "pts"}}
-					th {{_ "twoPoints"}}
-					th {{_ "threePoints"}}
-					th {{_ "ft"}}
-			tbody.awayTeamPlayers
-				each awayTeam.players
-					tr(class='#{isInPlay}')
-						th(scope='row') #{jersey}
-						td #{playerTime}
-						td #{stats.points.totalPoints}
-						td #{stats.points.twoPointsIn}
-						td #{stats.points.threePointsIn}
-						td #{stats.points.onePointIn}
-				tr.awayTeamColor
-					th(scope='row') {{_ "total"}}
-					td -
-					td #{gameStats.score.awayTeam}
-					td #{gameStats.shoots.awayTeam.twoPointsIn}
-					td #{gameStats.shoots.awayTeam.threePointsIn}
-					td #{gameStats.shoots.awayTeam.onePointIn}
+	.panel.panel-default
+			.panel-heading
+				.panel-title
+					with gameData
+						.clearfix
+							h2 #{gameInfos.yourClub} : #{stats.yourClub.score} - #{stats.opponent.score} : #{gameInfos.opponent}
+						.clearfix
+							if notStarted
+								p {{_ "stateOfTheGame"}} : {{_ "notStarted"}}
+							if q1Running
+								p {{_ "stateOfTheGame"}} : {{_ "q1Running"}}
+							if q1Ended
+								p {{_ "stateOfTheGame"}} : {{_ "q1Ended"}}
+							if q2Running
+								p {{_ "stateOfTheGame"}} : {{_ "q2Running"}}
+							if halfTime
+								p {{_ "stateOfTheGame"}} : {{_ "halfTime"}}
+							if q3Running
+								p {{_ "stateOfTheGame"}} : {{_ "q3Running"}}
+							if q3Ended
+								p {{_ "stateOfTheGame"}} : {{_ "q3Ended"}}
+							if q4Running
+								p {{_ "stateOfTheGame"}} : {{_ "q4Running"}}
+							if oT1
+								p {{_ "stateOfTheGame"}} : {{_ "oT1"}}
+							if oT2
+								p {{_ "stateOfTheGame"}} : {{_ "oT2"}}
+							if oT3
+								p {{_ "stateOfTheGame"}} : {{_ "oT3"}}
+							if oT4
+								p {{_ "stateOfTheGame"}} : {{_ "oT4"}}
+							if oT5
+								p {{_ "stateOfTheGame"}} : {{_ "oT5"}}
+			.panel-body
+				h4 {{_ "gameGap"}}
+				#gameGapChart
+				.panel.panel-default
+					.panel-heading
+						.panel-title
+							with gameData
+								h4 {{_ "yourClub"}} : #{gameInfos.yourClub}
+					.panel-body
+						.table-responsive
+							table.table.table-condensed.table-bordered
+								thead
+									tr.active
+										th.text-center {{_ "num"}}
+										th.text-center {{_ "gameTime"}}
+										th.text-center {{_ "pts"}}
+										th.text-center {{_ "twoPoints"}}
+										th.text-center %
+										th.text-center {{_ "threePoints"}}
+										th.text-center %
+										th.text-center {{_ "ft"}}
+										th.text-center %
+										th.text-center {{_ "rebOffDef"}}
+										th.text-center {{_ "totalRebounds"}}
+										th.text-center {{_ "assist"}}
+										th.text-center {{_ "steal"}}
+										th.text-center {{_ "turnover"}}
+										th.text-center {{_ "block"}}
+										th.text-center {{_ "foulProvComm"}}
+										th.text-center {{_ "foulRatio"}}
+										th.text-center {{_ "eval"}}
+								tbody.yourClubPlayers
+									each playerDataYourClub
+										tr(class='#{isInPlay}')
+											th(scope='row') #{jersey}
+											td.text-center #{playerTime}
+											td.text-center #{stats.points.totalPoints}
+											td.text-center #{stats.points.twoPointsIn}/#{total2PointsShoots}
+											td.text-center #{percentage2PointsShoots}
+											td.text-center #{stats.points.threePointsIn}/#{total3PointsShoots}
+											td.text-center #{percentage3PointsShoots}
+											td.text-center #{stats.points.onePointIn}/#{total1PointShoots}
+											td.text-center #{percentage1PointShoots}
+											td.text-center #{stats.rebounds.offReb}-#{stats.rebounds.defReb}
+											td.text-center #{totalRebounds}
+											td.text-center #{stats.assists}
+											td.text-center #{stats.steals}
+											td.text-center #{stats.turnovers}
+											td.text-center #{stats.blocks}
+											td.text-center #{provokedFouls}/#{stats.fouls.totalFouls}
+											td.text-center #{foulsRatio}
+											td.text-center #{stats.evaluation}
+									tr.active
+										with gameData
+											th(scope='row') {{_ "total"}}
+											td.text-center -
+											td.text-center #{stats.yourClub.score}
+											td.text-center #{stats.yourClub.points.twoPointsIn}/#{yourClubTotal2PointsShoots}
+											td.text-center #{yourClubPercentage2PointsShoots}
+											td.text-center #{stats.yourClub.points.threePointsIn}/#{yourClubTotal3PointsShoots}
+											td.text-center #{yourClubPercentage3PointsShoots}
+											td.text-center #{stats.yourClub.points.onePointIn}/#{yourClubTotal1PointShoots}
+											td.text-center #{yourClubPercentage1PointShoots}
+											td.text-center #{stats.yourClub.rebounds.offReb}-#{stats.yourClub.rebounds.defReb}
+											td.text-center #{yourClubTotalRebounds}
+											td.text-center #{stats.yourClub.assists}
+											td.text-center #{stats.yourClub.steals}
+											td.text-center #{stats.yourClub.turnovers}
+											td.text-center #{stats.yourClub.blocks}
+											td.text-center #{yourClubProvokedFouls}/#{stats.yourClub.fouls.totalFouls}
+											td.text-center #{yourClubFoulsRatio}
+											td.text-center #{stats.yourClub.evaluation}
+				.panel.panel-default
+					.panel-heading
+						.panel-title
+							with gameData
+								h4 {{_ "opponent"}} : {{gameInfos.opponent}}
+					.panel-body
+						.table-responsive
+							table.table.table-condensed.table-bordered
+								thead
+									tr.active
+										th.text-center {{_ "num"}}
+										th.text-center {{_ "gameTime"}}
+										th.text-center {{_ "pts"}}
+										th.text-center {{_ "twoPoints"}}
+										th.text-center {{_ "threePoints"}}
+										th.text-center {{_ "ft"}}
+								tbody.opponentPlayers
+									each playerDataOpponent
+										tr(class='#{isInPlay}')
+											th.text-center(scope='row') #{jersey}
+											td.text-center #{playerTime}
+											td.text-center #{stats.points.totalPoints}
+											td.text-center #{stats.points.twoPointsIn}
+											td.text-center #{stats.points.threePointsIn}
+											td.text-center #{stats.points.onePointIn}
+									tr.active
+										with gameData
+											th.text-center(scope='row') {{_ "total"}}
+											td.text-center -
+											td.text-center #{stats.opponent.score}
+											td.text-center #{stats.opponent.points.twoPointsIn}
+											td.text-center #{stats.opponent.points.threePointsIn}
+											td.text-center #{stats.opponent.points.onePointIn}

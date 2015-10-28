@@ -1,11 +1,13 @@
 template(name='coachUpdate')
 	.coach.col-sm-4
 		h4 {{_ "coach"}}
-		.input-group.shadow.input-group-sm
-			span.input-group-addon {{_ "name"}}
-			input.lastName.form-control(type='text', disabled='disabled', value='#{lastName}')
-		.input-group.shadow.input-group-sm
-			span.input-group-addon {{_ "firstName"}}
-			input.firstName.form-control(type='text', disabled='disabled', value='#{firstName}')
-		button.btn.btn-primary.shadow.btn-sm.coachUpdate(id='#{modifyButton}', type='button') {{_ "modify"}}
-		button.btn.btn-success.shadow.disabled.btn-sm.coachValidation(id='#{validationButton}', type='button') {{_ "validate"}}
+		form
+			.form-group
+				.input-group.input-group-sm
+					span.input-group-addon {{_ "name"}}
+					input.lastName.form-control(type='text', value='#{lastName}')
+			.form-group
+				.input-group.input-group-sm
+					span.input-group-addon {{_ "firstName"}}
+					input.firstName.form-control(type='text', value='#{firstName}')
+			button.btn.btn-success.btn-sm.coachValidation(type='submit') {{_ "validate"}}

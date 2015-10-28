@@ -6,22 +6,28 @@ Meteor.publish('games', function() {
 // Publication who send back the last 3 live games
 Meteor.publish('last3LiveGames', function() {
 	return Games.find({
-		state: {
+		gameState: {
 			$nin: ['gameEnded', 'notStarted']
 		},
 		privateGame: false
 	}, {
-		limit: 3
+		limit: 3,
+		sort: {
+			createdAt: -1
+		}
 	});
 });
 
 // Publication who send back the last 3 ended games
 Meteor.publish('last3EndedGames', function() {
 	return Games.find({
-		state: 'gameEnded',
+		gameState: 'gameEnded',
 		privateGame: false
 	}, {
-		limit: 3
+		limit: 3,
+		sort: {
+			createdAt: -1
+		}
 	});
 });
 

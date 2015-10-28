@@ -1,83 +1,82 @@
 Template.replacement.helpers({
-	'homeTeamPlayersPlaying': function() {
-		var team = this.homeTeam.players;
-		var inPlayTeam = [];
-		team.forEach(function(element, index, array) {
-			if (element.inPlay) {
-				inPlayTeam.push(element);
-			}
-		});
-		return inPlayTeam;
+	'gameData': function() {
+		return Games.findOne(Router.current().params._id);
 	},
-	'homeTeamPlayersOnTheBench': function() {
-		var team = this.homeTeam.players;
-		var oneTheBenchTeam = [];
-		team.forEach(function(element, index, array) {
-			if (!element.inPlay) {
-				oneTheBenchTeam.push(element);
+	'yourClubPlayersPlaying': function() {
+		return Players.find({
+			gameId: Router.current().params._id,
+			teamId: 'yourClub',
+			inPlay: true
+		}, {
+			sort: {
+				jersey: 1
 			}
 		});
-		return oneTheBenchTeam;
 	},
-	'awayTeamPlayersPlaying': function() {
-		var team = this.awayTeam.players;
-		var inPlayTeam = [];
-		team.forEach(function(element, index, array) {
-			if (element.inPlay) {
-				inPlayTeam.push(element);
+	'yourClubPlayersOnTheBench': function() {
+		return Players.find({
+			gameId: Router.current().params._id,
+			teamId: 'yourClub',
+			inPlay: false
+		}, {
+			sort: {
+				jersey: 1
 			}
 		});
-		return inPlayTeam;
 	},
-	'awayTeamPlayersOnTheBench': function() {
-		var team = this.awayTeam.players;
-		var oneTheBenchTeam = [];
-		team.forEach(function(element, index, array) {
-			if (!element.inPlay) {
-				oneTheBenchTeam.push(element);
+	'opponentPlayersPlaying': function() {
+		return Players.find({
+			gameId: Router.current().params._id,
+			teamId: 'opponent',
+			inPlay: true
+		}, {
+			sort: {
+				jersey: 1
 			}
 		});
-		return oneTheBenchTeam;
+	},
+	'opponentPlayersOnTheBench': function() {
+		return Players.find({
+			gameId: Router.current().params._id,
+			teamId: 'opponent',
+			inPlay: false
+		}, {
+			sort: {
+				jersey: 1
+			}
+		});
 	}
 });
 
 Template.replacement.events({
-	'click #homeTeamInPlay > .homeTeamPillForModal': function(e, t) {
+	'click #yourClubInPlay > .yourClubPillForModal': function(e, t) {
 		var switchData = {
-			_id: Template.currentData()._id,
-			state: Template.currentData().state,
-			team: 'homeTeam',
-			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML),
+			_id: this._id,
+			state: getGameState(this.gameId),
 			call: 'goingOnTheBench'
 		};
 		Session.set('switchData', switchData);
 	},
-	'click #homeTeamOnTheBench > .homeTeamPillForModal': function(e, t) {
+	'click #yourClubOnTheBench > .yourClubPillForModal': function(e, t) {
 		var switchData = {
-			_id: Template.currentData()._id,
-			state: Template.currentData().state,
-			team: 'homeTeam',
-			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML),
+			_id: this._id,
+			state: getGameState(this.gameId),
 			call: 'goingInPlay'
 		};
 		Session.set('switchData', switchData);
 	},
-	'click #awayTeamInPlay > .awayTeamPillForModal': function(e, t) {
+	'click #opponentInPlay > .opponentPillForModal': function(e, t) {
 		var switchData = {
-			_id: Template.currentData()._id,
-			state: Template.currentData().state,
-			team: 'awayTeam',
-			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML),
+			_id: this._id,
+			state: getGameState(this.gameId),
 			call: 'goingOnTheBench'
 		};
 		Session.set('switchData', switchData);
 	},
-	'click #awayTeamOnTheBench > .awayTeamPillForModal': function(e, t) {
+	'click #opponentOnTheBench > .opponentPillForModal': function(e, t) {
 		var switchData = {
-			_id: Template.currentData()._id,
-			state: Template.currentData().state,
-			team: 'awayTeam',
-			playerIndex: Number(e.currentTarget.firstElementChild.innerHTML),
+			_id: this._id,
+			state: getGameState(this.gameId),
 			call: 'goingInPlay'
 		};
 		Session.set('switchData', switchData);

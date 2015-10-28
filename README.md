@@ -80,100 +80,86 @@ This is a tool to take the stats of a basket-ball game, you can share the url of
 	"createdAt": "Date",
 	"gameState": "String",
 	"privateGame": "Boolean",
-	"gameInfos": [{
-		"homeTeamId": "String",
-		"awayTeamId": "String",
+	"gameInfos": {
+		"yourClub": "String",
+		"opponent": "String",
 		"level": "String",
 		"group": "String"
-	}],
+	},
 	"stats": {
-		"score" : {
-			"homeTeam" : "Number",
-			"awayTeam" : "Number"
+		"yourClub": {
+			"score" : "Number",
+			"evaluation" : "Number",
+			"points" : {
+				"onePointIn" : "Number",
+				"onePointOut" : "Number",
+				"twoPointsIn" : "Number",
+				"twoPointsOut" : "Number",
+				"threePointsIn" : "Number",
+				"threePointsOut" : "Number"
+			},
+			"assists": "Number",
+			"rebounds": {
+				"offReb" : "Number",
+				"defReb" : "Number"
+			},
+			"fouls" : {
+				"provFouls" : {
+					"offFouls" : "Number",
+					"defFouls" : "Number"
+				},
+				"offFouls" : "Number",
+				"totalFouls" : "Number",
+				"defFouls" : "Number",
+				"foul1FT" : "Number",
+				"foul2FT" : "Number",
+				"foul3FT" : "Number",
+				"techFouls" : "Number",
+				"antiSportFouls" : "Number",
+				"disqualifyingFouls" : "Number"
+			},
+			"steals" : "Number",
+			"blocks" : "Number",
+			"turnovers" : "Number"
+		},
+		"opponent": {
+			"score" : "Number",
+			"evaluation" : "Number",
+			"points" : {
+				"onePointIn" : "Number",
+				"onePointOut" : "Number",
+				"twoPointsIn" : "Number",
+				"twoPointsOut" : "Number",
+				"threePointsIn" : "Number",
+				"threePointsOut" : "Number"
+			},
+			"assists": "Number",
+			"rebounds": {
+				"offReb" : "Number",
+				"defReb" : "Number"
+			},
+			"fouls" : {
+				"provFouls" : {
+					"offFouls" : "Number",
+					"defFouls" : "Number"
+				},
+				"offFouls" : "Number",
+				"totalFouls" : "Number",
+				"defFouls" : "Number",
+				"foul1FT" : "Number",
+				"foul2FT" : "Number",
+				"foul3FT" : "Number",
+				"techFouls" : "Number",
+				"antiSportFouls" : "Number",
+				"disqualifyingFouls" : "Number"
+			},
+			"steals" : "Number",
+			"blocks" : "Number",
+			"turnovers" : "Number"
 		},
 		"evolution" : [[
 			"Number", "Number"
 		]],
-		"evaluation" : {
-			"homeTeam" : "Number",
-			"awayTeam" : "Number"
-		},
-		"shoots" : {
-			"homeTeam" : {
-				"onePointIn" : "Number",
-				"onePointOut" : "Number",
-				"twoPointsIn" : "Number",
-				"twoPointsOut" : "Number",
-				"threePointsIn" : "Number",
-				"threePointsOut" : "Number"
-			},
-			"awayTeam" : {
-				"onePointIn" : "Number",
-				"onePointOut" : "Number",
-				"twoPointsIn" : "Number",
-				"twoPointsOut" : "Number",
-				"threePointsIn" : "Number",
-				"threePointsOut" : "Number"
-			}
-		},
-		"assists" : {
-			"homeTeam" : "Number",
-			"awayTeam" : "Number"
-		},
-		"rebounds" : {
-			"homeTeam" : {
-				"offReb" : "Number",
-				"defReb" : "Number"
-			},
-			"awayTeam" : {
-				"offReb" : "Number",
-				"defReb" : "Number"
-			}
-		},
-		"fouls" : {
-			"homeTeam" : {
-				"provFouls" : {
-					"offFouls" : "Number",
-					"defFouls" : "Number"
-				},
-				"offFouls" : "Number",
-				"totalFouls" : "Number",
-				"defFouls" : "Number",
-				"foul1FT" : "Number",
-				"foul2FT" : "Number",
-				"foul3FT" : "Number",
-				"techFouls" : "Number",
-				"antiSportFouls" : "Number",
-				"disqualifyingFouls" : "Number"
-			},
-			"awayTeam" : {
-				"provFouls" : {
-					"offFouls" : "Number",
-					"defFouls" : "Number"
-				},
-				"offFouls" : "Number",
-				"totalFouls" : "Number",
-				"defFouls" : "Number",
-				"foul1FT" : "Number",
-				"foul2FT" : "Number",
-				"foul3FT" : "Number",
-				"techFouls" : "Number",
-				"antiSportFouls" : "Number",
-				"disqualifyingFouls" : "Number"
-			}
-		},
-		"steals" : {
-			"homeTeam" : "Number",
-			"awayTeam" : "Number"
-		},
-		"blocks" : {
-			"homeTeam" : "Number",
-			"awayTeam" : "Number"
-		},
-		"turnovers" : {
-			"homeTeam" : "Number",
-			"awayTeam" : "Number"
-		}
 	}
 }
 ```
