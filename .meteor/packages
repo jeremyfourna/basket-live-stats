@@ -20,15 +20,12 @@ meteorhacks:subs-manager
 meteorhacks:fast-render
 mquandalle:jade
 peernohell:c3
-sanjo:jasmine
-velocity:console-reporter
 momentjs:moment
 aldeed:collection2
 standard-minifiers
 meteor-base
 mobile-experience
 mongo
-blaze-html-templates
 session
 tracker
 logging
