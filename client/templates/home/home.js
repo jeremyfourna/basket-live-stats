@@ -7,10 +7,10 @@ Template.home.helpers({
 			privateGame: false
 		}, {
 			fields: {
-				'gameInfos': 1,
+				gameInfos: 1,
 				'stats.yourClub.score': 1,
 				'stats.opponent.score': 1,
-				'gameState': 1
+				gameState: 1
 			},
 			limit: 3,
 		});
@@ -21,10 +21,10 @@ Template.home.helpers({
 			privateGame: false
 		}, {
 			fields: {
-				'gameInfos': 1,
+				gameInfos: 1,
 				'stats.yourClub.score': 1,
 				'stats.opponent.score': 1,
-				'gameState': 1
+				gameState: 1
 			},
 			limit: 3,
 		});

@@ -2,5 +2,5 @@ template(name='ongoingLiveGames')
 	each game
 		+GameCard
 	else
-		p {{_ "noLiveGames"}}
+		h5 {{_ "noLiveGames"}}
 		+creationGame

@@ -1,27 +1,30 @@
 template(name='home')
-	.jumbotron.shadow.text-center
+	.jumbotron.text-center
 		h1 {{_ "ApplicationName"}}
 		p {{_ "appTeaserPhrase"}}
 		if currentUser
 			+creationGame
 		else
 			p {{_ "loginToBeginTakingStats"}}
-	div
-		h2 {{_ "followDirect"}}
-		.row
-			each game
-				+GameCard
-			else
-				p.no-games {{_ "noLiveGames"}}
-		p
+	.panel.panel-default
+		.panel-heading
+			h3 {{_ "followDirect"}}
+		.panel-body
+			.row
+				each game
+					+GameCard
+				else
+					p.no-games {{_ "noLiveGames"}}
+		.panel-footer
 			a(href="{{pathFor 'liveGames'}}") {{_ "orSelectARunningGame"}}
-	div
-		h2 {{_ "seeEndedGames"}}
-		.row
-			each endedGame
-				+GameCard
-			else
-				p.no-games {{_ "noLiveGames"}}
-		p
+	.panel.panel-default
+		.panel-heading
+			h3 {{_ "seeEndedGames"}}
+		.panel-body
+			.row
+				each endedGame
+					+GameCard
+				else
+					p.no-games {{_ "noLiveGames"}}
+		.panel-footer
 			a(href="{{pathFor 'liveGames'}}") {{_ "orSelectAnEndedGame"}}
-	+footer
