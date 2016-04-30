@@ -1,41 +1,41 @@
 template(name="replacement")
-	#replacementAction
-		.panel.panel-default
-			.panel-heading
-				.panel-title
-					h3 {{_ "whoReplaceWho"}}
-			.panel-body
-				.clearfix
+	with gameData
+		#replacementAction
+			.panel.panel-default
+				.panel-heading
+					h2 {{_ "whoReplaceWho"}}
+				.panel-body
 					.panel.panel-default
 						.panel-heading
-							.panel-title
-								with gameData
-									h4 {{_ "yourClub"}} : #{gameInfos.yourClub}
+							h4.panel-title {{_ "yourClub"}} : #{gameInfos.yourClub}
+						.panel-body
+							p.italic {{_ "explanationHowToMakeAReplacement"}}
+							.panel.panel-default
+								.panel-heading
+									h4.panel-title {{_ "inPlay"}}
+								.panel-body
+									#yourClubInPlay.row
+										each yourClubPlayersPlaying
+											+yourClubPlayerReplacement
+							.panel.panel-default
+								.panel-heading
+									h4.panel-title {{_ "onTheBench"}}
+								.panel-body
+									#yourClubOnTheBench.row
+										each yourClubPlayersOnTheBench
+											+yourClubPlayerReplacement
+						+yourClubReplacementModal
+					.panel.panel-default
+						.panel-heading
+							h4.panel-title {{_ "opponent"}} : #{gameInfos.opponent}
 						.panel-body
 							p.italic {{_ "explanationHowToMakeAReplacement"}}
 							h4 {{_ "inPlay"}}
-							#yourClubInPlay.row.playerRow
-								each yourClubPlayersPlaying
-									+yourClubPlayerReplacement
-							h4 {{_ "onTheBench"}}
-							#yourClubOnTheBench.row.playerRow
-								each yourClubPlayersOnTheBench
-									+yourClubPlayerReplacement
-							+yourClubReplacementModal
-				.clearfix
-					.panel.panel-default
-						.panel-heading
-							.panel-title
-								with gameData
-									h4 {{_ "opponent"}} : #{gameInfos.opponent}
-						.panel-body
-							p.italic {{_ "explanationHowToMakeAReplacement"}}
-							h4 {{_ "inPlay"}}
-							#opponentInPlay.row.playerRow
+							#opponentInPlay.row
 								each opponentPlayersPlaying
 									+opponentPlayerReplacement
 							h4 {{_ "onTheBench"}}
-							#opponentOnTheBench.row.playerRow
+							#opponentOnTheBench.row
 								each opponentPlayersOnTheBench
 									+opponentPlayerReplacement
 							+opponentReplacementModal

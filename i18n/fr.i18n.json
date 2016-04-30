@@ -177,5 +177,6 @@
 	"coachDefinition": "Definis les coachs de ton club",
 	"removeCoach": "Supprimer un coach",
 	"removePlayer": "Supprimer un joueur",
-	"primaryCoach": "Coach principal ?"
+	"primaryCoach": "Coach principal ?",
+	"newGameDefinition": "Définition d'un nouveau match"
 }

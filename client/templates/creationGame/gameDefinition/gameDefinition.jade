@@ -1,62 +1,67 @@
-template(name='gameDefinition')
+template(name="gameDefinition")
 	.panel.panel-default
 		.panel-heading
-			h2.panel-title {{_ "teamDefinition"}}
+			h3 {{_ "newGameDefinition"}}
 		.panel-body
-			form
-				.row
-					.col-xs-12.col-sm-12.col-md-6.col-lg-6
-						.form-group
-							.input-group
-								span.input-group-addon {{_ "yourTeam"}}
-								input#yourClub.form-control(type='text', value='{{yourClub}}', list='homeClubList')
-								datalist#homeClubList
-									each clubName
-										option #{name}
-					.col-xs-12.col-sm-12.col-md-6.col-lg-6
-						.form-group
-							.input-group
-								span.input-group-addon {{_ "opponent"}}
-								input#opponent.awesomplete.form-control(type='text', list='awayClubList')
-								datalist#awayClubList
-									each clubName
-										option #{name}
-					.col-xs-12.col-sm-12.col-md-6.col-lg-6
-						.form-group
-							.input-group
-								span.input-group-addon {{_ "level"}}
-								input#level.awesomplete.form-control(type='text', list='levelList')
-								datalist#levelList
-									each level
-										option #{val}
-					.col-xs-12.col-sm-12.col-md-6.col-lg-6
-						.form-group
-							.input-group
-								span.input-group-addon {{_ "group"}}
-								input#group.awesomplete.form-control(type='text', list='groupList')
-								datalist#groupList
-									each group
-										option #{val}
-				.checkbox
-					label
-						input#privateGame(type='checkbox')
-						| {{_ "privateGame"}}
-	.panel.panel-default
-		.panel-heading
-			h2.panel-title {{_ "playerDefinition"}}
-		.panel-body
-			.clearfix
-				.row.playerData
-					+playerDefinition
-			.actions
-				button.btn.btn-primary.clearfix.addPlayer(type='button') {{_ "addPlayer"}}
-				button.btn.btn-danger.clearfix.removePlayer(type='button') {{_ "removePlayer"}}
-			h2 {{_ "coachDefinition"}}
-			.clearfix
-				.row.coachData
-					+coachDefinition
-			.actions
-				button.btn.btn-primary.clearfix.addCoach(type='button') {{_ "addCoach"}}
-				button.btn.btn-danger.clearfix.removeCoach(type='button') {{_ "removeCoach"}}
+			.panel.panel-default
+				.panel-heading
+					h2.panel-title {{_ "teamDefinition"}}
+				.panel-body
+					form
+						.row
+							.col-xs-12.col-sm-12.col-md-6.col-lg-6
+								.form-group
+									.input-group
+										span.input-group-addon {{_ "yourTeam"}}
+										input#yourClub.form-control(type="text" list="homeClubList")
+										datalist#homeClubList
+											each clubName
+												option #{name}
+							.col-xs-12.col-sm-12.col-md-6.col-lg-6
+								.form-group
+									.input-group
+										span.input-group-addon {{_ "opponent"}}
+										input#opponent.awesomplete.form-control(type="text" list="awayClubList")
+										datalist#awayClubList
+											each clubName
+												option #{name}
+							.col-xs-12.col-sm-12.col-md-6.col-lg-6
+								.form-group
+									.input-group
+										span.input-group-addon {{_ "level"}}
+										input#level.awesomplete.form-control(type="text" list="levelList")
+										datalist#levelList
+											each level
+												option #{val}
+							.col-xs-12.col-sm-12.col-md-6.col-lg-6
+								.form-group
+									.input-group
+										span.input-group-addon {{_ "group"}}
+										input#group.awesomplete.form-control(type="text" list="groupList")
+										datalist#groupList
+											each group
+												option #{val}
+						.checkbox
+							label
+								input#privateGame(type="checkbox")
+								| {{_ "privateGame"}}
+			.panel.panel-default
+				.panel-heading
+					h2.panel-title {{_ "playerDefinition"}}
+				.panel-body
+					.row.playerData
+						+playerDefinition
+				.panel-footer
+					button.btn.btn-primary.addPlayer(type="button") {{_ "addPlayer"}}
+					button.btn.btn-danger.removePlayer(type="button") {{_ "removePlayer"}}
+			.panel.panel-default
+				.panel-heading
+					h2.panel-title {{_ "coachDefinition"}}
+				.panel-body
+					.row.coachData
+						+coachDefinition
+				.panel-footer
+					button.btn.btn-primary.addCoach(type="button") {{_ "addCoach"}}
+					button.btn.btn-danger.removeCoach(type="button") {{_ "removeCoach"}}
 		.panel-footer
-			button.configurationValidation.btn-block.btn.btn-success(type='button') {{_ "configurationValidation"}}
+			button.configurationValidation.btn-block.btn.btn-success(type="button") {{_ "configurationValidation"}}

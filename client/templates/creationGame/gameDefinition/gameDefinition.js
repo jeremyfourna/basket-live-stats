@@ -1,5 +1,5 @@
 Template.gameDefinition.helpers({
-	'clubName': function() {
+	clubName() {
 		return Clubs.find({}, {
 			fields: {
 				name: 1
@@ -10,10 +10,10 @@ Template.gameDefinition.helpers({
 			}
 		});
 	},
-	'yourClub': function() {
+	yourClub() {
 		return Meteor.user().profile.club;
 	},
-	'level': function() {
+	level() {
 		return FederationConfig.find({
 			def: 'level'
 		}, {
@@ -22,7 +22,7 @@ Template.gameDefinition.helpers({
 			}
 		});
 	},
-	'group': function() {
+	group() {
 		return FederationConfig.find({
 			def: 'group'
 		}, {
@@ -34,23 +34,23 @@ Template.gameDefinition.helpers({
 });
 
 Template.gameDefinition.events({
-	'click .addPlayer': function(e, t) {
-		return Blaze.render(Template.playerDefinition, t.$('.playerData').get(0));
+	'click .addPlayer' (event, template) {
+		return Blaze.render(Template.playerDefinition, template.$('.playerData').get(0));
 	},
-	'click .addCoach': function(e, t) {
-		return Blaze.render(Template.coachDefinition, t.$('.coachData').get(0));
+	'click .addCoach' (event, template) {
+		return Blaze.render(Template.coachDefinition, template.$('.coachData').get(0));
 	},
-	'click .removePlayer': function() {
+	'click .removePlayer' (event) {
 		if ($('.player').length !== 1) {
 			$('.player').get(-1).remove();
 		}
 	},
-	'click .removeCoach': function() {
+	'click .removeCoach' (event) {
 		if ($('.coach').length !== 1) {
 			$('.coach').get(-1).remove();
 		}
 	},
-	'click .configurationValidation': function() {
+	'click .configurationValidation' (event) {
 		if ($('.player').length < 5) {
 			return throwError("Your team must have a minimum of 5 players");
 		}
@@ -66,7 +66,7 @@ Template.gameDefinition.events({
 		};
 		var players = [];
 		var coachs = [];
-		$('.player').each(function(index, element) {
+		$('.player').each((index, element) => {
 			var player = {
 				teamId: 'yourClub',
 				firstName: $(element).find('.firstName').val(),
@@ -75,7 +75,7 @@ Template.gameDefinition.events({
 			};
 			players.push(player);
 		});
-		$('.coach').each(function(index, element) {
+		$('.coach').each((index, element) => {
 			var coach = {
 				teamId: 'yourClub',
 				firstName: $(element).find('.firstName').val(),
@@ -84,7 +84,7 @@ Template.gameDefinition.events({
 			};
 			coachs.push(coach);
 		});
-		Meteor.call('gameInsert', game, function(error, result) {
+		Meteor.call('gameInsert', game, (error, result) => {
 			var gameId;
 			var playersId;
 			var coachsId;
@@ -92,12 +92,12 @@ Template.gameDefinition.events({
 				return throwError(error.message);
 			} else {
 				gameId = result._id;
-				Meteor.call('playerInsert', gameId, players, function(error, result) {
+				Meteor.call('playerInsert', gameId, players, (error, result) => {
 					if (error) {
 						return throwError(error.message);
 					} else {
 						playersId = result.ids;
-						Meteor.call('coachInsert', gameId, coachs, function(error, result) {
+						Meteor.call('coachInsert', gameId, coachs, (error, result) => {
 							if (error) {
 								return throwError(error.message);
 							} else {

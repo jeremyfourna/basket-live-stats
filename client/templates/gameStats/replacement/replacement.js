@@ -1,8 +1,8 @@
 Template.replacement.helpers({
-	'gameData': function() {
+	gameData() {
 		return Games.findOne(Router.current().params._id);
 	},
-	'yourClubPlayersPlaying': function() {
+	yourClubPlayersPlaying() {
 		return Players.find({
 			gameId: Router.current().params._id,
 			teamId: 'yourClub',
@@ -13,7 +13,7 @@ Template.replacement.helpers({
 			}
 		});
 	},
-	'yourClubPlayersOnTheBench': function() {
+	yourClubPlayersOnTheBench() {
 		return Players.find({
 			gameId: Router.current().params._id,
 			teamId: 'yourClub',
@@ -24,7 +24,7 @@ Template.replacement.helpers({
 			}
 		});
 	},
-	'opponentPlayersPlaying': function() {
+	opponentPlayersPlaying() {
 		return Players.find({
 			gameId: Router.current().params._id,
 			teamId: 'opponent',
@@ -35,7 +35,7 @@ Template.replacement.helpers({
 			}
 		});
 	},
-	'opponentPlayersOnTheBench': function() {
+	opponentPlayersOnTheBench() {
 		return Players.find({
 			gameId: Router.current().params._id,
 			teamId: 'opponent',
