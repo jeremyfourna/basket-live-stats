@@ -1,7 +1,11 @@
 template(name="yourClubPlayerReplacement")
-	button.yourClubPillForModal.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled="{{endedGames}}" data-toggle="modal" data-target="#yourClubReplacementModal") {{_ "number"}}
-		span.badge #{jersey}
+	.col-xs-4.col-sm-3.col-md-2.col-lg-2
+		.thumbnail
+			button.yourClubPillForModal.btn.btn-block.btn-info(disabled="{{endedGames}}" data-toggle="modal" data-target="#yourClubReplacementModal") {{_ "number"}}
+				span.badge #{jersey}
 
 template(name="opponentPlayerReplacement")
-	button.opponentPillForModal.btn.col-xs-4.col-sm-3.col-md-2.col-lg-2(disabled="{{endedGames}}" data-toggle="modal" data-target="#opponentReplacementModal") {{_ "number"}}
-		span.badge #{jersey}
+	.col-xs-4.col-sm-3.col-md-2.col-lg-2
+		.thumbnail
+			button.opponentPillForModal.btn.btn-block.btn-warning(disabled="{{endedGames}}" data-toggle="modal" data-target="#opponentReplacementModal") {{_ "number"}}
+				span.badge #{jersey}

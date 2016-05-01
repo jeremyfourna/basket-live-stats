@@ -1,5 +1,5 @@
 Template.yourClubPlayerReplacement.helpers({
-	'endedGames': function() {
+	endedGames() {
 		if (getGameState(this.gameId) === "gameEnded") {
 			return 'disabled';
 		} else {
@@ -9,7 +9,7 @@ Template.yourClubPlayerReplacement.helpers({
 });
 
 Template.opponentPlayerReplacement.helpers({
-	'endedGames': function() {
+	endedGames() {
 		if (getGameState(this.gameId) === "gameEnded") {
 			return 'disabled';
 		} else {

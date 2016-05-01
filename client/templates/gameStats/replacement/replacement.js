@@ -49,32 +49,32 @@ Template.replacement.helpers({
 });
 
 Template.replacement.events({
-	'click #yourClubInPlay > .yourClubPillForModal': function(e, t) {
-		var switchData = {
+	'click #yourClubInPlay .yourClubPillForModal': function(e, t) {
+		let switchData = {
 			_id: this._id,
 			state: getGameState(this.gameId),
 			call: 'goingOnTheBench'
 		};
 		Session.set('switchData', switchData);
 	},
-	'click #yourClubOnTheBench > .yourClubPillForModal': function(e, t) {
-		var switchData = {
+	'click #yourClubOnTheBench .yourClubPillForModal': function(e, t) {;
+		let switchData = {
 			_id: this._id,
 			state: getGameState(this.gameId),
 			call: 'goingInPlay'
 		};
 		Session.set('switchData', switchData);
 	},
-	'click #opponentInPlay > .opponentPillForModal': function(e, t) {
-		var switchData = {
+	'click #opponentInPlay .opponentPillForModal': function(e, t) {
+		let switchData = {
 			_id: this._id,
 			state: getGameState(this.gameId),
 			call: 'goingOnTheBench'
 		};
 		Session.set('switchData', switchData);
 	},
-	'click #opponentOnTheBench > .opponentPillForModal': function(e, t) {
-		var switchData = {
+	'click #opponentOnTheBench .opponentPillForModal': function(e, t) {
+		let switchData = {
 			_id: this._id,
 			state: getGameState(this.gameId),
 			call: 'goingInPlay'

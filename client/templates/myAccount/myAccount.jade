@@ -8,7 +8,7 @@ template(name="myAccount")
 					.input-group
 						span.input-group-addon {{_ "pseudo"}}
 						input#pseudo.form-control(type="text" value="#{username}")
-				button.btn-block.btn.btn-success#loginInfosPseudoValidate(type='button') {{_ "validate"}}
+				button.btn.btn-success#loginInfosPseudoValidate(type='button') {{_ "validate"}}
 	.panel.panel-default
 		.panel-heading
 			h1.panel-title {{_ "personalInfos"}}
@@ -26,7 +26,7 @@ template(name="myAccount")
 					.input-group
 						span.input-group-addon {{_ "email"}}
 						input#email.form-control(type="text" value="#{address}")
-				button.btn-block.btn.btn-success#personalInfosValidate(type='button') {{_ "validate"}}
+				button.btn.btn-success#personalInfosValidate(type='button') {{_ "validate"}}
 	.panel.panel-default
 		.panel-heading
 			h4.panel-title {{_ "actualClub"}}
@@ -39,6 +39,6 @@ template(name="myAccount")
 						datalist#clubList
 							each clubName
 								option #{name}}
-				button.btn-block.btn.btn-success#personalInfosClubValidate(type='button') {{_ "validate"}}
+				button.btn.btn-success#personalInfosClubValidate(type='button') {{_ "validate"}}
 	.deleteUser
 		button.btn-block.btn.btn-danger#deleteAccount(type='button') {{_ "deleteAccount"}}

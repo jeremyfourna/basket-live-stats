@@ -1,8 +1,8 @@
 Template.yourClubPlayerPill.helpers({
-	'modalId': function() {
+	modalId() {
 		return '#' + this._id;
 	},
-	'endedGames': function() {
+	endedGames() {
 		var game = Games.findOne(Router.current().params._id);
 		if (game.gameState === "gameEnded") {
 			return 'disabled';
@@ -13,10 +13,10 @@ Template.yourClubPlayerPill.helpers({
 });
 
 Template.opponentPlayerPill.helpers({
-	'modalId': function() {
+	modalId() {
 		return '#' + this._id;
 	},
-	'endedGames': function() {
+	endedGames() {
 		var game = Games.findOne(Router.current().params._id);
 		if (game.gameState === "gameEnded") {
 			return 'disabled';

@@ -7,61 +7,89 @@ template(name='yourClubPlayerModal')
 						span(aria-hidden='true') &times;
 					h4#myModalLabel.modal-title {{_ "whoIsDoingThisAction"}} #{firstName} #{lastName} {{_ "num"}}#{jersey}
 				.modal-body
-					.offActions
-						h4 {{_ "offAction"}}
-						.row.actions
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.onePoint.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "oneFT"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.twoPoints.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "twoPoints"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.threePoints.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "threePoints"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.assist.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "assist"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.offReb.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "offReb"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.offProvFouls.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "provFoul"}}
-						.row.actions
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.onePointMiss.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "oneFT"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.twoPointsMiss.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "twoPoints"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.threePointsMiss.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "threePoints"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.turnovers.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "turnover"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.offFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "offFoul"}}
-					.defActions
-						h4 {{_ "defAction"}}
-						.row.actions
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.steal.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "steal"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.block.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "block"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.defReb.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "defReb"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.defProvFouls.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "provFoul"}}
-						.row.actions
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.defFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "foul"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.defFoulsOneFT.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "foul1FT"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.defFoulsTwoFT.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "foul2FT"}}
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								button.defFoulsThreeFT.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "foul3FT"}}
-					.otherActions
-						h4 {{_ "otherFouls"}}
-						.row.actions
-							.col-xs-6.col-sm-3.col-md-3.col-lg-3
-								button.techFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "techFoul"}}
-							.col-xs-6.col-sm-3.col-md-3.col-lg-3
-								button.antiSportFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "antiSportFoul"}}
-							.col-xs-6.col-sm-3.col-md-3.col-lg-3
-								button.disqualifyingFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "disqualifyingFoul"}}
+					.panel.panel-default
+						.panel-heading
+							h4.panel-title {{_ "offAction"}}
+						.panel-body
+							.row.actions
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.onePoint.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "oneFT"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.twoPoints.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "twoPoints"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.threePoints.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "threePoints"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.assist.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "assist"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.offReb.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "offReb"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.offProvFouls.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "provFoul"}}
+							.row.actions
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.onePointMiss.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "oneFT"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.twoPointsMiss.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "twoPoints"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.threePointsMiss.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "threePoints"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.turnovers.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "turnover"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.offFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "offFoul"}}
+					.panel.panel-default
+						.panel-heading
+							h4.panel-title {{_ "defAction"}}
+						.panel-body
+							.row.actions
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.steal.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "steal"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.block.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "block"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.defReb.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "defReb"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.defProvFouls.btn.btn-block.buttonForAction.btn-success(data-dismiss='modal', type='button') {{_ "provFoul"}}
+							.row.actions
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.defFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "foul"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.defFoulsOneFT.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "foul1FT"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.defFoulsTwoFT.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "foul2FT"}}
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.defFoulsThreeFT.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "foul3FT"}}
+					.panel.panel-default
+						.panel-heading
+							h4.panel-title {{_ "otherFouls"}}
+						.panel-body
+							.row.actions
+								.col-xs-6.col-sm-4.col-md-4.col-lg-4
+									.thumbnail
+										button.techFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "techFoul"}}
+								.col-xs-6.col-sm-4.col-md-4.col-lg-4
+									.thumbnail
+										button.antiSportFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "antiSportFoul"}}
+								.col-xs-6.col-sm-4.col-md-4.col-lg-4
+									.thumbnail
+										button.disqualifyingFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss='modal', type='button') {{_ "disqualifyingFoul"}}
 				.modal-footer
 					button#correctionAction.btn.pull-left.btn-warning(type='button') {{_ "correctionAction"}}
 					button#closeModalButton.btn.btn-default(type='button', data-dismiss='modal') {{_ "closeModal"}}

@@ -3,13 +3,14 @@ template(name="replacement")
 		#replacementAction
 			.panel.panel-default
 				.panel-heading
-					h2 {{_ "whoReplaceWho"}}
+					h4 {{_ "whoReplaceWho"}}
 				.panel-body
 					.panel.panel-default
 						.panel-heading
 							h4.panel-title {{_ "yourClub"}} : #{gameInfos.yourClub}
 						.panel-body
-							p.italic {{_ "explanationHowToMakeAReplacement"}}
+							p
+								em {{_ "explanationHowToMakeAReplacement"}}
 							.panel.panel-default
 								.panel-heading
 									h4.panel-title {{_ "inPlay"}}
@@ -29,13 +30,20 @@ template(name="replacement")
 						.panel-heading
 							h4.panel-title {{_ "opponent"}} : #{gameInfos.opponent}
 						.panel-body
-							p.italic {{_ "explanationHowToMakeAReplacement"}}
-							h4 {{_ "inPlay"}}
-							#opponentInPlay.row
-								each opponentPlayersPlaying
-									+opponentPlayerReplacement
-							h4 {{_ "onTheBench"}}
-							#opponentOnTheBench.row
-								each opponentPlayersOnTheBench
-									+opponentPlayerReplacement
-							+opponentReplacementModal
+							p
+								em {{_ "explanationHowToMakeAReplacement"}}
+							.panel.panel-default
+								.panel-heading
+									h4.panel-title {{_ "inPlay"}}
+								.panel-body
+									#opponentInPlay.row
+										each opponentPlayersPlaying
+											+opponentPlayerReplacement
+							.panel.panel-default
+								.panel-heading
+									h4.panel-title {{_ "onTheBench"}}
+								.panel-body
+									#opponentOnTheBench.row
+										each opponentPlayersOnTheBench
+											+opponentPlayerReplacement
+						+opponentReplacementModal

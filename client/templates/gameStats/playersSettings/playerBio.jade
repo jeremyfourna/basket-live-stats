@@ -1,15 +1,17 @@
 template(name='playerBio')
-	h3 {{_ "gameDefinition"}}
-	.cleafix
-		with gameData
-			+gameInfos
-	h3 {{_ "playerDefinition"}}
-	.clearfix
-		with gameData
-			h4 {{_ "yourClub"}} : #{gameInfos.yourClub}
-		.clearfix.players
-			each playerData
-				+playerUpdate
-		.clearfix.coachs
-			each coachData
-				+coachUpdate
+	with gameData
+		+gameInfos
+		.panel.panel-default
+			.panel-heading
+				h4 {{_ "playerDefinition"}} : #{gameInfos.yourClub}
+			.panel-body
+				.players.row
+					each playerData
+						+playerUpdate
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title {{_ "coachDefinition"}} : #{gameInfos.yourClub}
+			.panel-body
+				.coachs.row
+					each coachData
+						+coachUpdate

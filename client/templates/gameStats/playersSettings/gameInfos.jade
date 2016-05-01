@@ -1,16 +1,30 @@
 template(name='gameInfos')
-	.gameInfos
-		.input-group.input-group-sm
-			span.input-group-addon {{_ "yourClub"}}
-			input.teamHome.form-control(type='text', value='#{gameInfos.yourClub}')
-		.input-group.input-group-sm
-			span.input-group-addon {{_ "opponent"}}
-			input.teamAway.form-control(type='text', value='#{gameInfos.opponent}')
-		.input-group.input-group-sm
-			span.input-group-addon {{_ "level"}}
-			input.level.form-control(type='text', value='#{gameInfos.level}')
-		.input-group.input-group-sm
-			span.input-group-addon {{_ "group"}}
-			input.group.form-control(type='text', value='#{gameInfos.group}')
-		button.btn.btn-primary.btn-sm.gameInfosUpdate(type='button') {{_ "modify"}}
-		button.btn.btn-success.btn-sm.gameInfosValidation(type='button') {{_ "validate"}}
+	.panel.panel-default
+			.panel-heading
+				h4 {{_ "gameDefinition"}}
+			.panel-body
+				.form
+					.row
+						.col-xs-12.col-sm-12.col-md-6.col-lg-6
+							.form-group
+								.input-group
+									span.input-group-addon {{_ "yourClub"}}
+									input.teamHome.form-control(type='text', value='#{gameInfos.yourClub}')
+						.col-xs-12.col-sm-12.col-md-6.col-lg-6
+							.form-group
+								.input-group
+									span.input-group-addon {{_ "opponent"}}
+									input.teamAway.form-control(type='text', value='#{gameInfos.opponent}')
+						.col-xs-12.col-sm-12.col-md-6.col-lg-6
+							.form-group
+								.input-group
+									span.input-group-addon {{_ "level"}}
+									input.level.form-control(type='text', value='#{gameInfos.level}')
+						.col-xs-12.col-sm-12.col-md-6.col-lg-6
+							.form-group
+								.input-group
+									span.input-group-addon {{_ "group"}}
+									input.group.form-control(type='text', value='#{gameInfos.group}')
+			.panel-footer
+				button.btn.btn-primary.gameInfosUpdate(type='button') {{_ "modify"}}
+				button.btn.btn-success.gameInfosValidation(type='button') {{_ "validate"}}

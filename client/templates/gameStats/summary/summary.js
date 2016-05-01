@@ -1,8 +1,8 @@
 Template.summary.helpers({
-	'gameData': function() {
+	gameData() {
 		return Games.findOne(Router.current().params._id);
 	},
-	playerDataYourClub: function() {
+	playerDataYourClub() {
 		return Players.find({
 			gameId: Router.current().params._id,
 			teamId: 'yourClub'
@@ -12,7 +12,7 @@ Template.summary.helpers({
 			}
 		});
 	},
-	playerDataOpponent: function() {
+	playerDataOpponent() {
 		return Players.find({
 			gameId: Router.current().params._id,
 			teamId: 'opponent'
@@ -22,166 +22,166 @@ Template.summary.helpers({
 			}
 		});
 	},
-	'notStarted': function() {
+	notStarted() {
 		if (this.gameState === 'notStarted') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'q1Running': function() {
+	q1Running() {
 		if (this.gameState === 'q1Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'q1Ended': function() {
+	q1Ended() {
 		if (this.gameState === 'q1Ended') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'q2Running': function() {
+	q2Running() {
 		if (this.gameState === 'q2Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'halfTime': function() {
+	halfTime() {
 		if (this.gameState === 'halfTime') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'q3Running': function() {
+	q3Running() {
 		if (this.gameState === 'q3Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'q3Ended': function() {
+	q3Ended() {
 		if (this.gameState === 'q3Ended') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'q4Running': function() {
+	q4Running() {
 		if (this.gameState === 'q4Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'gameEnded': function() {
+	gameEnded() {
 		if (this.gameState === 'gameEnded') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'oT1': function() {
+	oT1() {
 		if (this.gameState === 'oT1') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'oT2': function() {
+	oT2() {
 		if (this.gameState === 'oT2') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'oT3': function() {
+	oT3() {
 		if (this.gameState === 'oT3') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'oT4': function() {
+	oT4() {
 		if (this.gameState === 'oT4') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'oT5': function() {
+	oT5() {
 		if (this.gameState === 'oT5') {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	'total2PointsShoots': function() {
+	total2PointsShoots() {
 		return this.stats.points.twoPointsIn + this.stats.points.twoPointsOut;
 	},
-	'percentage2PointsShoots': function() {
+	percentage2PointsShoots() {
 		return Math.floor(this.stats.points.twoPointsIn / (this.stats.points.twoPointsIn + this.stats.points.twoPointsOut) * 100) || 0;
 	},
-	'total3PointsShoots': function() {
+	total3PointsShoots() {
 		return this.stats.points.threePointsIn + this.stats.points.threePointsOut;
 	},
-	'percentage3PointsShoots': function() {
+	percentage3PointsShoots() {
 		return Math.floor(this.stats.points.threePointsIn / (this.stats.points.threePointsIn + this.stats.points.threePointsOut) * 100) || 0;
 	},
-	'total1PointShoots': function() {
+	total1PointShoots() {
 		return this.stats.points.onePointIn + this.stats.points.onePointOut;
 	},
-	'percentage1PointShoots': function() {
+	percentage1PointShoots() {
 		return Math.floor(this.stats.points.onePointIn / (this.stats.points.onePointIn + this.stats.points.onePointOut) * 100) || 0;
 	},
-	'totalRebounds': function() {
+	totalRebounds() {
 		return this.stats.rebounds.offReb + this.stats.rebounds.defReb;
 	},
-	'provokedFouls': function() {
+	provokedFouls() {
 		return this.stats.fouls.provFouls.offFouls + this.stats.fouls.provFouls.defFouls;
 	},
-	'foulsRatio': function() {
+	foulsRatio() {
 		return this.stats.fouls.provFouls.offFouls + this.stats.fouls.provFouls.defFouls - this.stats.fouls.totalFouls;
 	},
-	'yourClubFoulsRatio': function() {
+	yourClubFoulsRatio() {
 		return this.stats.yourClub.fouls.provFouls.offFouls + this.stats.yourClub.fouls.provFouls.defFouls - this.stats.yourClub.fouls.totalFouls;
 	},
-	'yourClubTotal2PointsShoots': function() {
+	yourClubTotal2PointsShoots() {
 		return this.stats.yourClub.points.twoPointsIn + this.stats.yourClub.points.twoPointsOut;
 	},
-	'yourClubPercentage2PointsShoots': function() {
+	yourClubPercentage2PointsShoots() {
 		return Math.floor(this.stats.yourClub.points.twoPointsIn / (this.stats.yourClub.points.twoPointsIn + this.stats.yourClub.points.twoPointsOut) * 100) || 0;
 	},
-	'yourClubTotal3PointsShoots': function() {
+	yourClubTotal3PointsShoots() {
 		return this.stats.yourClub.points.threePointsIn + this.stats.yourClub.points.threePointsOut;
 	},
-	'yourClubPercentage3PointsShoots': function() {
+	yourClubPercentage3PointsShoots() {
 		return Math.floor(this.stats.yourClub.points.threePointsIn / (this.stats.yourClub.points.threePointsIn + this.stats.yourClub.points.threePointsOut) * 100) || 0;
 	},
-	'yourClubTotal1PointShoots': function() {
+	yourClubTotal1PointShoots() {
 		return this.stats.yourClub.points.onePointIn + this.stats.yourClub.points.onePointOut;
 	},
-	'yourClubPercentage1PointShoots': function() {
+	yourClubPercentage1PointShoots() {
 		return Math.floor(this.stats.yourClub.points.onePointIn / (this.stats.yourClub.points.onePointIn + this.stats.yourClub.points.onePointOut) * 100) || 0;
 	},
-	'yourClubTotalRebounds': function() {
+	yourClubTotalRebounds() {
 		return this.stats.yourClub.rebounds.offReb + this.stats.yourClub.rebounds.defReb;
 	},
-	'yourClubProvokedFouls': function() {
+	yourClubProvokedFouls() {
 		return this.stats.yourClub.fouls.provFouls.offFouls + this.stats.yourClub.fouls.provFouls.defFouls;
 	},
-	'isInPlay': function() {
+	isInPlay() {
 		if (this.inPlay) {
 			return 'inPlay';
 		} else {
 			return false;
 		}
 	},
-	'playerTime': function() {
+	playerTime() {
 		var playerTimeMinutes = 0;
 		var playerTimeSecondes = 0;
 		var modulo = this.gameTime.length % 2;
@@ -337,12 +337,15 @@ Template.summary.helpers({
 });
 
 
-Template.summary.rendered = function() {
-	var chart = c3.generate({
+Template.summary.onRendered(function() {
+	let chart = c3.generate({
 		size: {
 			height: 240
 		},
 		bindto: this.find('#gameGapChart'),
+		padding: {
+			right: 30
+		},
 		data: {
 			xs: {
 				'Ecart du match': 'x'
@@ -367,7 +370,7 @@ Template.summary.rendered = function() {
 		},
 		tooltip: {
 			format: {
-				title: function(x) {
+				title(x) {
 					return 'Ecart du match';
 				}
 			}
@@ -395,4 +398,4 @@ Template.summary.rendered = function() {
 			]
 		});
 	});
-};
+});

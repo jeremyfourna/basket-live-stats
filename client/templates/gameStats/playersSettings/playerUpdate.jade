@@ -1,13 +1,17 @@
 template(name='playerUpdate')
-	.player.col-sm-4
-		h4 {{_ "player"}} #{jersey}
-		form
-			.form-group
-				.input-group.input-group-sm
-					span.input-group-addon {{_ "name"}}
-					input.lastName.form-control(type='text', value='#{lastName}')
-			.form-group
-				.input-group.input-group-sm
-					span.input-group-addon {{_ "firstName"}}
-					input.firstName.form-control(type='text', value='#{firstName}')
-			button.btn.btn-success.btn-sm.playerValidation(type='submit') {{_ "validate"}}
+	.player.col-xs-12.col-sm-6.col-md-4.col-lg-3
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title {{_ "player"}} #{jersey}
+			.panel-body
+				form
+					.form-group
+						.input-group
+							span.input-group-addon {{_ "name"}}
+							input.lastName.form-control(type='text', value='#{lastName}')
+					.form-group
+						.input-group
+							span.input-group-addon {{_ "firstName"}}
+							input.firstName.form-control(type='text', value='#{firstName}')
+			.panel-footer
+				button.btn.btn-success.playerValidation(type='submit') {{_ "validate"}}
