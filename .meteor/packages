@@ -22,7 +22,6 @@ mquandalle:jade
 peernohell:c3
 momentjs:moment
 aldeed:collection2
-standard-minifiers
 meteor-base
 mobile-experience
 mongo
@@ -36,3 +35,5 @@ spacebars
 check
 stylus
 peerlibrary:blaze-components
+standard-minifier-css
+standard-minifier-js
