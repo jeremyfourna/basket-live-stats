@@ -1,3 +1,5 @@
+import { Accounts } from 'meteor/accounts-base';
+
 Accounts.onCreateUser(function(options, user) {
 	options.profile.name = "";
 	options.profile.firstName = "";
@@ -6,10 +8,6 @@ Accounts.onCreateUser(function(options, user) {
 	options.profile.proUser = false;
 	options.profile.clubAdmin = false;
 	options.profile.LBBSAdmin = false;
-	user.emails = [{
-		address: "",
-		verified: false
-	}];
 	if (options.profile)
 		user.profile = options.profile;
 	return user;

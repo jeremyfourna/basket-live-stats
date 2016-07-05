@@ -22,7 +22,7 @@ Template.createNewClub.events({
 			name: $('#clubName').val(),
 			region: $('#region').val(),
 			department: $('#department').val(),
-			postalCode: $('#postalCode').val(),
+			zipCode: $('#zipCode').val(),
 			city: $('#city').val(),
 			jerseyColor: $('#jerseyClubColor').val(),
 			createdBy: Meteor.userId()

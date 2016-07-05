@@ -1,3 +1,7 @@
+/*eslint no-console: "off"*/
+
+import { Meteor } from 'meteor/meteor';
+
 Meteor.startup(function() {
 	if (FederationConfig.find({}).count() === 0) {
 		var regions = [
