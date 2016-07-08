@@ -179,7 +179,7 @@ let GameStatsSchema = new SimpleSchema({
 			[Number, Number]
 		],
 		label: 'Game score evolution'
-	},
+	}
 });
 
 let GameInfosSchema = new SimpleSchema({
@@ -225,6 +225,6 @@ Games.schema = new SimpleSchema({
 		type: GameInfosSchema
 	},
 	stats: {
-		type: GameStatsSchema,
+		type: GameStatsSchema
 	}
 });

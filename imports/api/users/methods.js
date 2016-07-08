@@ -64,6 +64,6 @@ Meteor.methods({
 			$set: {
 				'profile.club': data.club
 			}
-		})
+		});
 	}
 });

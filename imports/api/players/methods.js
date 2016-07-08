@@ -13,8 +13,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.assists": 1,
-				"stats.evaluation": 1
+				'stats.assists': 1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -26,8 +26,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.assists": -1,
-				"stats.evaluation": -1
+				'stats.assists': -1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -39,8 +39,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.blocks": 1,
-				"stats.evaluation": 1
+				'stats.blocks': 1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -52,8 +52,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.blocks": -1,
-				"stats.evaluation": -1
+				'stats.blocks': -1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -87,8 +87,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.provFouls.offFouls": 1,
-				"stats.evaluation": 1
+				'stats.fouls.provFouls.offFouls': 1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -100,8 +100,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.provFouls.offFouls": -1,
-				"stats.evaluation": -1
+				'stats.fouls.provFouls.offFouls': -1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -113,8 +113,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.provFouls.defFouls": 1,
-				"stats.evaluation": 1
+				'stats.fouls.provFouls.defFouls': 1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -126,8 +126,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.provFouls.defFouls": -1,
-				"stats.evaluation": -1
+				'stats.fouls.provFouls.defFouls': -1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -139,9 +139,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.offFouls": 1,
-				"stats.fouls.totalFouls": 1,
-				"stats.evaluation": -1
+				'stats.fouls.offFouls': 1,
+				'stats.fouls.totalFouls': 1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -153,9 +153,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.offFouls": -1,
-				"stats.fouls.totalFouls": -1,
-				"stats.evaluation": 1
+				'stats.fouls.offFouls': -1,
+				'stats.fouls.totalFouls': -1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -167,9 +167,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.defFouls": 1,
-				"stats.fouls.totalFouls": 1,
-				"stats.evaluation": -1
+				'stats.fouls.defFouls': 1,
+				'stats.fouls.totalFouls': 1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -181,9 +181,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.defFouls": -1,
-				"stats.fouls.totalFouls": -1,
-				"stats.evaluation": 1
+				'stats.fouls.defFouls': -1,
+				'stats.fouls.totalFouls': -1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -195,9 +195,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.foul1FT": 1,
-				"stats.fouls.totalFouls": 1,
-				"stats.evaluation": -1
+				'stats.fouls.foul1FT': 1,
+				'stats.fouls.totalFouls': 1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -209,9 +209,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.foul1FT": -1,
-				"stats.fouls.totalFouls": -1,
-				"stats.evaluation": 1
+				'stats.fouls.foul1FT': -1,
+				'stats.fouls.totalFouls': -1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -223,9 +223,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.foul2FT": 1,
-				"stats.fouls.totalFouls": 1,
-				"stats.evaluation": -1
+				'stats.fouls.foul2FT': 1,
+				'stats.fouls.totalFouls': 1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -237,9 +237,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.foul2FT": -1,
-				"stats.fouls.totalFouls": -1,
-				"stats.evaluation": 1
+				'stats.fouls.foul2FT': -1,
+				'stats.fouls.totalFouls': -1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -251,9 +251,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.foul3FT": 1,
-				"stats.fouls.totalFouls": 1,
-				"stats.evaluation": -1
+				'stats.fouls.foul3FT': 1,
+				'stats.fouls.totalFouls': 1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -265,9 +265,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.foul3FT": -1,
-				"stats.fouls.totalFouls": -1,
-				"stats.evaluation": 1
+				'stats.fouls.foul3FT': -1,
+				'stats.fouls.totalFouls': -1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -279,9 +279,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.techFouls": 1,
-				"stats.fouls.totalFouls": 1,
-				"stats.evaluation": -1
+				'stats.fouls.techFouls': 1,
+				'stats.fouls.totalFouls': 1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -293,9 +293,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.techFouls": -1,
-				"stats.fouls.totalFouls": -1,
-				"stats.evaluation": 1
+				'stats.fouls.techFouls': -1,
+				'stats.fouls.totalFouls': -1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -307,9 +307,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.antiSportFouls": 1,
-				"stats.fouls.totalFouls": 1,
-				"stats.evaluation": -1
+				'stats.fouls.antiSportFouls': 1,
+				'stats.fouls.totalFouls': 1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -321,9 +321,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.antiSportFouls": -1,
-				"stats.fouls.totalFouls": -1,
-				"stats.evaluation": 1
+				'stats.fouls.antiSportFouls': -1,
+				'stats.fouls.totalFouls': -1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -335,9 +335,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.disqualifyingFouls": 1,
-				"stats.fouls.totalFouls": 1,
-				"stats.evaluation": -1
+				'stats.fouls.disqualifyingFouls': 1,
+				'stats.fouls.totalFouls': 1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -349,9 +349,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.fouls.disqualifyingFouls": -1,
-				"stats.fouls.totalFouls": -1,
-				"stats.evaluation": 1
+				'stats.fouls.disqualifyingFouls': -1,
+				'stats.fouls.totalFouls': -1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -360,7 +360,7 @@ Meteor.methods({
 			_id: playerData._id
 		}, {
 			$set: {
-				inPlay: true,
+				inPlay: true
 			},
 			$push: {
 				gameTime: {
@@ -377,7 +377,7 @@ Meteor.methods({
 			_id: playerData._id
 		}, {
 			$set: {
-				inPlay: false,
+				inPlay: false
 			},
 			$push: {
 				gameTime: {
@@ -509,9 +509,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.points.onePointIn": 1,
-				"stats.points.totalPoints": 1,
-				"stats.evaluation": 1
+				'stats.points.onePointIn': 1,
+				'stats.points.totalPoints': 1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -523,9 +523,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.points.onePointIn": -1,
-				"stats.points.totalPoints": -1,
-				"stats.evaluation": -1
+				'stats.points.onePointIn': -1,
+				'stats.points.totalPoints': -1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -537,8 +537,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.points.onePointOut": 1,
-				"stats.evaluation": -1
+				'stats.points.onePointOut': 1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -550,8 +550,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.points.onePointOut": -1,
-				"stats.evaluation": 1
+				'stats.points.onePointOut': -1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -563,9 +563,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.points.twoPointsIn": 1,
-				"stats.points.totalPoints": 2,
-				"stats.evaluation": 2
+				'stats.points.twoPointsIn': 1,
+				'stats.points.totalPoints': 2,
+				'stats.evaluation': 2
 			}
 		});
 	},
@@ -577,9 +577,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.points.twoPointsIn": -1,
-				"stats.points.totalPoints": -2,
-				"stats.evaluation": -2
+				'stats.points.twoPointsIn': -1,
+				'stats.points.totalPoints': -2,
+				'stats.evaluation': -2
 			}
 		});
 	},
@@ -591,8 +591,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.points.twoPointsOut": 1,
-				"stats.evaluation": -1
+				'stats.points.twoPointsOut': 1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -604,8 +604,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.points.twoPointsOut": -1,
-				"stats.evaluation": 1
+				'stats.points.twoPointsOut': -1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -617,9 +617,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.points.threePointsIn": 1,
-				"stats.points.totalPoints": 3,
-				"stats.evaluation": 3
+				'stats.points.threePointsIn': 1,
+				'stats.points.totalPoints': 3,
+				'stats.evaluation': 3
 			}
 		});
 	},
@@ -631,9 +631,9 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.points.threePointsIn": -1,
-				"stats.points.totalPoints": -3,
-				"stats.evaluation": -3
+				'stats.points.threePointsIn': -1,
+				'stats.points.totalPoints': -3,
+				'stats.evaluation': -3
 			}
 		});
 	},
@@ -645,8 +645,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.points.threePointsOut": 1,
-				"stats.evaluation": -1
+				'stats.points.threePointsOut': 1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -658,8 +658,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.points.threePointsOut": -1,
-				"stats.evaluation": 1
+				'stats.points.threePointsOut': -1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -671,8 +671,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.rebounds.offReb": 1,
-				"stats.evaluation": 1
+				'stats.rebounds.offReb': 1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -684,8 +684,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.rebounds.defReb": 1,
-				"stats.evaluation": 1
+				'stats.rebounds.defReb': 1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -697,8 +697,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.rebounds.offReb": -1,
-				"stats.evaluation": -1
+				'stats.rebounds.offReb': -1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -710,8 +710,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.rebounds.defReb": -1,
-				"stats.evaluation": -1
+				'stats.rebounds.defReb': -1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -723,8 +723,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.steals": 1,
-				"stats.evaluation": 1
+				'stats.steals': 1,
+				'stats.evaluation': 1
 			}
 		});
 	},
@@ -736,8 +736,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.steals": -1,
-				"stats.evaluation": -1
+				'stats.steals': -1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -749,8 +749,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.turnovers": 1,
-				"stats.evaluation": -1
+				'stats.turnovers': 1,
+				'stats.evaluation': -1
 			}
 		});
 	},
@@ -762,8 +762,8 @@ Meteor.methods({
 
 		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				"stats.turnovers": -1,
-				"stats.evaluation": 1
+				'stats.turnovers': -1,
+				'stats.evaluation': 1
 			}
 		});
 	}

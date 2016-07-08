@@ -182,57 +182,57 @@ Template.summary.helpers({
 		}
 	},
 	playerTime() {
-		var playerTimeMinutes = 0;
-		var playerTimeSecondes = 0;
-		var modulo = this.gameTime.length % 2;
-		var i = 0;
-		var quarterPower = 0;
+		let playerTimeMinutes = 0;
+		let playerTimeSecondes = 0;
+		let modulo = this.gameTime.length % 2;
+		let i = 0;
+		let quarterPower = 0;
 		if (this.gameTime.length === 0) {
-			return "00:00";
+			return '00:00';
 		} else if (modulo === 0) {
 			for (i = 0; i < this.gameTime.length; i++) {
 				quarterPower = 0;
 				switch (this.gameTime[i].state) {
-					case "notStarted":
+					case 'notStarted':
 						quarterPower = 10;
 						break;
-					case "q1Running":
+					case 'q1Running':
 						quarterPower = 10;
 						break;
-					case "q1Ended":
+					case 'q1Ended':
 						quarterPower = 10;
 						break;
-					case "q2Running":
+					case 'q2Running':
 						quarterPower = 20;
 						break;
-					case "halfTime":
+					case 'halfTime':
 						quarterPower = 20;
 						break;
-					case "q3Running":
+					case 'q3Running':
 						quarterPower = 30;
 						break;
-					case "q3Ended":
+					case 'q3Ended':
 						quarterPower = 30;
 						break;
-					case "q4Running":
+					case 'q4Running':
 						quarterPower = 40;
 						break;
-					case "gameEnded":
+					case 'gameEnded':
 						quarterPower = 40;
 						break;
-					case "oT1":
+					case 'oT1':
 						quarterPower = 45;
 						break;
-					case "oT2":
+					case 'oT2':
 						quarterPower = 50;
 						break;
-					case "oT3":
+					case 'oT3':
 						quarterPower = 55;
 						break;
-					case "oT4":
+					case 'oT4':
 						quarterPower = 60;
 						break;
-					case "oT5":
+					case 'oT5':
 						quarterPower = 65;
 						break;
 					default:
@@ -258,51 +258,51 @@ Template.summary.helpers({
 			if (playerTimeMinutes < 10) {
 				playerTimeMinutes = '0' + playerTimeMinutes;
 			}
-			return playerTimeMinutes + ":" + playerTimeSecondes;
+			return playerTimeMinutes + ':' + playerTimeSecondes;
 		} else if (modulo === 1) {
 			for (i = 0; i < this.gameTime.length - 1; i++) {
 				quarterPower = 0;
 				switch (this.gameTime[i].state) {
-					case "notStarted":
+					case 'notStarted':
 						quarterPower = 10;
 						break;
-					case "q1Running":
+					case 'q1Running':
 						quarterPower = 10;
 						break;
-					case "q1Ended":
+					case 'q1Ended':
 						quarterPower = 10;
 						break;
-					case "q2Running":
+					case 'q2Running':
 						quarterPower = 20;
 						break;
-					case "halfTime":
+					case 'halfTime':
 						quarterPower = 20;
 						break;
-					case "q3Running":
+					case 'q3Running':
 						quarterPower = 30;
 						break;
-					case "q3Ended":
+					case 'q3Ended':
 						quarterPower = 30;
 						break;
-					case "q4Running":
+					case 'q4Running':
 						quarterPower = 40;
 						break;
-					case "gameEnded":
+					case 'gameEnded':
 						quarterPower = 40;
 						break;
-					case "oT1":
+					case 'oT1':
 						quarterPower = 45;
 						break;
-					case "oT2":
+					case 'oT2':
 						quarterPower = 50;
 						break;
-					case "oT3":
+					case 'oT3':
 						quarterPower = 55;
 						break;
-					case "oT4":
+					case 'oT4':
 						quarterPower = 60;
 						break;
-					case "oT5":
+					case 'oT5':
 						quarterPower = 65;
 						break;
 					default:
@@ -331,7 +331,7 @@ Template.summary.helpers({
 			if (playerTimeMinutes < 10) {
 				playerTimeMinutes = '0' + playerTimeMinutes;
 			}
-			return playerTimeMinutes + ":" + playerTimeSecondes;
+			return playerTimeMinutes + ':' + playerTimeSecondes;
 		}
 	}
 });
@@ -378,16 +378,16 @@ Template.summary.onRendered(function() {
 	});
 
 	this.autorun(function(tracker) {
-		var gameData = Games.find({
+		let gameData = Games.find({
 			_id: Router.current().params._id
 		}, {
 			fields: {
 				'stats.evolution': 1
 			}
 		}).fetch();
-		var xArray = ['x'];
-		var yArray = ['Ecart du match'];
-		for (var i = 0; i < gameData[0].stats.evolution.length; i++) {
+		let xArray = ['x'];
+		let yArray = ['Ecart du match'];
+		for (let i = 0; i < gameData[0].stats.evolution.length; i++) {
 			xArray.push(gameData[0].stats.evolution[i][0]);
 			yArray.push(gameData[0].stats.evolution[i][1]);
 		}

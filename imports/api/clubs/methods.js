@@ -12,7 +12,7 @@ Meteor.methods({
 			department: { type: String },
 			zipCode: { type: String },
 			city: { type: String },
-			jerseyColor: { type: String }
+			jerseyColor: { type: String },
 			createdBy: { type: String }
 		});
 		check(data, methodSchema);
@@ -35,7 +35,7 @@ Meteor.methods({
 	deleteTeam(data) {
 		let methodSchema = new SimpleSchema({
 			teamId: { type: String },
-			clubId: { type: String },
+			clubId: { type: String }
 		});
 		check(data, methodSchema);
 
@@ -46,7 +46,7 @@ Meteor.methods({
 				}
 			}
 		});
-	},
+	}
 	/*updateTeam(team, club, teamId) { // To refactor, add methods for differents fields and actions
 		var teamToUpdate = 'teams.' + teamId;
 		Clubs.update({
