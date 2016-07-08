@@ -16,6 +16,10 @@ Router.route('/', {
 	name: 'home'
 });
 
+Router.route('/liveGames', {
+	name: 'liveGames'
+});
+
 Router.route('/gameStats/:_id', {
 	name: 'gameStats',
 	waitOn: function() {
@@ -28,36 +32,7 @@ Router.route('/gameStats/:_id', {
 });
 
 Router.route('/gameDefinition', {
-	name: 'gameDefinition',
-	waitOn: function() {
-		return [
-			subscriptions.subscribe('clubName'),
-			subscriptions.subscribe('championshipLevel'),
-			subscriptions.subscribe('championshipGroup')
-		];
-	}
-});
-
-Router.route('/myGames', {
-	name: 'myGames',
-	waitOn: function() {
-		return subscriptions.subscribe('myGames', Meteor.userId());
-	}
-});
-
-Router.route('/liveGames', {
-	name: 'liveGames',
-	waitOn: function() {
-		return subscriptions.subscribe('liveGames');
-	}
-});
-
-Router.route('/about', {
-	name: 'about'
-});
-
-Router.route('/proVersionTest', {
-	name: 'proVersionTest'
+	name: 'gameDefinition'
 });
 
 Router.route('/myAccount', {

@@ -1,3 +1,19 @@
+import { Meteor } from 'meteor/meteor';
+import { Template } from 'meteor/templating';
+
+import { Clubs } from '../../../api/clubs/schema.js';
+import { FederationConfig } from '../../../api/federationConfig/schema.js';
+
+import './gameDefinition.jade';
+
+Template.gameDefinition.onCreated(function() {
+	this.autorun(() => {
+		this.subscribe('clubName');
+		this.subscribe('championshipLevel');
+		this.subscribe('championshipGroup');
+	});
+});
+
 Template.gameDefinition.helpers({
 	clubName() {
 		return Clubs.find({}, {
@@ -14,18 +30,14 @@ Template.gameDefinition.helpers({
 		return Meteor.user().profile.club;
 	},
 	level() {
-		return FederationConfig.find({
-			def: 'level'
-		}, {
+		return FederationConfig.find({ def: 'level' }, {
 			sort: {
 				val: 1
 			}
 		});
 	},
 	group() {
-		return FederationConfig.find({
-			def: 'group'
-		}, {
+		return FederationConfig.find({ def: 'group' }, {
 			sort: {
 				val: 1
 			}
@@ -34,23 +46,23 @@ Template.gameDefinition.helpers({
 });
 
 Template.gameDefinition.events({
-	'click .addPlayer' (event, template) {
+	'click .addPlayer': function(event, template) {
 		return Blaze.render(Template.playerDefinition, template.$('.playerData').get(0));
 	},
 	'click .addCoach' (event, template) {
 		return Blaze.render(Template.coachDefinition, template.$('.coachData').get(0));
 	},
-	'click .removePlayer' (event) {
+	'click .removePlayer': function(event) {
 		if ($('.player').length !== 1) {
 			$('.player').get(-1).remove();
 		}
 	},
-	'click .removeCoach' (event) {
+	'click .removeCoach': function(event) {
 		if ($('.coach').length !== 1) {
 			$('.coach').get(-1).remove();
 		}
 	},
-	'click .configurationValidation' (event) {
+	'click .configurationValidation': function(event) {
 		if ($('.player').length < 5) {
 			return throwError("Your team must have a minimum of 5 players");
 		}

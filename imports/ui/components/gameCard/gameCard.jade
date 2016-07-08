@@ -1,16 +1,13 @@
 template(name="gameCard")
 	.panel.panel-default
 		.panel-heading
-			.panel-title
-				h4.text-center #{gameData.gameInfos.yourClub} - #{gameData.gameInfos.opponent}
-					br
-					small.text-center {{_ "level"}} : #{gameData.gameInfos.level} - {{_ "group"}} : #{gameData.gameInfos.group}
+			h4.panel-title.text-center #{gameInfos.yourClub} - #{gameInfos.opponent}
+				br
+				small.text-center {{_ "level"}} : #{gameInfos.level} - {{_ "group"}} : #{gameInfos.group}
 		.panel-body
-			h3.text-center #{gameData.stats.yourClub.score} - #{gameData.stats.opponent.score}
-				.pull-right
-					a(href="{{pathFor 'gameStats'}}")
-						button.btn.btn-default(type='button')
-							span.glyphicon.glyphicon-log-in(aria-hidden='true')
+			h3.text-center #{stats.yourClub.score} - #{stats.opponent.score}
+				a.btn.btn-default.pull-right(role="button" href="{{pathFor 'gameStats'}}")
+					span.glyphicon.glyphicon-log-in(aria-hidden='true')
 		.panel-footer
 			if notStarted
 				p.text-center {{_ "stateOfTheGame"}} : {{_ "notStarted"}}

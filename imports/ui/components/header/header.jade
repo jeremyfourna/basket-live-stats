@@ -15,10 +15,6 @@ template(name="header")
 					li
 						a.visible-xs(href="{{pathFor 'liveGames'}}" data-toggle="collapse", data-target=".navbar-collapse") {{_ "liveStats"}}
 					if currentUser
-						li
-							a.hidden-xs(href="{{pathFor 'myGames'}}") {{_ "myGames"}}
-						li
-							a.visible-xs(href="{{pathFor 'myGames'}}" data-toggle="collapse", data-target=".navbar-collapse") {{_ "myGames"}}
 						if isClubAdmin
 							li
 								a.hidden-xs(href="{{pathFor 'myClub'}}") {{_ "myClub"}}
