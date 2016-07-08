@@ -97,38 +97,32 @@ let TeamFoulsSchema = new SimpleSchema({
 	foul1FT: {
 		type: Number,
 		label: 'Team 1 FT fouls',
-		min: 0,
-		max: 5
+		min: 0
 	},
 	foul2FT: {
 		type: Number,
 		label: 'Team 2 FT fouls',
-		min: 0,
-		max: 5
+		min: 0
 	},
 	foul3FT: {
 		type: Number,
 		label: 'Team 3 FT fouls',
-		min: 0,
-		max: 5
+		min: 0
 	},
 	techFouls: {
 		type: Number,
 		label: 'Team technical fouls',
-		min: 0,
-		max: 2
+		min: 0
 	},
 	antiSportFouls: {
 		type: Number,
 		label: 'Team anti sportive fouls',
-		min: 0,
-		max: 2
+		min: 0
 	},
 	disqualifyingFouls: {
 		type: Number,
 		label: 'Team disqualifying fouls',
-		min: 0,
-		max: 1
+		min: 0
 	}
 });
 

@@ -42,7 +42,7 @@ Meteor.publish('oneGame', (gameId) => {
 
 // Send back only the user's games
 Meteor.publish('myGames', (userId) => {
-	return Games.find({ userId: userId });
+	return Games.find({ userId });
 });
 
 // Send back only the games that have been created less than 7 days ago

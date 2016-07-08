@@ -1,17 +1,32 @@
-Players = new Mongo.Collection('players');
+import { Mongo } from 'meteor/mongo';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-var Schemas = {};
+export const Players = new Mongo.Collection('players');
 
-PlayerGameTimeSchema = new SimpleSchema({
+Players.deny({
+	insert() {
+		return true;
+	},
+	update() {
+		return true;
+	},
+	remove() {
+		return true;
+	}
+});
+
+let PlayerGameTimeSchema = new SimpleSchema({
 	minutes: {
 		type: Number,
 		label: 'Minutes played',
-		min: 0
+		min: 0,
+		max: 60
 	},
 	secondes: {
 		type: Number,
 		label: 'Secondes played',
-		min: 0
+		min: 0,
+		max: 60
 	},
 	way: {
 		type: String,
@@ -25,7 +40,7 @@ PlayerGameTimeSchema = new SimpleSchema({
 	}
 });
 
-PlayerPointsSchema = new SimpleSchema({
+let PlayerPointsSchema = new SimpleSchema({
 	onePointIn: {
 		type: Number,
 		label: 'Player FT scored',
@@ -63,7 +78,7 @@ PlayerPointsSchema = new SimpleSchema({
 	}
 });
 
-PlayerReboundsSchema = new SimpleSchema({
+let PlayerReboundsSchema = new SimpleSchema({
 	offReb: {
 		type: Number,
 		label: 'Player offensive rebounds',
@@ -76,7 +91,7 @@ PlayerReboundsSchema = new SimpleSchema({
 	}
 });
 
-PlayerProvFoulsSchema = new SimpleSchema({
+let PlayerProvFoulsSchema = new SimpleSchema({
 	offFouls: {
 		type: Number,
 		label: 'Player offensive provoqued fouls',
@@ -89,19 +104,21 @@ PlayerProvFoulsSchema = new SimpleSchema({
 	}
 });
 
-PlayerFoulsSchema = new SimpleSchema({
+let PlayerFoulsSchema = new SimpleSchema({
 	provFouls: {
 		type: PlayerProvFoulsSchema
 	},
 	offFouls: {
 		type: Number,
 		label: 'Team offensive fouls',
-		min: 0
+		min: 0,
+		max: 5
 	},
 	defFouls: {
 		type: Number,
 		label: 'Team defensive fouls',
-		min: 0
+		min: 0,
+		max: 5
 	},
 	totalFouls: {
 		type: Number,
@@ -112,17 +129,20 @@ PlayerFoulsSchema = new SimpleSchema({
 	foul1FT: {
 		type: Number,
 		label: 'Team 1 FT fouls',
-		min: 0
+		min: 0,
+		max: 5
 	},
 	foul2FT: {
 		type: Number,
 		label: 'Team 2 FT fouls',
-		min: 0
+		min: 0,
+		max: 5
 	},
 	foul3FT: {
 		type: Number,
 		label: 'Team 3 FT fouls',
-		min: 0
+		min: 0,
+		max: 5
 	},
 	techFouls: {
 		type: Number,
@@ -133,7 +153,8 @@ PlayerFoulsSchema = new SimpleSchema({
 	antiSportFouls: {
 		type: Number,
 		label: 'Team anti sportive fouls',
-		min: 0
+		min: 0,
+		max: 2
 	},
 	disqualifyingFouls: {
 		type: Number,
@@ -143,7 +164,7 @@ PlayerFoulsSchema = new SimpleSchema({
 	}
 });
 
-PlayerStatsSchema = new SimpleSchema({
+let PlayerStatsSchema = new SimpleSchema({
 	points: {
 		type: PlayerPointsSchema
 	},
@@ -179,7 +200,7 @@ PlayerStatsSchema = new SimpleSchema({
 	}
 });
 
-Schemas.Players = new SimpleSchema({
+Players.schema = new SimpleSchema({
 	gameId: {
 		type: String,
 		label: 'Game id'
@@ -206,8 +227,7 @@ Schemas.Players = new SimpleSchema({
 	},
 	inPlay: {
 		type: Boolean,
-		label: 'Player in field or not',
-		defaultValue: false
+		label: 'Player in field or not'
 	},
 	gameTime: {
 		type: [PlayerGameTimeSchema],
@@ -216,18 +236,4 @@ Schemas.Players = new SimpleSchema({
 	stats: {
 		type: PlayerStatsSchema
 	}
-});
-
-Players.attachSchema(Schemas.Players);
-
-Players.deny({
-	update: function(userId, docs, fields, modifier) {
-		// can't change gameId
-		return _.contains(fields, 'gameId');
-	},
-	update: function(userId, docs, fields, modifier) {
-		// can't change gameId
-		return _.contains(fields, 'teamId');
-	},
-	fetch: ['gameId', 'teamId']
 });
