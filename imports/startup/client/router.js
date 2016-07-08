@@ -1,9 +1,19 @@
-var subscriptions = new SubsManager();
+import { Router } from 'meteor/iron:router';
+
+// Base components/layouts
+import '../../ui/layouts/layout.js';
+import '../../ui/components/notFound.jade';
+
+// Pages
+import '../../ui/pages/home/home.js';
 
 Router.configure({
 	layoutTemplate: 'layout',
-	loadingTemplate: 'loading',
 	notFoundTemplate: 'notFound'
+});
+
+Router.route('/', {
+	name: 'home'
 });
 
 Router.route('/gameStats/:_id', {
@@ -117,15 +127,4 @@ Router.route('/myClub/teamEdition', {
 			createdBy: Meteor.userId()
 		});
 	}
-});
-
-Router.route('/', {
-	name: 'home',
-	waitOn: function() {
-		return [
-			subscriptions.subscribe('last3LiveGames'),
-			subscriptions.subscribe('last3EndedGames')
-		];
-	},
-	fastRender: true
 });

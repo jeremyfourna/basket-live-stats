@@ -1,10 +1,14 @@
+import { Meteor } from 'meteor/meteor';
+
+import { Games } from '../schema.js';
+
 // Publication who send back everything, use it carrefully
-Meteor.publish('games', function() {
-	return Games.find();
+Meteor.publish('games', () => {
+	return Games.find({});
 });
 
 // Publication who send back the last 3 live games
-Meteor.publish('last3LiveGames', function() {
+Meteor.publish('last3LiveGames', () => {
 	return Games.find({
 		gameState: {
 			$nin: ['gameEnded', 'notStarted']
@@ -19,7 +23,7 @@ Meteor.publish('last3LiveGames', function() {
 });
 
 // Publication who send back the last 3 ended games
-Meteor.publish('last3EndedGames', function() {
+Meteor.publish('last3EndedGames', () => {
 	return Games.find({
 		gameState: 'gameEnded',
 		privateGame: false
@@ -32,21 +36,17 @@ Meteor.publish('last3EndedGames', function() {
 });
 
 // Send back one game
-Meteor.publish('oneGame', function(gameId) {
-	return Games.find({
-		_id: gameId
-	});
+Meteor.publish('oneGame', (gameId) => {
+	return Games.find({ _id: gameId });
 });
 
 // Send back only the user's games
-Meteor.publish('myGames', function(userId) {
-	return Games.find({
-		userId: userId
-	});
+Meteor.publish('myGames', (userId) => {
+	return Games.find({ userId: userId });
 });
 
 // Send back only the games that have been created less than 7 days ago
-Meteor.publish('liveGames', function() {
+Meteor.publish('liveGames', () => {
 	return Games.find({
 		privateGame: false,
 		state: {

@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { check } from 'meteor/check';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 import { Clubs } from './schema.js';
 
@@ -19,31 +19,35 @@ Meteor.methods({
 
 		return Clubs.insert(data);
 	},
-	createNewTeam(team, club) {
+	/*createNewTeam(data) { // Define team schema
 		let methodSchema = new SimpleSchema({
 			team: { type: Object },
 			clubId: { type: String },
 		});
 		check(data, methodSchema);
 
-		return Clubs.update({ _id: clubId }, {
+		return Clubs.update({ _id: data.clubId }, {
 			$push: {
-				teams: team
+				teams: data.team
 			}
 		});
-	},
-	deleteTeam(teamToDelete) {
-		return Clubs.update({
-			_id: teamToDelete.club
-		}, {
+	},*/
+	deleteTeam(data) {
+		let methodSchema = new SimpleSchema({
+			teamId: { type: String },
+			clubId: { type: String },
+		});
+		check(data, methodSchema);
+
+		return Clubs.update({ _id: data.clubId }, {
 			$pull: {
 				teams: {
-					teamId: teamToDelete.team
+					teamId: data.teamId
 				}
 			}
 		});
 	},
-	updateTeam(team, club, teamId) {
+	/*updateTeam(team, club, teamId) { // To refactor, add methods for differents fields and actions
 		var teamToUpdate = 'teams.' + teamId;
 		Clubs.update({
 			_id: club
@@ -61,5 +65,5 @@ Meteor.methods({
 				teams: team
 			}
 		});
-	}
+	}*/
 });
