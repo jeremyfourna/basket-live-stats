@@ -14,3 +14,15 @@ FederationConfig.deny({
 		return true;
 	}
 });
+
+FederationConfig.schemas = new SimpleSchema({
+	def: {
+		type: String,
+		label: 'Type of config',
+		allowedValues: ['region', 'department', 'level', 'group']
+	},
+	val: {
+		type: String,
+		label: 'Value for the def'
+	}
+});

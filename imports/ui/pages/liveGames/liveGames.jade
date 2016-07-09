@@ -4,8 +4,9 @@ template(name='liveGames')
 			a#ongoingGames-tab(href='#ongoingGames', role='tab', data-toggle='tab', aria-controls='ongoingGames', aria-expanded='true') {{_ "runningGames"}}
 		li(role='presentation')
 			a#completedGames-tab(href='#completedGames', role='tab', data-toggle='tab', aria-controls='completedGames') {{_ "endedGames"}}
-		li(role='presentation')
-			a#myGames-tab(href='#myGames', role='tab', data-toggle='tab', aria-controls='myGames') {{_ "endedGames"}}
+		if currentUser
+			li(role='presentation')
+				a#myGames-tab(href='#myGames', role='tab', data-toggle='tab', aria-controls='myGames') {{_ "myGames"}}
 	.tab-content
 		#ongoingGames.tab-pane.fade.in.active(role='tabpanel', aria-labelledby='ongoingGames-tab')
 			.container
@@ -22,8 +23,11 @@ template(name='liveGames')
 						+gameCard
 					else
 						h5 {{_ "noCompletedLiveGames"}}
-		#myGames.tab-pane.fade(role='tabpanel', aria-labelledby='myGames-tab')
-			.container
-				.row
-					each myGame
-						+gameCard
+		if currentUser
+			#myGames.tab-pane.fade(role='tabpanel', aria-labelledby='myGames-tab')
+				.container
+					.row
+						each myGame
+							+gameCard
+						else
+							+creationGame

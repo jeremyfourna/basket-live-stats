@@ -9,36 +9,32 @@ template(name="gameDefinition")
 				.panel-body
 					form
 						.row
-							.col-xs-12.col-sm-12.col-md-6.col-lg-6
+							.col-xs-12.col-sm-6.col-md-6.col-lg-6
 								.form-group
-									.input-group
-										span.input-group-addon {{_ "yourTeam"}}
+										label(for="yourClub") {{_ "yourTeam"}}
 										input#yourClub.form-control(type="text" list="homeClubList")
-										select#homeClubList
+										datalist#homeClubList
 											each clubName
 												option #{name}
-							.col-xs-12.col-sm-12.col-md-6.col-lg-6
+							.col-xs-12.col-sm-6.col-md-6.col-lg-6
 								.form-group
-									.input-group
-										span.input-group-addon {{_ "opponent"}}
-										input#opponent.form-control(type="text" list="awayClubList")
-										select#awayClubList
+										label(for="opponent") {{_ "opponent"}}
+										input#opponent.awesomplete.form-control(type="text" list="awayClubList")
+										datalist#awayClubList
 											each clubName
 												option #{name}
-							.col-xs-12.col-sm-12.col-md-6.col-lg-6
+							.col-xs-12.col-sm-6.col-md-6.col-lg-6
 								.form-group
-									.input-group
-										span.input-group-addon {{_ "level"}}
-										input#level.form-control(type="text" list="levelList")
-										select#levelList
+										label(for="level") {{_ "level"}}
+										input#level.awesomplete.form-control(type="text" list="levelList")
+										datalist#levelList
 											each level
 												option #{val}
-							.col-xs-12.col-sm-12.col-md-6.col-lg-6
+							.col-xs-12.col-sm-6.col-md-6.col-lg-6
 								.form-group
-									.input-group
-										span.input-group-addon {{_ "group"}}
-										input#group.form-control(type="text" list="groupList")
-										select#groupList
+										label(for="group") {{_ "group"}}
+										input#group.awesomplete.form-control(type="text" list="groupList")
+										datalist#groupList
 											each group
 												option #{val}
 						.checkbox
@@ -50,24 +46,7 @@ template(name="gameDefinition")
 					p.panel-title {{_ "playerDefinition"}}
 				.panel-body
 					.row.playerData
-						.player.col-xs-12.col-sm-6.col-md-4.col-lg-3
-							.panel.panel-default
-								.panel-heading
-									p.panel-title {{_ "player"}}
-								.panel-body
-									form
-										.form-group
-											.input-group.input-group-sm
-												span.input-group-addon {{_ "num"}}
-												input.jersey.form-control(type="number" min="4", max="15")
-										.form-group
-											.input-group.input-group-sm
-												span.input-group-addon {{_ "name"}}
-												input.lastName.form-control(type="text" value="#{lastName}")
-										.form-group
-											.input-group.input-group-sm
-												span.input-group-addon {{_ "firstName"}}
-												input.firstName.form-control(type="text" value="#{firstName}")
+						+playerInfos
 				.panel-footer
 					button.btn.btn-primary.addPlayer(type="button") {{_ "addPlayer"}}
 					button.btn.btn-danger.removePlayer(type="button") {{_ "removePlayer"}}
@@ -76,26 +55,40 @@ template(name="gameDefinition")
 					p.panel-title {{_ "coachDefinition"}}
 				.panel-body
 					.row.coachData
-						.coach.col-xs-12.col-sm-6.col-md-4.col-lg-3
-							.panel.panel-default
-								.panel-heading
-									p.panel-title {{_ "coach"}}
-								.panel-body
-									form
-										.form-group
-											.input-group.input-group-sm
-												span.input-group-addon {{_ "name"}}
-												input.lastName.form-control(type='text', value='#{lastName}')
-										.form-group
-											.input-group.input-group-sm
-												span.input-group-addon {{_ "firstName"}}
-												input.firstName.form-control(type='text', value='#{firstName}')
-										.checkbox
-											label
-												input.primaryCoach(type='checkbox')
-												| {{_ "primaryCoach"}}
+						+coachInfos
 				.panel-footer
 					button.btn.btn-primary.addCoach(type="button") {{_ "addCoach"}}
 					button.btn.btn-danger.removeCoach(type="button") {{_ "removeCoach"}}
 		.panel-footer
 			button.configurationValidation.btn-block.btn.btn-success(type="button") {{_ "configurationValidation"}}
+
+template(name="playerInfos")
+	.player.col-xs-12.col-sm-6.col-md-4.col-lg-3
+		.panel.panel-default
+			.panel-body
+				form
+					.form-group
+						label(for="jersey") {{_ "num"}}
+						input.jersey.form-control(type="number" min="4", max="15")
+					.form-group
+						label(for="lastName") {{_ "name"}}
+						input.lastName.form-control(type="text" value="#{lastName}")
+					.form-group
+						label(for="firstName") {{_ "firstName"}}
+						input.firstName.form-control(type="text" value="#{firstName}")
+
+template(name="coachInfos")
+	.coach.col-xs-12.col-sm-6.col-md-4.col-lg-3
+		.panel.panel-default
+			.panel-body
+				form
+					.form-group
+						label(for="lastName") {{_ "name"}}
+						input.lastName.form-control(type='text', value='#{lastName}')
+					.form-group
+						label(for="firstName") {{_ "firstName"}}
+						input.firstName.form-control(type='text', value='#{firstName}')
+					.checkbox
+						label
+							input.primaryCoach(type='checkbox')
+							| {{_ "primaryCoach"}}

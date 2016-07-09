@@ -3,6 +3,7 @@ import { Template } from 'meteor/templating';
 import { Games } from '../../../api/games/schema.js';
 
 import './home.jade';
+import '../../components/creationGame/creationGame.js';
 
 Template.home.onCreated(function() {
 	this.autorun(() => {

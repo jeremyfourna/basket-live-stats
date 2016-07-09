@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 
 import './gameCard.jade';
 
-Tempate.gameCard.helpers({
+Template.gameCard.helpers({
 	notStarted() {
 		if (this.gameState === 'notStarted') {
 			return true;

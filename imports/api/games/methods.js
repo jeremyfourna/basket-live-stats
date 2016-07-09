@@ -5,6 +5,101 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Games } from './schema.js';
 
 Meteor.methods({
+	addAGame(data) {
+		let methodSchema = new SimpleSchema({
+			userId: { type: String }
+		});
+		check(data, methodSchema);
+
+		const game = {
+			userId: data.userId,
+			createdAt: new Date(),
+			gameState: 'notStarted',
+			privateGame: false,
+			gameInfos: {
+				yourClub: 'A',
+				opponent: 'B',
+				level: '',
+				group: ''
+			},
+			stats: {
+				yourClub: {
+					score: 0,
+					evaluation: 0,
+					points: {
+						onePointIn: 0,
+						onePointOut: 0,
+						twoPointsIn: 0,
+						twoPointsOut: 0,
+						threePointsIn: 0,
+						threePointsOut: 0
+					},
+					assists: 0,
+					rebounds: {
+						offReb: 0,
+						defReb: 0
+					},
+					fouls: {
+						provFouls: {
+							offFouls: 0,
+							defFouls: 0
+						},
+						offFouls: 0,
+						totalFouls: 0,
+						defFouls: 0,
+						foul1FT: 0,
+						foul2FT: 0,
+						foul3FT: 0,
+						techFouls: 0,
+						antiSportFouls: 0,
+						disqualifyingFouls: 0
+					},
+					steals: 0,
+					blocks: 0,
+					turnovers: 0
+				},
+				opponent: {
+					score: 0,
+					evaluation: 0,
+					points: {
+						onePointIn: 0,
+						onePointOut: 0,
+						twoPointsIn: 0,
+						twoPointsOut: 0,
+						threePointsIn: 0,
+						threePointsOut: 0
+					},
+					assists: 0,
+					rebounds: {
+						offReb: 0,
+						defReb: 0
+					},
+					fouls: {
+						provFouls: {
+							offFouls: 0,
+							defFouls: 0
+						},
+						offFouls: 0,
+						totalFouls: 0,
+						defFouls: 0,
+						foul1FT: 0,
+						foul2FT: 0,
+						foul3FT: 0,
+						techFouls: 0,
+						antiSportFouls: 0,
+						disqualifyingFouls: 0
+					},
+					steals: 0,
+					blocks: 0,
+					turnovers: 0
+				},
+				evolution: [
+					[0, 0]
+				]
+			}
+		};
+		return Games.insert(game);
+	},
 	assistsTeamYourClub(data) {
 		let methodSchema = new SimpleSchema({
 			gameId: { type: String }
@@ -359,108 +454,6 @@ Meteor.methods({
 				'gameInfos.group': data.group
 			}
 		});
-	},
-	gameInsert(data) {
-		let methodSchema = new SimpleSchema({
-			gameId: { type: String },
-			userId: { type: String },
-			privateGame: { type: Boolean },
-			yourClub: { type: String },
-			opponent: { type: String },
-			level: { type: String, optional: true },
-			group: { type: String, optional: true }
-
-		});
-		check(data, methodSchema);
-
-		let game = {
-			userId: data.userId,
-			createdAt: new Date(),
-			gameState: 'notStarted',
-			privateGame: data.privateGame,
-			gameInfos: {
-				yourClub: data.yourClub,
-				opponent: data.opponent,
-				level: data.level,
-				group: data.group
-			},
-			stats: {
-				yourClub: {
-					score: 0,
-					evaluation: 0,
-					points: {
-						onePointIn: 0,
-						onePointOut: 0,
-						twoPointsIn: 0,
-						twoPointsOut: 0,
-						threePointsIn: 0,
-						threePointsOut: 0
-					},
-					assists: 0,
-					rebounds: {
-						offReb: 0,
-						defReb: 0
-					},
-					fouls: {
-						provFouls: {
-							offFouls: 0,
-							defFouls: 0
-						},
-						offFouls: 0,
-						totalFouls: 0,
-						defFouls: 0,
-						foul1FT: 0,
-						foul2FT: 0,
-						foul3FT: 0,
-						techFouls: 0,
-						antiSportFouls: 0,
-						disqualifyingFouls: 0
-					},
-					steals: 0,
-					blocks: 0,
-					turnovers: 0
-				},
-				opponent: {
-					score: 0,
-					evaluation: 0,
-					points: {
-						onePointIn: 0,
-						onePointOut: 0,
-						twoPointsIn: 0,
-						twoPointsOut: 0,
-						threePointsIn: 0,
-						threePointsOut: 0
-					},
-					assists: 0,
-					rebounds: {
-						offReb: 0,
-						defReb: 0
-					},
-					fouls: {
-						provFouls: {
-							offFouls: 0,
-							defFouls: 0
-						},
-						offFouls: 0,
-						totalFouls: 0,
-						defFouls: 0,
-						foul1FT: 0,
-						foul2FT: 0,
-						foul3FT: 0,
-						techFouls: 0,
-						antiSportFouls: 0,
-						disqualifyingFouls: 0
-					},
-					steals: 0,
-					blocks: 0,
-					turnovers: 0
-				},
-				evolution: [
-					[0, 0]
-				]
-			}
-		};
-		return Games.insert(game);
 	},
 	gameStateSwitch(data) {
 		let methodSchema = new SimpleSchema({

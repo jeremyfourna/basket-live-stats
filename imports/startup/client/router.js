@@ -6,6 +6,8 @@ import '../../ui/components/notFound.jade';
 
 // Pages
 import '../../ui/pages/home/home.js';
+import '../../ui/pages/liveGames/liveGames.js';
+import '../../ui/pages/aGame/aGame.js';
 
 Router.configure({
 	layoutTemplate: 'layout',
@@ -20,6 +22,10 @@ Router.route('/liveGames', {
 	name: 'liveGames'
 });
 
+Router.route('/aGame/:_id', {
+	name: 'aGame'
+});
+
 Router.route('/gameStats/:_id', {
 	name: 'gameStats',
 	waitOn: function() {
@@ -29,10 +35,6 @@ Router.route('/gameStats/:_id', {
 			subscriptions.subscribe('coachsForAGame', this.params._id)
 		];
 	}
-});
-
-Router.route('/gameDefinition', {
-	name: 'gameDefinition'
 });
 
 Router.route('/myAccount', {

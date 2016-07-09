@@ -4,7 +4,7 @@ import { Template } from 'meteor/templating';
 import { Games } from '../../../api/games/schema.js';
 
 import './liveGames.jade';
-import '../../components/creationGame.jade';
+import '../../components/creationGame/creationGame.js';
 import '../../components/gameCard/gameCard.js';
 
 Template.liveGames.onCreated(function() {

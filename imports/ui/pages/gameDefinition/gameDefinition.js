@@ -26,9 +26,6 @@ Template.gameDefinition.helpers({
 			}
 		});
 	},
-	yourClub() {
-		return Meteor.user().profile.club;
-	},
 	level() {
 		return FederationConfig.find({ def: 'level' }, {
 			sort: {
@@ -47,10 +44,10 @@ Template.gameDefinition.helpers({
 
 Template.gameDefinition.events({
 	'click .addPlayer': function(event, template) {
-		return Blaze.render(Template.playerDefinition, template.$('.playerData').get(0));
+		return Blaze.render(Template.playerInfos, template.$('.playerData').get(0));
 	},
-	'click .addCoach' (event, template) {
-		return Blaze.render(Template.coachDefinition, template.$('.coachData').get(0));
+	'click .addCoach': function(event, template) {
+		return Blaze.render(Template.coachInfos, template.$('.coachData').get(0));
 	},
 	'click .removePlayer': function(event) {
 		if ($('.player').length !== 1) {

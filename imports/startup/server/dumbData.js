@@ -2,9 +2,11 @@
 
 import { Meteor } from 'meteor/meteor';
 
+import { FederationConfig } from '../../api/federationConfig/schema.js';
+
 Meteor.startup(function() {
 	if (FederationConfig.find({}).count() === 0) {
-		var regions = [
+		let regions = [
 			'LR01 - ALPES',
 			'LR02 - ALSACE',
 			'LR03 - AQUITAINE',
@@ -41,7 +43,7 @@ Meteor.startup(function() {
 			'LR99 - HANDI BASKET'
 		];
 
-		var departments = [
+		let departments = [
 			'CD01 - AIN',
 			'CD02 - AISNE',
 			'CD03 - ALLIER',
@@ -152,7 +154,7 @@ Meteor.startup(function() {
 			'CD9N - POLYNESIE F AUSTRALES MARQUISES'
 		];
 
-		var level = ['BASKET ENTREPRISES',
+		let level = ['BASKET ENTREPRISES',
 			'COUPE DE FRANCE JOE JAUNAY 1/32',
 			'COUPE DE FRANCE ROBERT BUSNEL 1/32',
 			'COUPE DE FRANCE U17F 1/32',
@@ -208,8 +210,7 @@ Meteor.startup(function() {
 			'U20 Masculins Division 2'
 		];
 
-
-		var poule = [
+		let poule = [
 			'A',
 			'B',
 			'C',
@@ -237,29 +238,25 @@ Meteor.startup(function() {
 			'Y',
 			'Z'
 		];
-		poule.forEach(function(element, index) {
-			FederationConfig.insert({
-				def: 'group',
-				val: element
-			});
+		console.log('Begin adding groups');
+		poule.map((cur, index, array) => {
+			return Meteor.call('addAGroup', { value: cur });
 		});
-		level.forEach(function(element, index) {
-			FederationConfig.insert({
-				def: 'level',
-				val: element
-			});
+		console.log('Ending adding groups');
+		console.log('Begin adding level');
+		level.map((cur, index, array) => {
+			return Meteor.call('addALevel', { value: cur });
 		});
-		departments.forEach(function(element, index) {
-			FederationConfig.insert({
-				def: 'department',
-				val: element
-			});
+		console.log('Ending adding level');
+		console.log('Begin adding departments');
+		departments.map((cur, index, array) => {
+			return Meteor.call('addADepartment', { value: cur });
 		});
-		regions.forEach(function(element, index) {
-			FederationConfig.insert({
-				def: 'region',
-				val: element
-			});
+		console.log('Ending adding departments');
+		console.log('Begin adding regions');
+		regions.map((cur, index, array) => {
+			return Meteor.call('addARegion', { value: cur });
 		});
+		console.log('Ending adding regions');
 	}
 });
