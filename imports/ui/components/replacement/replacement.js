@@ -1,6 +1,40 @@
+import { Template } from 'meteor/templating';
+import { Router } from 'meteor/iron:router';
+import 'meteor/sacha:spin';
+
+import { Games } from '../../../api/games/schema.js';
+import { Players } from '../../../api/players/schema.js';
+
+import './replacement.jade';
+import './replacementModal.js';
+
+Template.replacement.onCreated(function() {
+	this.autorun(() => {
+		this.subscribe('oneGameForReplacement', Router.current().params._id);
+	});
+});
+
 Template.replacement.helpers({
+	yourClub() {
+		if (!this.gameInfos.yourClub) {
+			return 'Home team';
+		} else {
+			return this.gameInfos.yourClub;
+		}
+	},
+	opponent() {
+		if (!this.gameInfos.opponent) {
+			return 'Away team';
+		} else {
+			return this.gameInfos.opponent;
+		}
+	},
 	gameData() {
-		return Games.findOne(Router.current().params._id);
+		return Games.findOne({ _id: Router.current().params._id }, {
+			fields: {
+				gameInfos: 1
+			}
+		});
 	},
 	yourClubPlayersPlaying() {
 		return Players.find({

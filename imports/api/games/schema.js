@@ -185,11 +185,13 @@ let GameStatsSchema = new SimpleSchema({
 let GameInfosSchema = new SimpleSchema({
 	yourClub: {
 		type: String,
-		label: 'Your club name'
+		label: 'Your club name',
+		optional: true
 	},
 	opponent: {
 		type: String,
-		label: 'Opponent club name'
+		label: 'Opponent club name',
+		optional: true
 	},
 	level: {
 		type: String,

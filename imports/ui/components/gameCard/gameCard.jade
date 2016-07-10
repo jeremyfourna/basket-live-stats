@@ -6,7 +6,7 @@ template(name="gameCard")
 				small.text-center {{_ "level"}} : #{gameInfos.level} - {{_ "group"}} : #{gameInfos.group}
 		.panel-body
 			h3.text-center #{stats.yourClub.score} - #{stats.opponent.score}
-				a.btn.btn-default.pull-right(role="button" href="{{pathFor 'gameStats'}}")
+				a.btn.btn-default.pull-right(role="button" href="{{pathFor 'aGame'}}")
 					span.glyphicon.glyphicon-log-in(aria-hidden='true')
 		.panel-footer
 			if notStarted

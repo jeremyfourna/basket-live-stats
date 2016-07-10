@@ -1,3 +1,7 @@
+import { Template } from 'meteor/templating';
+
+import './replacementModal.jade';
+
 Template.yourClubReplacementModal.events({
 	'click #validateSwitch': function() {
 		var data = Session.get('switchData');

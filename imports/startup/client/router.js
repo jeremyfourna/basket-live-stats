@@ -26,17 +26,6 @@ Router.route('/aGame/:_id', {
 	name: 'aGame'
 });
 
-Router.route('/gameStats/:_id', {
-	name: 'gameStats',
-	waitOn: function() {
-		return [
-			subscriptions.subscribe('oneGame', this.params._id),
-			subscriptions.subscribe('playersForAGame', this.params._id),
-			subscriptions.subscribe('coachsForAGame', this.params._id)
-		];
-	}
-});
-
 Router.route('/myAccount', {
 	name: 'myAccount',
 	data: function() {

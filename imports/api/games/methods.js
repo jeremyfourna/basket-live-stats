@@ -17,8 +17,8 @@ Meteor.methods({
 			gameState: 'notStarted',
 			privateGame: false,
 			gameInfos: {
-				yourClub: 'A',
-				opponent: 'B',
+				yourClub: '',
+				opponent: '',
 				level: '',
 				group: ''
 			},

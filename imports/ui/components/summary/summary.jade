@@ -1,40 +1,44 @@
 template(name='summary')
-	with gameData
-		.panel.panel-default
-			.panel-heading
-				h4 #{gameInfos.yourClub} : #{stats.yourClub.score} - #{stats.opponent.score} : #{gameInfos.opponent}
-				if notStarted
-					p {{_ "stateOfTheGame"}} : {{_ "notStarted"}}
-				if q1Running
-					p {{_ "stateOfTheGame"}} : {{_ "q1Running"}}
-				if q1Ended
-					p {{_ "stateOfTheGame"}} : {{_ "q1Ended"}}
-				if q2Running
-					p {{_ "stateOfTheGame"}} : {{_ "q2Running"}}
-				if halfTime
-					p {{_ "stateOfTheGame"}} : {{_ "halfTime"}}
-				if q3Running
-					p {{_ "stateOfTheGame"}} : {{_ "q3Running"}}
-				if q3Ended
-					p {{_ "stateOfTheGame"}} : {{_ "q3Ended"}}
-				if q4Running
-					p {{_ "stateOfTheGame"}} : {{_ "q4Running"}}
-				if oT1
-					p {{_ "stateOfTheGame"}} : {{_ "oT1"}}
-				if oT2
-					p {{_ "stateOfTheGame"}} : {{_ "oT2"}}
-				if oT3
-					p {{_ "stateOfTheGame"}} : {{_ "oT3"}}
-				if oT4
-					p {{_ "stateOfTheGame"}} : {{_ "oT4"}}
-				if oT5
-					p {{_ "stateOfTheGame"}} : {{_ "oT5"}}
-			.panel-body
-				.panel.panel-default
-					.panel-heading
-						h4.panel-title {{_ "gameGap"}}
-					.panel-body
-						#gameGapChart
+	.panel.panel-default
+		.panel-heading
+			if Template.subscriptionsReady
+				with gameData
+					h4 #{gameInfos.yourClub} : #{stats.yourClub.score} - #{stats.opponent.score} : #{gameInfos.opponent}
+					if notStarted
+						p {{_ "stateOfTheGame"}} : {{_ "notStarted"}}
+					if q1Running
+						p {{_ "stateOfTheGame"}} : {{_ "q1Running"}}
+					if q1Ended
+						p {{_ "stateOfTheGame"}} : {{_ "q1Ended"}}
+					if q2Running
+						p {{_ "stateOfTheGame"}} : {{_ "q2Running"}}
+					if halfTime
+						p {{_ "stateOfTheGame"}} : {{_ "halfTime"}}
+					if q3Running
+						p {{_ "stateOfTheGame"}} : {{_ "q3Running"}}
+					if q3Ended
+						p {{_ "stateOfTheGame"}} : {{_ "q3Ended"}}
+					if q4Running
+						p {{_ "stateOfTheGame"}} : {{_ "q4Running"}}
+					if oT1
+						p {{_ "stateOfTheGame"}} : {{_ "oT1"}}
+					if oT2
+						p {{_ "stateOfTheGame"}} : {{_ "oT2"}}
+					if oT3
+						p {{_ "stateOfTheGame"}} : {{_ "oT3"}}
+					if oT4
+						p {{_ "stateOfTheGame"}} : {{_ "oT4"}}
+					if oT5
+						p {{_ "stateOfTheGame"}} : {{_ "oT5"}}
+			else
+				+spinner
+		.panel-body
+			.panel.panel-default
+				.panel-heading
+					h4.panel-title {{_ "gameGap"}}
+				.panel-body
+					#gameGapChart
+			if Template.subscriptionsReady
 				.panel.panel-default
 					.panel-heading
 						h4.panel-title {{_ "yourClub"}} : #{gameInfos.yourClub}
@@ -131,3 +135,5 @@ template(name='summary')
 										td.text-center #{stats.opponent.points.twoPointsIn}
 										td.text-center #{stats.opponent.points.threePointsIn}
 										td.text-center #{stats.opponent.points.onePointIn}
+			else
+				+spinner

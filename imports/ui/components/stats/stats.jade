@@ -1,0 +1,38 @@
+template(name="stats")
+	if Template.subscriptionsReady
+		with gameData
+			.panel.panel-default
+				.panel-heading
+					p.panel-title #{yourClub} : #{stats.yourClub.score} - #{stats.opponent.score} : #{opponent}
+				.panel-body
+					+stateOfTheGame
+					.panel.panel-default
+						.panel-heading
+							p.panel-title {{_ "yourClub"}} : #{yourClub}
+						.panel-body
+							p
+								em {{_ "explanationHowToAddAStat"}}
+							.yourClub.row.playerRow
+								each yourClubPlayersPlaying
+									//+yourClubPlayerPill
+									//+yourClubPlayerModal
+								else
+									button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
+						.panel-footer
+							button.doReplacement.btn.btn-primary(type="button", class="#{doReplacementYourClub}") {{_ "makeAReplacement"}}
+					.panel.panel-default
+						.panel-heading
+							p.panel-title {{_ "opponent"}} : #{opponent}
+						.panel-body
+							p
+								em {{_ "explanationHowToAddAStat"}}
+							.opponent.row.playerRow
+								each opponentPlayersPlaying
+									//+opponentPlayerPill
+									//+opponentPlayerModal
+								else
+									button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
+						.panel-footer
+							button.doReplacement.btn.btn-primary(type="button", class="#{doReplacementOpponent}") {{_ "makeAReplacement"}}
+	else
+		+spinner

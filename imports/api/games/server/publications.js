@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { check } from 'meteor/check';
 
 import { Games } from '../schema.js';
 
@@ -36,8 +37,34 @@ Meteor.publish('last3EndedGames', () => {
 });
 
 // Send back one game
-Meteor.publish('oneGame', (gameId) => {
-	return Games.find({ _id: gameId });
+Meteor.publish('oneGameForStats', (gameId) => {
+	check(gameId, String);
+	return Games.find({ _id: gameId }, {
+		fields: {
+			gameState: 1,
+			gameInfos: 1,
+			'stats.yourClub.score': 1,
+			'stats.opponent.score': 1
+		}
+	});
+});
+
+Meteor.publish('oneGameForReplacement', (gameId) => {
+	check(gameId, String);
+	return Games.find({ _id: gameId }, {
+		fields: {
+			gameInfos: 1
+		}
+	});
+});
+
+Meteor.publish('aGameForOwnership', (gameId) => {
+	check(gameId, String);
+	return Games.find({ _id: gameId }, {
+		fields: {
+			userId: 1
+		}
+	});
 });
 
 // Send back only the user's games

@@ -1,3 +1,21 @@
+import { Template } from 'meteor/templating';
+import { Router } from 'meteor/iron:router';
+import 'meteor/peernohell:c3';
+import 'meteor/sacha:spin';
+
+import { Games } from '../../../api/games/schema.js';
+import { Players } from '../../../api/players/schema.js';
+
+import './summary.jade';
+
+Template.summary.onCreated(function() {
+	this.autorun(() => {
+		this.subscribe('oneGame', Router.current().params._id);
+		this.subscribe('playersForAGame', Router.current().params._id);
+		this.subscribe('coachsForAGame', Router.current().params._id);
+	});
+});
+
 Template.summary.helpers({
 	gameData() {
 		return Games.findOne(Router.current().params._id);

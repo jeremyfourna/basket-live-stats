@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import 'meteor/sacha:spin';
 
 import { Games } from '../../../api/games/schema.js';
 

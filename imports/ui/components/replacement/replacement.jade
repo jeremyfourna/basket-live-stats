@@ -1,0 +1,57 @@
+template(name="replacement")
+	.panel.panel-default
+		.panel-heading
+			p.panel-title {{_ "whoReplaceWho"}}
+		.panel-body
+			p
+				em {{_ "explanationHowToMakeAReplacement"}}
+			if Template.subscriptionsReady
+				.row
+					.col-xs-12.col-sm-12.col-md-6.col-lg-6
+						.panel.panel-default
+							.panel-heading
+								with gameData
+									p.panel-title {{_ "yourClub"}} : #{yourClub}
+							.panel-body
+								.panel.panel-default
+									.panel-heading
+										p.panel-title {{_ "inPlay"}}
+									.panel-body
+										#yourClubInPlay.row
+											each yourClubPlayersPlaying
+												+yourClubPlayerReplacement
+											else
+												+addAPlayer
+								.panel.panel-default
+									.panel-heading
+										p.panel-title {{_ "onTheBench"}}
+									.panel-body
+										#yourClubOnTheBench.row
+											each yourClubPlayersOnTheBench
+												+yourClubPlayerReplacement
+											else
+												+addAPlayer
+								+yourClubReplacementModal
+					.col-xs-12.col-sm-12.col-md-6.col-lg-6
+						.panel.panel-default
+							.panel-heading
+								with gameData
+									p.panel-title {{_ "opponent"}} : #{opponent}
+							.panel-body
+								.panel.panel-default
+									.panel-heading
+										p.panel-title {{_ "inPlay"}}
+									.panel-body
+										#opponentInPlay.row
+											each opponentPlayersPlaying
+												+opponentPlayerReplacement
+								.panel.panel-default
+									.panel-heading
+										p.panel-title {{_ "onTheBench"}}
+									.panel-body
+										#opponentOnTheBench.row
+											each opponentPlayersOnTheBench
+												+opponentPlayerReplacement
+							+opponentReplacementModal
+			else
+				+spinner
