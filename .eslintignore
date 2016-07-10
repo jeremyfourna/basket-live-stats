@@ -1,2 +1,2 @@
-imports/startup/client/compatibility/**
+imports/startup/client/lib/**
 i18n/**
