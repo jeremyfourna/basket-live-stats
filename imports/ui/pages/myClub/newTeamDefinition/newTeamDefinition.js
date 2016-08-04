@@ -1,12 +1,12 @@
 Template.newTeamDefinition.helpers({
 	category: function() {
 		return FederationConfig.find({
-			def: "category"
+			def: 'category'
 		});
 	},
 	level: function() {
 		return FederationConfig.find({
-			def: "level"
+			def: 'level'
 		}, {
 			sort: {
 				val: 1
@@ -15,7 +15,7 @@ Template.newTeamDefinition.helpers({
 	},
 	group: function() {
 		return FederationConfig.find({
-			def: "group"
+			def: 'group'
 		}, {
 			sort: {
 				val: 1
@@ -38,7 +38,7 @@ Template.newTeamDefinition.events({
 			return NaN;
 		};
 		var isFilled = function(element) {
-			if ($(element).val() === "") {
+			if ($(element).val() === '') {
 				return null;
 			} else {
 				return $(element).val();

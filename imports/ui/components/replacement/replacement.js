@@ -93,7 +93,7 @@ Template.replacement.events({
 		};
 		Session.set('switchData', switchData);
 	},
-	'click #yourClubOnTheBench .yourClubPillForModal': function(event) {;
+	'click #yourClubOnTheBench .yourClubPillForModal': function(event) {
 		let switchData = {
 			_id: this._id,
 			state: this.gameState,

@@ -4,7 +4,7 @@ Template.yourClubPlayerPill.helpers({
 	},
 	endedGames() {
 		var game = Games.findOne(Router.current().params._id);
-		if (game.gameState === "gameEnded") {
+		if (game.gameState === 'gameEnded') {
 			return 'disabled';
 		} else {
 			return false;
@@ -18,7 +18,7 @@ Template.opponentPlayerPill.helpers({
 	},
 	endedGames() {
 		var game = Games.findOne(Router.current().params._id);
-		if (game.gameState === "gameEnded") {
+		if (game.gameState === 'gameEnded') {
 			return 'disabled';
 		} else {
 			return false;

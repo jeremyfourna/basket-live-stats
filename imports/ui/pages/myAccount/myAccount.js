@@ -12,7 +12,7 @@ Template.myAccount.helpers({
 });
 
 Template.myAccount.events({
-	"click #loginInfosPseudoValidate": function() {
+	'click #loginInfosPseudoValidate': function() {
 		var user = {
 			pseudo: $('#pseudo').val(),
 			id: Meteor.userId()
@@ -26,7 +26,7 @@ Template.myAccount.events({
 			}
 		});
 	},
-	"click #deleteAccount": function() {
+	'click #deleteAccount': function() {
 		var userId = {
 			_id: Meteor.userId()
 		};
@@ -39,12 +39,12 @@ Template.myAccount.events({
 			}
 		});
 	},
-	"click #personalInfosValidate": function() {
+	'click #personalInfosValidate': function() {
 		var validateEmail = function(mail) {
 			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
 				return mail;
 			}
-			return throwError("Please enter a valid email address.");
+			return throwError('Please enter a valid email address.');
 		};
 		var user = {
 			id: Meteor.userId(),
@@ -58,7 +58,7 @@ Template.myAccount.events({
 			}
 		});
 	},
-	"click #personalInfosClubValidate": function() {
+	'click #personalInfosClubValidate': function() {
 		var user = {
 			userId: Meteor.userId(),
 			club: $('#club').val()

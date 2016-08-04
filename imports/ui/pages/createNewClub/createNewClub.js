@@ -5,12 +5,12 @@ Template.createNewClub.rendered = function() {
 Template.createNewClub.helpers({
 	regions: function() {
 		return FederationConfig.find({
-			def: "region"
+			def: 'region'
 		});
 	},
 	departments: function() {
 		return FederationConfig.find({
-			def: "department"
+			def: 'department'
 		});
 	}
 });

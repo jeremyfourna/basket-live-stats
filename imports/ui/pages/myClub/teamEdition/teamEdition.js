@@ -25,7 +25,7 @@ Template.teamEdition.events({
 			return NaN;
 		};
 		var isFilled = function(element) {
-			if ($(element).val() === "") {
+			if ($(element).val() === '') {
 				return null;
 			} else {
 				return $(element).val();

@@ -2,13 +2,13 @@ Template.admin.helpers({
 	runningGames: function() {
 		return Games.find({
 			state: {
-				$not: "gameEnded"
+				$not: 'gameEnded'
 			}
 		}).count();
 	},
 	endedGames: function() {
 		return Games.find({
-			state: "gameEnded"
+			state: 'gameEnded'
 		}).count();
 	},
 	nbUsers: function() {

@@ -61,7 +61,7 @@ Template.gameDefinition.events({
 	},
 	'click .configurationValidation': function(event) {
 		if ($('.player').length < 5) {
-			return throwError("Your team must have a minimum of 5 players");
+			return throwError('Your team must have a minimum of 5 players');
 		}
 		var game = {
 			userId: Meteor.userId(),
