@@ -209,52 +209,26 @@ Template.summary.helpers({
 			return '00:00';
 		} else if (modulo === 0) {
 			for (i = 0; i < this.gameTime.length; i++) {
-				quarterPower = 0;
-				switch (this.gameTime[i].state) {
-					case 'notStarted':
-						quarterPower = 10;
-						break;
-					case 'q1Running':
-						quarterPower = 10;
-						break;
-					case 'q1Ended':
-						quarterPower = 10;
-						break;
-					case 'q2Running':
-						quarterPower = 20;
-						break;
-					case 'halfTime':
-						quarterPower = 20;
-						break;
-					case 'q3Running':
-						quarterPower = 30;
-						break;
-					case 'q3Ended':
-						quarterPower = 30;
-						break;
-					case 'q4Running':
-						quarterPower = 40;
-						break;
-					case 'gameEnded':
-						quarterPower = 40;
-						break;
-					case 'oT1':
-						quarterPower = 45;
-						break;
-					case 'oT2':
-						quarterPower = 50;
-						break;
-					case 'oT3':
-						quarterPower = 55;
-						break;
-					case 'oT4':
-						quarterPower = 60;
-						break;
-					case 'oT5':
-						quarterPower = 65;
-						break;
-					default:
-						quarterPower = 0;
+				if (this.gameTime[i].state === 'notStarted' || this.gameTime[i].state === 'q1Running' || this.gameTime[i].state === 'q1Ended') {
+					quarterPower = 10;
+				} else if (this.gameTime[i].state === 'q2Running' || this.gameTime[i].state === 'halfTime') {
+					quarterPower = 20;
+				} else if (this.gameTime[i].state === 'q3Running' || this.gameTime[i].state === 'q3Ended') {
+					quarterPower = 30;
+				} else if (this.gameTime[i].state === 'q4Running' || this.gameTime[i].state === 'gameEnded') {
+					quarterPower = 40;
+				} else if (this.gameTime[i].state === 'oT1') {
+					quarterPower = 45;
+				} else if (this.gameTime[i].state === 'oT2') {
+					quarterPower = 50;
+				} else if (this.gameTime[i].state === 'oT3') {
+					quarterPower = 55;
+				} else if (this.gameTime[i].state === 'oT4') {
+					quarterPower = 60;
+				} else if (this.gameTime[i].state === 'oT5') {
+					quarterPower = 65;
+				} else {
+					quarterPower = 0;
 				}
 				if (this.gameTime[i].way === 'in') {
 					playerTimeMinutes += this.gameTime[i].minutes;
@@ -279,52 +253,26 @@ Template.summary.helpers({
 			return playerTimeMinutes + ':' + playerTimeSecondes;
 		} else if (modulo === 1) {
 			for (i = 0; i < this.gameTime.length - 1; i++) {
-				quarterPower = 0;
-				switch (this.gameTime[i].state) {
-					case 'notStarted':
-						quarterPower = 10;
-						break;
-					case 'q1Running':
-						quarterPower = 10;
-						break;
-					case 'q1Ended':
-						quarterPower = 10;
-						break;
-					case 'q2Running':
-						quarterPower = 20;
-						break;
-					case 'halfTime':
-						quarterPower = 20;
-						break;
-					case 'q3Running':
-						quarterPower = 30;
-						break;
-					case 'q3Ended':
-						quarterPower = 30;
-						break;
-					case 'q4Running':
-						quarterPower = 40;
-						break;
-					case 'gameEnded':
-						quarterPower = 40;
-						break;
-					case 'oT1':
-						quarterPower = 45;
-						break;
-					case 'oT2':
-						quarterPower = 50;
-						break;
-					case 'oT3':
-						quarterPower = 55;
-						break;
-					case 'oT4':
-						quarterPower = 60;
-						break;
-					case 'oT5':
-						quarterPower = 65;
-						break;
-					default:
-						quarterPower = 0;
+				if (this.gameTime[i].state === 'notStarted' || this.gameTime[i].state === 'q1Running' || this.gameTime[i].state === 'q1Ended') {
+					quarterPower = 10;
+				} else if (this.gameTime[i].state === 'q2Running' || this.gameTime[i].state === 'halfTime') {
+					quarterPower = 20;
+				} else if (this.gameTime[i].state === 'q3Running' || this.gameTime[i].state === 'q3Ended') {
+					quarterPower = 30;
+				} else if (this.gameTime[i].state === 'q4Running' || this.gameTime[i].state === 'gameEnded') {
+					quarterPower = 40;
+				} else if (this.gameTime[i].state === 'oT1') {
+					quarterPower = 45;
+				} else if (this.gameTime[i].state === 'oT2') {
+					quarterPower = 50;
+				} else if (this.gameTime[i].state === 'oT3') {
+					quarterPower = 55;
+				} else if (this.gameTime[i].state === 'oT4') {
+					quarterPower = 60;
+				} else if (this.gameTime[i].state === 'oT5') {
+					quarterPower = 65;
+				} else {
+					quarterPower = 0;
 				}
 				if (i === this.gameTime.length - 1) {
 					playerTimeMinutes += this.gameTime[i].minutes;
@@ -365,26 +313,16 @@ Template.summary.onRendered(function() {
 			right: 30
 		},
 		data: {
-			xs: {
-				'Ecart du match': 'x'
-			},
+			xs: { 'Ecart du match': 'x' },
 			columns: [
 				['Ecart du match']
 			],
-			axes: {
-				'Ecart du match': 'y2'
-			}
+			axes: { 'Ecart du match': 'y2' }
 		},
 		axis: {
-			x: {
-				show: false
-			},
-			y: {
-				show: false
-			},
-			y2: {
-				show: true
-			}
+			x: { show: false },
+			y: { show: false },
+			y2: { show: true }
 		},
 		tooltip: {
 			format: {
@@ -396,12 +334,8 @@ Template.summary.onRendered(function() {
 	});
 
 	this.autorun(function(tracker) {
-		let gameData = Games.find({
-			_id: Router.current().params._id
-		}, {
-			fields: {
-				'stats.evolution': 1
-			}
+		let gameData = Games.find({ _id: Router.current().params._id }, {
+			fields: { 'stats.evolution': 1 }
 		}).fetch();
 		let xArray = ['x'];
 		let yArray = ['Ecart du match'];

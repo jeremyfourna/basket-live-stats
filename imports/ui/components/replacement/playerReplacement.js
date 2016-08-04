@@ -4,7 +4,7 @@ import './playerReplacement.jade';
 
 Template.playerReplacement.onRendered(function() {
 	console.log(this.data);
-})
+});
 
 Template.playerReplacement.helpers({
 	endedGames() {

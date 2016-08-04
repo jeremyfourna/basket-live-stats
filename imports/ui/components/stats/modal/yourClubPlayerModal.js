@@ -6,7 +6,7 @@ Template.yourClubPlayerModal.helpers({
 
 Template.yourClubPlayerModal.events({
 	'click #correctionAction': function() {
-		$('.buttonForAction').prepend('<span class="badge actionBadge">-1</span> ').addClass('cancelAction');
+		$('.buttonForAction').prepend('<span class=\'badge actionBadge\'>-1</span> ').addClass('cancelAction');
 		$('.correctionAction').addClass('cancelCorrectionAction');
 	},
 	'click #closeModalButton': function() {
@@ -30,9 +30,9 @@ Template.yourClubPlayerModal.events({
 			_id: Router.current().params._id
 		}, {
 			fields: {
-				"stats.evolution": 1,
-				"stats.yourClub.score": 1,
-				"stats.opponent.score": 1
+				'stats.evolution': 1,
+				'stats.yourClub.score': 1,
+				'stats.opponent.score': 1
 			}
 		});
 		var playerData = this;
@@ -71,9 +71,9 @@ Template.yourClubPlayerModal.events({
 			_id: Router.current().params._id
 		}, {
 			fields: {
-				"stats.evolution": 1,
-				"stats.yourClub.score": 1,
-				"stats.opponent.score": 1
+				'stats.evolution': 1,
+				'stats.yourClub.score': 1,
+				'stats.opponent.score': 1
 			}
 		});
 		var playerData = this;
@@ -112,9 +112,9 @@ Template.yourClubPlayerModal.events({
 			_id: Router.current().params._id
 		}, {
 			fields: {
-				"stats.evolution": 1,
-				"stats.yourClub.score": 1,
-				"stats.opponent.score": 1
+				'stats.evolution': 1,
+				'stats.yourClub.score': 1,
+				'stats.opponent.score': 1
 			}
 		});
 		var playerData = this;
