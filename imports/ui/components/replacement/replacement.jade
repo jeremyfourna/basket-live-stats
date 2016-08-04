@@ -19,19 +19,14 @@ template(name="replacement")
 									.panel-body
 										#yourClubInPlay.row
 											each yourClubPlayersPlaying
-												+yourClubPlayerReplacement
-											else
-												+addAPlayer
+												+playerReplacement
 								.panel.panel-default
 									.panel-heading
 										p.panel-title {{_ "onTheBench"}}
 									.panel-body
 										#yourClubOnTheBench.row
 											each yourClubPlayersOnTheBench
-												+yourClubPlayerReplacement
-											else
-												+addAPlayer
-								+yourClubReplacementModal
+												+playerReplacement
 					.col-xs-12.col-sm-12.col-md-6.col-lg-6
 						.panel.panel-default
 							.panel-heading
@@ -44,14 +39,14 @@ template(name="replacement")
 									.panel-body
 										#opponentInPlay.row
 											each opponentPlayersPlaying
-												+opponentPlayerReplacement
+												+playerReplacement
 								.panel.panel-default
 									.panel-heading
 										p.panel-title {{_ "onTheBench"}}
 									.panel-body
 										#opponentOnTheBench.row
 											each opponentPlayersOnTheBench
-												+opponentPlayerReplacement
-							+opponentReplacementModal
+												+playerReplacement
 			else
 				+spinner
+	+replacementModal

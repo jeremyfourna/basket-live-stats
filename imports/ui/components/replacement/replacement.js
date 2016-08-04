@@ -7,10 +7,12 @@ import { Players } from '../../../api/players/schema.js';
 
 import './replacement.jade';
 import './replacementModal.js';
+import './playerReplacement.js';
 
 Template.replacement.onCreated(function() {
 	this.autorun(() => {
 		this.subscribe('oneGameForReplacement', Router.current().params._id);
+		this.subscribe('playersForAGame', Router.current().params._id);
 	});
 });
 
@@ -83,34 +85,34 @@ Template.replacement.helpers({
 });
 
 Template.replacement.events({
-	'click #yourClubInPlay .yourClubPillForModal': function(e, t) {
+	'click #yourClubInPlay .yourClubPillForModal': function(event) {
 		let switchData = {
 			_id: this._id,
-			state: getGameState(this.gameId),
+			state: this.gameState,
 			call: 'goingOnTheBench'
 		};
 		Session.set('switchData', switchData);
 	},
-	'click #yourClubOnTheBench .yourClubPillForModal': function(e, t) {;
+	'click #yourClubOnTheBench .yourClubPillForModal': function(event) {;
 		let switchData = {
 			_id: this._id,
-			state: getGameState(this.gameId),
+			state: this.gameState,
 			call: 'goingInPlay'
 		};
 		Session.set('switchData', switchData);
 	},
-	'click #opponentInPlay .opponentPillForModal': function(e, t) {
+	'click #opponentInPlay .opponentPillForModal': function(event) {
 		let switchData = {
 			_id: this._id,
-			state: getGameState(this.gameId),
+			state: this.gameState,
 			call: 'goingOnTheBench'
 		};
 		Session.set('switchData', switchData);
 	},
-	'click #opponentOnTheBench .opponentPillForModal': function(e, t) {
+	'click #opponentOnTheBench .opponentPillForModal': function(event) {
 		let switchData = {
 			_id: this._id,
-			state: getGameState(this.gameId),
+			state: this.gameState,
 			call: 'goingInPlay'
 		};
 		Session.set('switchData', switchData);

@@ -5,6 +5,119 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Players } from './schema.js';
 
 Meteor.methods({
+	playerInsert(data) {
+		let methodSchema = new SimpleSchema({
+			gameId: { type: String },
+			nbPlayersForYourClub: { type: Number, min: 5, max: 12 },
+			nbPlayersForOpponent: { type: Number, min: 5, max: 12 },
+		});
+		check(data, methodSchema);
+		for (let i = 0; i < data.nbPlayersForYourClub; i++) {
+			let player = {
+				gameId: data.gameId,
+				teamId: 'yourClub',
+				firstName: '',
+				lastName: '',
+				jersey: i + 4,
+				inPlay: false,
+				gameTime: [],
+				stats: {
+					points: {
+						onePointIn: 0,
+						onePointOut: 0,
+						twoPointsIn: 0,
+						twoPointsOut: 0,
+						threePointsIn: 0,
+						threePointsOut: 0,
+						totalPoints: 0
+					},
+					evaluation: 0,
+					assists: 0,
+					rebounds: {
+						offReb: 0,
+						defReb: 0
+					},
+					fouls: {
+						provFouls: {
+							offFouls: 0,
+							defFouls: 0
+						},
+						offFouls: 0,
+						totalFouls: 0,
+						defFouls: 0,
+						foul1FT: 0,
+						foul2FT: 0,
+						foul3FT: 0,
+						techFouls: 0,
+						antiSportFouls: 0,
+						disqualifyingFouls: 0
+					},
+					steals: 0,
+					blocks: 0,
+					turnovers: 0
+				}
+			};
+			Players.insert(player);
+		}
+		for (let i = 0; i < data.nbPlayersForOpponent; i++) {
+			let player = {
+				gameId: data.gameId,
+				teamId: 'opponent',
+				firstName: '',
+				lastName: '',
+				jersey: i + 4,
+				inPlay: false,
+				gameTime: [],
+				stats: {
+					points: {
+						onePointIn: 0,
+						onePointOut: 0,
+						twoPointsIn: 0,
+						twoPointsOut: 0,
+						threePointsIn: 0,
+						threePointsOut: 0,
+						totalPoints: 0
+					},
+					evaluation: 0,
+					assists: 0,
+					rebounds: {
+						offReb: 0,
+						defReb: 0
+					},
+					fouls: {
+						provFouls: {
+							offFouls: 0,
+							defFouls: 0
+						},
+						offFouls: 0,
+						totalFouls: 0,
+						defFouls: 0,
+						foul1FT: 0,
+						foul2FT: 0,
+						foul3FT: 0,
+						techFouls: 0,
+						antiSportFouls: 0,
+						disqualifyingFouls: 0
+					},
+					steals: 0,
+					blocks: 0,
+					turnovers: 0
+				}
+			};
+			Players.insert(player);
+		}
+		return true;
+	},
+	playerUpdate(playerData) {
+		return Players.update({
+			_id: playerData.data
+		}, {
+			$set: {
+				firstName: playerData.firstName,
+				lastName: playerData.lastName
+			}
+		});
+	},
 	assists(data) {
 		let methodSchema = new SimpleSchema({
 			playerId: { type: String }
@@ -386,118 +499,6 @@ Meteor.methods({
 					way: 'out',
 					gameState: playerData.state
 				}
-			}
-		});
-	},
-	/*playerInsert(gameId, playersData) { // To refactor
-		var playersId = [];
-		playersData.map((cur, index, array) => {
-			var player = {
-				gameId: gameId,
-				teamId: cur.teamId,
-				firstName: cur.firstName,
-				lastName: cur.lastName,
-				jersey: cur.jersey,
-				inPlay: false,
-				gameTime: [],
-				stats: {
-					points: {
-						onePointIn: 0,
-						onePointOut: 0,
-						twoPointsIn: 0,
-						twoPointsOut: 0,
-						threePointsIn: 0,
-						threePointsOut: 0,
-						totalPoints: 0
-					},
-					evaluation: 0,
-					assists: 0,
-					rebounds: {
-						offReb: 0,
-						defReb: 0
-					},
-					fouls: {
-						provFouls: {
-							offFouls: 0,
-							defFouls: 0
-						},
-						offFouls: 0,
-						totalFouls: 0,
-						defFouls: 0,
-						foul1FT: 0,
-						foul2FT: 0,
-						foul3FT: 0,
-						techFouls: 0,
-						antiSportFouls: 0,
-						disqualifyingFouls: 0
-					},
-					steals: 0,
-					blocks: 0,
-					turnovers: 0
-				}
-			};
-			var data = Players.insert(player);
-			playersId.push(data);
-		});
-		for (var i = 4; i <= 15; i++) {
-			var opponentPlayer = {
-				gameId: gameId,
-				teamId: 'opponent',
-				firstName: '',
-				lastName: '',
-				jersey: i,
-				inPlay: false,
-				gameTime: [],
-				stats: {
-					points: {
-						onePointIn: 0,
-						onePointOut: 0,
-						twoPointsIn: 0,
-						twoPointsOut: 0,
-						threePointsIn: 0,
-						threePointsOut: 0,
-						totalPoints: 0
-					},
-					evaluation: 0,
-					assists: 0,
-					rebounds: {
-						offReb: 0,
-						defReb: 0
-					},
-					fouls: {
-						provFouls: {
-							offFouls: 0,
-							defFouls: 0
-						},
-						offFouls: 0,
-						totalFouls: 0,
-						defFouls: 0,
-						foul1FT: 0,
-						foul2FT: 0,
-						foul3FT: 0,
-						techFouls: 0,
-						antiSportFouls: 0,
-						disqualifyingFouls: 0
-					},
-					steals: 0,
-					blocks: 0,
-					turnovers: 0
-				}
-			};
-			var opponentdata = Players.insert(opponentPlayer);
-			playersId.push(opponentdata);
-		}
-		return {
-			ids: playersId
-		};
-	},*/
-	playerUpdate(playerData) {
-		return Players.update({
-			_id: playerData.data
-		}, {
-			$set: {
-				firstName: playerData.firstName,
-				lastName: playerData.lastName
 			}
 		});
 	},

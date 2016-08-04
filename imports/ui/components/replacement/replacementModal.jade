@@ -1,5 +1,5 @@
-template(name='yourClubReplacementModal')
-	#yourClubReplacementModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myReplacementLabel', aria-hidden='true')
+template(name='replacementModal')
+	#replacementModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myReplacementLabel', aria-hidden='true')
 		.modal-dialog.modal-lg
 			.modal-content
 				.modal-header
@@ -10,82 +10,34 @@ template(name='yourClubReplacementModal')
 					p {{_ "switchProcess"}}
 					form
 						.form-group
-							.input-group
-								span.input-group-addon {{_ "minutes"}}
-								select#yourClubMinutes.form-control
-									option 10
-									option 9
-									option 8
-									option 7
-									option 6
-									option 5
-									option 4
-									option 3
-									option 2
-									option 1
-									option 0
+							label(for="minutes") {{_ "minutes"}}
+							select#minutes.form-control
+								option 10
+								option 9
+								option 8
+								option 7
+								option 6
+								option 5
+								option 4
+								option 3
+								option 2
+								option 1
+								option 0
 						.form-group
-							.input-group
-								span.input-group-addon {{_ "secondes"}}
-								select#yourClubSecondes.form-control
-									option 0
-									option 55
-									option 50
-									option 45
-									option 40
-									option 35
-									option 30
-									option 25
-									option 20
-									option 15
-									option 10
-									option 5
-				.modal-footer
-					button#cancelSwitch.btn.pull-left.btn-warning(type='button') {{_ "cancelSwitch"}}
-					button#validateSwitch.btn.btn-success(type='button', data-dismiss='modal') {{_ "validate"}}
-
-template(name='opponentReplacementModal')
-	#opponentReplacementModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myReplacementLabel', aria-hidden='true')
-		.modal-dialog.modal-lg
-			.modal-content
-				.modal-header
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
-						span(aria-hidden='true') &times;
-					h4#myReplacementLabel.modal-title {{_ "gameTimeWhenSwitchOccur"}}
-				.modal-body
-					p {{_ "switchProcess"}}
-					form
-						.form-group
-							.input-group
-								span.input-group-addon {{_ "minutes"}}
-								select#opponentMinutes.form-control
-									option 10
-									option 9
-									option 8
-									option 7
-									option 6
-									option 5
-									option 4
-									option 3
-									option 2
-									option 1
-									option 0
-						.form-group
-							.input-group
-								span.input-group-addon {{_ "secondes"}}
-								select#opponentSecondes.form-control
-									option 0
-									option 55
-									option 50
-									option 45
-									option 40
-									option 35
-									option 30
-									option 25
-									option 20
-									option 15
-									option 10
-									option 5
+							label(for="secondes") {{_ "secondes"}}
+							select#secondes.form-control
+								option 0
+								option 55
+								option 50
+								option 45
+								option 40
+								option 35
+								option 30
+								option 25
+								option 20
+								option 15
+								option 10
+								option 5
 				.modal-footer
 					button#cancelSwitch.btn.pull-left.btn-warning(type='button') {{_ "cancelSwitch"}}
 					button#validateSwitch.btn.btn-success(type='button', data-dismiss='modal') {{_ "validate"}}

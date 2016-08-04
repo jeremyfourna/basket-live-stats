@@ -53,7 +53,8 @@ Meteor.publish('oneGameForReplacement', (gameId) => {
 	check(gameId, String);
 	return Games.find({ _id: gameId }, {
 		fields: {
-			gameInfos: 1
+			gameInfos: 1,
+			gameState: 1
 		}
 	});
 });

@@ -21,4 +21,4 @@ import '/imports/api/players/methods.js';
 import '/imports/api/users/methods.js';
 
 // Hooks
-//import '/imports/api/games/hooks.js';
+import '/imports/api/games/hooks.js';

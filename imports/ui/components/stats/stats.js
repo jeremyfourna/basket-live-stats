@@ -16,17 +16,17 @@ Template.stats.onCreated(function() {
 
 Template.stats.helpers({
 	yourClub() {
-		if (!this.gameInfos.yourClub) {
-			return 'Home team';
-		} else {
+		if (this.gameInfos.yourClub) {
 			return this.gameInfos.yourClub;
+		} else {
+			return 'Home team';
 		}
 	},
 	opponent() {
-		if (!this.gameInfos.opponent) {
-			return 'Away team';
-		} else {
+		if (this.gameInfos.opponent) {
 			return this.gameInfos.opponent;
+		} else {
+			return 'Away team';
 		}
 	},
 	gameData() {
