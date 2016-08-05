@@ -468,36 +468,50 @@ Meteor.methods({
 			}
 		});
 	},
-	goingInPlay(playerData) {
+	goingInPlay(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String },
+			minutes: { type: Number, min: 0, max: 10 },
+			secondes: { type: Number, min: 0, max: 60 },
+			gameState: { type: String, allowedValues: ['notStarted', 'q1Running', 'q1Ended', 'q2Running', 'halfTime', 'q3Running', 'q3Ended', 'q4Running', 'gameEnded', 'oT1', 'oT2', 'oT3', 'oT4', 'oT5'] }
+		});
+		check(data, methodSchema);
 		return Players.update({
-			_id: playerData._id
+			_id: data.playerId
 		}, {
 			$set: {
 				inPlay: true
 			},
 			$push: {
 				gameTime: {
-					minutes: playerData.minutes,
-					secondes: playerData.secondes,
+					minutes: data.minutes,
+					secondes: data.secondes,
 					way: 'in',
-					gameState: playerData.state
+					gameState: data.gameState
 				}
 			}
 		});
 	},
-	goingOnTheBench(playerData) {
+	goingOnTheBench(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String },
+			minutes: { type: Number, min: 0, max: 10 },
+			secondes: { type: Number, min: 0, max: 60 },
+			gameState: { type: String, allowedValues: ['notStarted', 'q1Running', 'q1Ended', 'q2Running', 'halfTime', 'q3Running', 'q3Ended', 'q4Running', 'gameEnded', 'oT1', 'oT2', 'oT3', 'oT4', 'oT5'] }
+		});
+		check(data, methodSchema);
 		return Players.update({
-			_id: playerData._id
+			_id: data.playerId
 		}, {
 			$set: {
 				inPlay: false
 			},
 			$push: {
 				gameTime: {
-					minutes: playerData.minutes,
-					secondes: playerData.secondes,
+					minutes: data.minutes,
+					secondes: data.secondes,
 					way: 'out',
-					gameState: playerData.state
+					gameState: data.gameState
 				}
 			}
 		});

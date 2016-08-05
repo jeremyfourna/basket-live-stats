@@ -1,27 +1,19 @@
-Template.yourClubPlayerPill.helpers({
-	modalId() {
-		return '#' + this._id;
-	},
-	endedGames() {
-		var game = Games.findOne(Router.current().params._id);
-		if (game.gameState === 'gameEnded') {
-			return 'disabled';
-		} else {
-			return false;
+import { Template } from 'meteor/templating';
+
+import './playerPill.jade';
+
+Template.playerPill.helpers({
+	buttonClass() {
+		if (this.teamId === 'yourClub') {
+			return 'btn-info';
+		} else if (this.teamId === 'opponent') {
+			return 'btn-warning';
 		}
 	}
 });
 
-Template.opponentPlayerPill.helpers({
-	modalId() {
-		return '#' + this._id;
-	},
-	endedGames() {
-		var game = Games.findOne(Router.current().params._id);
-		if (game.gameState === 'gameEnded') {
-			return 'disabled';
-		} else {
-			return false;
-		}
+Template.playerPill.events({
+	'click button': function(event) {
+		//console.log(this);
 	}
 });

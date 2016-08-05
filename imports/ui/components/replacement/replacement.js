@@ -34,7 +34,8 @@ Template.replacement.helpers({
 	gameData() {
 		return Games.findOne({ _id: Router.current().params._id }, {
 			fields: {
-				gameInfos: 1
+				gameInfos: 1,
+				gameState: 1
 			}
 		});
 	},

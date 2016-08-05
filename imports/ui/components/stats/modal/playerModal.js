@@ -1,10 +1,14 @@
-Template.yourClubPlayerModal.helpers({
+import { Template } from 'meteor/templating';
+
+import './playerModal.jade';
+
+Template.playerModal.helpers({
 	modalId: function() {
 		return this._id;
 	}
 });
 
-Template.yourClubPlayerModal.events({
+Template.playerModal.events({
 	'click #correctionAction': function() {
 		$('.buttonForAction').prepend('<span class=\'badge actionBadge\'>-1</span> ').addClass('cancelAction');
 		$('.correctionAction').addClass('cancelCorrectionAction');

@@ -1,24 +1,27 @@
 import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
+import { Bert } from 'meteor/themeteorchef:bert';
 
 import './replacementModal.jade';
 
 Template.replacementModal.events({
-	'click #validateSwitch': function() {
-		var data = Session.get('switchData');
-		data.minutes = Number($('#yourClubMinutes').val());
-		data.secondes = Number($('#yourClubSecondes').val());
-		if (data.call === 'goingInPlay') {
-			Meteor.call('goingInPlay', data, function(error, result) {
+	'click #validateSwitch': function(event) {
+		const data = {
+			playerId: Session.get('playerId'),
+			gameState: Session.get('gameState'),
+			minutes: Number($('#minutes').val()),
+			secondes: Number($('#secondes').val())
+		};
+		if (Session.get('inPlay')) {
+			Meteor.call('goingOnTheBench', data, (error, result) => {
 				if (error) {
-					return throwError(error.message);
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
-		} else
-		if (data.call === 'goingOnTheBench') {
-			Meteor.call('goingOnTheBench', data, function(error, result) {
+		} else {
+			Meteor.call('goingInPlay', data, (error, result) => {
 				if (error) {
-					return throwError(error.message);
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}

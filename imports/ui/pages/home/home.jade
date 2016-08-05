@@ -7,7 +7,8 @@ template(name='home')
 			p
 				+creationGame
 		else
-			p {{_ "loginToBeginTakingStats"}}
+			p
+				span.label.label-default {{_ "loginToBeginTakingStats"}}
 		section
 			.row
 				.col-xs-12.col-sm-12.col-md-6.col-lg-6
@@ -18,7 +19,7 @@ template(name='home')
 							.row
 								each game
 									.col-xs-12.col-sm-6.col-md-4.col-lg-4
-										+GameCard
+										+gameCard
 								else
 									p.no-games {{_ "noLiveGames"}}
 						.panel-footer
@@ -31,7 +32,7 @@ template(name='home')
 							.row
 								each endedGame
 									.col-xs-12.col-sm-6.col-md-4.col-lg-4
-										+GameCard
+										+gameCard
 								else
 									p.no-games {{_ "noLiveGames"}}
 						.panel-footer

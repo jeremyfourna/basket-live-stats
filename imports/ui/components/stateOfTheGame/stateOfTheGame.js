@@ -259,7 +259,7 @@ Template.stateOfTheGame.events({
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			} else {
-				Meteor.call('endedGamesPlayers', gameId, (error, result) => {
+				Meteor.call('endedGamesPlayers', data, (error, result) => {
 					if (error) {
 						return Bert.alert(error.message, 'danger', 'growl-top-right');
 					}

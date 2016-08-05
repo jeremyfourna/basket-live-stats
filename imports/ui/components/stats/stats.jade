@@ -11,11 +11,10 @@ template(name="stats")
 							p.panel-title {{_ "yourClub"}} : #{yourClub}
 						.panel-body
 							p
-								em {{_ "explanationHowToAddAStat"}}
+								span.label.label-default {{_ "explanationHowToAddAStat"}}
 							.yourClub.row.playerRow
 								each yourClubPlayersPlaying
-									//+yourClubPlayerPill
-									//+yourClubPlayerModal
+									+playerPill
 								else
 									button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
 						.panel-footer
@@ -25,14 +24,14 @@ template(name="stats")
 							p.panel-title {{_ "opponent"}} : #{opponent}
 						.panel-body
 							p
-								em {{_ "explanationHowToAddAStat"}}
+								span.label.label-default {{_ "explanationHowToAddAStat"}}
 							.opponent.row.playerRow
 								each opponentPlayersPlaying
-									//+opponentPlayerPill
-									//+opponentPlayerModal
+									+playerPill
 								else
 									button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
 						.panel-footer
 							button.doReplacement.btn.btn-primary(type="button", class="#{doReplacementOpponent}") {{_ "makeAReplacement"}}
+			+playerModal
 	else
 		+spinner

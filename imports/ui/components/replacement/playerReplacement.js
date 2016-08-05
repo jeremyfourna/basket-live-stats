@@ -1,17 +1,24 @@
 import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
 
 import './playerReplacement.jade';
 
-Template.playerReplacement.onRendered(function() {
-	//console.log(this.data);
+Template.playerReplacement.helpers({
+	buttonClass() {
+		if (this.teamId === 'yourClub') {
+			return 'btn-info';
+		} else if (this.teamId === 'opponent') {
+			return 'btn-warning';
+		}
+	}
 });
 
-Template.playerReplacement.helpers({
-	endedGames() {
-		if (this.gameState === 'gameEnded') {
-			return 'disabled';
-		} else {
-			return false;
-		}
+Template.playerReplacement.events({
+	'click button': function(event) {
+		return Session.set({
+			playerId: this._id,
+			inPlay: this.inPlay,
+			gameState: Template.parentData(1).gameState
+		});
 	}
 });

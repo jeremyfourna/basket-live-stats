@@ -1,11 +1,5 @@
-template(name="yourClubPlayerPill")
+template(name="playerPill")
 	.col-xs-4.col-sm-3.col-md-2.col-lg-2
 		.thumbnail
-			button.yourClubPillForModal.btn.btn-block.btn-info(disabled="{{endedGames}}" data-toggle="modal" data-target="#{modalId}") {{_ "number"}}
-				span.badge #{jersey}
-
-template(name="opponentPlayerPill")
-	.col-xs-4.col-sm-3.col-md-2.col-lg-2
-		.thumbnail
-			button.opponentPillForModal.btn.btn-block.btn-warning(disabled="{{endedGames}}" data-toggle="modal" data-target="#{modalId}") {{_ "number"}}
-				span.badge #{jersey}
+			button.btn.btn-block(class="#{buttonClass}" data-toggle="modal" data-target="#playerModal")
+				strong #{jersey}

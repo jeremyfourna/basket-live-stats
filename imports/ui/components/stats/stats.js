@@ -7,6 +7,8 @@ import { Players } from '../../../api/players/schema.js';
 
 import './stats.jade';
 import '../stateOfTheGame/stateOfTheGame.js';
+import './playerPill.js';
+import './modal/playerModal.js';
 
 Template.stats.onCreated(function() {
 	this.autorun(() => {
