@@ -9,7 +9,6 @@ sacha:spin
 accounts-password
 jquery
 ian:accounts-ui-bootstrap-3
-meteorhacks:kadira
 tap:i18n
 reactive-var
 reactive-dict
@@ -42,6 +41,5 @@ stevezhu:lodash
 dburles:collection-helpers
 kadira:debug
 themeteorchef:bert
-meteorhacks:kadira-profiler
 doctorpangloss:method-hooks
 peerlibrary:reactive-field
