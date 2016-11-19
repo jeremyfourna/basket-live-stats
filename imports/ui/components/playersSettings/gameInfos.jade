@@ -1,0 +1,27 @@
+template(name='gameInfos')
+	h3 {{_ "gameDefinition"}}
+	.form
+		.row
+			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				.form-group
+					.input-group
+						span.input-group-addon {{_ "yourClub"}}
+						input.teamHome.form-control(type='text', value='#{gameInfos.yourClub}')
+			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				.form-group
+					.input-group
+						span.input-group-addon {{_ "opponent"}}
+						input.teamAway.form-control(type='text', value='#{gameInfos.opponent}')
+			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				.form-group
+					.input-group
+						span.input-group-addon {{_ "level"}}
+						input.level.form-control(type='text', value='#{gameInfos.level}')
+			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				.form-group
+					.input-group
+						span.input-group-addon {{_ "group"}}
+						input.group.form-control(type='text', value='#{gameInfos.group}')
+	p
+		button.btn.btn-primary.gameInfosUpdate(type='button') {{_ "modify"}}
+		button.btn.btn-success.gameInfosValidation(type='button') {{_ "validate"}}

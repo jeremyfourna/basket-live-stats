@@ -8,6 +8,7 @@ import './aGame.jade';
 import '../../components/summary/summary.js';
 import '../../components/stats/stats.js';
 import '../../components/replacement/replacement.js';
+import '../../components/playersSettings/playerBio.js';
 
 Template.aGame.onCreated(function() {
 	this.autorun(() => {

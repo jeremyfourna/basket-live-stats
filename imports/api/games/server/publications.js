@@ -59,6 +59,15 @@ Meteor.publish('oneGameForReplacement', (gameId) => {
 	});
 });
 
+Meteor.publish('oneGameInfos', (gameId) => {
+	check(gameId, String);
+	return Games.find({ _id: gameId }, {
+		fields: {
+			gameInfos: 1
+		}
+	});
+});
+
 Meteor.publish('aGameForOwnership', (gameId) => {
 	check(gameId, String);
 	return Games.find({ _id: gameId }, {

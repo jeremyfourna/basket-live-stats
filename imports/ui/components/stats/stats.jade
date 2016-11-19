@@ -1,37 +1,39 @@
 template(name="stats")
 	if Template.subscriptionsReady
 		with gameData
+			.row
+				.col-xs-12.col-sm-12.col-md-6.col-lg-6
+					p.lead #{yourClub}
+						span.label.label-default #{stats.yourClub.score} - #{stats.opponent.score}
+						| #{opponent}
+				.col-xs-12.col-sm-12.col-md-6.col-lg-6
+					+stateOfTheGame
 			.panel.panel-default
 				.panel-heading
-					p.panel-title #{yourClub} : #{stats.yourClub.score} - #{stats.opponent.score} : #{opponent}
+					p.panel-title {{_ "yourClub"}} : #{yourClub}
 				.panel-body
-					+stateOfTheGame
-					.panel.panel-default
-						.panel-heading
-							p.panel-title {{_ "yourClub"}} : #{yourClub}
-						.panel-body
-							p
-								span.label.label-default {{_ "explanationHowToAddAStat"}}
-							.yourClub.row.playerRow
-								each yourClubPlayersPlaying
-									+playerPill
-								else
-									button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
-						.panel-footer
-							button.doReplacement.btn.btn-primary(type="button", class="#{doReplacementYourClub}") {{_ "makeAReplacement"}}
-					.panel.panel-default
-						.panel-heading
-							p.panel-title {{_ "opponent"}} : #{opponent}
-						.panel-body
-							p
-								span.label.label-default {{_ "explanationHowToAddAStat"}}
-							.opponent.row.playerRow
-								each opponentPlayersPlaying
-									+playerPill
-								else
-									button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
-						.panel-footer
-							button.doReplacement.btn.btn-primary(type="button", class="#{doReplacementOpponent}") {{_ "makeAReplacement"}}
+					p
+						span.label.label-default {{_ "explanationHowToAddAStat"}}
+					.yourClub.row.playerRow
+						each yourClubPlayersPlaying
+							+playerPill
+						else
+							button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
+				.panel-footer
+					button.doReplacement.btn.btn-primary(type="button", class="#{doReplacementYourClub}") {{_ "makeAReplacement"}}
+			.panel.panel-default
+				.panel-heading
+					p.panel-title {{_ "opponent"}} : #{opponent}
+				.panel-body
+					p
+						span.label.label-default {{_ "explanationHowToAddAStat"}}
+					.opponent.row.playerRow
+						each opponentPlayersPlaying
+							+playerPill
+						else
+							button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
+				.panel-footer
+					button.doReplacement.btn.btn-primary(type="button", class="#{doReplacementOpponent}") {{_ "makeAReplacement"}}
 			+playerModal
 	else
 		+spinner

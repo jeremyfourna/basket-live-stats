@@ -1,5 +1,5 @@
 template(name="stateOfTheGame")
-	p {{_ "stateOfTheGame"}} :
+	p.pull-right {{_ "stateOfTheGame"}} :
 		if notStarted
 			button#notStarted.btn.btn-primary(type='button') {{_ "labelNotStarted"}}
 		if q1Running

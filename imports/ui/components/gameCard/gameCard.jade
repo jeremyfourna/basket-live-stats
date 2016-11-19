@@ -1,39 +1,38 @@
 template(name="gameCard")
 	.panel.panel-default
 		.panel-heading
-			h4.panel-title.text-center #{gameInfos.yourClub} - #{gameInfos.opponent}
-				br
-				small.text-center {{_ "level"}} : #{gameInfos.level} - {{_ "group"}} : #{gameInfos.group}
+			p.panel-title.text-center #{gameInfos.yourClub} - #{gameInfos.opponent}
+				//br
+				//small.text-center {{_ "level"}} : #{gameInfos.level} - {{_ "group"}} : #{gameInfos.group}
 		.panel-body
 			h3.text-center #{stats.yourClub.score} - #{stats.opponent.score}
-				a.btn.btn-default.pull-right(role="button" href="{{pathFor 'aGame'}}")
-					span.glyphicon.glyphicon-log-in(aria-hidden='true')
-		.panel-footer
 			if notStarted
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "notStarted"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "notStarted"}}
 			if q1Running
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "q1Running"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "q1Running"}}
 			if q1Ended
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "q1Ended"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "q1Ended"}}
 			if q2Running
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "q2Running"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "q2Running"}}
 			if halfTime
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "halfTime"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "halfTime"}}
 			if q3Running
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "q3Running"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "q3Running"}}
 			if q3Ended
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "q3Ended"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "q3Ended"}}
 			if q4Running
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "q4Running"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "q4Running"}}
 			if gameEnded
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "gameEnded"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "gameEnded"}}
 			if oT1
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "oT1"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "oT1"}}
 			if oT2
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "oT2"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "oT2"}}
 			if oT3
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "oT3"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "oT3"}}
 			if oT4
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "oT4"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "oT4"}}
 			if oT5
-				p.text-center {{_ "stateOfTheGame"}} : {{_ "oT5"}}
+				p.small.text-center {{_ "stateOfTheGame"}} : {{_ "oT5"}}	
+		.panel-footer
+			a.btn.btn-default.btn-block(role="button" href="{{pathFor 'aGame'}}") {{_ "followTheLive"}}

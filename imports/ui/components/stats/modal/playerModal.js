@@ -30,7 +30,7 @@ Template.playerModal.events({
 	},
 	// Positive action
 	'click .onePoint': function() {
-		var gameData = Games.findOne({
+		let gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
 			fields: {
@@ -39,8 +39,8 @@ Template.playerModal.events({
 				'stats.opponent.score': 1
 			}
 		});
-		var playerData = this;
-		var evolScore = {
+		let playerData = this;
+		let evolScore = {
 			gameIndex: gameData.stats.evolution.length,
 			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score + 1
 		};
