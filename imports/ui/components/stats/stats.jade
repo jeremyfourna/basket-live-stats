@@ -1,39 +1,43 @@
 template(name="stats")
-	if Template.subscriptionsReady
-		with gameData
-			.row
-				.col-xs-12.col-sm-12.col-md-6.col-lg-6
-					p.lead #{yourClub}
-						span.label.label-default #{stats.yourClub.score} - #{stats.opponent.score}
-						| #{opponent}
-				.col-xs-12.col-sm-12.col-md-6.col-lg-6
-					+stateOfTheGame
+	.row
+		.col-xs-12.col-sm-12.col-md-6.col-lg-6
+			p.lead #{yourClub}
+				span.label.label-default #{gameData.stats.yourClub.score} - #{gameData.stats.opponent.score}
+				| #{opponent}
+		.col-xs-12.col-sm-12.col-md-6.col-lg-6
+			+stateOfTheGame(gameState=gameData.gameState)
+	.row
+		.col-xs-12.col-sm-12.col-md-6.col-lg-6
 			.panel.panel-default
 				.panel-heading
 					p.panel-title {{_ "yourClub"}} : #{yourClub}
 				.panel-body
-					p
-						span.label.label-default {{_ "explanationHowToAddAStat"}}
+					p.bg-info {{_ "explanationHowToAddAStat"}}
 					.yourClub.row.playerRow
-						each yourClubPlayersPlaying
-							+playerPill
+						each homePlayersInGame
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								.thumbnail
+									button.btn.btn-block(class="#{buttonClass}" data-toggle="modal" data-target="#playerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}")
+										strong #{jersey}
 						else
 							button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
 				.panel-footer
 					button.doReplacement.btn.btn-primary(type="button", class="#{doReplacementYourClub}") {{_ "makeAReplacement"}}
+		.col-xs-12.col-sm-12.col-md-6.col-lg-6
 			.panel.panel-default
 				.panel-heading
 					p.panel-title {{_ "opponent"}} : #{opponent}
 				.panel-body
-					p
-						span.label.label-default {{_ "explanationHowToAddAStat"}}
+					p.bg-info {{_ "explanationHowToAddAStat"}}
 					.opponent.row.playerRow
-						each opponentPlayersPlaying
-							+playerPill
+						each awayPlayersInGame
+							.col-xs-4.col-sm-3.col-md-2.col-lg-2
+								.thumbnail
+									button.btn.btn-block(class="#{buttonClass}" data-toggle="modal" data-target="#opponentPlayerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}" data-playerid="#{_id}")
+										strong #{jersey}
 						else
 							button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
 				.panel-footer
 					button.doReplacement.btn.btn-primary(type="button", class="#{doReplacementOpponent}") {{_ "makeAReplacement"}}
-			+playerModal
-	else
-		+spinner
+	+playerModal
+	+opponentPlayerModal

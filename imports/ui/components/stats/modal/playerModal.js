@@ -1,14 +1,22 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { TAPi18n } from 'meteor/tap:i18n';
+
+import { Games } from '../../../../api/games/schema.js';
+import { Players } from '../../../../api/players/schema.js';
 
 import './playerModal.jade';
 
-Template.playerModal.helpers({
-	modalId: function() {
-		return this._id;
-	}
-});
-
 Template.playerModal.events({
+	'show.bs.modal #playerModal': function(event) {
+		let button = $(event.relatedTarget); // Button that triggered the modal
+		let jersey = button.data('jersey');
+		let firstName = button.data('firstName') || TAPi18n.__('firstName');
+		let lastName = button.data('lastName') || TAPi18n.__('firstName');
+		let whoIsDoingThisAction = TAPi18n.__('whoIsDoingThisAction');
+		let num = TAPi18n.__('num');
+		$('.modal-title').text(`${whoIsDoingThisAction} ${num}${jersey} : ${firstName} ${lastName} `);
+	},
 	'click #correctionAction': function() {
 		$('.buttonForAction').prepend('<span class=\'badge actionBadge\'>-1</span> ').addClass('cancelAction');
 		$('.correctionAction').addClass('cancelCorrectionAction');

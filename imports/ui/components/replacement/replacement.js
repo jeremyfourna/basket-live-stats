@@ -1,20 +1,9 @@
 import { Template } from 'meteor/templating';
 import { Router } from 'meteor/iron:router';
-import 'meteor/sacha:spin';
-
-import { Games } from '../../../api/games/schema.js';
-import { Players } from '../../../api/players/schema.js';
 
 import './replacement.jade';
 import './replacementModal.js';
 import './playerReplacement.js';
-
-Template.replacement.onCreated(function() {
-	this.autorun(() => {
-		this.subscribe('oneGameForReplacement', Router.current().params._id);
-		this.subscribe('playersForAGame', Router.current().params._id);
-	});
-});
 
 Template.replacement.helpers({
 	yourClub() {

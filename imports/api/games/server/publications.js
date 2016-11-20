@@ -37,16 +37,9 @@ Meteor.publish('last3EndedGames', () => {
 });
 
 // Send back one game
-Meteor.publish('oneGameForStats', (gameId) => {
+Meteor.publish('aGame', (gameId) => {
 	check(gameId, String);
-	return Games.find({ _id: gameId }, {
-		fields: {
-			gameState: 1,
-			gameInfos: 1,
-			'stats.yourClub.score': 1,
-			'stats.opponent.score': 1
-		}
-	});
+	return Games.find({ _id: gameId });
 });
 
 Meteor.publish('oneGameForReplacement', (gameId) => {

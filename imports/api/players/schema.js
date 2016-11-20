@@ -15,7 +15,7 @@ Players.deny({
 	}
 });
 
-let PlayerGameTimeSchema = new SimpleSchema({
+export const PlayerGameTimeSchema = new SimpleSchema({
 	minutes: {
 		type: Number,
 		label: 'Minutes played',
@@ -40,7 +40,7 @@ let PlayerGameTimeSchema = new SimpleSchema({
 	}
 });
 
-let PlayerPointsSchema = new SimpleSchema({
+export const PlayerPointsSchema = new SimpleSchema({
 	onePointIn: {
 		type: Number,
 		label: 'Player FT scored',
@@ -78,7 +78,7 @@ let PlayerPointsSchema = new SimpleSchema({
 	}
 });
 
-let PlayerReboundsSchema = new SimpleSchema({
+export const PlayerReboundsSchema = new SimpleSchema({
 	offReb: {
 		type: Number,
 		label: 'Player offensive rebounds',
@@ -91,7 +91,7 @@ let PlayerReboundsSchema = new SimpleSchema({
 	}
 });
 
-let PlayerProvFoulsSchema = new SimpleSchema({
+export const PlayerProvFoulsSchema = new SimpleSchema({
 	offFouls: {
 		type: Number,
 		label: 'Player offensive provoqued fouls',
@@ -104,7 +104,7 @@ let PlayerProvFoulsSchema = new SimpleSchema({
 	}
 });
 
-let PlayerFoulsSchema = new SimpleSchema({
+export const PlayerFoulsSchema = new SimpleSchema({
 	provFouls: {
 		type: PlayerProvFoulsSchema
 	},
@@ -164,7 +164,7 @@ let PlayerFoulsSchema = new SimpleSchema({
 	}
 });
 
-let PlayerStatsSchema = new SimpleSchema({
+export const PlayerStatsSchema = new SimpleSchema({
 	points: {
 		type: PlayerPointsSchema
 	},
@@ -200,7 +200,7 @@ let PlayerStatsSchema = new SimpleSchema({
 	}
 });
 
-Players.schema = new SimpleSchema({
+export const PlayerSchema = new SimpleSchema({
 	gameId: {
 		type: String,
 		label: 'Game id'
@@ -237,3 +237,5 @@ Players.schema = new SimpleSchema({
 		type: PlayerStatsSchema
 	}
 });
+
+Players.schema = PlayerSchema;

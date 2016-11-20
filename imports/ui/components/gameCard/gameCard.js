@@ -3,6 +3,12 @@ import { Template } from 'meteor/templating';
 import './gameCard.jade';
 
 Template.gameCard.helpers({
+	yourClub() {
+		return this.gameInfos.yourClub || TAPi18n.__('homeTeam');
+	},
+	opponent() {
+		return this.gameInfos.opponent || TAPi18n.__('awayTeam');
+	},
 	notStarted() {
 		if (this.gameState === 'notStarted') {
 			return true;
