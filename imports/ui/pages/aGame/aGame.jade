@@ -20,7 +20,7 @@ template(name="aGame")
 				#resume.tab-pane(role="tabpanel")
 					//+summary
 				#replacement.tab-pane(role="tabpanel")
-					//+replacement(gameInfos=gameData.gameInfos homePlayers=homePlayers awayPlayers=awayPlayers)
+					+replacement(gameData=gameData homePlayers=homePlayers awayPlayers=awayPlayers)
 				#playersSettings.tab-pane(role="tabpanel")
 					//+playerBio
 			else

@@ -50,12 +50,22 @@ Template.aGame.helpers({
 			}
 		});
 	},
+	gameInfos() {
+		return this.gameData.gameInfos;
+	},
 	homePlayers() {
 		const gameId = Router.current().params._id;
 		return Players.find({
 			gameId,
 			teamId: 'yourClub'
 		}, {
+			fields: {
+				_id: 1,
+				firstName: 1,
+				lastName: 1,
+				jersey: 1,
+				inPlay: 1
+			},
 			sort: {
 				jersey: 1
 			}
@@ -67,6 +77,13 @@ Template.aGame.helpers({
 			gameId,
 			teamId: 'opponent'
 		}, {
+			fields: {
+				_id: 1,
+				firstName: 1,
+				lastName: 1,
+				jersey: 1,
+				inPlay: 1
+			},
 			sort: {
 				jersey: 1
 			}
@@ -79,6 +96,12 @@ Template.aGame.helpers({
 			teamId: 'yourClub',
 			inPlay: true
 		}, {
+			fields: {
+				_id: 1,
+				firstName: 1,
+				lastName: 1,
+				jersey: 1
+			},
 			sort: {
 				jersey: 1
 			}
@@ -91,6 +114,12 @@ Template.aGame.helpers({
 			teamId: 'opponent',
 			inPlay: true
 		}, {
+			fields: {
+				_id: 1,
+				firstName: 1,
+				lastName: 1,
+				jersey: 1
+			},
 			sort: {
 				jersey: 1
 			}

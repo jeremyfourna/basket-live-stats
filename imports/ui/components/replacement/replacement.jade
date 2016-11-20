@@ -3,49 +3,44 @@ template(name="replacement")
 		.panel-heading
 			p.panel-title {{_ "whoReplaceWho"}}
 		.panel-body
-			p
-				span.label.label-default {{_ "explanationHowToMakeAReplacement"}}
-			if Template.subscriptionsReady
-				with gameData
-					.row
-						.col-xs-12.col-sm-12.col-md-6.col-lg-6
+			p.bg-info {{_ "explanationHowToMakeAReplacement"}}
+			.row
+				.col-xs-12.col-sm-12.col-md-6.col-lg-6
+					.panel.panel-default
+						.panel-heading
+							p.panel-title {{_ "yourClub"}} : #{yourClub}
+						.panel-body
 							.panel.panel-default
 								.panel-heading
-									p.panel-title {{_ "yourClub"}} : #{yourClub}
+									p.panel-title {{_ "inPlay"}}
 								.panel-body
-									.panel.panel-default
-										.panel-heading
-											p.panel-title {{_ "inPlay"}}
-										.panel-body
-											#yourClubInPlay.row
-												each yourClubPlayersPlaying
-													+playerReplacement
-									.panel.panel-default
-										.panel-heading
-											p.panel-title {{_ "onTheBench"}}
-										.panel-body
-											#yourClubOnTheBench.row
-												each yourClubPlayersOnTheBench
-													+playerReplacement
-						.col-xs-12.col-sm-12.col-md-6.col-lg-6
+									#yourClubInPlay.row
+										each yourClubPlayersPlaying
+											+playerReplacement
 							.panel.panel-default
 								.panel-heading
-									p.panel-title {{_ "opponent"}} : #{opponent}
+									p.panel-title {{_ "onTheBench"}}
 								.panel-body
-									.panel.panel-default
-										.panel-heading
-											p.panel-title {{_ "inPlay"}}
-										.panel-body
-											#opponentInPlay.row
-												each opponentPlayersPlaying
-													+playerReplacement
-									.panel.panel-default
-										.panel-heading
-											p.panel-title {{_ "onTheBench"}}
-										.panel-body
-											#opponentOnTheBench.row
-												each opponentPlayersOnTheBench
-													+playerReplacement
-			else
-				+spinner
+									#yourClubOnTheBench.row
+										each yourClubPlayersOnTheBench
+											+playerReplacement
+				.col-xs-12.col-sm-12.col-md-6.col-lg-6
+					.panel.panel-default
+						.panel-heading
+							p.panel-title {{_ "opponent"}} : #{opponent}
+						.panel-body
+							.panel.panel-default
+								.panel-heading
+									p.panel-title {{_ "inPlay"}}
+								.panel-body
+									#opponentInPlay.row
+										each opponentPlayersPlaying
+											+playerReplacement
+							.panel.panel-default
+								.panel-heading
+									p.panel-title {{_ "onTheBench"}}
+								.panel-body
+									#opponentOnTheBench.row
+										each opponentPlayersOnTheBench
+											+playerReplacement
 	+replacementModal

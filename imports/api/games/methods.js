@@ -6,7 +6,7 @@ import { Games } from './schema.js';
 
 Meteor.methods({
 	addAGame(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			userId: { type: String }
 		});
 		check(data, methodSchema);
@@ -101,7 +101,7 @@ Meteor.methods({
 		return Games.insert(game);
 	},
 	assistsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -114,7 +114,7 @@ Meteor.methods({
 		});
 	},
 	correctionAssistsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -127,7 +127,7 @@ Meteor.methods({
 		});
 	},
 	blocksTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -140,7 +140,7 @@ Meteor.methods({
 		});
 	},
 	correctionBlocksTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -153,7 +153,7 @@ Meteor.methods({
 		});
 	},
 	offProvFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -166,7 +166,7 @@ Meteor.methods({
 		});
 	},
 	correctionOffProvFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -179,7 +179,7 @@ Meteor.methods({
 		});
 	},
 	defProvFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -192,7 +192,7 @@ Meteor.methods({
 		});
 	},
 	correctionDefProvFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -205,7 +205,7 @@ Meteor.methods({
 		});
 	},
 	offFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -219,7 +219,7 @@ Meteor.methods({
 		});
 	},
 	correctionOffFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -233,7 +233,7 @@ Meteor.methods({
 		});
 	},
 	defFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -247,7 +247,7 @@ Meteor.methods({
 		});
 	},
 	correctionDefFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -261,7 +261,7 @@ Meteor.methods({
 		});
 	},
 	defFoulsOneFTTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -275,7 +275,7 @@ Meteor.methods({
 		});
 	},
 	correctionDefFoulsOneFTTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -289,7 +289,7 @@ Meteor.methods({
 		});
 	},
 	defFoulsTwoFTTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -303,7 +303,7 @@ Meteor.methods({
 		});
 	},
 	correctionDefFoulsTwoFTTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -317,7 +317,7 @@ Meteor.methods({
 		});
 	},
 	defFoulsThreeFTTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -331,7 +331,7 @@ Meteor.methods({
 		});
 	},
 	correctionDefFoulsThreeFTTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -345,7 +345,7 @@ Meteor.methods({
 		});
 	},
 	techFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -359,7 +359,7 @@ Meteor.methods({
 		});
 	},
 	correctionTechFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -373,7 +373,7 @@ Meteor.methods({
 		});
 	},
 	antiSportFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -387,7 +387,7 @@ Meteor.methods({
 		});
 	},
 	correctionAntiSportFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -401,7 +401,7 @@ Meteor.methods({
 		});
 	},
 	disqualifyingFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -415,7 +415,7 @@ Meteor.methods({
 		});
 	},
 	correctionDisqualifyingFoulsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -429,7 +429,7 @@ Meteor.methods({
 		});
 	},
 	gameDelete(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -437,7 +437,7 @@ Meteor.methods({
 		return Games.remove({ _id: data.gameId });
 	},
 	gameInfosUpdate(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String },
 			yourClub: { type: String },
 			opponent: { type: String },
@@ -456,7 +456,7 @@ Meteor.methods({
 		});
 	},
 	gameStateSwitch(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String },
 			status: { type: String, allowedValues: ['notStarted', 'q1Running', 'q1Ended', 'q2Running', 'halfTime', 'q3Running', 'q3Ended', 'q4Running', 'gameEnded', 'oT1', 'oT2', 'oT3', 'oT4', 'oT5'] }
 		});
@@ -467,7 +467,7 @@ Meteor.methods({
 		});
 	},
 	onePointTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String },
 			gameIndex: { type: Number, min: 1 },
 			scoreGap: { type: Number }
@@ -483,25 +483,33 @@ Meteor.methods({
 			$push: { 'stats.evolution': [data.gameIndex, data.scoreGap] }
 		});
 	},
-	onePointTeamOpponent(data) {
-		let methodSchema = new SimpleSchema({
-			gameId: { type: String },
+	onePointTeamOpponent(gameId, playerId, evolScore) {
+		const evolScoreSchema = new SimpleSchema({
 			gameIndex: { type: Number, min: 1 },
 			scoreGap: { type: Number }
 		});
-		check(data, methodSchema);
+		check(gameId, String);
+		check(playerId, String);
+		check(evolScore, evolScoreSchema);
 
-		return Games.update({ _id: data.gameId }, {
+		return Games.update({
+			_id: gameId
+		}, {
 			$inc: {
 				'stats.opponent.points.onePointIn': 1,
 				'stats.opponent.score': 1,
 				'stats.opponent.evaluation': 1
 			},
-			$push: { 'stats.evolution': [data.gameIndex, data.scoreGap] }
+			$push: {
+				'stats.evolution': [
+					evolScore.gameIndex,
+					evolScore.scoreGap
+				]
+			}
 		});
 	},
 	onePointMissTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -514,7 +522,7 @@ Meteor.methods({
 		});
 	},
 	correctionOnePointMissTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -527,7 +535,7 @@ Meteor.methods({
 		});
 	},
 	correctionOnePointTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -541,23 +549,24 @@ Meteor.methods({
 			$pop: { 'stats.evolution': 1 }
 		});
 	},
-	correctionOnePointTeamOpponent(data) {
-		let methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
+	correctionOnePointTeamOpponent(gameId, playerId) {
+		check(gameId, String);
+		check(playerId, String);
+		return Games.update({
+			_id: gameId
+		}, {
 			$inc: {
 				'stats.opponent.points.onePointIn': -1,
 				'stats.opponent.score': -1,
 				'stats.opponent.evaluation': -1
 			},
-			$pop: { 'stats.evolution': 1 }
+			$pop: {
+				'stats.evolution': 1
+			}
 		});
 	},
 	twoPointsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String },
 			gameIndex: { type: Number, min: 1 },
 			scoreGap: { type: Number }
@@ -574,7 +583,7 @@ Meteor.methods({
 		});
 	},
 	twoPointsTeamOpponent(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String },
 			gameIndex: { type: Number, min: 1 },
 			scoreGap: { type: Number }
@@ -591,7 +600,7 @@ Meteor.methods({
 		});
 	},
 	correctionTwoPointsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -606,7 +615,7 @@ Meteor.methods({
 		});
 	},
 	correctionTwoPointsTeamOpponent(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -621,7 +630,7 @@ Meteor.methods({
 		});
 	},
 	twoPointsMissTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -634,7 +643,7 @@ Meteor.methods({
 		});
 	},
 	correctionTwoPointsMissTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -647,7 +656,7 @@ Meteor.methods({
 		});
 	},
 	threePointsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String },
 			gameIndex: { type: Number, min: 1 },
 			scoreGap: { type: Number }
@@ -664,7 +673,7 @@ Meteor.methods({
 		});
 	},
 	threePointsTeamOpponent(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String },
 			gameIndex: { type: Number, min: 1 },
 			scoreGap: { type: Number }
@@ -681,7 +690,7 @@ Meteor.methods({
 		});
 	},
 	correctionThreePointsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -696,7 +705,7 @@ Meteor.methods({
 		});
 	},
 	correctionThreePointsTeamOpponent(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -711,7 +720,7 @@ Meteor.methods({
 		});
 	},
 	threePointsMissTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -724,7 +733,7 @@ Meteor.methods({
 		});
 	},
 	correctionThreePointsMissTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -737,7 +746,7 @@ Meteor.methods({
 		});
 	},
 	offRebTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -750,7 +759,7 @@ Meteor.methods({
 		});
 	},
 	defRebTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -763,7 +772,7 @@ Meteor.methods({
 		});
 	},
 	correctionOffRebTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -776,7 +785,7 @@ Meteor.methods({
 		});
 	},
 	correctionDefRebTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -789,7 +798,7 @@ Meteor.methods({
 		});
 	},
 	stealsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -802,7 +811,7 @@ Meteor.methods({
 		});
 	},
 	correctionStealsTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -815,7 +824,7 @@ Meteor.methods({
 		});
 	},
 	turnoversTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);
@@ -828,7 +837,7 @@ Meteor.methods({
 		});
 	},
 	correctionTurnoversTeamYourClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
 		check(data, methodSchema);

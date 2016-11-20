@@ -5,28 +5,32 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Coachs } from './schema.js';
 
 Meteor.methods({
-	/*coachInsert(data) { // To refactor
+	coachInsert(data) {
 		let methodSchema = new SimpleSchema({
-			coachData: { type: [Object] },
-			gameId: { type: String }
+			gameId: { type: String },
+			nbCoachsForYourClub: { type: Number, min: 1, max: 2 },
+			nbCoachsForOpponent: { type: Number, min: 1, max: 2 },
 		});
 		check(data, methodSchema);
 
-		let coachsId = [];
-		coachsData.map((cur, index, array) => {
-			var coach = {
+		for (let i = 0; i < data.nbCoachsForYourClub; i++) {
+			let coach = {
 				gameId: data.gameId,
-				teamId: cur.teamId,
-				firstName: cur.firstName,
-				lastName: cur.lastName,
-				primaryCoach: cur.primaryCoach,
+				teamId: 'yourClub',
+				firstName: '',
+				lastName: '',
+				primaryCoach: false,
 				techFouls: 0
 			};
-			var coachId = Coachs.insert(coach);
-			return coachsId.push(coachId);
-		});
-		for (var i = 0; i < 2; i++) {
-			var opponentCoach = {
+			if (i === 0) {
+				coach.primaryCoach = true;
+			}
+
+			Coachs.insert(coach);
+		}
+
+		for (let i = 0; i < data.nbCoachsForOpponent; i++) {
+			let coach = {
 				gameId: data.gameId,
 				teamId: 'opponent',
 				firstName: '',
@@ -35,15 +39,14 @@ Meteor.methods({
 				techFouls: 0
 			};
 			if (i === 0) {
-				opponentCoach.primaryCoach = true;
+				coach.primaryCoach = true;
 			}
-			var opponentCoachId = Coachs.insert(opponentCoach);
-			coachsId.push(opponentCoachId);
+
+			Coachs.insert(coach);
 		}
-		return {
-			ids: coachsId
-		};
-	},*/
+
+		return true;
+	},
 	coachUpdate(data) {
 		let methodSchema = new SimpleSchema({
 			coachId: { type: String },

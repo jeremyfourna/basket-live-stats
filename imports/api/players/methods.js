@@ -12,6 +12,7 @@ Meteor.methods({
 			nbPlayersForOpponent: { type: Number, min: 5, max: 12 },
 		});
 		check(data, methodSchema);
+
 		for (let i = 0; i < data.nbPlayersForYourClub; i++) {
 			let player = {
 				gameId: data.gameId,
@@ -57,8 +58,10 @@ Meteor.methods({
 					turnovers: 0
 				}
 			};
+
 			Players.insert(player);
 		}
+
 		for (let i = 0; i < data.nbPlayersForOpponent; i++) {
 			let player = {
 				gameId: data.gameId,
@@ -104,8 +107,10 @@ Meteor.methods({
 					turnovers: 0
 				}
 			};
+
 			Players.insert(player);
 		}
+
 		return true;
 	},
 	playerUpdate(playerData) {
@@ -516,13 +521,11 @@ Meteor.methods({
 			}
 		});
 	},
-	onePoint(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
+	onePoint(playerId) {
+		check(playerId, String);
+		return Players.update({
+			_id: playerId
+		}, {
 			$inc: {
 				'stats.points.onePointIn': 1,
 				'stats.points.totalPoints': 1,

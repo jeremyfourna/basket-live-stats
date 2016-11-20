@@ -60,16 +60,10 @@ Template.opponentPlayerModal.events({
 		} else {
 			Meteor.call('onePointTeamOpponent', gameId, playerId, evolScore, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('onePoint', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
-		} * /
+		}
 	},
 	'click .twoPoints': function() {
 		var gameData = Games.findOne({

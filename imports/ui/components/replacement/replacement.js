@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Router } from 'meteor/iron:router';
+import { Session } from 'meteor/session';
 
 import './replacement.jade';
 import './replacementModal.js';
@@ -7,69 +8,29 @@ import './playerReplacement.js';
 
 Template.replacement.helpers({
 	yourClub() {
-		if (!this.gameInfos.yourClub) {
-			return 'Home team';
-		} else {
-			return this.gameInfos.yourClub;
-		}
+		return this.gameData.gameInfos.yourClub || TAPi18n.__('homeTeam');
 	},
 	opponent() {
-		if (!this.gameInfos.opponent) {
-			return 'Away team';
-		} else {
-			return this.gameInfos.opponent;
-		}
-	},
-	gameData() {
-		return Games.findOne({ _id: Router.current().params._id }, {
-			fields: {
-				gameInfos: 1,
-				gameState: 1
-			}
-		});
+		return this.gameData.gameInfos.opponent || TAPi18n.__('awayTeam');
 	},
 	yourClubPlayersPlaying() {
-		return Players.find({
-			gameId: Router.current().params._id,
-			teamId: 'yourClub',
-			inPlay: true
-		}, {
-			sort: {
-				jersey: 1
-			}
+		return this.homePlayers.filter((cur) => {
+			return cur.inPlay === true;
 		});
 	},
 	yourClubPlayersOnTheBench() {
-		return Players.find({
-			gameId: Router.current().params._id,
-			teamId: 'yourClub',
-			inPlay: false
-		}, {
-			sort: {
-				jersey: 1
-			}
+		return this.homePlayers.filter((cur) => {
+			return cur.inPlay === false;
 		});
 	},
 	opponentPlayersPlaying() {
-		return Players.find({
-			gameId: Router.current().params._id,
-			teamId: 'opponent',
-			inPlay: true
-		}, {
-			sort: {
-				jersey: 1
-			}
+		return this.awayPlayers.filter((cur) => {
+			return cur.inPlay === true;
 		});
 	},
 	opponentPlayersOnTheBench() {
-		return Players.find({
-			gameId: Router.current().params._id,
-			teamId: 'opponent',
-			inPlay: false
-		}, {
-			sort: {
-				jersey: 1
-			}
+		return this.awayPlayers.filter((cur) => {
+			return cur.inPlay === false;
 		});
 	}
 });
