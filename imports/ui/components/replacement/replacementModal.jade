@@ -7,8 +7,7 @@ template(name='replacementModal')
 						span(aria-hidden='true') &times;
 					h4#myReplacementLabel.modal-title {{_ "gameTimeWhenSwitchOccur"}}
 				.modal-body
-					p
-						span.label.label-default {{_ "switchProcess"}}
+					p.bg-info {{_ "switchProcess"}}
 					form
 						.form-group
 							label(for="minutes") {{_ "minutes"}}

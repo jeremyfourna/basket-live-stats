@@ -39,7 +39,6 @@ Template.opponentPlayerModal.events({
 		$('#correctionAction').removeClass('cancelCorrectionAction');
 		$('.buttonForAction').removeClass('cancelAction');
 	},
-	// Positive action
 	'click .onePoint': function(event) {
 		event.preventDefault();
 		const playerId = $('#opponentPlayerModal').data('playerId');
@@ -65,84 +64,52 @@ Template.opponentPlayerModal.events({
 			});
 		}
 	},
-	'click .twoPoints': function() {
-		var gameData = Games.findOne({
-			_id: Router.current().params._id
-		}, {
-			fields: {
-				'stats.evolution': 1,
-				'stats.yourClub.score': 1,
-				'stats.opponent.score': 1
-			}
-		});
-		var playerData = this;
-		var evolScore = {
-			gameIndex: gameData.stats.evolution.length,
-			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score - 2
+	'click .twoPoints': function(event) {
+		event.preventDefault();
+		const playerId = $('#opponentPlayerModal').data('playerId');
+		const isACancelAction = $('#opponentPlayerModal').find('.twoPoints').hasClass('cancelAction');
+		const gameId = this.gameData._id;
+		const gameIndex = this.gameData.stats.evolution.length;
+		const currentScoreGap = this.gameData.stats.yourClub.score - this.gameData.stats.opponent.score;
+		const evolScore = {
+			gameIndex,
+			scoreGap: currentScoreGap - 2
 		};
-		if ($('#' + playerData._id).find('.twoPoints').hasClass('cancelAction')) {
-			Meteor.call('correctionTwoPointsTeamOpponent', gameData._id, function(error) {
+		if (isACancelAction) {
+			Meteor.call('correctionTwoPointsTeamOpponent', gameId, playerId, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('correctionTwoPoints', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			Meteor.call('twoPointsTeamOpponent', gameData._id, evolScore, function(error) {
+			Meteor.call('twoPointsTeamOpponent', gameId, playerId, evolScore, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('twoPoints', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}
 	},
-	'click .threePoints': function() {
-		var gameData = Games.findOne({
-			_id: Router.current().params._id
-		}, {
-			fields: {
-				'stats.evolution': 1,
-				'stats.yourClub.score': 1,
-				'stats.opponent.score': 1
-			}
-		});
-		var playerData = this;
-		var evolScore = {
-			gameIndex: gameData.stats.evolution.length,
-			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score - 3
+	'click .threePoints': function(event) {
+		event.preventDefault();
+		const playerId = $('#opponentPlayerModal').data('playerId');
+		const isACancelAction = $('#opponentPlayerModal').find('.threePoints').hasClass('cancelAction');
+		const gameId = this.gameData._id;
+		const gameIndex = this.gameData.stats.evolution.length;
+		const currentScoreGap = this.gameData.stats.yourClub.score - this.gameData.stats.opponent.score;
+		const evolScore = {
+			gameIndex,
+			scoreGap: currentScoreGap - 3
 		};
-		if ($('#' + playerData._id).find('.threePoints').hasClass('cancelAction')) {
-			Meteor.call('correctionThreePointsTeamOpponent', gameData._id, function(error) {
+		if (isACancelAction) {
+			Meteor.call('correctionThreePointsTeamOpponent', gameId, playerId, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('correctionThreePoints', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			Meteor.call('threePointsTeamOpponent', gameData._id, evolScore, function(error) {
+			Meteor.call('threePointsTeamOpponent', gameId, playerId, evolScore, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('threePoints', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}

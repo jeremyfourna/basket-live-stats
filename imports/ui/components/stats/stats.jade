@@ -5,7 +5,7 @@ template(name="stats")
 				span.label.label-default #{gameData.stats.yourClub.score} - #{gameData.stats.opponent.score}
 				| #{opponent}
 		.col-xs-12.col-sm-12.col-md-6.col-lg-6
-			+stateOfTheGame(gameState=gameData.gameState)
+			+stateOfTheGame(gameState=gameState gameId=gameId)
 	.row
 		.col-xs-12.col-sm-12.col-md-6.col-lg-6
 			.panel.panel-default
@@ -17,12 +17,12 @@ template(name="stats")
 						each homePlayersInGame
 							.col-xs-4.col-sm-3.col-md-2.col-lg-2
 								.thumbnail
-									button.btn.btn-block(class="#{buttonClass}" data-toggle="modal" data-target="#playerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}")
+									button.btn.btn-block.btn-info(data-toggle="modal" data-target="#playerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}")
 										strong #{jersey}
 						else
 							button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
 				.panel-footer
-					button.doReplacement.btn.btn-primary(type="button", class="#{doReplacementYourClub}") {{_ "makeAReplacement"}}
+					button.doReplacement.btn.btn-primary(type="button") {{_ "makeAReplacement"}}
 		.col-xs-12.col-sm-12.col-md-6.col-lg-6
 			.panel.panel-default
 				.panel-heading
@@ -33,11 +33,11 @@ template(name="stats")
 						each awayPlayersInGame
 							.col-xs-4.col-sm-3.col-md-2.col-lg-2
 								.thumbnail
-									button.btn.btn-block(class="#{buttonClass}" data-toggle="modal" data-target="#opponentPlayerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}" data-playerid="#{_id}")
+									button.btn.btn-block.btn-warning(data-toggle="modal" data-target="#opponentPlayerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}" data-playerid="#{_id}")
 										strong #{jersey}
 						else
 							button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
 				.panel-footer
-					button.doReplacement.btn.btn-primary(type="button", class="#{doReplacementOpponent}") {{_ "makeAReplacement"}}
+					button.doReplacement.btn.btn-primary(type="button") {{_ "makeAReplacement"}}
 	+playerModal
 	+opponentPlayerModal

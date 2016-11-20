@@ -17,40 +17,16 @@ Template.stats.helpers({
 	opponent() {
 		return this.gameData.gameInfos.opponent || TAPi18n.__('awayTeam');
 	},
-	doReplacementYourClub() {
-		var team = Players.find({
-			gameId: Router.current().params._id,
-			teamId: 'yourClub',
-			inPlay: true
-		}).fetch();
-		if (team.length > 0) {
-			return 'doReplacementPlayer';
-		} else {
-			return 'hidden';
-		}
+	gameState() {
+		return this.gameData.gameState;
 	},
-	doReplacementOpponent() {
-		var team = Players.find({
-			gameId: Router.current().params._id,
-			teamId: 'opponent',
-			inPlay: true
-		}).fetch();
-		if (team.length > 0) {
-			return 'doReplacementPlayer';
-		} else {
-			return 'hidden';
-		}
+	gameId() {
+		const gameId = Router.current().params._id;
+		return gameId;
 	},
 	gameEndedOrNot() {
 		if (this.gameState === 'gameEnded') {
 			return 'hidden';
-		}
-	},
-	buttonClass() {
-		if (this.teamId === 'yourClub') {
-			return 'btn-info';
-		} else if (this.teamId === 'opponent') {
-			return 'btn-warning';
 		}
 	}
 });

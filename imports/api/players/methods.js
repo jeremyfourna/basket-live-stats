@@ -523,6 +523,7 @@ Meteor.methods({
 	},
 	onePoint(playerId) {
 		check(playerId, String);
+
 		return Players.update({
 			_id: playerId
 		}, {
@@ -533,13 +534,12 @@ Meteor.methods({
 			}
 		});
 	},
-	correctionOnePoint(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+	correctionOnePoint(playerId) {
+		check(playerId, String);
 
-		return Players.update({ _id: data.playerId }, {
+		return Players.update({
+			_id: playerId
+		}, {
 			$inc: {
 				'stats.points.onePointIn': -1,
 				'stats.points.totalPoints': -1,
@@ -573,13 +573,12 @@ Meteor.methods({
 			}
 		});
 	},
-	twoPoints(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+	twoPoints(playerId) {
+		check(playerId, String);
 
-		return Players.update({ _id: data.playerId }, {
+		return Players.update({
+			_id: playerId
+		}, {
 			$inc: {
 				'stats.points.twoPointsIn': 1,
 				'stats.points.totalPoints': 2,
@@ -587,13 +586,12 @@ Meteor.methods({
 			}
 		});
 	},
-	correctionTwoPoints(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+	correctionTwoPoints(playerId) {
+		check(playerId, String);
 
-		return Players.update({ _id: data.playerId }, {
+		return Players.update({
+			_id: playerId
+		}, {
 			$inc: {
 				'stats.points.twoPointsIn': -1,
 				'stats.points.totalPoints': -2,
@@ -627,13 +625,12 @@ Meteor.methods({
 			}
 		});
 	},
-	threePoints(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+	threePoints(playerId) {
+		check(playerId, String);
 
-		return Players.update({ _id: data.playerId }, {
+		return Players.update({
+			_id: playerId
+		}, {
 			$inc: {
 				'stats.points.threePointsIn': 1,
 				'stats.points.totalPoints': 3,
@@ -641,13 +638,12 @@ Meteor.methods({
 			}
 		});
 	},
-	correctionThreePoints(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+	correctionThreePoints(playerId) {
+		check(playerId, String);
 
-		return Players.update({ _id: data.playerId }, {
+		return Players.update({
+			_id: playerId
+		}, {
 			$inc: {
 				'stats.points.threePointsIn': -1,
 				'stats.points.totalPoints': -3,

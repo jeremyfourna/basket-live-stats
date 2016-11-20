@@ -552,6 +552,7 @@ Meteor.methods({
 	correctionOnePointTeamOpponent(gameId, playerId) {
 		check(gameId, String);
 		check(playerId, String);
+
 		return Games.update({
 			_id: gameId
 		}, {
@@ -582,21 +583,29 @@ Meteor.methods({
 			$push: { 'stats.evolution': [data.gameIndex, data.scoreGap] }
 		});
 	},
-	twoPointsTeamOpponent(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String },
+	twoPointsTeamOpponent(gameId, playerId, evolScore) {
+		const evolScoreSchema = new SimpleSchema({
 			gameIndex: { type: Number, min: 1 },
 			scoreGap: { type: Number }
 		});
-		check(data, methodSchema);
+		check(gameId, String);
+		check(playerId, String);
+		check(evolScore, evolScoreSchema);
 
-		return Games.update({ _id: data.gameId }, {
+		return Games.update({
+			_id: gameId
+		}, {
 			$inc: {
 				'stats.opponent.points.twoPointsIn': 1,
 				'stats.opponent.score': 2,
 				'stats.opponent.evaluation': 2
 			},
-			$push: { 'stats.evolution': [data.gameIndex, data.scoreGap] }
+			$push: {
+				'stats.evolution': [
+					evolScore.gameIndex,
+					evolScore.scoreGap
+				]
+			}
 		});
 	},
 	correctionTwoPointsTeamYourClub(data) {
@@ -614,19 +623,21 @@ Meteor.methods({
 			$pop: { 'stats.evolution': 1 }
 		});
 	},
-	correctionTwoPointsTeamOpponent(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
+	correctionTwoPointsTeamOpponent(gameId, playerId) {
+		check(gameId, String);
+		check(playerId, String);
 
-		return Games.update({ _id: data.gameId }, {
+		return Games.update({
+			_id: gameId
+		}, {
 			$inc: {
 				'stats.opponent.points.twoPointsIn': -1,
 				'stats.opponent.score': -2,
 				'stats.opponent.evaluation': -2
 			},
-			$pop: { 'stats.evolution': 1 }
+			$pop: {
+				'stats.evolution': 1
+			}
 		});
 	},
 	twoPointsMissTeamYourClub(data) {
@@ -672,21 +683,29 @@ Meteor.methods({
 			$push: { 'stats.evolution': [data.gameIndex, data.scoreGap] }
 		});
 	},
-	threePointsTeamOpponent(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String },
+	threePointsTeamOpponent(gameId, playerId, evolScore) {
+		const evolScoreSchema = new SimpleSchema({
 			gameIndex: { type: Number, min: 1 },
 			scoreGap: { type: Number }
 		});
-		check(data, methodSchema);
+		check(gameId, String);
+		check(playerId, String);
+		check(evolScore, evolScoreSchema);
 
-		return Games.update({ _id: data.gameId }, {
+		return Games.update({
+			_id: gameId
+		}, {
 			$inc: {
 				'stats.opponent.points.threePointsIn': 1,
 				'stats.opponent.score': 3,
 				'stats.opponent.evaluation': 3
 			},
-			$push: { 'stats.evolution': [data.gameIndex, data.scoreGap] }
+			$push: {
+				'stats.evolution': [
+					evolScore.gameIndex,
+					evolScore.scoreGap
+				]
+			}
 		});
 	},
 	correctionThreePointsTeamYourClub(data) {
@@ -704,19 +723,21 @@ Meteor.methods({
 			$pop: { 'stats.evolution': 1 }
 		});
 	},
-	correctionThreePointsTeamOpponent(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
+	correctionThreePointsTeamOpponent(gameId, playerId) {
+		check(gameId, String);
+		check(playerId, String);
 
-		return Games.update({ _id: data.gameId }, {
+		return Games.update({
+			_id: gameId
+		}, {
 			$inc: {
 				'stats.opponent.points.threePointsIn': -1,
 				'stats.opponent.score': -3,
 				'stats.opponent.evaluation': -3
 			},
-			$pop: { 'stats.evolution': 1 }
+			$pop: {
+				'stats.evolution': 1
+			}
 		});
 	},
 	threePointsMissTeamYourClub(data) {

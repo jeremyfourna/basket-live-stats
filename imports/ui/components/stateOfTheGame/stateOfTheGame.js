@@ -108,7 +108,7 @@ Template.stateOfTheGame.events({
 	'click #notStarted': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'q1Running'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {
@@ -120,7 +120,7 @@ Template.stateOfTheGame.events({
 	'click #q1Running': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'q1Ended'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {
@@ -132,7 +132,7 @@ Template.stateOfTheGame.events({
 	'click #q1Ended': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'q2Running'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {
@@ -144,7 +144,7 @@ Template.stateOfTheGame.events({
 	'click #q2Running': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'halfTime'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {
@@ -156,7 +156,7 @@ Template.stateOfTheGame.events({
 	'click #halfTime': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'q3Running'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {
@@ -168,7 +168,7 @@ Template.stateOfTheGame.events({
 	'click #q3Running': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'q3Ended'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {
@@ -180,7 +180,7 @@ Template.stateOfTheGame.events({
 	'click #q3Ended': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'q4Running'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {
@@ -192,7 +192,7 @@ Template.stateOfTheGame.events({
 	'click #oT': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'oT1'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {
@@ -204,7 +204,7 @@ Template.stateOfTheGame.events({
 	'click #oT1': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'oT2'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {
@@ -216,7 +216,7 @@ Template.stateOfTheGame.events({
 	'click #oT2': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'oT3'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {
@@ -228,7 +228,7 @@ Template.stateOfTheGame.events({
 	'click #oT3': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'oT4'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {
@@ -240,7 +240,7 @@ Template.stateOfTheGame.events({
 	'click #oT4': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'oT5'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {
@@ -252,7 +252,7 @@ Template.stateOfTheGame.events({
 	'click #endedGames': function(event) {
 		event.preventDefault();
 		const data = {
-			gameId: this._id,
+			gameId: this.gameId,
 			status: 'gameEnded'
 		};
 		Meteor.call('gameStateSwitch', data, (error, result) => {

@@ -6,7 +6,7 @@
 
 iron:router
 sacha:spin
-accounts-password@1.3.2
+accounts-password@1.3.3
 jquery@1.11.10
 ian:accounts-ui-bootstrap-3
 tap:i18n
@@ -14,7 +14,6 @@ reactive-var@1.0.11
 reactive-dict@1.1.8
 twbs:bootstrap
 risul:bootstrap-colorpicker
-meteorhacks:fast-render
 mquandalle:jade
 peernohell:c3
 momentjs:moment
@@ -30,17 +29,16 @@ random@1.0.10
 ejson@1.0.13
 spacebars
 check@1.2.4
-stylus@2.513.7
+stylus@2.513.8
 blaze-html-templates
 standard-minifier-css@1.3.2
 standard-minifier-js@1.2.1
 aldeed:simple-schema
 templating
-ecmascript@0.5.9
+ecmascript@0.6.1
 stevezhu:lodash
 dburles:collection-helpers
-kadira:debug
 themeteorchef:bert
 doctorpangloss:method-hooks
 peerlibrary:reactive-field
-shell-server
+shell-server@0.2.1

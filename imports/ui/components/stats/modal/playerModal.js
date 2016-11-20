@@ -11,10 +11,12 @@ Template.playerModal.events({
 	'show.bs.modal #playerModal': function(event) {
 		let button = $(event.relatedTarget); // Button that triggered the modal
 		let jersey = button.data('jersey');
-		let firstName = button.data('firstName') || TAPi18n.__('firstName');
-		let lastName = button.data('lastName') || TAPi18n.__('firstName');
+		let playerId = button.data('playerid');
+		let firstName = button.data('firstname') || TAPi18n.__('firstName');
+		let lastName = button.data('lastname') || TAPi18n.__('firstName');
 		let whoIsDoingThisAction = TAPi18n.__('whoIsDoingThisAction');
 		let num = TAPi18n.__('num');
+		$('#playerModal').data('playerId', playerId);
 		$('.modal-title').text(`${whoIsDoingThisAction} ${num}${jersey} : ${firstName} ${lastName} `);
 	},
 	'click #correctionAction': function() {

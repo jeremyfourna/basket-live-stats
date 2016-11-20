@@ -1,10 +1,8 @@
 import { Template } from 'meteor/templating';
-import { Router } from 'meteor/iron:router';
 import { Session } from 'meteor/session';
 
 import './replacement.jade';
 import './replacementModal.js';
-import './playerReplacement.js';
 
 Template.replacement.helpers({
 	yourClub() {
@@ -36,36 +34,11 @@ Template.replacement.helpers({
 });
 
 Template.replacement.events({
-	'click #yourClubInPlay .yourClubPillForModal': function(event) {
-		let switchData = {
-			_id: this._id,
-			state: this.gameState,
-			call: 'goingOnTheBench'
-		};
-		Session.set('switchData', switchData);
-	},
-	'click #yourClubOnTheBench .yourClubPillForModal': function(event) {
-		let switchData = {
-			_id: this._id,
-			state: this.gameState,
-			call: 'goingInPlay'
-		};
-		Session.set('switchData', switchData);
-	},
-	'click #opponentInPlay .opponentPillForModal': function(event) {
-		let switchData = {
-			_id: this._id,
-			state: this.gameState,
-			call: 'goingOnTheBench'
-		};
-		Session.set('switchData', switchData);
-	},
-	'click #opponentOnTheBench .opponentPillForModal': function(event) {
-		let switchData = {
-			_id: this._id,
-			state: this.gameState,
-			call: 'goingInPlay'
-		};
-		Session.set('switchData', switchData);
+	'click button': function(event) {
+		return Session.set({
+			playerId: this._id,
+			inPlay: this.inPlay,
+			gameState: Template.currentData().gameData.gameState
+		});
 	}
 });

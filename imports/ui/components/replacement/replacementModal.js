@@ -6,6 +6,7 @@ import './replacementModal.jade';
 
 Template.replacementModal.events({
 	'click #validateSwitch': function(event) {
+		event.preventDefault();
 		const data = {
 			playerId: Session.get('playerId'),
 			gameState: Session.get('gameState'),
@@ -26,7 +27,8 @@ Template.replacementModal.events({
 			});
 		}
 	},
-	'click #cancelSwitch': function() {
+	'click #cancelSwitch': function(event) {
+		event.preventDefault();
 		$('#replacementModal').modal('hide');
 	}
 });
