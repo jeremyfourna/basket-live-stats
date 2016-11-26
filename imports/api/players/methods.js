@@ -2,115 +2,57 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-import { Players } from './schema.js';
+import { Players, playerSchema } from './schema.js';
 
 Meteor.methods({
-	playerInsert(data) {
-		let methodSchema = new SimpleSchema({
-			gameId: { type: String },
-			nbPlayersForYourClub: { type: Number, min: 5, max: 12 },
-			nbPlayersForOpponent: { type: Number, min: 5, max: 12 },
-		});
-		check(data, methodSchema);
+	addPlayers(teamId) {
+		check(teamId, String);
 
-		for (let i = 0; i < data.nbPlayersForYourClub; i++) {
+		for (let i = 0; i < 12; i++) {
 			let player = {
-				gameId: data.gameId,
-				teamId: 'yourClub',
+				teamId,
 				firstName: '',
 				lastName: '',
 				jersey: i + 4,
 				inPlay: false,
 				gameTime: [],
-				stats: {
-					points: {
-						onePointIn: 0,
-						onePointOut: 0,
-						twoPointsIn: 0,
-						twoPointsOut: 0,
-						threePointsIn: 0,
-						threePointsOut: 0,
-						totalPoints: 0
-					},
-					evaluation: 0,
-					assists: 0,
-					rebounds: {
-						offReb: 0,
-						defReb: 0
-					},
-					fouls: {
-						provFouls: {
-							offFouls: 0,
-							defFouls: 0
-						},
+				points: {
+					onePointIn: 0,
+					onePointOut: 0,
+					twoPointsIn: 0,
+					twoPointsOut: 0,
+					threePointsIn: 0,
+					threePointsOut: 0,
+					totalPoints: 0
+				},
+				evaluation: 0,
+				assists: 0,
+				offReb: 0,
+				defReb: 0,
+				fouls: {
+					provFouls: {
 						offFouls: 0,
-						totalFouls: 0,
-						defFouls: 0,
-						foul1FT: 0,
-						foul2FT: 0,
-						foul3FT: 0,
-						techFouls: 0,
-						antiSportFouls: 0,
-						disqualifyingFouls: 0
+						defFouls: 0
 					},
-					steals: 0,
-					blocks: 0,
-					turnovers: 0
-				}
+					offFouls: 0,
+					totalFouls: 0,
+					defFouls: 0,
+					foul1FT: 0,
+					foul2FT: 0,
+					foul3FT: 0,
+					techFouls: 0,
+					antiSportFouls: 0,
+					disqualifyingFouls: 0
+				},
+				steals: 0,
+				blocks: 0,
+				turnovers: 0
 			};
+
+			check(player, playerSchema);
 
 			Players.insert(player);
 		}
-
-		for (let i = 0; i < data.nbPlayersForOpponent; i++) {
-			let player = {
-				gameId: data.gameId,
-				teamId: 'opponent',
-				firstName: '',
-				lastName: '',
-				jersey: i + 4,
-				inPlay: false,
-				gameTime: [],
-				stats: {
-					points: {
-						onePointIn: 0,
-						onePointOut: 0,
-						twoPointsIn: 0,
-						twoPointsOut: 0,
-						threePointsIn: 0,
-						threePointsOut: 0,
-						totalPoints: 0
-					},
-					evaluation: 0,
-					assists: 0,
-					rebounds: {
-						offReb: 0,
-						defReb: 0
-					},
-					fouls: {
-						provFouls: {
-							offFouls: 0,
-							defFouls: 0
-						},
-						offFouls: 0,
-						totalFouls: 0,
-						defFouls: 0,
-						foul1FT: 0,
-						foul2FT: 0,
-						foul3FT: 0,
-						techFouls: 0,
-						antiSportFouls: 0,
-						disqualifyingFouls: 0
-					},
-					steals: 0,
-					blocks: 0,
-					turnovers: 0
-				}
-			};
-
-			Players.insert(player);
-		}
-
 		return true;
 	},
 	playerUpdate(playerData) {

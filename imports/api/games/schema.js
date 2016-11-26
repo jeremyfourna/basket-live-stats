@@ -1,6 +1,9 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
+import { gameStateValues } from '../schemas.js';
+
+
 export const Games = new Mongo.Collection('games');
 
 Games.deny({
@@ -27,7 +30,7 @@ export const gameSchema = new SimpleSchema({
 	gameState: {
 		type: String,
 		label: 'State of the game',
-		allowedValues: ['notStarted', 'q1Running', 'q1Ended', 'q2Running', 'halfTime', 'q3Running', 'q3Ended', 'q4Running', 'gameEnded', 'oT1', 'oT2', 'oT3', 'oT4', 'oT5']
+		allowedValues: gameStateValues
 	},
 	privateGame: {
 		type: Boolean,

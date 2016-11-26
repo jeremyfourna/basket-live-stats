@@ -1,23 +1,13 @@
 import { Meteor } from 'meteor/meteor';
 import { MethodHooks } from 'meteor/doctorpangloss:method-hooks';
 
-MethodHooks.after('xxxxx', (options) => {
+MethodHooks.after('addGame', (options) => {
 	if (options.error) {
 		return;
 	} else if (options.result) {
-		const dataForPlayers = {
-			gameId: options.result,
-			nbPlayersForYourClub: 12,
-			nbPlayersForOpponent: 12
-		};
-		const dataForCoachs = {
-			gameId: options.result,
-			nbCoachsForYourClub: 2,
-			nbCoachsForOpponent: 2
-		};
+		const teamId = options.result;
 
-		Meteor.call('playerInsert', dataForPlayers);
-		Meteor.call('coachInsert', dataForCoachs);
+		Meteor.call('addPlayers', teamId);
 
 		return options.result;
 	}
