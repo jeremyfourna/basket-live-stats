@@ -8,11 +8,13 @@ import './creationGame.jade';
 Template.creationGame.events({
 	'click #creationGame': function(event) {
 		event.preventDefault();
-		Meteor.call('addAGame', { userId: Meteor.userId() }, (error, result) => {
+		const userId = Meteor.userId();
+
+		return Meteor.call('addGame', userId, (error, result) => {
 			if (error) {
-				Bert.alert(error.message, 'danger', 'growl-top-right');
+				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			} else {
-				Router.go('aGame', { _id: result });
+				return Router.go('aGame', { _id: result });
 			}
 		});
 	}

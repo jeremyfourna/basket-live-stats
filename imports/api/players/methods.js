@@ -123,6 +123,7 @@ Meteor.methods({
 			}
 		});
 	},
+	/*
 	assists(data) {
 		let methodSchema = new SimpleSchema({
 			playerId: { type: String }
@@ -781,4 +782,5 @@ Meteor.methods({
 			}
 		});
 	}
+	*/
 });

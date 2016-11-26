@@ -15,7 +15,7 @@ Teams.deny({
 	}
 });
 
-export const TeamShootsSchema = new SimpleSchema({
+export const shootsSchema = new SimpleSchema({
 	onePointIn: {
 		type: Number,
 		label: 'Team FT scored',
@@ -48,7 +48,7 @@ export const TeamShootsSchema = new SimpleSchema({
 	}
 });
 
-export const TeamFoulsSchema = new SimpleSchema({
+export const foulsSchema = new SimpleSchema({
 	provOffFouls: {
 		type: Number,
 		label: 'Team offensive provoqued fouls',
@@ -106,10 +106,14 @@ export const TeamFoulsSchema = new SimpleSchema({
 	}
 });
 
-Teams.schema = new SimpleSchema({
+export const teamschema = new SimpleSchema({
 	gameId: {
 		type: String,
 		label: 'Game id'
+	},
+	createdAt: {
+		type: Date,
+		label: 'State of the game'
 	},
 	score: {
 		type: Number,
@@ -121,7 +125,7 @@ Teams.schema = new SimpleSchema({
 		label: 'Global team evaluation'
 	},
 	points: {
-		type: TeamShootsSchema,
+		type: shootsSchema,
 		label: 'All data for the shoots and points'
 	},
 	assists: {
@@ -140,7 +144,7 @@ Teams.schema = new SimpleSchema({
 		min: 0
 	},
 	fouls: {
-		type: TeamFoulsSchema,
+		type: foulsSchema,
 		label: 'All data for the fouls'
 	},
 	steals: {
@@ -159,3 +163,5 @@ Teams.schema = new SimpleSchema({
 		min: 0
 	}
 });
+
+Teams.schema = teamschema;

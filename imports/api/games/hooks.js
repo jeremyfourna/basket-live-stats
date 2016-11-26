@@ -2,23 +2,16 @@ import { Meteor } from 'meteor/meteor';
 import { MethodHooks } from 'meteor/doctorpangloss:method-hooks';
 import { lodash } from 'meteor/stevezhu:lodash';
 
-MethodHooks.after('addAGame', (options) => {
+MethodHooks.after('addGame', (options) => {
 	if (options.error) {
 		return;
 	} else if (options.result) {
-		const dataForPlayers = {
-			gameId: options.result,
-			nbPlayersForYourClub: 12,
-			nbPlayersForOpponent: 12
-		};
-		const dataForCoachs = {
-			gameId: options.result,
-			nbCoachsForYourClub: 2,
-			nbCoachsForOpponent: 2
-		};
+		const gameId = options.result;
 
-		Meteor.call('playerInsert', dataForPlayers);
-		Meteor.call('coachInsert', dataForCoachs);
+		let yourClubTeamId = Meteor.call('addTeams', gameId);
+		let opponentTeamId = Meteor.call('addTeams', gameId);
+
+		Meteor.call('addTeamsIdInsideGame', gameId, yourClubTeamId, opponentTeamId);
 
 		return options.result;
 	}

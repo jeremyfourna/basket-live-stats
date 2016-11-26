@@ -2,10 +2,51 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-import { Teams } from '../schema.js';
+import { Teams, teamschema } from './schema.js';
 
 // yourClub methods
 Meteor.methods({
+	addTeams(gameId) {
+		check(gameId, String);
+
+		const team = {
+			gameId,
+			createdAt: new Date(),
+			score: 0,
+			evaluation: 0,
+			points: {
+				onePointIn: 0,
+				onePointOut: 0,
+				twoPointsIn: 0,
+				twoPointsOut: 0,
+				threePointsIn: 0,
+				threePointsOut: 0
+			},
+			assists: 0,
+			offReb: 0,
+			defReb: 0,
+			fouls: {
+				provOffFouls: 0,
+				provDefFouls: 0,
+				offFouls: 0,
+				defFouls: 0,
+				totalFouls: 0,
+				foul1FT: 0,
+				foul2FT: 0,
+				foul3FT: 0,
+				techFouls: 0,
+				antiSportFouls: 0,
+				disqualifyingFouls: 0
+			},
+			steals: 0,
+			blocks: 0,
+			turnovers: 0
+		};
+
+		check(team, teamschema);
+
+		return Teams.insert(team);
+	},
 	assists(teamId) {
 		check(teamId, String);
 

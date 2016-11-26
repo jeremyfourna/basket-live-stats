@@ -21,7 +21,7 @@ export const gameSchema = new SimpleSchema({
 		label: 'User id'
 	},
 	createdAt: {
-		type: String,
+		type: Date,
 		label: 'State of the game'
 	},
 	gameState: {
@@ -32,10 +32,6 @@ export const gameSchema = new SimpleSchema({
 	privateGame: {
 		type: Boolean,
 		label: 'Game privacy'
-	},
-	gameInfos: {
-		type: GameInfosSchema,
-		label: 'Informations about the teams playing'
 	},
 	evolution: {
 		type: [

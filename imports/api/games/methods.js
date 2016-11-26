@@ -2,106 +2,45 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-import { Games } from './schema.js';
-
-import './methods/goodActions.js';
-import './methods/correctionActions.js';
+import { Games, gameSchema } from './schema.js';
 
 Meteor.methods({
-	addAGame(data) {
-		const methodSchema = new SimpleSchema({
-			userId: { type: String }
-		});
-		check(data, methodSchema);
+	addGame(userId) {
+		check(userId, String);
 
 		const game = {
-			userId: data.userId,
+			userId,
 			createdAt: new Date(),
 			gameState: 'notStarted',
 			privateGame: false,
-			gameInfos: {
-				yourClub: '',
-				opponent: '',
-				level: '',
-				group: ''
-			},
-			stats: {
-				yourClub: {
-					score: 0,
-					evaluation: 0,
-					points: {
-						onePointIn: 0,
-						onePointOut: 0,
-						twoPointsIn: 0,
-						twoPointsOut: 0,
-						threePointsIn: 0,
-						threePointsOut: 0
-					},
-					assists: 0,
-					rebounds: {
-						offReb: 0,
-						defReb: 0
-					},
-					fouls: {
-						provFouls: {
-							offFouls: 0,
-							defFouls: 0
-						},
-						offFouls: 0,
-						totalFouls: 0,
-						defFouls: 0,
-						foul1FT: 0,
-						foul2FT: 0,
-						foul3FT: 0,
-						techFouls: 0,
-						antiSportFouls: 0,
-						disqualifyingFouls: 0
-					},
-					steals: 0,
-					blocks: 0,
-					turnovers: 0
-				},
-				opponent: {
-					score: 0,
-					evaluation: 0,
-					points: {
-						onePointIn: 0,
-						onePointOut: 0,
-						twoPointsIn: 0,
-						twoPointsOut: 0,
-						threePointsIn: 0,
-						threePointsOut: 0
-					},
-					assists: 0,
-					rebounds: {
-						offReb: 0,
-						defReb: 0
-					},
-					fouls: {
-						provFouls: {
-							offFouls: 0,
-							defFouls: 0
-						},
-						offFouls: 0,
-						totalFouls: 0,
-						defFouls: 0,
-						foul1FT: 0,
-						foul2FT: 0,
-						foul3FT: 0,
-						techFouls: 0,
-						antiSportFouls: 0,
-						disqualifyingFouls: 0
-					},
-					steals: 0,
-					blocks: 0,
-					turnovers: 0
-				},
-				evolution: [
-					[0, 0]
-				]
-			}
+			evolution: [
+				[0, 0]
+			],
+			yourClub: '',
+			yourClubTeamId: '',
+			opponent: '',
+			opponentTeamId: '',
+			level: '',
+			group: ''
 		};
+
+		check(game, gameSchema);
+
 		return Games.insert(game);
+	},
+	addTeamsIdInsideGame(gameId, yourClubTeamId, opponentTeamId) {
+		check(gameId, String);
+		check(yourClubTeamId, String);
+		check(opponentTeamId, String);
+
+		return Games.update({
+			_id: gameId
+		}, {
+			$set: {
+				yourClubTeamId,
+				opponentTeamId
+			}
+		});
 	},
 	gameDelete(data) {
 		const methodSchema = new SimpleSchema({
