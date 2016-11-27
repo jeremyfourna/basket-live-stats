@@ -69,6 +69,7 @@ export const playerSchema = new SimpleSchema({
 	},
 	gameTime: {
 		type: [playerGameTimeSchema],
+		label: 'All information about the game time of the player',
 		optional: true
 	},
 	evaluation: {

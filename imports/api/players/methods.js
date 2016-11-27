@@ -8,51 +8,52 @@ Meteor.methods({
 	addPlayers(teamId) {
 		check(teamId, String);
 
-		for (let i = 0; i < 12; i++) {
-			let player = {
-				teamId,
-				firstName: '',
-				lastName: '',
-				jersey: i + 4,
-				inPlay: false,
-				gameTime: [],
-				points: {
-					onePointIn: 0,
-					onePointOut: 0,
-					twoPointsIn: 0,
-					twoPointsOut: 0,
-					threePointsIn: 0,
-					threePointsOut: 0,
-					totalPoints: 0
-				},
-				evaluation: 0,
-				assists: 0,
-				offReb: 0,
-				defReb: 0,
-				fouls: {
-					provFouls: {
-						offFouls: 0,
-						defFouls: 0
-					},
-					offFouls: 0,
-					totalFouls: 0,
-					defFouls: 0,
-					foul1FT: 0,
-					foul2FT: 0,
-					foul3FT: 0,
-					techFouls: 0,
-					antiSportFouls: 0,
-					disqualifyingFouls: 0
-				},
-				steals: 0,
-				blocks: 0,
-				turnovers: 0
-			};
+		const player = {
+			teamId,
+			firstName: '',
+			lastName: '',
+			jersey: 4,
+			inPlay: false,
+			gameTime: [],
+			points: {
+				onePointIn: 0,
+				onePointOut: 0,
+				twoPointsIn: 0,
+				twoPointsOut: 0,
+				threePointsIn: 0,
+				threePointsOut: 0,
+				totalPoints: 0
+			},
+			evaluation: 0,
+			assists: 0,
+			offReb: 0,
+			defReb: 0,
+			fouls: {
+				provOffFouls: 0,
+				provDefFouls: 0,
+				offFouls: 0,
+				totalFouls: 0,
+				defFouls: 0,
+				foul1FT: 0,
+				foul2FT: 0,
+				foul3FT: 0,
+				techFouls: 0,
+				antiSportFouls: 0,
+				disqualifyingFouls: 0
+			},
+			steals: 0,
+			blocks: 0,
+			turnovers: 0
+		};
 
-			check(player, playerSchema);
+		check(player, playerSchema);
+
+		for (let i = 0; i < 12; i++) {
+			player.jersey = 4 + i;
 
 			Players.insert(player);
 		}
+
 		return true;
 	},
 	playerUpdate(playerData) {

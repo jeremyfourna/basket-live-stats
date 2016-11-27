@@ -6,7 +6,7 @@ import { Teams, teamschema } from './schema.js';
 
 // yourClub methods
 Meteor.methods({
-	addTeams(gameId) {
+	addTeam(gameId) {
 		check(gameId, String);
 
 		const team = {

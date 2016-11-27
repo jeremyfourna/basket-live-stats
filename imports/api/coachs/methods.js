@@ -2,42 +2,23 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-import { Coachs } from './schema.js';
+import { Coachs, coachSchema } from './schema.js';
 
 Meteor.methods({
-	coachInsert(data) {
-		let methodSchema = new SimpleSchema({
-			gameId: { type: String },
-			nbCoachsForYourClub: { type: Number, min: 1, max: 2 },
-			nbCoachsForOpponent: { type: Number, min: 1, max: 2 },
-		});
-		check(data, methodSchema);
+	addCoachs(teamId) {
+		check(teamId, String);
 
-		for (let i = 0; i < data.nbCoachsForYourClub; i++) {
-			let coach = {
-				gameId: data.gameId,
-				teamId: 'yourClub',
-				firstName: '',
-				lastName: '',
-				primaryCoach: false,
-				techFouls: 0
-			};
-			if (i === 0) {
-				coach.primaryCoach = true;
-			}
+		const coach = {
+			teamId,
+			firstName: '',
+			lastName: '',
+			primaryCoach: false,
+			techFouls: 0
+		};
 
-			Coachs.insert(coach);
-		}
+		check(coach, coachSchema);
 
-		for (let i = 0; i < data.nbCoachsForOpponent; i++) {
-			let coach = {
-				gameId: data.gameId,
-				teamId: 'opponent',
-				firstName: '',
-				lastName: '',
-				primaryCoach: false,
-				techFouls: 0
-			};
+		for (let i = 0; i < 2; i++) {
 			if (i === 0) {
 				coach.primaryCoach = true;
 			}

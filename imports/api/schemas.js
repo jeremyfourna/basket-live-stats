@@ -30,6 +30,12 @@ export const shootsSchema = new SimpleSchema({
 		type: Number,
 		label: 'Team 3pt missed',
 		min: 0
+	},
+	totalPoints: {
+		type: Number,
+		label: 'Total points for the player',
+		min: 0,
+		optional: true
 	}
 });
 

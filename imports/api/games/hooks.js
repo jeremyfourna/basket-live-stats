@@ -8,8 +8,8 @@ MethodHooks.after('addGame', (options) => {
 	} else if (options.result) {
 		const gameId = options.result;
 
-		let yourClubTeamId = Meteor.call('addTeams', gameId);
-		let opponentTeamId = Meteor.call('addTeams', gameId);
+		let yourClubTeamId = Meteor.call('addTeam', gameId);
+		let opponentTeamId = Meteor.call('addTeam', gameId);
 
 		Meteor.call('addTeamsIdInsideGame', gameId, yourClubTeamId, opponentTeamId);
 
