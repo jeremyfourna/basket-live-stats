@@ -51,7 +51,8 @@ Template.aGame.helpers({
 				yourClub: 1,
 				yourClubTeamId: 1,
 				opponent: 1,
-				opponentTeamId: 1
+				opponentTeamId: 1,
+				evolution: 1
 			}
 		});
 	}

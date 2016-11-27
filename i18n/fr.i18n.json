@@ -49,7 +49,7 @@
 	"gameEnded": "Terminé",
 	"noCompletedGames": "Vous n'avez terminé pour aucun match la prise de stats.",
 	"coach": "Coach",
-	"name": "Nom",
+	"lastName": "Nom",
 	"firstName": "Prénom",
 	"playerDefinition": "Définis les joueurs de ton club",
 	"teamDefinition": "Définis les équipes...",

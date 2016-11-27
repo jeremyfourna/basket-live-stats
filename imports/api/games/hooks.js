@@ -17,73 +17,15 @@ MethodHooks.after('addGame', (options) => {
 	}
 });
 
-MethodHooks.after('correctionOnePointTeamOpponent', (options) => {
+MethodHooks.after('deleteGame', (options) => {
 	if (options.error) {
 		return;
 	} else if (options.result) {
-		const playerId = options.arguments[1];
+		const gameId = options.arguments[0];
 
-		Meteor.call('correctionOnePoint', playerId);
-
-		return options.result;
-	}
-});
-
-MethodHooks.after('onePointTeamOpponent', (options) => {
-	if (options.error) {
-		return;
-	} else if (options.result) {
-		const playerId = options.arguments[1];
-
-		Meteor.call('onePoint', playerId);
-
-		return options.result;
-	}
-});
-
-MethodHooks.after('correctionTwoPointsTeamOpponent', (options) => {
-	if (options.error) {
-		return;
-	} else if (options.result) {
-		const playerId = options.arguments[1];
-
-		Meteor.call('correctionTwoPoints', playerId);
-
-		return options.result;
-	}
-});
-
-MethodHooks.after('twoPointsTeamOpponent', (options) => {
-	if (options.error) {
-		return;
-	} else if (options.result) {
-		const playerId = options.arguments[1];
-
-		Meteor.call('twoPoints', playerId);
-
-		return options.result;
-	}
-});
-
-MethodHooks.after('correctionThreePointsTeamOpponent', (options) => {
-	if (options.error) {
-		return;
-	} else if (options.result) {
-		const playerId = options.arguments[1];
-
-		Meteor.call('correctionThreePoints', playerId);
-
-		return options.result;
-	}
-});
-
-MethodHooks.after('threePointsTeamOpponent', (options) => {
-	if (options.error) {
-		return;
-	} else if (options.result) {
-		const playerId = options.arguments[1];
-
-		Meteor.call('threePoints', playerId);
+		Meteor.call('deleteTeams', gameId);
+		Meteor.call('deletePlayers', gameId);
+		Meteor.call('deleteCoachs', gameId);
 
 		return options.result;
 	}

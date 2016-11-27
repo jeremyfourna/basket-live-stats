@@ -3,6 +3,7 @@ import { check } from 'meteor/check';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 import { Games, gameSchema } from './schema.js';
+import { gameStateValues } from '../schemas.js';
 
 Meteor.methods({
 	addGame(userId) {
@@ -42,13 +43,12 @@ Meteor.methods({
 			}
 		});
 	},
-	gameDelete(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
+	deleteGame(gameId) {
+		check(gameId, String);
 
-		return Games.remove({ _id: data.gameId });
+		return Games.remove({
+			_id: gameId
+		});
 	},
 	gameInfosUpdate(data) {
 		const methodSchema = new SimpleSchema({
@@ -72,7 +72,7 @@ Meteor.methods({
 	gameStateSwitch(data) {
 		const methodSchema = new SimpleSchema({
 			gameId: { type: String },
-			status: { type: String, allowedValues: ['notStarted', 'q1Running', 'q1Ended', 'q2Running', 'halfTime', 'q3Running', 'q3Ended', 'q4Running', 'gameEnded', 'oT1', 'oT2', 'oT3', 'oT4', 'oT5'] }
+			status: { type: String, allowedValues: gameStateValues }
 		});
 		check(data, methodSchema);
 
@@ -80,303 +80,33 @@ Meteor.methods({
 			$set: { gameState: data.status }
 		});
 	},
-	onePointTeamYourClub(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String },
-			gameIndex: { type: Number, min: 1 },
-			scoreGap: { type: Number }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.points.onePointIn': 1,
-				'stats.yourClub.score': 1,
-				'stats.yourClub.evaluation': 1
-			},
-			$push: { 'stats.evolution': [data.gameIndex, data.scoreGap] }
-		});
-	},
-	onePointTeamOpponent(gameId, playerId, evolScore) {
+	newEvolScore(gameId, evolScore) {
 		const evolScoreSchema = new SimpleSchema({
-			gameIndex: { type: Number, min: 1 },
+			gameIndex: { type: Number, min: 0 },
 			scoreGap: { type: Number }
 		});
 		check(gameId, String);
-		check(playerId, String);
 		check(evolScore, evolScoreSchema);
 
 		return Games.update({
 			_id: gameId
 		}, {
-			$inc: {
-				'stats.opponent.points.onePointIn': 1,
-				'stats.opponent.score': 1,
-				'stats.opponent.evaluation': 1
-			},
 			$push: {
-				'stats.evolution': [
+				evolution: [
 					evolScore.gameIndex,
 					evolScore.scoreGap
 				]
 			}
 		});
 	},
-	onePointMissTeamYourClub(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.points.onePointOut': 1,
-				'stats.yourClub.evaluation': -1
-			}
-		});
-	},
-	correctionOnePointMissTeamYourClub(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.points.onePointOut': -1,
-				'stats.yourClub.evaluation': 1
-			}
-		});
-	},
-	correctionOnePointTeamYourClub(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.points.onePointIn': -1,
-				'stats.yourClub.score': -1,
-				'stats.yourClub.evaluation': -1
-			},
-			$pop: { 'stats.evolution': 1 }
-		});
-	},
-	correctionOnePointTeamOpponent(gameId, playerId) {
+	correctNewEvolScore(gameId) {
 		check(gameId, String);
-		check(playerId, String);
 
 		return Games.update({
 			_id: gameId
 		}, {
-			$inc: {
-				'stats.opponent.points.onePointIn': -1,
-				'stats.opponent.score': -1,
-				'stats.opponent.evaluation': -1
-			},
 			$pop: {
-				'stats.evolution': 1
-			}
-		});
-	},
-	twoPointsTeamYourClub(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String },
-			gameIndex: { type: Number, min: 1 },
-			scoreGap: { type: Number }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.points.twoPointsIn': 1,
-				'stats.yourClub.score': 2,
-				'stats.yourClub.evaluation': 2
-			},
-			$push: { 'stats.evolution': [data.gameIndex, data.scoreGap] }
-		});
-	},
-	twoPointsTeamOpponent(gameId, playerId, evolScore) {
-		const evolScoreSchema = new SimpleSchema({
-			gameIndex: { type: Number, min: 1 },
-			scoreGap: { type: Number }
-		});
-		check(gameId, String);
-		check(playerId, String);
-		check(evolScore, evolScoreSchema);
-
-		return Games.update({
-			_id: gameId
-		}, {
-			$inc: {
-				'stats.opponent.points.twoPointsIn': 1,
-				'stats.opponent.score': 2,
-				'stats.opponent.evaluation': 2
-			},
-			$push: {
-				'stats.evolution': [
-					evolScore.gameIndex,
-					evolScore.scoreGap
-				]
-			}
-		});
-	},
-	correctionTwoPointsTeamYourClub(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.points.twoPointsIn': -1,
-				'stats.yourClub.score': -2,
-				'stats.yourClub.evaluation': -2
-			},
-			$pop: { 'stats.evolution': 1 }
-		});
-	},
-	correctionTwoPointsTeamOpponent(gameId, playerId) {
-		check(gameId, String);
-		check(playerId, String);
-
-		return Games.update({
-			_id: gameId
-		}, {
-			$inc: {
-				'stats.opponent.points.twoPointsIn': -1,
-				'stats.opponent.score': -2,
-				'stats.opponent.evaluation': -2
-			},
-			$pop: {
-				'stats.evolution': 1
-			}
-		});
-	},
-	twoPointsMissTeamYourClub(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.points.twoPointsOut': 1,
-				'stats.yourClub.evaluation': -1
-			}
-		});
-	},
-	correctionTwoPointsMissTeamYourClub(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.points.twoPointsOut': -1,
-				'stats.yourClub.evaluation': 1
-			}
-		});
-	},
-	threePointsTeamYourClub(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String },
-			gameIndex: { type: Number, min: 1 },
-			scoreGap: { type: Number }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.points.threePointsIn': 1,
-				'stats.yourClub.score': 3,
-				'stats.yourClub.evaluation': 3
-			},
-			$push: { 'stats.evolution': [data.gameIndex, data.scoreGap] }
-		});
-	},
-	threePointsTeamOpponent(gameId, playerId, evolScore) {
-		const evolScoreSchema = new SimpleSchema({
-			gameIndex: { type: Number, min: 1 },
-			scoreGap: { type: Number }
-		});
-		check(gameId, String);
-		check(playerId, String);
-		check(evolScore, evolScoreSchema);
-
-		return Games.update({
-			_id: gameId
-		}, {
-			$inc: {
-				'stats.opponent.points.threePointsIn': 1,
-				'stats.opponent.score': 3,
-				'stats.opponent.evaluation': 3
-			},
-			$push: {
-				'stats.evolution': [
-					evolScore.gameIndex,
-					evolScore.scoreGap
-				]
-			}
-		});
-	},
-	correctionThreePointsTeamYourClub(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.points.threePointsIn': -1,
-				'stats.yourClub.score': -3,
-				'stats.yourClub.evaluation': -3
-			},
-			$pop: { 'stats.evolution': 1 }
-		});
-	},
-	correctionThreePointsTeamOpponent(gameId, playerId) {
-		check(gameId, String);
-		check(playerId, String);
-
-		return Games.update({
-			_id: gameId
-		}, {
-			$inc: {
-				'stats.opponent.points.threePointsIn': -1,
-				'stats.opponent.score': -3,
-				'stats.opponent.evaluation': -3
-			},
-			$pop: {
-				'stats.evolution': 1
-			}
-		});
-	},
-	threePointsMissTeamYourClub(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.points.threePointsOut': 1,
-				'stats.yourClub.evaluation': -1
-			}
-		});
-	},
-	correctionThreePointsMissTeamYourClub(data) {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.points.threePointsOut': -1,
-				'stats.yourClub.evaluation': 1
+				evolution: 1
 			}
 		});
 	},

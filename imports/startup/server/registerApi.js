@@ -26,3 +26,4 @@ import '/imports/api/teams/methods.js';
 // Hooks
 import '/imports/api/games/hooks.js';
 import '/imports/api/teams/hooks.js';
+import '/imports/api/players/hooks.js';

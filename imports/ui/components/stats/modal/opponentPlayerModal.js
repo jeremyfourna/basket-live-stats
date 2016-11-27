@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { TAPi18n } from 'meteor/tap:i18n';
 import { Bert } from 'meteor/themeteorchef:bert';
+import { lodash } from 'meteor/stevezhu:lodash';
 
 import { Games } from '../../../../api/games/schema.js';
 import { Players } from '../../../../api/players/schema.js';
@@ -14,7 +15,7 @@ Template.opponentPlayerModal.events({
 		let jersey = button.data('jersey');
 		let playerId = button.data('playerid');
 		let firstName = button.data('firstname') || TAPi18n.__('firstName');
-		let lastName = button.data('lastname') || TAPi18n.__('firstName');
+		let lastName = button.data('lastname') || TAPi18n.__('lastName');
 		let whoIsDoingThisAction = TAPi18n.__('whoIsDoingThisAction');
 		let num = TAPi18n.__('num');
 		$('#opponentPlayerModal').data('playerId', playerId);
@@ -39,25 +40,25 @@ Template.opponentPlayerModal.events({
 		$('#correctionAction').removeClass('cancelCorrectionAction');
 		$('.buttonForAction').removeClass('cancelAction');
 	},
-	'click .onePoint': function(event) {
+	'click #onePointOpponent': function(event) {
 		event.preventDefault();
-		const playerId = $('#opponentPlayerModal').data('playerId');
-		const isACancelAction = $('#opponentPlayerModal').find('.onePoint').hasClass('cancelAction');
 		const gameId = this.gameData._id;
-		const gameIndex = this.gameData.stats.evolution.length;
-		const currentScoreGap = this.gameData.stats.yourClub.score - this.gameData.stats.opponent.score;
+		const teamId = this.gameData.opponentTeamId;
+		const playerId = $('#opponentPlayerModal').data('playerId');
 		const evolScore = {
-			gameIndex,
-			scoreGap: currentScoreGap - 1
+			gameIndex: this.gameData.evolution.length,
+			scoreGap: lodash.last(this.gameData.evolution)[1] - 1
 		};
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		if (isACancelAction) {
-			Meteor.call('correctionOnePointTeamOpponent', gameId, playerId, (error) => {
+			Meteor.call('correctOnePointInForPlayer', gameId, teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			Meteor.call('onePointTeamOpponent', gameId, playerId, evolScore, (error) => {
+			Meteor.call('onePointInForPlayer', gameId, teamId, playerId, evolScore, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}

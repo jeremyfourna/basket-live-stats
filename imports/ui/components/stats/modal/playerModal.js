@@ -13,7 +13,7 @@ Template.playerModal.events({
 		let jersey = button.data('jersey');
 		let playerId = button.data('playerid');
 		let firstName = button.data('firstname') || TAPi18n.__('firstName');
-		let lastName = button.data('lastname') || TAPi18n.__('firstName');
+		let lastName = button.data('lastname') || TAPi18n.__('lastName');
 		let whoIsDoingThisAction = TAPi18n.__('whoIsDoingThisAction');
 		let num = TAPi18n.__('num');
 		$('#playerModal').data('playerId', playerId);
