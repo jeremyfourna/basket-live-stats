@@ -16,11 +16,11 @@ template(name="aGame")
 		.tab-content
 			if isOwnerOfTheGame
 				#stats.tab-pane.active(role="tabpanel")
-					+stats(gameData=gameData homePlayersInGame=homePlayersInGame awayPlayersInGame=awayPlayersInGame)
+					+stats(gameData=gameData)
 				#resume.tab-pane(role="tabpanel")
 					//+summary
 				#replacement.tab-pane(role="tabpanel")
-					+replacement(gameData=gameData homePlayers=homePlayers awayPlayers=awayPlayers)
+					+replacement(gameData=gameData)
 				#playersSettings.tab-pane(role="tabpanel")
 					//+playerBio
 			else

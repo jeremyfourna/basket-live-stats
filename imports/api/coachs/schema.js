@@ -16,9 +16,13 @@ Coachs.deny({
 });
 
 export const coachSchema = new SimpleSchema({
+	gameId: {
+		type: String,
+		label: 'Game id'
+	},
 	teamId: {
 		type: String,
-		label: 'team id'
+		label: 'Team id'
 	},
 	firstName: {
 		type: String,

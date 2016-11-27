@@ -5,10 +5,12 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Coachs, coachSchema } from './schema.js';
 
 Meteor.methods({
-	addCoachs(teamId) {
+	addCoachs(teamId, gameId) {
 		check(teamId, String);
+		check(gameId, String);
 
 		const coach = {
+			gameId,
 			teamId,
 			firstName: '',
 			lastName: '',

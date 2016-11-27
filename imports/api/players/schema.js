@@ -43,6 +43,10 @@ export const playerGameTimeSchema = new SimpleSchema({
 });
 
 export const playerSchema = new SimpleSchema({
+	gameId: {
+		type: String,
+		label: 'Game id'
+	},
 	teamId: {
 		type: String,
 		label: 'Player id'

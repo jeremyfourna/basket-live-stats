@@ -1,35 +1,67 @@
 import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
 
+import { Players } from '../../../api/players/schema.js';
+
 import './replacement.jade';
 import './replacementModal.js';
 
 Template.replacement.helpers({
 	yourClub() {
-		return this.gameData.gameInfos.yourClub || TAPi18n.__('homeTeam');
+		return this.gameData.yourClub || TAPi18n.__('homeTeam');
 	},
 	opponent() {
-		return this.gameData.gameInfos.opponent || TAPi18n.__('awayTeam');
+		return this.gameData.opponent || TAPi18n.__('awayTeam');
 	},
-	yourClubPlayersPlaying() {
-		return this.homePlayers.filter((cur) => {
+	playersInPlay() {
+		return this.filter((cur) => {
 			return cur.inPlay === true;
 		});
 	},
-	yourClubPlayersOnTheBench() {
-		return this.homePlayers.filter((cur) => {
+	playersOnTheBench() {
+		return this.filter((cur) => {
 			return cur.inPlay === false;
 		});
 	},
-	opponentPlayersPlaying() {
-		return this.awayPlayers.filter((cur) => {
-			return cur.inPlay === true;
-		});
+	yourClubPlayers() {
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+
+		return Players.find({
+			gameId,
+			teamId,
+		}, {
+			fields: {
+				_id: 1,
+				firstName: 1,
+				lastName: 1,
+				jersey: 1,
+				inPlay: 1
+			},
+			sort: {
+				jersey: 1
+			}
+		}).fetch();
 	},
-	opponentPlayersOnTheBench() {
-		return this.awayPlayers.filter((cur) => {
-			return cur.inPlay === false;
-		});
+	opponentPlayers() {
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.opponentTeamId;
+
+		return Players.find({
+			gameId,
+			teamId,
+		}, {
+			fields: {
+				_id: 1,
+				firstName: 1,
+				lastName: 1,
+				jersey: 1,
+				inPlay: 1
+			},
+			sort: {
+				jersey: 1
+			}
+		}).fetch();
 	}
 });
 

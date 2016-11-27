@@ -7,50 +7,52 @@ template(name="replacement")
 					p.panel-title {{_ "yourClub"}} : #{yourClub}
 				.panel-body
 					p.bg-info {{_ "explanationHowToMakeAReplacement"}}
-					.panel.panel-default
-						.panel-heading
-							p.panel-title {{_ "inPlay"}}
-						.panel-body
-							#yourClubInPlay.row
-								each yourClubPlayersPlaying
-									.col-xs-6.col-sm-4.col-md-3.col-lg-3
-										.thumbnail
-											button.btn.btn-block.btn-info(data-toggle="modal" data-target="#replacementModal")
-												strong #{jersey}
-					.panel.panel-default
-						.panel-heading
-							p.panel-title {{_ "onTheBench"}}
-						.panel-body
-							#yourClubOnTheBench.row
-								each yourClubPlayersOnTheBench
-									.col-xs-6.col-sm-4.col-md-3.col-lg-3
-										.thumbnail
-											button.btn.btn-block.btn-info(data-toggle="modal" data-target="#replacementModal")
-												strong #{jersey}
+					with yourClubPlayers
+						.panel.panel-default
+							.panel-heading
+								p.panel-title {{_ "inPlay"}}
+							.panel-body
+								#yourClubInPlay.row
+									each playersInPlay
+										.col-xs-6.col-sm-4.col-md-3.col-lg-3
+											.thumbnail
+												button.btn.btn-block.btn-info(data-toggle="modal" data-target="#replacementModal")
+													strong #{jersey}
+						.panel.panel-default
+							.panel-heading
+								p.panel-title {{_ "onTheBench"}}
+							.panel-body
+								#yourClubOnTheBench.row
+									each playersOnTheBench
+										.col-xs-6.col-sm-4.col-md-3.col-lg-3
+											.thumbnail
+												button.btn.btn-block.btn-info(data-toggle="modal" data-target="#replacementModal")
+													strong #{jersey}
 		.col-xs-12.col-sm-12.col-md-6.col-lg-6
 			.panel.panel-default
 				.panel-heading
 					p.panel-title {{_ "opponent"}} : #{opponent}
 				.panel-body
 					p.bg-info {{_ "explanationHowToMakeAReplacement"}}
-					.panel.panel-default
-						.panel-heading
-							p.panel-title {{_ "inPlay"}}
-						.panel-body
-							#opponentInPlay.row
-								each opponentPlayersPlaying
-									.col-xs-6.col-sm-4.col-md-3.col-lg-3
-										.thumbnail
-											button.btn.btn-block.btn-warning(data-toggle="modal" data-target="#replacementModal")
-												strong #{jersey}
-					.panel.panel-default
-						.panel-heading
-							p.panel-title {{_ "onTheBench"}}
-						.panel-body
-							#opponentOnTheBench.row
-								each opponentPlayersOnTheBench
-									.col-xs-6.col-sm-4.col-md-3.col-lg-3
-										.thumbnail
-											button.btn.btn-block.btn-warning(data-toggle="modal" data-target="#replacementModal")
-												strong #{jersey}
+					with opponentPlayers
+						.panel.panel-default
+							.panel-heading
+								p.panel-title {{_ "inPlay"}}
+							.panel-body
+								#opponentInPlay.row
+									each playersInPlay
+										.col-xs-6.col-sm-4.col-md-3.col-lg-3
+											.thumbnail
+												button.btn.btn-block.btn-warning(data-toggle="modal" data-target="#replacementModal")
+													strong #{jersey}
+						.panel.panel-default
+							.panel-heading
+								p.panel-title {{_ "onTheBench"}}
+							.panel-body
+								#opponentOnTheBench.row
+									each playersOnTheBench
+										.col-xs-6.col-sm-4.col-md-3.col-lg-3
+											.thumbnail
+												button.btn.btn-block.btn-warning(data-toggle="modal" data-target="#replacementModal")
+													strong #{jersey}
 	+replacementModal

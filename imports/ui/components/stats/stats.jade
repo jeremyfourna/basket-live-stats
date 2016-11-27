@@ -1,43 +1,46 @@
 template(name="stats")
-	.row
-		.col-xs-12.col-sm-12.col-md-6.col-lg-6
-			p.lead #{yourClub}
-				span.label.label-default #{gameData.stats.yourClub.score} - #{gameData.stats.opponent.score}
-				| #{opponent}
-		.col-xs-12.col-sm-12.col-md-6.col-lg-6
-			+stateOfTheGame(gameState=gameState gameId=gameId)
-	.row
-		.col-xs-12.col-sm-12.col-md-6.col-lg-6
-			.panel.panel-default
-				.panel-heading
-					p.panel-title {{_ "yourClub"}} : #{yourClub}
-				.panel-body
-					p.bg-info {{_ "explanationHowToAddAStat"}}
-					.yourClub.row.playerRow
-						each homePlayersInGame
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								.thumbnail
-									button.btn.btn-block.btn-info(data-toggle="modal" data-target="#playerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}")
-										strong #{jersey}
-						else
-							button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
-				.panel-footer
-					button.doReplacement.btn.btn-primary(type="button") {{_ "makeAReplacement"}}
-		.col-xs-12.col-sm-12.col-md-6.col-lg-6
-			.panel.panel-default
-				.panel-heading
-					p.panel-title {{_ "opponent"}} : #{opponent}
-				.panel-body
-					p.bg-info {{_ "explanationHowToAddAStat"}}
-					.opponent.row.playerRow
-						each awayPlayersInGame
-							.col-xs-4.col-sm-3.col-md-2.col-lg-2
-								.thumbnail
-									button.btn.btn-block.btn-warning(data-toggle="modal" data-target="#opponentPlayerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}" data-playerid="#{_id}")
-										strong #{jersey}
-						else
-							button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
-				.panel-footer
-					button.doReplacement.btn.btn-primary(type="button") {{_ "makeAReplacement"}}
-	+playerModal
-	+opponentPlayerModal
+	if Template.subscriptionsReady
+		.row
+			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				p.lead #{yourClub}
+					span.label.label-default #{yourClubScore} - #{opponentScore}
+					| #{opponent}
+			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				+stateOfTheGame(gameState=gameState gameId=gameId)
+		.row
+			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				.panel.panel-default
+					.panel-heading
+						p.panel-title {{_ "yourClub"}} : #{yourClub}
+					.panel-body
+						p.bg-info {{_ "explanationHowToAddAStat"}}
+						.yourClub.row.playerRow
+							each yourClubPlayersInGame
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.btn.btn-block.btn-info(data-toggle="modal" data-target="#playerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}")
+											strong #{jersey}
+							else
+								button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
+					.panel-footer
+						button.doReplacement.btn.btn-primary(type="button") {{_ "makeAReplacement"}}
+			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				.panel.panel-default
+					.panel-heading
+						p.panel-title {{_ "opponent"}} : #{opponent}
+					.panel-body
+						p.bg-info {{_ "explanationHowToAddAStat"}}
+						.opponent.row.playerRow
+							each opponentPlayersInGame
+								.col-xs-4.col-sm-3.col-md-2.col-lg-2
+									.thumbnail
+										button.btn.btn-block.btn-warning(data-toggle="modal" data-target="#opponentPlayerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}" data-playerid="#{_id}")
+											strong #{jersey}
+							else
+								button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
+					.panel-footer
+						button.doReplacement.btn.btn-primary(type="button") {{_ "makeAReplacement"}}
+		+playerModal
+		+opponentPlayerModal
+	else
+		+spinner

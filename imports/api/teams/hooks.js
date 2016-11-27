@@ -6,8 +6,10 @@ MethodHooks.after('addTeam', (options) => {
 		return;
 	} else if (options.result) {
 		const teamId = options.result;
-		Meteor.call('addPlayers', teamId);
-		Meteor.call('addCoachs', teamId);
+		const gameId = options.arguments[0];
+
+		Meteor.call('addPlayers', teamId, gameId);
+		Meteor.call('addCoachs', teamId, gameId);
 
 		return options.result;
 	}
