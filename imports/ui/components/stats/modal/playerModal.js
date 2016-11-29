@@ -1,8 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { TAPi18n } from 'meteor/tap:i18n';
+import { Bert } from 'meteor/themeteorchef:bert';
+import { lodash } from 'meteor/stevezhu:lodash';
 
-import { Games } from '../../../../api/games/schema.js';
 import { Players } from '../../../../api/players/schema.js';
 
 import './playerModal.jade';
@@ -16,8 +17,8 @@ Template.playerModal.events({
 		let lastName = button.data('lastname') || TAPi18n.__('lastName');
 		let whoIsDoingThisAction = TAPi18n.__('whoIsDoingThisAction');
 		let num = TAPi18n.__('num');
-		$('#playerModal').data('playerId', playerId);
-		$('.modal-title').text(`${whoIsDoingThisAction} ${num}${jersey} : ${firstName} ${lastName} `);
+		$('#playerModal').data('playerid', playerId);
+		$('.modal-title').text(`${whoIsDoingThisAction} ${num}${jersey} : ${firstName} ${lastName}`);
 	},
 	'click #correctionAction': function() {
 		$('.buttonForAction').prepend('<span class=\'badge actionBadge\'>-1</span> ').addClass('cancelAction');
@@ -39,165 +40,109 @@ Template.playerModal.events({
 		$('.buttonForAction').removeClass('cancelAction');
 	},
 	// Positive action
-	'click .onePoint': function() {
-		let gameData = Games.findOne({
-			_id: Router.current().params._id
-		}, {
-			fields: {
-				'stats.evolution': 1,
-				'stats.yourClub.score': 1,
-				'stats.opponent.score': 1
-			}
-		});
-		let playerData = this;
-		let evolScore = {
-			gameIndex: gameData.stats.evolution.length,
-			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score + 1
-		};
-		if ($('#' + playerData._id).find('.onePoint').hasClass('cancelAction')) {
-			Meteor.call('correctionOnePointTeamYourClub', gameData._id, function(error) {
+	'click #onePoint': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
+		console.log(gameId, teamId, playerId);
+
+		if (isACancelAction) {
+			return Meteor.call('correctOnePointInForPlayer', gameId, teamId, playerId, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('correctionOnePoint', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			Meteor.call('onePointTeamYourClub', gameData._id, evolScore, function(error) {
+			const evolScore = {
+				gameIndex: this.gameData.evolution.length,
+				scoreGap: lodash.last(this.gameData.evolution)[1] - 1
+			};
+			return Meteor.call('onePointInForPlayer', gameId, teamId, playerId, evolScore, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('onePoint', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}
 	},
-	'click .twoPoints': function() {
-		var gameData = Games.findOne({
-			_id: Router.current().params._id
-		}, {
-			fields: {
-				'stats.evolution': 1,
-				'stats.yourClub.score': 1,
-				'stats.opponent.score': 1
-			}
-		});
-		var playerData = this;
-		var evolScore = {
-			gameIndex: gameData.stats.evolution.length,
-			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score + 2
-		};
-		if ($('#' + playerData._id).find('.twoPoints').hasClass('cancelAction')) {
-			Meteor.call('correctionTwoPointsTeamYourClub', gameData._id, function(error) {
+	'click #twoPoints': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
+		if (isACancelAction) {
+			return Meteor.call('correctTwoPointsInForPlayer', gameId, teamId, playerId, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('correctionTwoPoints', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			Meteor.call('twoPointsTeamYourClub', gameData._id, evolScore, function(error) {
+			const evolScore = {
+				gameIndex: this.gameData.evolution.length,
+				scoreGap: lodash.last(this.gameData.evolution)[1] - 2
+			};
+			return Meteor.call('twoPointsInForPlayer', gameId, teamId, playerId, evolScore, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('twoPoints', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}
 	},
-	'click .threePoints': function() {
-		var gameData = Games.findOne({
-			_id: Router.current().params._id
-		}, {
-			fields: {
-				'stats.evolution': 1,
-				'stats.yourClub.score': 1,
-				'stats.opponent.score': 1
-			}
-		});
-		var playerData = this;
-		var evolScore = {
-			gameIndex: gameData.stats.evolution.length,
-			scoreGap: gameData.stats.yourClub.score - gameData.stats.opponent.score + 3
-		};
-		if ($('#' + playerData._id).find('.threePoints').hasClass('cancelAction')) {
-			Meteor.call('correctionThreePointsTeamYourClub', gameData._id, function(error) {
+	'click #threePoints': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
+		if (isACancelAction) {
+			return Meteor.call('correctThreePointsInForPlayer', gameId, teamId, playerId, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('correctionThreePoints', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			Meteor.call('threePointsTeamYourClub', gameData._id, evolScore, function(error) {
+			const evolScore = {
+				gameIndex: this.gameData.evolution.length,
+				scoreGap: lodash.last(this.gameData.evolution)[1] - 3
+			};
+			return Meteor.call('threePointsInForPlayer', gameId, teamId, playerId, evolScore, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('threePoints', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}
 	},
-	'click .assist': function() {
-		var gameData = Games.findOne({
-			_id: Router.current().params._id
-		}, {
-			fields: {
-				_id: 1
-			}
-		});
-		var playerData = this;
-		if ($('#' + playerData._id).find('.assist').hasClass('cancelAction')) {
-			Meteor.call('correctionAssistsTeamYourClub', gameData._id, function(error) {
+	'click #assist': function(event) {
+		event.preventDefault();
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#assist').hasClass('cancelAction');
+
+		if (isACancelAction) {
+			return Meteor.call('correctAssistsInForPlayer', teamId, playerId, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('correctionAssists', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			Meteor.call('assistsTeamYourClub', gameData._id, function(error) {
+			return Meteor.call('assistsInForPlayer', teamId, playerId, (error) => {
 				if (error) {
-					return throwError(error.message);
-				} else {
-					Meteor.call('assists', playerData._id, function(error) {
-						if (error) {
-							return throwError(error.message);
-						}
-					});
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}
 	},
-	'click .offReb': function() {
+	'click #offReb': function(event) {
+		event.preventDefault();
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#offReb').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -207,11 +152,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.offReb').hasClass('cancelAction')) {
-			Meteor.call('correctionOffRebTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctOffRebTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionOffReb', playerData._id, function(error) {
+					Meteor.call('correctOffReb', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -232,7 +177,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .defReb': function() {
+	'click #defReb': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -242,11 +193,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.defReb').hasClass('cancelAction')) {
-			Meteor.call('correctionDefRebTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctDefRebTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionDefReb', playerData._id, function(error) {
+					Meteor.call('correctDefReb', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -267,7 +218,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .offProvFouls': function() {
+	'click #offProvFouls': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -277,11 +234,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.offProvFouls').hasClass('cancelAction')) {
-			Meteor.call('correctionOffProvFoulsTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctOffProvFoulsTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionOffProvFouls', playerData._id, function(error) {
+					Meteor.call('correctOffProvFouls', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -302,7 +259,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .steal': function() {
+	'click #steal': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -312,11 +275,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.steal').hasClass('cancelAction')) {
-			Meteor.call('correctionStealsTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctStealsTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionSteals', playerData._id, function(error) {
+					Meteor.call('correctSteals', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -337,7 +300,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .block': function() {
+	'click #block': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -347,11 +316,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.block').hasClass('cancelAction')) {
-			Meteor.call('correctionBlocksTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctBlocksTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionBlocks', playerData._id, function(error) {
+					Meteor.call('correctBlocks', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -372,7 +341,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .defProvFouls': function() {
+	'click #defProvFouls': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -382,11 +357,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.defProvFouls').hasClass('cancelAction')) {
-			Meteor.call('correctionDefProvFoulsTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctDefProvFoulsTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionDefProvFouls', playerData._id, function(error) {
+					Meteor.call('correctDefProvFouls', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -408,7 +383,13 @@ Template.playerModal.events({
 		}
 	},
 	// Negative action
-	'click .onePointMiss': function() {
+	'click #onePointMiss': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -418,11 +399,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.onePointMiss').hasClass('cancelAction')) {
-			Meteor.call('correctionOnePointMissTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctOnePointMissTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionOnePointMiss', playerData._id, function(error) {
+					Meteor.call('correctOnePointMiss', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -443,7 +424,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .twoPointsMiss': function() {
+	'click #twoPointsMiss': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -453,11 +440,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.twoPointsMiss').hasClass('cancelAction')) {
-			Meteor.call('correctionTwoPointsMissTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctTwoPointsMissTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionTwoPointsMiss', playerData._id, function(error) {
+					Meteor.call('correctTwoPointsMiss', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -478,7 +465,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .threePointsMiss': function() {
+	'click #threePointsMiss': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -488,11 +481,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.threePointsMiss').hasClass('cancelAction')) {
-			Meteor.call('correctionThreePointsMissTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctThreePointsMissTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionThreePointsMiss', playerData._id, function(error) {
+					Meteor.call('correctThreePointsMiss', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -513,7 +506,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .turnovers': function() {
+	'click #turnovers': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -523,11 +522,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.turnovers').hasClass('cancelAction')) {
-			Meteor.call('correctionTurnoversTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctTurnoversTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionTurnovers', playerData._id, function(error) {
+					Meteor.call('correctTurnovers', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -548,7 +547,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .offFouls': function() {
+	'click #offFouls': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -558,11 +563,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.offFouls').hasClass('cancelAction')) {
-			Meteor.call('correctionOffFoulsTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctOffFoulsTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionOffFouls', playerData._id, function(error) {
+					Meteor.call('correctOffFouls', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -583,7 +588,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .defFouls': function() {
+	'click #defFouls': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -593,11 +604,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.defFouls').hasClass('cancelAction')) {
-			Meteor.call('correctionDefFoulsTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctDefFoulsTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionDefFouls', playerData._id, function(error) {
+					Meteor.call('correctDefFouls', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -618,7 +629,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .defFoulsOneFT': function() {
+	'click #defFoulsOneFT': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -628,11 +645,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.defFoulsOneFT').hasClass('cancelAction')) {
-			Meteor.call('correctionDefFoulsOneFTTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctDefFoulsOneFTTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionDefFoulsOneFT', playerData._id, function(error) {
+					Meteor.call('correctDefFoulsOneFT', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -653,7 +670,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .defFoulsTwoFT': function() {
+	'click #defFoulsTwoFT': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -663,11 +686,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.defFoulsTwoFT').hasClass('cancelAction')) {
-			Meteor.call('correctionDefFoulsTwoFTTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctDefFoulsTwoFTTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionDefFoulsTwoFT', playerData._id, function(error) {
+					Meteor.call('correctDefFoulsTwoFT', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -688,7 +711,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .defFoulsThreeFT': function() {
+	'click #defFoulsThreeFT': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -698,11 +727,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.defFoulsThreeFT').hasClass('cancelAction')) {
-			Meteor.call('correctionDefFoulsThreeFTTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctDefFoulsThreeFTTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionDefFoulsThreeFT', playerData._id, function(error) {
+					Meteor.call('correctDefFoulsThreeFT', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -723,7 +752,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .techFouls': function() {
+	'click #techFouls': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -733,11 +768,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.techFouls').hasClass('cancelAction')) {
-			Meteor.call('correctionTechFoulsTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctTechFoulsTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionTechFouls', playerData._id, function(error) {
+					Meteor.call('correctTechFouls', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -758,7 +793,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .antiSportFouls': function() {
+	'click #antiSportFouls': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -768,11 +809,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.antiSportFouls').hasClass('cancelAction')) {
-			Meteor.call('correctionAntiSportFoulsTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctAntiSportFoulsTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionAntiSportFouls', playerData._id, function(error) {
+					Meteor.call('correctAntiSportFouls', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}
@@ -793,7 +834,13 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click .disqualifyingFouls': function() {
+	'click #disqualifyingFouls': function(event) {
+		event.preventDefault();
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+		const playerId = $('#playerModal').data('playerid');
+		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
+
 		var gameData = Games.findOne({
 			_id: Router.current().params._id
 		}, {
@@ -803,11 +850,11 @@ Template.playerModal.events({
 		});
 		var playerData = this;
 		if ($('#' + playerData._id).find('.disqualifyingFouls').hasClass('cancelAction')) {
-			Meteor.call('correctionDisqualifyingFoulsTeamYourClub', gameData._id, function(error) {
+			Meteor.call('correctDisqualifyingFoulsTeamYourClub', gameData._id, function(error) {
 				if (error) {
 					return throwError(error.message);
 				} else {
-					Meteor.call('correctionDisqualifyingFouls', playerData._id, function(error) {
+					Meteor.call('correctDisqualifyingFouls', playerData._id, function(error) {
 						if (error) {
 							return throwError(error.message);
 						}

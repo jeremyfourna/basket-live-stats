@@ -119,357 +119,357 @@ Meteor.methods({
 			}
 		});
 	},
-	/*
-	assists(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+	assistsInForPlayer(teamId, playerId) {
+		check(teamId, String);
+		check(playerId, String);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.assists': 1,
-				'stats.evaluation': 1
-			}
-		});
-	},
-	correctionAssists(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.assists': -1,
-				'stats.evaluation': -1
-			}
-		});
-	},
-	blocks(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.blocks': 1,
-				'stats.evaluation': 1
-			}
-		});
-	},
-	correctionBlocks(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.blocks': -1,
-				'stats.evaluation': -1
-			}
-		});
-	},
-	endedGamesPlayers(data) {
-		let methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ gameId: data.gameId }, {
-			$set: {
-				inPlay: false
-			},
-			$push: {
-				gameTime: {
-					minutes: 0,
-					secondes: 0,
-					way: 'out',
-					gameState: 'gameEnded'
-				}
-			}
+		return Players.update({
+			_id: playerId
 		}, {
-			multi: true
-		});
-	},
-	offProvFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
 			$inc: {
-				'stats.fouls.provFouls.offFouls': 1,
-				'stats.evaluation': 1
+				assists: 1,
+				evaluation: 1
 			}
 		});
 	},
-	correctionOffProvFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+	correctAssistsInForPlayer(teamId, playerId) {
+		check(teamId, String);
+		check(playerId, String);
 
-		return Players.update({ _id: data.playerId }, {
+		return Players.update({
+			_id: playerId
+		}, {
 			$inc: {
-				'stats.fouls.provFouls.offFouls': -1,
-				'stats.evaluation': -1
+				assists: -1,
+				evaluation: -1
 			}
 		});
 	},
-	defProvFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+	/*
+		blocks(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.provFouls.defFouls': 1,
-				'stats.evaluation': 1
-			}
-		});
-	},
-	correctionDefProvFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.blocks': 1,
+					'stats.evaluation': 1
+				}
+			});
+		},
+		correctBlocks(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.provFouls.defFouls': -1,
-				'stats.evaluation': -1
-			}
-		});
-	},
-	offFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.blocks': -1,
+					'stats.evaluation': -1
+				}
+			});
+		},
+		endedGamesPlayers(data) {
+			let methodSchema = new SimpleSchema({
+				gameId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.offFouls': 1,
-				'stats.fouls.totalFouls': 1,
-				'stats.evaluation': -1
-			}
-		});
-	},
-	correctionOffFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ gameId: data.gameId }, {
+				$set: {
+					inPlay: false
+				},
+				$push: {
+					gameTime: {
+						minutes: 0,
+						secondes: 0,
+						way: 'out',
+						gameState: 'gameEnded'
+					}
+				}
+			}, {
+				multi: true
+			});
+		},
+		offProvFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.offFouls': -1,
-				'stats.fouls.totalFouls': -1,
-				'stats.evaluation': 1
-			}
-		});
-	},
-	defFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.provFouls.offFouls': 1,
+					'stats.evaluation': 1
+				}
+			});
+		},
+		correctOffProvFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.defFouls': 1,
-				'stats.fouls.totalFouls': 1,
-				'stats.evaluation': -1
-			}
-		});
-	},
-	correctionDefFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.provFouls.offFouls': -1,
+					'stats.evaluation': -1
+				}
+			});
+		},
+		defProvFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.defFouls': -1,
-				'stats.fouls.totalFouls': -1,
-				'stats.evaluation': 1
-			}
-		});
-	},
-	defFoulsOneFT(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.provFouls.defFouls': 1,
+					'stats.evaluation': 1
+				}
+			});
+		},
+		correctDefProvFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.foul1FT': 1,
-				'stats.fouls.totalFouls': 1,
-				'stats.evaluation': -1
-			}
-		});
-	},
-	correctionDefFoulsOneFT(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.provFouls.defFouls': -1,
+					'stats.evaluation': -1
+				}
+			});
+		},
+		offFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.foul1FT': -1,
-				'stats.fouls.totalFouls': -1,
-				'stats.evaluation': 1
-			}
-		});
-	},
-	defFoulsTwoFT(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.offFouls': 1,
+					'stats.fouls.totalFouls': 1,
+					'stats.evaluation': -1
+				}
+			});
+		},
+		correctOffFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.foul2FT': 1,
-				'stats.fouls.totalFouls': 1,
-				'stats.evaluation': -1
-			}
-		});
-	},
-	correctionDefFoulsTwoFT(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.offFouls': -1,
+					'stats.fouls.totalFouls': -1,
+					'stats.evaluation': 1
+				}
+			});
+		},
+		defFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.foul2FT': -1,
-				'stats.fouls.totalFouls': -1,
-				'stats.evaluation': 1
-			}
-		});
-	},
-	defFoulsThreeFT(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.defFouls': 1,
+					'stats.fouls.totalFouls': 1,
+					'stats.evaluation': -1
+				}
+			});
+		},
+		correctDefFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.foul3FT': 1,
-				'stats.fouls.totalFouls': 1,
-				'stats.evaluation': -1
-			}
-		});
-	},
-	correctionDefFoulsThreeFT(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.defFouls': -1,
+					'stats.fouls.totalFouls': -1,
+					'stats.evaluation': 1
+				}
+			});
+		},
+		defFoulsOneFT(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.foul3FT': -1,
-				'stats.fouls.totalFouls': -1,
-				'stats.evaluation': 1
-			}
-		});
-	},
-	techFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.foul1FT': 1,
+					'stats.fouls.totalFouls': 1,
+					'stats.evaluation': -1
+				}
+			});
+		},
+		correctDefFoulsOneFT(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.techFouls': 1,
-				'stats.fouls.totalFouls': 1,
-				'stats.evaluation': -1
-			}
-		});
-	},
-	correctionTechFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.foul1FT': -1,
+					'stats.fouls.totalFouls': -1,
+					'stats.evaluation': 1
+				}
+			});
+		},
+		defFoulsTwoFT(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.techFouls': -1,
-				'stats.fouls.totalFouls': -1,
-				'stats.evaluation': 1
-			}
-		});
-	},
-	antiSportFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.foul2FT': 1,
+					'stats.fouls.totalFouls': 1,
+					'stats.evaluation': -1
+				}
+			});
+		},
+		correctDefFoulsTwoFT(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.antiSportFouls': 1,
-				'stats.fouls.totalFouls': 1,
-				'stats.evaluation': -1
-			}
-		});
-	},
-	correctionAntiSportFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.foul2FT': -1,
+					'stats.fouls.totalFouls': -1,
+					'stats.evaluation': 1
+				}
+			});
+		},
+		defFoulsThreeFT(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.antiSportFouls': -1,
-				'stats.fouls.totalFouls': -1,
-				'stats.evaluation': 1
-			}
-		});
-	},
-	disqualifyingFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.foul3FT': 1,
+					'stats.fouls.totalFouls': 1,
+					'stats.evaluation': -1
+				}
+			});
+		},
+		correctDefFoulsThreeFT(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.disqualifyingFouls': 1,
-				'stats.fouls.totalFouls': 1,
-				'stats.evaluation': -1
-			}
-		});
-	},
-	correctionDisqualifyingFouls(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.foul3FT': -1,
+					'stats.fouls.totalFouls': -1,
+					'stats.evaluation': 1
+				}
+			});
+		},
+		techFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.fouls.disqualifyingFouls': -1,
-				'stats.fouls.totalFouls': -1,
-				'stats.evaluation': 1
-			}
-		});
-	},*/
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.techFouls': 1,
+					'stats.fouls.totalFouls': 1,
+					'stats.evaluation': -1
+				}
+			});
+		},
+		correctTechFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
+
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.techFouls': -1,
+					'stats.fouls.totalFouls': -1,
+					'stats.evaluation': 1
+				}
+			});
+		},
+		antiSportFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
+
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.antiSportFouls': 1,
+					'stats.fouls.totalFouls': 1,
+					'stats.evaluation': -1
+				}
+			});
+		},
+		correctAntiSportFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
+
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.antiSportFouls': -1,
+					'stats.fouls.totalFouls': -1,
+					'stats.evaluation': 1
+				}
+			});
+		},
+		disqualifyingFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
+
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.disqualifyingFouls': 1,
+					'stats.fouls.totalFouls': 1,
+					'stats.evaluation': -1
+				}
+			});
+		},
+		correctDisqualifyingFouls(data) {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
+
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.fouls.disqualifyingFouls': -1,
+					'stats.fouls.totalFouls': -1,
+					'stats.evaluation': 1
+				}
+			});
+		},*/
 	onePointInForPlayer(gameId, teamId, playerId, evolScore) {
 		const evolScoreSchema = new SimpleSchema({
 			gameIndex: { type: Number, min: 0 },
@@ -519,7 +519,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctionOnePointMiss(data) {
+		correctOnePointMiss(data) {
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -531,214 +531,232 @@ Meteor.methods({
 					'stats.evaluation': 1
 				}
 			});
-		},
-		twoPoints(playerId) {
-			check(playerId, String);
+		},*/
+	twoPointsInForPlayer(gameId, teamId, playerId, evolScore) {
+		const evolScoreSchema = new SimpleSchema({
+			gameIndex: { type: Number, min: 0 },
+			scoreGap: { type: Number }
+		});
+		check(gameId, String);
+		check(teamId, String);
+		check(playerId, String);
+		check(evolScore, evolScoreSchema);
 
-			return Players.update({
-				_id: playerId
-			}, {
-				$inc: {
-					'stats.points.twoPointsIn': 1,
-					'stats.points.totalPoints': 2,
-					'stats.evaluation': 2
-				}
-			});
-		},
-		correctionTwoPoints(playerId) {
-			check(playerId, String);
+		return Players.update({
+			_id: playerId
+		}, {
+			$inc: {
+				'points.twoPointsIn': 1,
+				'points.totalPoints': 2,
+				evaluation: 2
+			}
+		});
+	},
+	correctTwoPointsInForPlayer(gameId, teamId, playerId) {
+		check(gameId, String);
+		check(teamId, String);
+		check(playerId, String);
 
-			return Players.update({
-				_id: playerId
-			}, {
-				$inc: {
-					'stats.points.twoPointsIn': -1,
-					'stats.points.totalPoints': -2,
-					'stats.evaluation': -2
-				}
-			});
-		},
-		twoPointsMiss(data) {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
+		return Players.update({
+			_id: playerId
+		}, {
+			$inc: {
+				'points.twoPointsIn': -1,
+				'points.totalPoints': -2,
+				evaluation: -2
+			}
+		});
+	},
+	/*twoPointsMiss(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String }
+		});
+		check(data, methodSchema);
 
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.points.twoPointsOut': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		correctionTwoPointsMiss(data) {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
+		return Players.update({ _id: data.playerId }, {
+			$inc: {
+				'stats.points.twoPointsOut': 1,
+				'stats.evaluation': -1
+			}
+		});
+	},
+	correctTwoPointsMiss(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String }
+		});
+		check(data, methodSchema);
 
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.points.twoPointsOut': -1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		threePoints(playerId) {
-			check(playerId, String);
+		return Players.update({ _id: data.playerId }, {
+			$inc: {
+				'stats.points.twoPointsOut': -1,
+				'stats.evaluation': 1
+			}
+		});
+	},*/
+	threePointsInForPlayer(gameId, teamId, playerId, evolScore) {
+		const evolScoreSchema = new SimpleSchema({
+			gameIndex: { type: Number, min: 0 },
+			scoreGap: { type: Number }
+		});
+		check(gameId, String);
+		check(teamId, String);
+		check(playerId, String);
+		check(evolScore, evolScoreSchema);
 
-			return Players.update({
-				_id: playerId
-			}, {
-				$inc: {
-					'stats.points.threePointsIn': 1,
-					'stats.points.totalPoints': 3,
-					'stats.evaluation': 3
-				}
-			});
-		},
-		correctionThreePoints(playerId) {
-			check(playerId, String);
+		return Players.update({
+			_id: playerId
+		}, {
+			$inc: {
+				'points.threePointsIn': 1,
+				'points.totalPoints': 3,
+				evaluation: 3
+			}
+		});
+	},
+	correctThreePointsInForPlayer(gameId, teamId, playerId) {
+		check(gameId, String);
+		check(teamId, String);
+		check(playerId, String);
 
-			return Players.update({
-				_id: playerId
-			}, {
-				$inc: {
-					'stats.points.threePointsIn': -1,
-					'stats.points.totalPoints': -3,
-					'stats.evaluation': -3
-				}
-			});
-		},
-		threePointsMiss(data) {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
+		return Players.update({
+			_id: playerId
+		}, {
+			$inc: {
+				'points.threePointsIn': -1,
+				'points.totalPoints': -3,
+				evaluation: -3
+			}
+		});
+	},
+	/*threePointsMiss(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String }
+		});
+		check(data, methodSchema);
 
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.points.threePointsOut': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		correctionThreePointsMiss(data) {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
+		return Players.update({ _id: data.playerId }, {
+			$inc: {
+				'stats.points.threePointsOut': 1,
+				'stats.evaluation': -1
+			}
+		});
+	},
+	correctThreePointsMiss(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String }
+		});
+		check(data, methodSchema);
 
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.points.threePointsOut': -1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		offReb(data) {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
+		return Players.update({ _id: data.playerId }, {
+			$inc: {
+				'stats.points.threePointsOut': -1,
+				'stats.evaluation': 1
+			}
+		});
+	},
+	offReb(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String }
+		});
+		check(data, methodSchema);
 
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.rebounds.offReb': 1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		defReb(data) {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
+		return Players.update({ _id: data.playerId }, {
+			$inc: {
+				'stats.rebounds.offReb': 1,
+				'stats.evaluation': 1
+			}
+		});
+	},
+	defReb(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String }
+		});
+		check(data, methodSchema);
 
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.rebounds.defReb': 1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		correctionOffReb(data) {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
+		return Players.update({ _id: data.playerId }, {
+			$inc: {
+				'stats.rebounds.defReb': 1,
+				'stats.evaluation': 1
+			}
+		});
+	},
+	correctOffReb(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String }
+		});
+		check(data, methodSchema);
 
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.rebounds.offReb': -1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		correctionDefReb(data) {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
+		return Players.update({ _id: data.playerId }, {
+			$inc: {
+				'stats.rebounds.offReb': -1,
+				'stats.evaluation': -1
+			}
+		});
+	},
+	correctDefReb(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String }
+		});
+		check(data, methodSchema);
 
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.rebounds.defReb': -1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		steals(data) {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
+		return Players.update({ _id: data.playerId }, {
+			$inc: {
+				'stats.rebounds.defReb': -1,
+				'stats.evaluation': -1
+			}
+		});
+	},
+	steals(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String }
+		});
+		check(data, methodSchema);
 
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.steals': 1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		correctionSteals(data) {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
+		return Players.update({ _id: data.playerId }, {
+			$inc: {
+				'stats.steals': 1,
+				'stats.evaluation': 1
+			}
+		});
+	},
+	correctSteals(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String }
+		});
+		check(data, methodSchema);
 
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.steals': -1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		turnovers(data) {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
+		return Players.update({ _id: data.playerId }, {
+			$inc: {
+				'stats.steals': -1,
+				'stats.evaluation': -1
+			}
+		});
+	},
+	turnovers(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String }
+		});
+		check(data, methodSchema);
 
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.turnovers': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		correctionTurnovers(data) {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
+		return Players.update({ _id: data.playerId }, {
+			$inc: {
+				'stats.turnovers': 1,
+				'stats.evaluation': -1
+			}
+		});
+	},
+	correctTurnovers(data) {
+		let methodSchema = new SimpleSchema({
+			playerId: { type: String }
+		});
+		check(data, methodSchema);
 
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.turnovers': -1,
-					'stats.evaluation': 1
-				}
-			});
-		}
-		*/
+		return Players.update({ _id: data.playerId }, {
+			$inc: {
+				'stats.turnovers': -1,
+				'stats.evaluation': 1
+			}
+		});
+	}
+	*/
 });

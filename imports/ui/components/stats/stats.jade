@@ -18,7 +18,7 @@ template(name="stats")
 							each yourClubPlayersInGame
 								.col-xs-4.col-sm-3.col-md-2.col-lg-2
 									.thumbnail
-										button.btn.btn-block.btn-info(data-toggle="modal" data-target="#playerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}")
+										button.btn.btn-block.btn-info(data-toggle="modal" data-target="#playerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}" data-playerid="#{_id}")
 											strong #{jersey}
 							else
 								button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
