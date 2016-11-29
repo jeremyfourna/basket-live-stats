@@ -16,8 +16,6 @@ Template.aGame.onCreated(function() {
 		const gameId = Router.current().params._id;
 
 		this.subscribe('aGame', gameId);
-
-		this.subscribe('coachsForAGame', gameId);
 	});
 });
 

@@ -52,6 +52,7 @@
 	"lastName": "Nom",
 	"firstName": "Prénom",
 	"playerDefinition": "Définis les joueurs de ton club",
+	"team": "Equipe",
 	"teamDefinition": "Définis les équipes...",
 	"yourClub": "Votre club",
 	"opponent": "Adversaire",

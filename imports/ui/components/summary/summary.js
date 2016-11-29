@@ -1,138 +1,174 @@
 import { Template } from 'meteor/templating';
 import { Router } from 'meteor/iron:router';
-import 'meteor/peernohell:c3';
+import { TAPi18n } from 'meteor/tap:i18n';
 import 'meteor/sacha:spin';
 
-import { Games } from '../../../api/games/schema.js';
+import { Teams } from '../../../api/teams/schema.js';
 import { Players } from '../../../api/players/schema.js';
 
 import './summary.jade';
+import '../scoreGapChart/scoreGapChart.js';
 
 Template.summary.onCreated(function() {
 	this.autorun(() => {
-		this.subscribe('oneGame', Router.current().params._id);
-		this.subscribe('playersForAGame', Router.current().params._id);
-		this.subscribe('coachsForAGame', Router.current().params._id);
+		const gameId = this.data.gameData._id;
+
+		this.subscribe('teamsForAGame', gameId);
+		this.subscribe('playersForAGame', gameId);
 	});
 });
 
 Template.summary.helpers({
-	gameData() {
-		return Games.findOne(Router.current().params._id);
+	yourClub() {
+		return this.gameData.yourClub || TAPi18n.__('homeTeam');
 	},
-	playerDataYourClub() {
+	opponent() {
+		return this.gameData.opponent || TAPi18n.__('awayTeam');
+	},
+	evolution() {
+		return this.gameData.evolution;
+	},
+	yourClubScore() {
+		const teamId = this.gameData.yourClubTeamId;
+
+		return Teams.findOne({
+			_id: teamId,
+		}, {
+			fields: {
+				score: 1
+			}
+		}).score;
+	},
+	opponentScore() {
+		const teamId = this.gameData.opponentTeamId;
+
+		return Teams.findOne({
+			_id: teamId,
+		}, {
+			fields: {
+				score: 1
+			}
+		}).score;
+	},
+	yourClubPlayersInGame() {
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.yourClubTeamId;
+
 		return Players.find({
-			gameId: Router.current().params._id,
-			teamId: 'yourClub'
+			gameId,
+			teamId
 		}, {
 			sort: {
 				jersey: 1
 			}
-		});
+		}).fetch();
 	},
-	playerDataOpponent() {
+	opponentPlayersInGame() {
+		const gameId = this.gameData._id;
+		const teamId = this.gameData.opponentTeamId;
+
 		return Players.find({
-			gameId: Router.current().params._id,
-			teamId: 'opponent'
+			gameId,
+			teamId
 		}, {
 			sort: {
 				jersey: 1
 			}
-		});
+		}).fetch();
 	},
 	notStarted() {
-		if (this.gameState === 'notStarted') {
+		if (this.gameData.gameState === 'notStarted') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	q1Running() {
-		if (this.gameState === 'q1Running') {
+		if (this.gameData.gameState === 'q1Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	q1Ended() {
-		if (this.gameState === 'q1Ended') {
+		if (this.gameData.gameState === 'q1Ended') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	q2Running() {
-		if (this.gameState === 'q2Running') {
+		if (this.gameData.gameState === 'q2Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	halfTime() {
-		if (this.gameState === 'halfTime') {
+		if (this.gameData.gameState === 'halfTime') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	q3Running() {
-		if (this.gameState === 'q3Running') {
+		if (this.gameData.gameState === 'q3Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	q3Ended() {
-		if (this.gameState === 'q3Ended') {
+		if (this.gameData.gameState === 'q3Ended') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	q4Running() {
-		if (this.gameState === 'q4Running') {
+		if (this.gameData.gameState === 'q4Running') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	gameEnded() {
-		if (this.gameState === 'gameEnded') {
+		if (this.gameData.gameState === 'gameEnded') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	oT1() {
-		if (this.gameState === 'oT1') {
+		if (this.gameData.gameState === 'oT1') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	oT2() {
-		if (this.gameState === 'oT2') {
+		if (this.gameData.gameState === 'oT2') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	oT3() {
-		if (this.gameState === 'oT3') {
+		if (this.gameData.gameState === 'oT3') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	oT4() {
-		if (this.gameState === 'oT4') {
+		if (this.gameData.gameState === 'oT4') {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	oT5() {
-		if (this.gameState === 'oT5') {
+		if (this.gameData.gameState === 'oT5') {
 			return true;
 		} else {
 			return false;
@@ -300,54 +336,4 @@ Template.summary.helpers({
 			return playerTimeMinutes + ':' + playerTimeSecondes;
 		}
 	}
-});
-
-
-Template.summary.onRendered(function() {
-	let chart = c3.generate({
-		size: {
-			height: 240
-		},
-		bindto: this.find('#gameGapChart'),
-		padding: {
-			right: 30
-		},
-		data: {
-			xs: { 'Ecart du match': 'x' },
-			columns: [
-				['Ecart du match']
-			],
-			axes: { 'Ecart du match': 'y2' }
-		},
-		axis: {
-			x: { show: false },
-			y: { show: false },
-			y2: { show: true }
-		},
-		tooltip: {
-			format: {
-				title(x) {
-					return 'Ecart du match';
-				}
-			}
-		}
-	});
-
-	this.autorun(function(tracker) {
-		let gameData = Games.find({ _id: Router.current().params._id }, {
-			fields: { 'stats.evolution': 1 }
-		}).fetch();
-		let xArray = ['x'];
-		let yArray = ['Ecart du match'];
-		for (let i = 0; i < gameData[0].stats.evolution.length; i++) {
-			xArray.push(gameData[0].stats.evolution[i][0]);
-			yArray.push(gameData[0].stats.evolution[i][1]);
-		}
-		chart.load({
-			columns: [
-				xArray,
-				yArray, []
-			]
-		});
-	});
 });

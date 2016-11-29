@@ -1,139 +1,146 @@
 template(name='summary')
-	.panel.panel-default
-		.panel-heading
-			if Template.subscriptionsReady
-				with gameData
-					h4 #{gameInfos.yourClub} : #{stats.yourClub.score} - #{stats.opponent.score} : #{gameInfos.opponent}
-					if notStarted
-						p {{_ "stateOfTheGame"}} : {{_ "notStarted"}}
-					if q1Running
-						p {{_ "stateOfTheGame"}} : {{_ "q1Running"}}
-					if q1Ended
-						p {{_ "stateOfTheGame"}} : {{_ "q1Ended"}}
-					if q2Running
-						p {{_ "stateOfTheGame"}} : {{_ "q2Running"}}
-					if halfTime
-						p {{_ "stateOfTheGame"}} : {{_ "halfTime"}}
-					if q3Running
-						p {{_ "stateOfTheGame"}} : {{_ "q3Running"}}
-					if q3Ended
-						p {{_ "stateOfTheGame"}} : {{_ "q3Ended"}}
-					if q4Running
-						p {{_ "stateOfTheGame"}} : {{_ "q4Running"}}
-					if oT1
-						p {{_ "stateOfTheGame"}} : {{_ "oT1"}}
-					if oT2
-						p {{_ "stateOfTheGame"}} : {{_ "oT2"}}
-					if oT3
-						p {{_ "stateOfTheGame"}} : {{_ "oT3"}}
-					if oT4
-						p {{_ "stateOfTheGame"}} : {{_ "oT4"}}
-					if oT5
-						p {{_ "stateOfTheGame"}} : {{_ "oT5"}}
-			else
-				+spinner
-		.panel-body
-			.panel.panel-default
-				.panel-heading
-					h4.panel-title {{_ "gameGap"}}
-				.panel-body
-					#gameGapChart
-			if Template.subscriptionsReady
-				.panel.panel-default
-					.panel-heading
-						h4.panel-title {{_ "yourClub"}} : #{gameInfos.yourClub}
-					.table-responsive
-						table.table.table-condensed.table-bordered
-							thead
-								tr.active
-									th.text-center {{_ "num"}}
-									th.text-center {{_ "gameTime"}}
-									th.text-center {{_ "pts"}}
-									th.text-center {{_ "twoPoints"}}
-									th.text-center %
-									th.text-center {{_ "threePoints"}}
-									th.text-center %
-									th.text-center {{_ "ft"}}
-									th.text-center %
-									th.text-center {{_ "rebOffDef"}}
-									th.text-center {{_ "totalRebounds"}}
-									th.text-center {{_ "assist"}}
-									th.text-center {{_ "steal"}}
-									th.text-center {{_ "turnover"}}
-									th.text-center {{_ "block"}}
-									th.text-center {{_ "foulProvComm"}}
-									th.text-center {{_ "foulRatio"}}
-									th.text-center {{_ "eval"}}
-							tbody.yourClubPlayers
-								each playerDataYourClub
-									tr(class='#{isInPlay}')
-										th.text-center(scope='row') #{jersey}
-										td.text-center #{playerTime}
-										td.text-center #{stats.points.totalPoints}
-										td.text-center #{stats.points.twoPointsIn}/#{total2PointsShoots}
-										td.text-center #{percentage2PointsShoots}
-										td.text-center #{stats.points.threePointsIn}/#{total3PointsShoots}
-										td.text-center #{percentage3PointsShoots}
-										td.text-center #{stats.points.onePointIn}/#{total1PointShoots}
-										td.text-center #{percentage1PointShoots}
-										td.text-center #{stats.rebounds.offReb}-#{stats.rebounds.defReb}
-										td.text-center #{totalRebounds}
-										td.text-center #{stats.assists}
-										td.text-center #{stats.steals}
-										td.text-center #{stats.turnovers}
-										td.text-center #{stats.blocks}
-										td.text-center #{provokedFouls}/#{stats.fouls.totalFouls}
-										td.text-center #{foulsRatio}
-										td.text-center #{stats.evaluation}
-								tr.active
-									with gameData
-										th(scope='row') {{_ "total"}}
-										td.text-center -
-										td.text-center #{stats.yourClub.score}
-										td.text-center #{stats.yourClub.points.twoPointsIn}/#{yourClubTotal2PointsShoots}
-										td.text-center #{yourClubPercentage2PointsShoots}
-										td.text-center #{stats.yourClub.points.threePointsIn}/#{yourClubTotal3PointsShoots}
-										td.text-center #{yourClubPercentage3PointsShoots}
-										td.text-center #{stats.yourClub.points.onePointIn}/#{yourClubTotal1PointShoots}
-										td.text-center #{yourClubPercentage1PointShoots}
-										td.text-center #{stats.yourClub.rebounds.offReb}-#{stats.yourClub.rebounds.defReb}
-										td.text-center #{yourClubTotalRebounds}
-										td.text-center #{stats.yourClub.assists}
-										td.text-center #{stats.yourClub.steals}
-										td.text-center #{stats.yourClub.turnovers}
-										td.text-center #{stats.yourClub.blocks}
-										td.text-center #{yourClubProvokedFouls}/#{stats.yourClub.fouls.totalFouls}
-										td.text-center #{yourClubFoulsRatio}
-										td.text-center #{stats.yourClub.evaluation}
-				.panel.panel-default
-					.panel-heading
-						h4.panel-title {{_ "opponent"}} : {{gameInfos.opponent}}
-					.table-responsive
-						table.table.table-condensed.table-bordered
-							thead
-								tr.active
-									th.text-center {{_ "num"}}
-									th.text-center {{_ "gameTime"}}
-									th.text-center {{_ "pts"}}
-									th.text-center {{_ "twoPoints"}}
-									th.text-center {{_ "threePoints"}}
-									th.text-center {{_ "ft"}}
-							tbody.opponentPlayers
-								each playerDataOpponent
-									tr(class='#{isInPlay}')
-										th.text-center(scope='row') #{jersey}
-										td.text-center #{playerTime}
-										td.text-center #{stats.points.totalPoints}
-										td.text-center #{stats.points.twoPointsIn}
-										td.text-center #{stats.points.threePointsIn}
-										td.text-center #{stats.points.onePointIn}
-								tr.active
-									with gameData
-										th.text-center(scope='row') {{_ "total"}}
-										td.text-center -
-										td.text-center #{stats.opponent.score}
-										td.text-center #{stats.opponent.points.twoPointsIn}
-										td.text-center #{stats.opponent.points.threePointsIn}
-										td.text-center #{stats.opponent.points.onePointIn}
-			else
-				+spinner
+	if Template.subscriptionsReady
+		.row
+			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				p.lead #{yourClub}
+					span.label.label-default #{yourClubScore} - #{opponentScore}
+					| #{opponent}
+			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				if notStarted
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "notStarted"}}
+				if q1Running
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "q1Running"}}
+				if q1Ended
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "q1Ended"}}
+				if q2Running
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "q2Running"}}
+				if halfTime
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "halfTime"}}
+				if q3Running
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "q3Running"}}
+				if q3Ended
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "q3Ended"}}
+				if q4Running
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "q4Running"}}
+				if oT1
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "oT1"}}
+				if oT2
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "oT2"}}
+				if oT3
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "oT3"}}
+				if oT4
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "oT4"}}
+				if oT5
+					p.text-right {{_ "stateOfTheGame"}} :
+						span.label.label-default {{_ "oT5"}}
+		+scoreGapChart(evolution=evolution)
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title {{_ "team"}} : #{yourClub}
+			.table-responsive
+				table.table.table-condensed.table-bordered
+					thead
+						tr.active
+							th.text-center {{_ "num"}}
+							th.text-center {{_ "gameTime"}}
+							th.text-center {{_ "pts"}}
+							th.text-center {{_ "twoPoints"}}
+							th.text-center %
+							th.text-center {{_ "threePoints"}}
+							th.text-center %
+							th.text-center {{_ "ft"}}
+							th.text-center %
+							th.text-center {{_ "rebOffDef"}}
+							th.text-center {{_ "totalRebounds"}}
+							th.text-center {{_ "assist"}}
+							th.text-center {{_ "steal"}}
+							th.text-center {{_ "turnover"}}
+							th.text-center {{_ "block"}}
+							th.text-center {{_ "foulProvComm"}}
+							th.text-center {{_ "foulRatio"}}
+							th.text-center {{_ "eval"}}
+					tbody.yourClubPlayers
+						each playerDataYourClub
+							tr(class='#{isInPlay}')
+								th.text-center(scope='row') #{jersey}
+								td.text-center #{playerTime}
+								td.text-center #{points.totalPoints}
+								td.text-center #{points.twoPointsIn}/#{total2PointsShoots}
+								td.text-center #{percentage2PointsShoots}
+								td.text-center #{points.threePointsIn}/#{total3PointsShoots}
+								td.text-center #{percentage3PointsShoots}
+								td.text-center #{points.onePointIn}/#{total1PointShoots}
+								td.text-center #{percentage1PointShoots}
+								td.text-center #{rebounds.offReb}-#{rebounds.defReb}
+								td.text-center #{totalRebounds}
+								td.text-center #{assists}
+								td.text-center #{steals}
+								td.text-center #{turnovers}
+								td.text-center #{blocks}
+								td.text-center #{provokedFouls}/#{fouls.totalFouls}
+								td.text-center #{foulsRatio}
+								td.text-center #{evaluation}
+						tr.active
+							with gameData
+								th(scope='row') {{_ "total"}}
+								td.text-center -
+								td.text-center #{yourClub.score}
+								td.text-center #{yourClub.points.twoPointsIn}/#{yourClubTotal2PointsShoots}
+								td.text-center #{yourClubPercentage2PointsShoots}
+								td.text-center #{yourClub.points.threePointsIn}/#{yourClubTotal3PointsShoots}
+								td.text-center #{yourClubPercentage3PointsShoots}
+								td.text-center #{yourClub.points.onePointIn}/#{yourClubTotal1PointShoots}
+								td.text-center #{yourClubPercentage1PointShoots}
+								td.text-center #{yourClub.rebounds.offReb}-#{yourClub.rebounds.defReb}
+								td.text-center #{yourClubTotalRebounds}
+								td.text-center #{yourClub.assists}
+								td.text-center #{yourClub.steals}
+								td.text-center #{yourClub.turnovers}
+								td.text-center #{yourClub.blocks}
+								td.text-center #{yourClubProvokedFouls}/#{yourClub.fouls.totalFouls}
+								td.text-center #{yourClubFoulsRatio}
+								td.text-center #{yourClub.evaluation}
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title {{_ "team"}} : #{opponent}
+			.table-responsive
+				table.table.table-condensed.table-bordered
+					thead
+						tr.active
+							th.text-center {{_ "num"}}
+							th.text-center {{_ "gameTime"}}
+							th.text-center {{_ "pts"}}
+							th.text-center {{_ "twoPoints"}}
+							th.text-center {{_ "threePoints"}}
+							th.text-center {{_ "ft"}}
+					tbody.opponentPlayers
+						each playerDataOpponent
+							tr(class='#{isInPlay}')
+								th.text-center(scope='row') #{jersey}
+								td.text-center #{playerTime}
+								td.text-center #{points.totalPoints}
+								td.text-center #{points.twoPointsIn}
+								td.text-center #{points.threePointsIn}
+								td.text-center #{points.onePointIn}
+						tr.active
+							with gameData
+								th.text-center(scope='row') {{_ "total"}}
+								td.text-center -
+								td.text-center #{opponent.score}
+								td.text-center #{opponent.points.twoPointsIn}
+								td.text-center #{opponent.points.threePointsIn}
+								td.text-center #{opponent.points.onePointIn}
+	else
+		+spinner
