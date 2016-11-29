@@ -56,7 +56,7 @@ Template.playerModal.events({
 		} else {
 			const evolScore = {
 				gameIndex: this.gameData.evolution.length,
-				scoreGap: lodash.last(this.gameData.evolution)[1] - 1
+				scoreGap: lodash.last(this.gameData.evolution)[1] + 1
 			};
 			return Meteor.call('onePointInForPlayer', gameId, teamId, playerId, evolScore, (error) => {
 				if (error) {
@@ -81,7 +81,7 @@ Template.playerModal.events({
 		} else {
 			const evolScore = {
 				gameIndex: this.gameData.evolution.length,
-				scoreGap: lodash.last(this.gameData.evolution)[1] - 2
+				scoreGap: lodash.last(this.gameData.evolution)[1] + 2
 			};
 			return Meteor.call('twoPointsInForPlayer', gameId, teamId, playerId, evolScore, (error) => {
 				if (error) {
@@ -106,7 +106,7 @@ Template.playerModal.events({
 		} else {
 			const evolScore = {
 				gameIndex: this.gameData.evolution.length,
-				scoreGap: lodash.last(this.gameData.evolution)[1] - 3
+				scoreGap: lodash.last(this.gameData.evolution)[1] + 3
 			};
 			return Meteor.call('threePointsInForPlayer', gameId, teamId, playerId, evolScore, (error) => {
 				if (error) {

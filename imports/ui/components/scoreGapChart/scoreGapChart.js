@@ -35,12 +35,10 @@ Template.scoreGapChart.onRendered(function() {
 		}
 	});
 
-	let evolution = this.data.evolution;
-
 	this.autorun(function(tracker) {
 		let xArray = ['x'];
 		let yArray = ['Ecart du match'];
-		evolution.map((cur) => {
+		Template.parentData(1).gameData.evolution.map((cur) => {
 			xArray.push(cur[0]);
 			yArray.push(cur[1]);
 		});

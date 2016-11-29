@@ -72,7 +72,7 @@ template(name='summary')
 							th.text-center {{_ "foulRatio"}}
 							th.text-center {{_ "eval"}}
 					tbody.yourClubPlayers
-						each playerDataYourClub
+						each yourClubPlayers
 							tr(class='#{isInPlay}')
 								th.text-center(scope='row') #{jersey}
 								td.text-center #{playerTime}
@@ -93,25 +93,25 @@ template(name='summary')
 								td.text-center #{foulsRatio}
 								td.text-center #{evaluation}
 						tr.active
-							with gameData
+							with yourClubStats
 								th(scope='row') {{_ "total"}}
 								td.text-center -
-								td.text-center #{yourClub.score}
-								td.text-center #{yourClub.points.twoPointsIn}/#{yourClubTotal2PointsShoots}
-								td.text-center #{yourClubPercentage2PointsShoots}
-								td.text-center #{yourClub.points.threePointsIn}/#{yourClubTotal3PointsShoots}
-								td.text-center #{yourClubPercentage3PointsShoots}
-								td.text-center #{yourClub.points.onePointIn}/#{yourClubTotal1PointShoots}
-								td.text-center #{yourClubPercentage1PointShoots}
-								td.text-center #{yourClub.rebounds.offReb}-#{yourClub.rebounds.defReb}
-								td.text-center #{yourClubTotalRebounds}
-								td.text-center #{yourClub.assists}
-								td.text-center #{yourClub.steals}
-								td.text-center #{yourClub.turnovers}
-								td.text-center #{yourClub.blocks}
-								td.text-center #{yourClubProvokedFouls}/#{yourClub.fouls.totalFouls}
-								td.text-center #{yourClubFoulsRatio}
-								td.text-center #{yourClub.evaluation}
+								td.text-center #{score}
+								td.text-center #{points.twoPointsIn}/#{yourClubTotal2PointsShoots}
+								td.text-center #{teamPercentage2PointsShoots}
+								td.text-center #{points.threePointsIn}/#{teamTotal3PointsShoots}
+								td.text-center #{teamPercentage3PointsShoots}
+								td.text-center #{points.onePointIn}/#{teamTotal1PointShoots}
+								td.text-center #{teamPercentage1PointShoots}
+								td.text-center #{rebounds.offReb}-#{rebounds.defReb}
+								td.text-center #{teamTotalRebounds}
+								td.text-center #{assists}
+								td.text-center #{steals}
+								td.text-center #{turnovers}
+								td.text-center #{blocks}
+								td.text-center #{teamProvokedFouls}/#{fouls.totalFouls}
+								td.text-center #{teamFoulsRatio}
+								td.text-center #{evaluation}
 		.panel.panel-default
 			.panel-heading
 				h4.panel-title {{_ "team"}} : #{opponent}
@@ -126,7 +126,7 @@ template(name='summary')
 							th.text-center {{_ "threePoints"}}
 							th.text-center {{_ "ft"}}
 					tbody.opponentPlayers
-						each playerDataOpponent
+						each opponentPlayers
 							tr(class='#{isInPlay}')
 								th.text-center(scope='row') #{jersey}
 								td.text-center #{playerTime}
@@ -135,12 +135,12 @@ template(name='summary')
 								td.text-center #{points.threePointsIn}
 								td.text-center #{points.onePointIn}
 						tr.active
-							with gameData
+							with opponentStats
 								th.text-center(scope='row') {{_ "total"}}
 								td.text-center -
-								td.text-center #{opponent.score}
-								td.text-center #{opponent.points.twoPointsIn}
-								td.text-center #{opponent.points.threePointsIn}
-								td.text-center #{opponent.points.onePointIn}
+								td.text-center #{score}
+								td.text-center #{points.twoPointsIn}
+								td.text-center #{points.threePointsIn}
+								td.text-center #{points.onePointIn}
 	else
 		+spinner

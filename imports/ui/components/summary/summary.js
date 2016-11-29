@@ -50,7 +50,21 @@ Template.summary.helpers({
 			}
 		}).score;
 	},
-	yourClubPlayersInGame() {
+	yourClubStats() {
+		const teamId = this.gameData.yourClubTeamId;
+
+		return Teams.findOne({
+			_id: teamId,
+		});
+	},
+	opponentStats() {
+		const teamId = this.gameData.opponentTeamId;
+
+		return Teams.findOne({
+			_id: teamId,
+		});
+	},
+	yourClubPlayers() {
 		const gameId = this.gameData._id;
 		const teamId = this.gameData.yourClubTeamId;
 
@@ -63,7 +77,7 @@ Template.summary.helpers({
 			}
 		}).fetch();
 	},
-	opponentPlayersInGame() {
+	opponentPlayers() {
 		const gameId = this.gameData._id;
 		const teamId = this.gameData.opponentTeamId;
 
@@ -175,58 +189,58 @@ Template.summary.helpers({
 		}
 	},
 	total2PointsShoots() {
-		return this.stats.points.twoPointsIn + this.stats.points.twoPointsOut;
+		return this.points.twoPointsIn + this.points.twoPointsOut;
 	},
 	percentage2PointsShoots() {
-		return Math.floor(this.stats.points.twoPointsIn / (this.stats.points.twoPointsIn + this.stats.points.twoPointsOut) * 100) || 0;
+		return Math.floor(this.points.twoPointsIn / (this.points.twoPointsIn + this.points.twoPointsOut) * 100) || 0;
 	},
 	total3PointsShoots() {
-		return this.stats.points.threePointsIn + this.stats.points.threePointsOut;
+		return this.points.threePointsIn + this.points.threePointsOut;
 	},
 	percentage3PointsShoots() {
-		return Math.floor(this.stats.points.threePointsIn / (this.stats.points.threePointsIn + this.stats.points.threePointsOut) * 100) || 0;
+		return Math.floor(this.points.threePointsIn / (this.points.threePointsIn + this.points.threePointsOut) * 100) || 0;
 	},
 	total1PointShoots() {
-		return this.stats.points.onePointIn + this.stats.points.onePointOut;
+		return this.points.onePointIn + this.points.onePointOut;
 	},
 	percentage1PointShoots() {
-		return Math.floor(this.stats.points.onePointIn / (this.stats.points.onePointIn + this.stats.points.onePointOut) * 100) || 0;
+		return Math.floor(this.points.onePointIn / (this.points.onePointIn + this.points.onePointOut) * 100) || 0;
 	},
 	totalRebounds() {
-		return this.stats.rebounds.offReb + this.stats.rebounds.defReb;
+		return this.offReb + this.defReb;
 	},
 	provokedFouls() {
-		return this.stats.fouls.provFouls.offFouls + this.stats.fouls.provFouls.defFouls;
+		return this.fouls.provOffFouls + this.fouls.provDefFouls;
 	},
 	foulsRatio() {
-		return this.stats.fouls.provFouls.offFouls + this.stats.fouls.provFouls.defFouls - this.stats.fouls.totalFouls;
+		return this.fouls.provOffFouls + this.fouls.provDefFouls - this.fouls.totalFouls;
 	},
-	yourClubFoulsRatio() {
-		return this.stats.yourClub.fouls.provFouls.offFouls + this.stats.yourClub.fouls.provFouls.defFouls - this.stats.yourClub.fouls.totalFouls;
+	teamFoulsRatio() {
+		return this.fouls.provOffFouls + this.fouls.provDefFouls - this.fouls.totalFouls;
 	},
-	yourClubTotal2PointsShoots() {
-		return this.stats.yourClub.points.twoPointsIn + this.stats.yourClub.points.twoPointsOut;
+	teamTotal2PointsShoots() {
+		return this.points.twoPointsIn + this.points.twoPointsOut;
 	},
-	yourClubPercentage2PointsShoots() {
-		return Math.floor(this.stats.yourClub.points.twoPointsIn / (this.stats.yourClub.points.twoPointsIn + this.stats.yourClub.points.twoPointsOut) * 100) || 0;
+	teamPercentage2PointsShoots() {
+		return Math.floor(this.points.twoPointsIn / (this.points.twoPointsIn + this.points.twoPointsOut) * 100) || 0;
 	},
-	yourClubTotal3PointsShoots() {
-		return this.stats.yourClub.points.threePointsIn + this.stats.yourClub.points.threePointsOut;
+	teamTotal3PointsShoots() {
+		return this.points.threePointsIn + this.points.threePointsOut;
 	},
-	yourClubPercentage3PointsShoots() {
-		return Math.floor(this.stats.yourClub.points.threePointsIn / (this.stats.yourClub.points.threePointsIn + this.stats.yourClub.points.threePointsOut) * 100) || 0;
+	teamPercentage3PointsShoots() {
+		return Math.floor(this.points.threePointsIn / (this.points.threePointsIn + this.points.threePointsOut) * 100) || 0;
 	},
-	yourClubTotal1PointShoots() {
-		return this.stats.yourClub.points.onePointIn + this.stats.yourClub.points.onePointOut;
+	teamTotal1PointShoots() {
+		return this.points.onePointIn + this.points.onePointOut;
 	},
-	yourClubPercentage1PointShoots() {
-		return Math.floor(this.stats.yourClub.points.onePointIn / (this.stats.yourClub.points.onePointIn + this.stats.yourClub.points.onePointOut) * 100) || 0;
+	teamPercentage1PointShoots() {
+		return Math.floor(this.points.onePointIn / (this.points.onePointIn + this.points.onePointOut) * 100) || 0;
 	},
-	yourClubTotalRebounds() {
-		return this.stats.yourClub.rebounds.offReb + this.stats.yourClub.rebounds.defReb;
+	teamTotalRebounds() {
+		return this.offReb + this.defReb;
 	},
-	yourClubProvokedFouls() {
-		return this.stats.yourClub.fouls.provFouls.offFouls + this.stats.yourClub.fouls.provFouls.defFouls;
+	teamProvokedFouls() {
+		return this.fouls.provOffFouls + this.fouls.provDefFouls;
 	},
 	isInPlay() {
 		if (this.inPlay) {
