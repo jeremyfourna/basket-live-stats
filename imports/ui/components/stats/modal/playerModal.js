@@ -47,8 +47,6 @@ Template.playerModal.events({
 		const playerId = $('#playerModal').data('playerid');
 		const isACancelAction = $('#onePointOpponent').hasClass('cancelAction');
 
-		console.log(gameId, teamId, playerId);
-
 		if (isACancelAction) {
 			return Meteor.call('correctOnePointInForPlayer', gameId, teamId, playerId, (error) => {
 				if (error) {
