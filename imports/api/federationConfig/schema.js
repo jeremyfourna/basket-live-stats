@@ -15,7 +15,7 @@ FederationConfig.deny({
 	}
 });
 
-FederationConfig.schemas = new SimpleSchema({
+export const federationConfigSchema = new SimpleSchema({
 	def: {
 		type: String,
 		label: 'Type of config',
@@ -26,3 +26,5 @@ FederationConfig.schemas = new SimpleSchema({
 		label: 'Value for the def'
 	}
 });
+
+FederationConfig.schemas = federationConfigSchema;
