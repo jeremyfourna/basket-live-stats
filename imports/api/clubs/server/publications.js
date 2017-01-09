@@ -2,13 +2,11 @@ import { Meteor } from 'meteor/meteor';
 
 import { Clubs } from '../schema.js';
 
-// Publication who send back everything, use it carrefully
-Meteor.publish('clubs', function() {
+Meteor.publish('retrieveAllClubsData', () => {
 	return Clubs.find({});
 });
 
-// Publication who send back only the name of the clubs
-Meteor.publish('clubName', function() {
+Meteor.publish('retrieveAllClubsName', () => {
 	return Clubs.find({}, {
 		fields: {
 			'name': 1
@@ -16,7 +14,6 @@ Meteor.publish('clubName', function() {
 	});
 });
 
-// Publication who send back the clubs that the user created
-Meteor.publish('myClub', function(userId) {
+Meteor.publish('clubsCreatedByUserId', (userId) => {
 	return Clubs.find({ createdBy: userId });
 });
