@@ -14,7 +14,7 @@ Meteor.methods({
 	},
 	changeClubStatus(data) {
 		// Check method params
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			clubId: { type: String },
 			status: { type: String, allowedValues: clubStatusValues }
 		});
