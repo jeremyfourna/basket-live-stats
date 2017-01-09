@@ -9,8 +9,8 @@ MethodHooks.after('onePointInForPlayer', (options) => {
 		const teamId = options.arguments[1];
 		const evolScore = options.arguments[3];
 
-		Meteor.call('onePointIn', teamId);
-		Meteor.call('newEvolScore', gameId, evolScore);
+		Meteor.call('onePointIn', teamId); // Method to add stats on the team level
+		Meteor.call('newEvolScore', gameId, evolScore); // Method to update the score evolution for the game
 
 		return options.result;
 	}
@@ -23,8 +23,8 @@ MethodHooks.after('correctOnePointInForPlayer', (options) => {
 		const gameId = options.arguments[0];
 		const teamId = options.arguments[1];
 
-		Meteor.call('correctOnePointIn', teamId);
-		Meteor.call('correctNewEvolScore', gameId);
+		Meteor.call('correctOnePointIn', teamId); // Method to add stats on the team level
+		Meteor.call('correctNewEvolScore', gameId); // Method to update the score evolution for the game
 
 		return options.result;
 	}
@@ -38,8 +38,8 @@ MethodHooks.after('twoPointsInForPlayer', (options) => {
 		const teamId = options.arguments[1];
 		const evolScore = options.arguments[3];
 
-		Meteor.call('twoPointsIn', teamId);
-		Meteor.call('newEvolScore', gameId, evolScore);
+		Meteor.call('twoPointsIn', teamId); // Method to add stats on the team level
+		Meteor.call('newEvolScore', gameId, evolScore); // Method to update the score evolution for the game
 
 		return options.result;
 	}
@@ -52,8 +52,8 @@ MethodHooks.after('correctTwoPointsInForPlayer', (options) => {
 		const gameId = options.arguments[0];
 		const teamId = options.arguments[1];
 
-		Meteor.call('correctTwoPointsIn', teamId);
-		Meteor.call('correctNewEvolScore', gameId);
+		Meteor.call('correctTwoPointsIn', teamId); // Method to add stats on the team level
+		Meteor.call('correctNewEvolScore', gameId); // Method to update the score evolution for the game
 
 		return options.result;
 	}
@@ -67,8 +67,8 @@ MethodHooks.after('threePointsInForPlayer', (options) => {
 		const teamId = options.arguments[1];
 		const evolScore = options.arguments[3];
 
-		Meteor.call('threePointsIn', teamId);
-		Meteor.call('newEvolScore', gameId, evolScore);
+		Meteor.call('threePointsIn', teamId); // Method to add stats on the team level
+		Meteor.call('newEvolScore', gameId, evolScore); // Method to update the score evolution for the game
 
 		return options.result;
 	}
@@ -81,8 +81,8 @@ MethodHooks.after('correctThreePointsInForPlayer', (options) => {
 		const gameId = options.arguments[0];
 		const teamId = options.arguments[1];
 
-		Meteor.call('correctThreePointsIn', teamId);
-		Meteor.call('correctNewEvolScore', gameId);
+		Meteor.call('correctThreePointsIn', teamId); // Method to add stats on the team level
+		Meteor.call('correctNewEvolScore', gameId); // Method to update the score evolution for the game
 
 		return options.result;
 	}
@@ -94,7 +94,7 @@ MethodHooks.after('assistsInForPlayer', (options) => {
 	} else if (options.result) {
 		const teamId = options.arguments[0];
 
-		Meteor.call('assists', teamId);
+		Meteor.call('assists', teamId); // Method to add stats on the team level
 
 		return options.result;
 	}
@@ -106,7 +106,7 @@ MethodHooks.after('correctAssistsInForPlayer', (options) => {
 	} else if (options.result) {
 		const teamId = options.arguments[0];
 
-		Meteor.call('correctAssists', teamId);
+		Meteor.call('correctAssists', teamId); // Method to add stats on the team level
 
 		return options.result;
 	}
