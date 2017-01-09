@@ -1,6 +1,8 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
+import { clubStatusValues } from '../schemas.js';
+
 export const Clubs = new Mongo.Collection('clubs');
 
 Clubs.deny({
@@ -23,7 +25,7 @@ export const clubSchema = new SimpleSchema({
 	status: {
 		type: String,
 		label: 'Club\'s status',
-		allowedValues: ['active', 'inactive', 'paymentProblem']
+		allowedValues: clubStatusValues
 	},
 	region: {
 		type: String,
