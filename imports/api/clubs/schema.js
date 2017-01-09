@@ -15,10 +15,14 @@ Clubs.deny({
 	}
 });
 
-Clubs.schema = new SimpleSchema({
 	name: {
 		type: String,
 		label: 'Club\'s name'
+	},
+	status: {
+		type: String,
+		label: 'Club\'s status',
+		allowedValues: ['active', 'inactive', 'paymentProblem']
 	},
 	region: {
 		type: String,
@@ -36,17 +40,27 @@ Clubs.schema = new SimpleSchema({
 		type: String,
 		label: 'Club\'s city'
 	},
-	jerseyColor: {
+	homeJerseyColor: {
 		type: String,
-		label: 'Club\'s jersey color'
+		label: 'Club\'s jersey color for home game'
+	},
+	awayJerseyColor: {
+		type: String,
+		label: 'Club\'s jersey color for away game'
 	},
 	createdBy: {
 		type: String,
 		label: 'User who created the club'
 	},
+	createdAt: {
+		type: Date,
+		label: 'When was created the club'
+	},
 	teams: {
-		type: [Object],
-		label: 'Club\'s teams',
+		type: [String],
+		label: 'Club\'s teams ID',
 		optional: true
 	}
 });
+
+Clubs.schema = clubSchema;
