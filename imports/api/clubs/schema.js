@@ -15,6 +15,7 @@ Clubs.deny({
 	}
 });
 
+export const clubSchema = new SimpleSchema({
 	name: {
 		type: String,
 		label: 'Club\'s name'
