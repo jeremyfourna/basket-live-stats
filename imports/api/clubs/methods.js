@@ -3,6 +3,7 @@ import { check } from 'meteor/check';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 import { Clubs, clubSchema } from './schema.js';
+import { clubStatusValues } from '../schemas.js';
 
 Meteor.methods({
 	addNewClub(data) {
@@ -15,7 +16,7 @@ Meteor.methods({
 		// Check method params
 		let methodSchema = new SimpleSchema({
 			clubId: { type: String },
-			status: { type: String }
+			status: { type: String, allowedValues: clubStatusValues }
 		});
 		check(data, methodSchema);
 		// If OK the code continue
@@ -25,23 +26,5 @@ Meteor.methods({
 			}
 		});
 	}
-	/*updateTeam(team, club, teamId) { // To refactor, add methods for differents fields and actions
-		var teamToUpdate = 'teams.' + teamId;
-		Clubs.update({
-			_id: club
-		}, {
-			$pull: {
-				teams: {
-					teamId: teamId
-				}
-			}
-		});
-		Clubs.update({
-			_id: club
-		}, {
-			$push: {
-				teams: team
-			}
-		});
-	}*/
+
 });
