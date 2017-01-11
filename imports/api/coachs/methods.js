@@ -5,7 +5,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Coachs, coachSchema } from './schema.js';
 
 Meteor.methods({
-	addCoachs(teamId, gameId, clubId) {
+	'Coachs.addCoachs': (teamId, gameId, clubId) => {
 		// Check method params
 		check(teamId, String);
 		check(gameId, String);
@@ -41,7 +41,7 @@ Meteor.methods({
 		// Return true to allow client and server to continue
 		return true;
 	},
-	coachUpdate(data) {
+	'Coachs.coachUpdate': (data) => {
 		// Check method params
 		const methodSchema = new SimpleSchema({
 			coachId: { type: String },

@@ -2,30 +2,30 @@ import { Meteor } from 'meteor/meteor';
 import { MethodHooks } from 'meteor/doctorpangloss:method-hooks';
 import { lodash } from 'meteor/stevezhu:lodash';
 
-MethodHooks.after('addGame', (options) => {
+MethodHooks.after('Games.addGame', (options) => {
 	if (options.error) {
 		return;
 	} else if (options.result) {
 		const gameId = options.result;
 
-		let yourClubTeamId = Meteor.call('addTeam', gameId);
-		let opponentTeamId = Meteor.call('addTeam', gameId);
+		let yourClubTeamId = Meteor.call('Teams.addTeam', gameId);
+		let opponentTeamId = Meteor.call('Teams.addTeam', gameId);
 
-		Meteor.call('addTeamsIdInsideGame', gameId, yourClubTeamId, opponentTeamId);
+		Meteor.call('Games.addTeamsId', gameId, yourClubTeamId, opponentTeamId);
 
 		return options.result;
 	}
 });
 
-MethodHooks.after('deleteGame', (options) => {
+MethodHooks.after('Games.deleteGame', (options) => {
 	if (options.error) {
 		return;
 	} else if (options.result) {
 		const gameId = options.arguments[0];
 
-		Meteor.call('deleteTeams', gameId);
-		Meteor.call('deletePlayers', gameId);
-		Meteor.call('deleteCoachs', gameId);
+		Meteor.call('Teams.deleteTeams', gameId);
+		Meteor.call('Players.deletePlayers', gameId);
+		Meteor.call('Coachs.deleteCoachs', gameId);
 
 		return options.result;
 	}

@@ -2,8 +2,10 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
+import { Users } from './schema.js';
+
 Meteor.methods({
-	changeUserName(data) {
+	'Users.changeUserName': (data) => {
 		// Check method params
 		const methodSchema = new SimpleSchema({
 			userId: { type: String },
@@ -11,23 +13,23 @@ Meteor.methods({
 		});
 		check(data, methodSchema);
 		// If OK the code continue
-		return Meteor.users.update({ _id: data.userId }, {
+		return Users.update({ _id: data.userId }, {
 			$set: {
 				username: data.pseudo
 			}
 		});
 	},
-	renderUserInactive(userId) {
+	'Users.renderUserInactive': (userId) => {
 		// Check method params
 		check(userId, String);
 		// If OK the code continue
-		return Meteor.users.update({ _id: userId }, {
+		return Users.update({ _id: userId }, {
 			$set: {
 				'profile.status': 'inactive'
 			}
 		});
 	},
-	updateUserProfile(data) {
+	'Users.updateUserProfile': (data) => {
 		// Check method params
 		const methodSchema = new SimpleSchema({
 			userId: { type: String },
@@ -37,7 +39,7 @@ Meteor.methods({
 		});
 		check(data, methodSchema);
 		// If OK the code continue
-		return Meteor.users.update({ _id: data.userId }, {
+		return Users.update({ _id: data.userId }, {
 			$set: {
 				'profile.name': data.name,
 				'profile.firstName': data.firstName,
@@ -45,7 +47,7 @@ Meteor.methods({
 			}
 		});
 	},
-	becomeClubAdmin(data) {
+	'Users.becomeClubAdmin': (data) => {
 		// Check method params
 		const methodSchema = new SimpleSchema({
 			userId: { type: String },
@@ -53,7 +55,7 @@ Meteor.methods({
 		});
 		check(data, methodSchema);
 		// If OK the code continue
-		return Meteor.users.update({ _id: data.userId }, {
+		return Users.update({ _id: data.userId }, {
 			$set: {
 				'profile.clubAdmin': true,
 				'profile.clubId': data.clubId

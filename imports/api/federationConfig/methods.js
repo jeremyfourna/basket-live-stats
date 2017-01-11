@@ -5,7 +5,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { FederationConfig } from './schema.js';
 
 Meteor.methods({
-	addARegion(val) {
+	'FederationConfig.addARegion': (val) => {
 		// Check method params
 		check(val, String);
 		// If OK the code continue
@@ -14,7 +14,7 @@ Meteor.methods({
 			def: 'region'
 		});
 	},
-	addADepartment(val) {
+	'FederationConfig.addADepartment': (val) => {
 		// Check method params
 		check(val, String);
 		// If OK the code continue
@@ -23,7 +23,7 @@ Meteor.methods({
 			def: 'department'
 		});
 	},
-	addALevel(val) {
+	'FederationConfig.addALevel': (val) => {
 		// Check method params
 		check(val, String);
 		// If OK the code continue
@@ -33,7 +33,7 @@ Meteor.methods({
 			def: 'level'
 		});
 	},
-	addAGroup(val) {
+	'FederationConfig.addAGroup': (val) => {
 		// Check method params
 		check(val, String);
 		// If OK the code continue

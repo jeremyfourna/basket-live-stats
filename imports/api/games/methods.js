@@ -6,7 +6,7 @@ import { Games, gameSchema } from './schema.js';
 import { gameStateValues } from '../schemas.js';
 
 Meteor.methods({
-	addGame(userId) {
+	'Games.addGame': (userId) => {
 		check(userId, String);
 
 		const game = {
@@ -29,7 +29,7 @@ Meteor.methods({
 
 		return Games.insert(game);
 	},
-	addTeamsIdInsideGame(gameId, yourClubTeamId, opponentTeamId) {
+	'Games.addTeamsId': (gameId, yourClubTeamId, opponentTeamId) => {
 		check(gameId, String);
 		check(yourClubTeamId, String);
 		check(opponentTeamId, String);
@@ -43,14 +43,14 @@ Meteor.methods({
 			}
 		});
 	},
-	deleteGame(gameId) {
+	'Games.deleteGame': (gameId) => {
 		check(gameId, String);
 
 		return Games.remove({
 			_id: gameId
 		});
 	},
-	gameInfosUpdate(data) {
+	'Games.updateGameInfos': (data) => {
 		const methodSchema = new SimpleSchema({
 			gameId: { type: String },
 			yourClub: { type: String },
@@ -69,7 +69,7 @@ Meteor.methods({
 			}
 		});
 	},
-	gameStateSwitch(data) {
+	'Games.switchGameState': (data) => {
 		const methodSchema = new SimpleSchema({
 			gameId: { type: String },
 			status: { type: String, allowedValues: gameStateValues }
@@ -80,7 +80,7 @@ Meteor.methods({
 			$set: { gameState: data.status }
 		});
 	},
-	newEvolScore(gameId, evolScore) {
+	'Games.newEvolScore': (gameId, evolScore) => {
 		const evolScoreSchema = new SimpleSchema({
 			gameIndex: { type: Number, min: 0 },
 			scoreGap: { type: Number }
@@ -99,7 +99,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctNewEvolScore(gameId) {
+	'Games.correctNewEvolScore': (gameId) => {
 		check(gameId, String);
 
 		return Games.update({
@@ -110,7 +110,7 @@ Meteor.methods({
 			}
 		});
 	},
-	offRebTeamYourClub(data) {
+	'Games.offReb': (data) => {
 		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
@@ -123,7 +123,7 @@ Meteor.methods({
 			}
 		});
 	},
-	defRebTeamYourClub(data) {
+	'Games.defReb': (data) => {
 		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
@@ -136,7 +136,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctionOffRebTeamYourClub(data) {
+	'Games.correctionOffReb': (data) => {
 		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
@@ -149,7 +149,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctionDefRebTeamYourClub(data) {
+	'Games.correctionDefReb': (data) => {
 		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
@@ -162,7 +162,7 @@ Meteor.methods({
 			}
 		});
 	},
-	stealsTeamYourClub(data) {
+	'Games.steals': (data) => {
 		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
@@ -175,7 +175,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctionStealsTeamYourClub(data) {
+	'Games.correctionSteals': (data) => {
 		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
@@ -188,7 +188,7 @@ Meteor.methods({
 			}
 		});
 	},
-	turnoversTeamYourClub(data) {
+	'Games.turnovers': (data) => {
 		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});
@@ -201,7 +201,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctionTurnoversTeamYourClub(data) {
+	'Games.correctionTurnovers': (data) => {
 		const methodSchema = new SimpleSchema({
 			gameId: { type: String }
 		});

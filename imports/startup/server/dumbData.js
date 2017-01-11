@@ -240,25 +240,25 @@ Meteor.startup(() => {
 		];
 		console.log('Begin adding groups');
 		poule.map((cur) => {
-			return Meteor.call('addAGroup', cur);
+			return Meteor.call('FederationConfig.addAGroup', cur);
 		});
 		console.log('Ending adding groups');
 
 		console.log('Begin adding level');
 		level.map((cur) => {
-			return Meteor.call('addALevel', cur);
+			return Meteor.call('FederationConfig.addALevel', cur);
 		});
 		console.log('Ending adding level');
 
 		console.log('Begin adding departments');
 		departments.map((cur) => {
-			return Meteor.call('addADepartment', cur);
+			return Meteor.call('FederationConfig.addADepartment', cur);
 		});
 		console.log('Ending adding departments');
 
 		console.log('Begin adding regions');
 		regions.map((cur) => {
-			return Meteor.call('addARegion', cur);
+			return Meteor.call('FederationConfig.addARegion', cur);
 		});
 		console.log('Ending adding regions');
 	}
