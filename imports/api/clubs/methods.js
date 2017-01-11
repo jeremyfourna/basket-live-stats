@@ -6,13 +6,13 @@ import { Clubs, clubSchema } from './schema.js';
 import { clubStatusValues } from '../schemas.js';
 
 Meteor.methods({
-	addNewClub(data) {
+	'Clubs.addNewClub': (data) => {
 		// Check method params
 		check(data, clubSchema);
 		// If OK the code continue
 		return Clubs.insert(data);
 	},
-	changeClubStatus(data) {
+	'Clubs.changeClubStatus': (data) => {
 		// Check method params
 		const methodSchema = new SimpleSchema({
 			clubId: { type: String },

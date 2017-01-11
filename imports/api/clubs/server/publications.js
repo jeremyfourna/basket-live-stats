@@ -2,11 +2,11 @@ import { Meteor } from 'meteor/meteor';
 
 import { Clubs } from '../schema.js';
 
-Meteor.publish('retrieveAllClubsData', () => {
+Meteor.publish('Clubs.allClubsData', () => {
 	return Clubs.find({});
 });
 
-Meteor.publish('retrieveAllClubsName', () => {
+Meteor.publish('Clubs.allClubsName', () => {
 	return Clubs.find({}, {
 		fields: {
 			'name': 1
@@ -14,6 +14,6 @@ Meteor.publish('retrieveAllClubsName', () => {
 	});
 });
 
-Meteor.publish('clubsCreatedByUserId', (userId) => {
+Meteor.publish('Clubs.createdByUserId', (userId) => {
 	return Clubs.find({ createdBy: userId });
 });
