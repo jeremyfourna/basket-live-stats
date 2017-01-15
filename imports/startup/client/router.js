@@ -8,6 +8,7 @@ import '../../ui/components/notFound.jade';
 import '../../ui/pages/home/home.js';
 import '../../ui/pages/liveGames/liveGames.js';
 import '../../ui/pages/aGame/aGame.js';
+import '../../ui/pages/myAccount/myAccount.js';
 
 Router.configure({
 	layoutTemplate: 'layout',
@@ -27,12 +28,7 @@ Router.route('/aGame/:_id', {
 });
 
 Router.route('/myAccount', {
-	name: 'myAccount',
-	data: function() {
-		return Meteor.users.findOne({
-			_id: Meteor.userId()
-		});
-	}
+	name: 'myAccount'
 });
 
 Router.route('/admin', {

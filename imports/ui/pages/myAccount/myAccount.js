@@ -1,71 +1,83 @@
+import { Meteor } from 'meteor/meteor'
+import { Template } from 'meteor/templating';
+import { Bert } from 'meteor/themeteorchef:bert';
+import 'meteor/sacha:spin';
+
+import './myAccount.jade';
+
 Template.myAccount.helpers({
-	'clubName': function() {
-		return Clubs.find({}, {
-			fields: {
-				name: 1
-			}
-		});
+	userData() {
+		return Meteor.user();
 	},
-	'address': function() {
+	address() {
 		return this.emails[0].address;
 	}
 });
 
 Template.myAccount.events({
-	'click #loginInfosPseudoValidate': function() {
-		var user = {
-			pseudo: $('#pseudo').val(),
-			id: Meteor.userId()
-		};
-		Meteor.call('changeUserName', user, function(error) {
-			if (error) {
-				return throwError(error.message);
-			} else {
-				Meteor.logout();
-				Router.go('home');
-			}
-		});
-	},
-	'click #deleteAccount': function() {
-		var userId = {
-			_id: Meteor.userId()
-		};
-		Meteor.call('deleteUser', userId, function(error) {
-			if (error) {
-				return throwError(error.message);
-			} else {
-				Meteor.logout();
-				Router.go('home');
-			}
-		});
-	},
-	'click #personalInfosValidate': function() {
-		var validateEmail = function(mail) {
+	'click #emailValidate': (event) => {
+		event.preventDefault();
+
+		function validateEmail(mail) {
 			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
 				return mail;
+			} else {
+				return false;
 			}
-			return throwError('Please enter a valid email address.');
 		};
-		var user = {
-			id: Meteor.userId(),
-			name: $('#name').val(),
-			firstName: $('#firstName').val(),
+
+		const data = {
+			userId: Meteor.userId(),
 			email: validateEmail($('#email').val())
 		};
-		Meteor.call('updateUserProfile', user, function(error) {
+
+		if (data.email) {
+			return Meteor.call('updateEmail', data, (error) => {
+				if (error) {
+					return Bert.alert(error.message, 'danger', 'growl-top-right');
+				} else {
+					Meteor.logout();
+					return Router.go('home');
+				}
+			});
+		} else {
+			return Bert.alert('Please enter a valid email address', 'danger', 'growl-top-right');
+		}
+	},
+	'click #deleteAccount': (event) => {
+		event.preventDefault();
+		return Meteor.call('deleteUser', Meteor.userId(), (error) => {
 			if (error) {
-				return throwError(error.message);
+				return Bert.alert(error.message, 'danger', 'growl-top-right');
+			} else {
+				Meteor.logout();
+				return Router.go('home');
 			}
 		});
 	},
-	'click #personalInfosClubValidate': function() {
-		var user = {
+	'click #personalInfosValidate': (event) => {
+		event.preventDefault();
+
+		const user = {
+			id: Meteor.userId(),
+			name: $('#name').val(),
+			firstName: $('#firstName').val()
+		};
+		return Meteor.call('updateUserProfile', user, (error) => {
+			if (error) {
+				return Bert.alert(error.message, 'danger', 'growl-top-right');
+			}
+		});
+	},
+	'click #personalInfosClubValidate': (event) => {
+		event.preventDefault();
+		const user = {
 			userId: Meteor.userId(),
 			club: $('#club').val()
 		};
-		Meteor.call('updateClub', user, function(error) {
+		return Meteor.call('updateClub', user, (error) => {
 			if (error) {
-				return throwError(error.message);
+				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
 		});
 	}

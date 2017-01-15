@@ -13,6 +13,7 @@ import '/imports/api/coachs//server/publications.js';
 import '/imports/api/federationConfig/server/publications.js';
 import '/imports/api/players/server/publications.js';
 import '/imports/api/teams/server/publications.js';
+import '/imports/api/users/server/publications.js';
 
 // Methods
 import '/imports/api/games/methods.js';

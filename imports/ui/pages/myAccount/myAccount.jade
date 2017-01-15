@@ -1,44 +1,26 @@
 template(name="myAccount")
-	.panel.panel-default
-		.panel-heading
-			h1.panel-title {{_ "loginInfos"}}
-		.panel-body
-			form
-				.form-group
-					.input-group
-						span.input-group-addon {{_ "pseudo"}}
-						input#pseudo.form-control(type="text" value="#{username}")
-				button.btn.btn-success#loginInfosPseudoValidate(type='button') {{_ "validate"}}
-	.panel.panel-default
-		.panel-heading
-			h1.panel-title {{_ "personalInfos"}}
-		.panel-body
-			form
-				.form-group
-					.input-group
-						span.input-group-addon {{_ "name"}}
-						input#name.form-control(type="text" value="#{profile.name}")
-				.form-group
-					.input-group
-						span.input-group-addon {{_ "firstName"}}
-						input#firstName.form-control(type="text" value="#{profile.firstName}")
-				.form-group
-					.input-group
-						span.input-group-addon {{_ "email"}}
+	if Template.subscriptionsReady
+		with userData
+			section
+				h3 {{_ "loginInfos"}}
+				form
+					.form-group
+						label(for="email") {{_ "email"}}
 						input#email.form-control(type="text" value="#{address}")
-				button.btn.btn-success#personalInfosValidate(type='button') {{_ "validate"}}
-	.panel.panel-default
-		.panel-heading
-			h4.panel-title {{_ "actualClub"}}
-		.panel-body
-			form
-				.form-group
-					.input-group
-						span.input-group-addon {{_ "club"}}
-						input#club.awesomplete.form-control(type="text" list="clubList" value="#{profile.club}")
-						datalist#clubList
-							each clubName
-								option #{name}}
-				button.btn.btn-success#personalInfosClubValidate(type='button') {{_ "validate"}}
-	.deleteUser
-		button.btn-block.btn.btn-danger#deleteAccount(type='button') {{_ "deleteAccount"}}
+					button.btn.btn-success#emailValidate(type='button') {{_ "saveYourUpdates"}}
+			section
+				h3 {{_ "personalInfos"}}
+				form
+					.form-group
+						label(for="name") {{_ "lastName"}}
+						input#name.form-control(type="text" value="#{profile.lastname}")
+					.form-group
+						label(for="firstName") {{_ "firstName"}}
+						input#firstName.form-control(type="text" value="#{profile.firstName}")
+					button.btn.btn-success#personalInfosValidate(type='button') {{_ "saveYourUpdates"}}
+			section#deleteUser
+				.row
+					.col-xs-12.col-sm-12.col-md-12.col-lg-12
+						button.btn-block.btn.btn-danger#deleteAccount(type='button') {{_ "deleteAccount"}}
+	else
+		+spinner

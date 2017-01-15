@@ -1,7 +1,7 @@
 import { Accounts } from 'meteor/accounts-base';
 
 Accounts.onCreateUser(function(options, user) {
-	options.profile.name = '';
+	options.profile.lastname = '';
 	options.profile.firstName = '';
 	options.profile.club = '';
 	options.profile.basicUser = true;

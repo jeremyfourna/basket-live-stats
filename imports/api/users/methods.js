@@ -4,7 +4,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 Meteor.methods({
 	changeUserName(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			userId: { type: String },
 			pseudo: { type: String }
 		});
@@ -16,33 +16,39 @@ Meteor.methods({
 			}
 		});
 	},
-	deleteUser(data) {
-		let methodSchema = new SimpleSchema({
-			userId: { type: String }
+	deleteUser(userId) {
+		check(userId, String);
+		return Meteor.users.remove({ _id: userId });
+	},
+	updateEmail(data) {
+		const methodSchema = new SimpleSchema({
+			userId: { type: String },
+			email: { type: String }
 		});
 		check(data, methodSchema);
-
-		return Meteor.users.remove({ _id: data.userId });
+		return Meteor.users.update({ _id: data.userId }, {
+			$set: {
+				'emails.0.address': data.email
+			}
+		});
 	},
 	updateUserProfile(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			userId: { type: String },
 			name: { type: String },
-			firstName: { type: String },
-			email: { type: String }
+			firstName: { type: String }
 		});
 		check(data, methodSchema);
 
 		return Meteor.users.update({ _id: data.userId }, {
 			$set: {
 				'profile.name': user.name,
-				'profile.firstName': user.firstName,
-				'emails.0.address': user.email
+				'profile.firstName': user.firstName
 			}
 		});
 	},
 	beClubAdmin(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			userId: { type: String }
 		});
 		check(data, methodSchema);
@@ -54,7 +60,7 @@ Meteor.methods({
 		});
 	},
 	updateClub(data) {
-		let methodSchema = new SimpleSchema({
+		const methodSchema = new SimpleSchema({
 			userId: { type: String },
 			club: { type: String }
 		});
