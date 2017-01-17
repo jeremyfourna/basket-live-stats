@@ -1,4 +1,4 @@
-import { Meteor } from 'meteor/meteor'
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Bert } from 'meteor/themeteorchef:bert';
 import 'meteor/sacha:spin';
@@ -24,7 +24,7 @@ Template.myAccount.events({
 			} else {
 				return false;
 			}
-		};
+		}
 
 		const data = {
 			userId: Meteor.userId(),
