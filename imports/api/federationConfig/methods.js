@@ -5,48 +5,41 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { FederationConfig } from './schema.js';
 
 Meteor.methods({
-	addARegion(data) {
-		let methodSchema = new SimpleSchema({
-			value: { type: String }
-		});
-		check(data, methodSchema);
-
+	'FederationConfig.addARegion': (val) => {
+		// Check method params
+		check(val, String);
+		// If OK the code continue
 		return FederationConfig.insert({
-			def: 'region',
-			val: data.value
+			val,
+			def: 'region'
 		});
 	},
-	addADepartment(data) {
-		let methodSchema = new SimpleSchema({
-			value: { type: String }
-		});
-		check(data, methodSchema);
-
+	'FederationConfig.addADepartment': (val) => {
+		// Check method params
+		check(val, String);
+		// If OK the code continue
 		return FederationConfig.insert({
-			def: 'department',
-			val: data.value
+			val,
+			def: 'department'
 		});
 	},
-	addALevel(data) {
-		let methodSchema = new SimpleSchema({
-			value: { type: String }
-		});
-		check(data, methodSchema);
+	'FederationConfig.addALevel': (val) => {
+		// Check method params
+		check(val, String);
+		// If OK the code continue
 
 		return FederationConfig.insert({
-			def: 'level',
-			val: data.value
+			val,
+			def: 'level'
 		});
 	},
-	addAGroup(data) {
-		let methodSchema = new SimpleSchema({
-			value: { type: String }
-		});
-		check(data, methodSchema);
-
+	'FederationConfig.addAGroup': (val) => {
+		// Check method params
+		check(val, String);
+		// If OK the code continue
 		return FederationConfig.insert({
-			def: 'group',
-			val: data.value
+			val,
+			def: 'group'
 		});
 	}
 });

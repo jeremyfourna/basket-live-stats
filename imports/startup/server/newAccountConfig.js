@@ -1,14 +1,9 @@
 import { Accounts } from 'meteor/accounts-base';
 
-Accounts.onCreateUser(function(options, user) {
-	options.profile.lastname = '';
-	options.profile.firstName = '';
-	options.profile.club = '';
-	options.profile.basicUser = true;
-	options.profile.proUser = false;
-	options.profile.clubAdmin = false;
-	options.profile.LBBSAdmin = false;
-	if (options.profile)
-		user.profile = options.profile;
+Accounts.onCreateUser((options, user) => {
+	user.profile = options.profile;
+	user.profile.name = '';
+	user.profile.firstName = '';
+	user.profile.status = 'active';
 	return user;
 });

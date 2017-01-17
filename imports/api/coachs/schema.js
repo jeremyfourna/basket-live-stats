@@ -18,20 +18,25 @@ Coachs.deny({
 export const coachSchema = new SimpleSchema({
 	gameId: {
 		type: String,
-		label: 'Game id'
+		label: 'Coach\'s game id'
 	},
 	teamId: {
 		type: String,
-		label: 'Team id'
+		label: 'Coach\'s team id'
+	},
+	clubId: {
+		type: String,
+		label: 'Coach\'s club id',
+		optional: true
 	},
 	firstName: {
 		type: String,
-		label: 'Coachs first name',
+		label: 'Coach\'s first name',
 		optional: true
 	},
 	lastName: {
 		type: String,
-		label: 'Coachs last name',
+		label: 'Coach\'s last name',
 		optional: true
 	},
 	primaryCoach: {
@@ -40,7 +45,7 @@ export const coachSchema = new SimpleSchema({
 	},
 	techFouls: {
 		type: Number,
-		label: 'Coach tech fouls',
+		label: 'Coach\'s tech fouls',
 		min: 0,
 		max: 2
 	}

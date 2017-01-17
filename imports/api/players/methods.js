@@ -6,16 +6,17 @@ import { Players, playerSchema } from './schema.js';
 import { gameStateValues } from '../schemas.js';
 
 Meteor.methods({
-	addPlayers(teamId, gameId) {
+	'Players.addPlayers': (teamId, gameId) => {
+		// Check method params
 		check(teamId, String);
 		check(gameId, String);
 
+		// Define player document
 		const player = {
 			gameId,
 			teamId,
 			firstName: '',
 			lastName: '',
-			jersey: 4,
 			inPlay: false,
 			gameTime: [],
 			points: {
@@ -49,27 +50,37 @@ Meteor.methods({
 			turnovers: 0
 		};
 
+		// Check player input before inserting in DB
 		check(player, playerSchema);
-
+		// Loop 12 times because a team is composed of 12 players at max
 		for (let i = 0; i < 12; i++) {
+			// Change player's jersey
 			player.jersey = 4 + i;
 
 			Players.insert(player);
 		}
 
+		// Return true to allow client and server to continue
 		return true;
 	},
-	playerUpdate(playerData) {
-		return Players.update({
-			_id: playerData.data
-		}, {
+	'Players.updatePlayerInfos': (data) => {
+		// Check method params
+		const methodSchema = new SimpleSchema({
+			playerId: { type: String },
+			firstName: { type: String },
+			lastName: { type: String }
+		});
+		check(data, methodSchema);
+		// If OK the code continue
+		return Players.update({ _id: data.playerId }, {
 			$set: {
-				firstName: playerData.firstName,
-				lastName: playerData.lastName
+				firstName: data.firstName,
+				lastName: data.lastName
 			}
 		});
 	},
-	goingInPlay(data) {
+	'Players.goingInPlay': (data) => {
+		// Check method params
 		const methodSchema = new SimpleSchema({
 			playerId: { type: String },
 			minutes: { type: Number, min: 0, max: 10 },
@@ -77,10 +88,8 @@ Meteor.methods({
 			gameState: { type: String, allowedValues: gameStateValues }
 		});
 		check(data, methodSchema);
-
-		return Players.update({
-			_id: data.playerId
-		}, {
+		// If OK the code continue
+		return Players.update({ _id: data.playerId }, {
 			$set: {
 				inPlay: true
 			},
@@ -94,7 +103,8 @@ Meteor.methods({
 			}
 		});
 	},
-	goingOnTheBench(data) {
+	'Players.goingOnTheBench': (data) => {
+		// Check method params
 		const methodSchema = new SimpleSchema({
 			playerId: { type: String },
 			minutes: { type: Number, min: 0, max: 10 },
@@ -102,10 +112,8 @@ Meteor.methods({
 			gameState: { type: String, allowedValues: gameStateValues }
 		});
 		check(data, methodSchema);
-
-		return Players.update({
-			_id: data.playerId
-		}, {
+		// If OK the code continue
+		return Players.update({ _id: data.playerId }, {
 			$set: {
 				inPlay: false
 			},
@@ -119,34 +127,32 @@ Meteor.methods({
 			}
 		});
 	},
-	assistsInForPlayer(teamId, playerId) {
-		check(teamId, String);
+	'Players.assistsIn': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
 		check(playerId, String);
-
-		return Players.update({
-			_id: playerId
-		}, {
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
 				assists: 1,
 				evaluation: 1
 			}
 		});
 	},
-	correctAssistsInForPlayer(teamId, playerId) {
-		check(teamId, String);
+	'Players.correctAssistsIn': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
 		check(playerId, String);
-
-		return Players.update({
-			_id: playerId
-		}, {
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
 				assists: -1,
 				evaluation: -1
 			}
 		});
 	},
-	/*
-		blocks(data) {
+	/*'Players.
+': 		blocks(data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -159,7 +165,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctBlocks(data) {
+		'Players.correctBlocks': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -172,7 +178,7 @@ Meteor.methods({
 				}
 			});
 		},
-		endedGamesPlayers(data) {
+		'Players.endedGamesPlayers': (data) {=>
 			let methodSchema = new SimpleSchema({
 				gameId: { type: String }
 			});
@@ -194,7 +200,7 @@ Meteor.methods({
 				multi: true
 			});
 		},
-		offProvFouls(data) {
+		'Players.offProvFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -207,7 +213,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctOffProvFouls(data) {
+		'Players.correctOffProvFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -220,7 +226,7 @@ Meteor.methods({
 				}
 			});
 		},
-		defProvFouls(data) {
+		'Players.defProvFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -233,7 +239,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctDefProvFouls(data) {
+		'Players.correctDefProvFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -246,7 +252,7 @@ Meteor.methods({
 				}
 			});
 		},
-		offFouls(data) {
+		'Players.offFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -260,7 +266,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctOffFouls(data) {
+		'Players.correctOffFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -274,7 +280,7 @@ Meteor.methods({
 				}
 			});
 		},
-		defFouls(data) {
+		'Players.defFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -288,7 +294,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctDefFouls(data) {
+		'Players.correctDefFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -302,7 +308,7 @@ Meteor.methods({
 				}
 			});
 		},
-		defFoulsOneFT(data) {
+		'Players.defFoulsOneFT': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -316,7 +322,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctDefFoulsOneFT(data) {
+		'Players.correctDefFoulsOneFT': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -330,7 +336,7 @@ Meteor.methods({
 				}
 			});
 		},
-		defFoulsTwoFT(data) {
+		'Players.defFoulsTwoFT': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -344,7 +350,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctDefFoulsTwoFT(data) {
+		'Players.correctDefFoulsTwoFT': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -358,7 +364,7 @@ Meteor.methods({
 				}
 			});
 		},
-		defFoulsThreeFT(data) {
+		'Players.defFoulsThreeFT': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -372,7 +378,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctDefFoulsThreeFT(data) {
+		'Players.correctDefFoulsThreeFT': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -386,7 +392,7 @@ Meteor.methods({
 				}
 			});
 		},
-		techFouls(data) {
+		'Players.techFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -400,7 +406,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctTechFouls(data) {
+		'Players.correctTechFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -414,7 +420,7 @@ Meteor.methods({
 				}
 			});
 		},
-		antiSportFouls(data) {
+		'Players.antiSportFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -428,7 +434,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctAntiSportFouls(data) {
+		'Players.correctAntiSportFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -442,7 +448,7 @@ Meteor.methods({
 				}
 			});
 		},
-		disqualifyingFouls(data) {
+		'Players.disqualifyingFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -456,7 +462,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctDisqualifyingFouls(data) {
+		'Players.correctDisqualifyingFouls': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -470,19 +476,18 @@ Meteor.methods({
 				}
 			});
 		},*/
-	onePointInForPlayer(gameId, teamId, playerId, evolScore) {
+	'Players.onePointIn': (gameId, teamId, playerId, evolScore) => {
+		// Check method params
 		const evolScoreSchema = new SimpleSchema({
 			gameIndex: { type: Number, min: 0 },
 			scoreGap: { type: Number }
 		});
-		check(gameId, String);
-		check(teamId, String);
+		check(gameId, String); // GameId is passed upon the hooks that will run after this method
+		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
 		check(playerId, String);
-		check(evolScore, evolScoreSchema);
-
-		return Players.update({
-			_id: playerId
-		}, {
+		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
 				'points.onePointIn': 1,
 				'points.totalPoints': 1,
@@ -490,14 +495,13 @@ Meteor.methods({
 			}
 		});
 	},
-	correctOnePointInForPlayer(gameId, teamId, playerId) {
-		check(gameId, String);
-		check(teamId, String);
+	'Players.correctOnePointIn': (gameId, teamId, playerId) => {
+		// Check method params
+		check(gameId, String); // GameId is passed upon the hooks that will run after this method
+		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
 		check(playerId, String);
-
-		return Players.update({
-			_id: playerId
-		}, {
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
 				'points.onePointIn': -1,
 				'points.totalPoints': -1,
@@ -505,8 +509,8 @@ Meteor.methods({
 			}
 		});
 	},
-	/*
-		onePointMiss(data) {
+	/*'Players.
+': 		onePointMiss(data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -519,7 +523,7 @@ Meteor.methods({
 				}
 			});
 		},
-		correctOnePointMiss(data) {
+		'Players.correctOnePointMiss': (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -532,16 +536,17 @@ Meteor.methods({
 				}
 			});
 		},*/
-	twoPointsInForPlayer(gameId, teamId, playerId, evolScore) {
+	'Players.twoPointsIn': (gameId, teamId, playerId, evolScore) => {
+		// Check method params
 		const evolScoreSchema = new SimpleSchema({
 			gameIndex: { type: Number, min: 0 },
 			scoreGap: { type: Number }
 		});
-		check(gameId, String);
-		check(teamId, String);
+		check(gameId, String); // GameId is passed upon the hooks that will run after this method
+		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
 		check(playerId, String);
-		check(evolScore, evolScoreSchema);
-
+		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
+		// If OK the code continue
 		return Players.update({
 			_id: playerId
 		}, {
@@ -552,11 +557,12 @@ Meteor.methods({
 			}
 		});
 	},
-	correctTwoPointsInForPlayer(gameId, teamId, playerId) {
-		check(gameId, String);
-		check(teamId, String);
+	'Players.correctTwoPointsIn': (gameId, teamId, playerId) => {
+		// Check method params
+		check(gameId, String); // GameId is passed upon the hooks that will run after this method
+		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
 		check(playerId, String);
-
+		// If OK the code continue
 		return Players.update({
 			_id: playerId
 		}, {
@@ -567,42 +573,45 @@ Meteor.methods({
 			}
 		});
 	},
-	/*twoPointsMiss(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+	/*
+		'Players.twoPointsMiss': (data) => {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.points.twoPointsOut': 1,
-				'stats.evaluation': -1
-			}
-		});
-	},
-	correctTwoPointsMiss(data) {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.points.twoPointsOut': 1,
+					'stats.evaluation': -1
+				}
+			});
+		},
+		'Players.correctTwoPointsMiss': (data) => {
+			let methodSchema = new SimpleSchema({
+				playerId: { type: String }
+			});
+			check(data, methodSchema);
 
-		return Players.update({ _id: data.playerId }, {
-			$inc: {
-				'stats.points.twoPointsOut': -1,
-				'stats.evaluation': 1
-			}
-		});
-	},*/
-	threePointsInForPlayer(gameId, teamId, playerId, evolScore) {
+			return Players.update({ _id: data.playerId }, {
+				$inc: {
+					'stats.points.twoPointsOut': -1,
+					'stats.evaluation': 1
+				}
+			});
+		},
+		*/
+	'Players.threePointsIn': (gameId, teamId, playerId, evolScore) => {
+		// Check method params
 		const evolScoreSchema = new SimpleSchema({
 			gameIndex: { type: Number, min: 0 },
 			scoreGap: { type: Number }
 		});
-		check(gameId, String);
-		check(teamId, String);
+		check(gameId, String); // GameId is passed upon the hooks that will run after this method
+		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
 		check(playerId, String);
-		check(evolScore, evolScoreSchema);
-
+		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
+		// If OK the code continue
 		return Players.update({
 			_id: playerId
 		}, {
@@ -613,11 +622,12 @@ Meteor.methods({
 			}
 		});
 	},
-	correctThreePointsInForPlayer(gameId, teamId, playerId) {
-		check(gameId, String);
-		check(teamId, String);
+	'Players.correctThreePointsIn': (gameId, teamId, playerId) => {
+		// Check method params
+		check(gameId, String); // GameId is passed upon the hooks that will run after this method
+		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
 		check(playerId, String);
-
+		// If OK the code continue
 		return Players.update({
 			_id: playerId
 		}, {
@@ -628,7 +638,7 @@ Meteor.methods({
 			}
 		});
 	},
-	/*threePointsMiss(data) {
+	/*'Players.threePointsMiss': (data) => {
 		let methodSchema = new SimpleSchema({
 			playerId: { type: String }
 		});
@@ -641,7 +651,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctThreePointsMiss(data) {
+	'Players.correctThreePointsMiss': (data) => {
 		let methodSchema = new SimpleSchema({
 			playerId: { type: String }
 		});
@@ -654,7 +664,7 @@ Meteor.methods({
 			}
 		});
 	},
-	offReb(data) {
+	'Players.offReb': (data) => {
 		let methodSchema = new SimpleSchema({
 			playerId: { type: String }
 		});
@@ -667,7 +677,7 @@ Meteor.methods({
 			}
 		});
 	},
-	defReb(data) {
+	'Players.defReb': (data) => {
 		let methodSchema = new SimpleSchema({
 			playerId: { type: String }
 		});
@@ -680,7 +690,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctOffReb(data) {
+	'Players.correctOffReb': (data) => {
 		let methodSchema = new SimpleSchema({
 			playerId: { type: String }
 		});
@@ -693,7 +703,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctDefReb(data) {
+	'Players.correctDefReb': (data) => {
 		let methodSchema = new SimpleSchema({
 			playerId: { type: String }
 		});
@@ -706,7 +716,7 @@ Meteor.methods({
 			}
 		});
 	},
-	steals(data) {
+	'Players.steals': (data) => {
 		let methodSchema = new SimpleSchema({
 			playerId: { type: String }
 		});
@@ -719,7 +729,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctSteals(data) {
+	'Players.correctSteals': (data) => {
 		let methodSchema = new SimpleSchema({
 			playerId: { type: String }
 		});
@@ -732,7 +742,7 @@ Meteor.methods({
 			}
 		});
 	},
-	turnovers(data) {
+	'Players.turnovers': (data) => {
 		let methodSchema = new SimpleSchema({
 			playerId: { type: String }
 		});
@@ -745,7 +755,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctTurnovers(data) {
+	'Players.correctTurnovers': (data) => {
 		let methodSchema = new SimpleSchema({
 			playerId: { type: String }
 		});
@@ -757,6 +767,5 @@ Meteor.methods({
 				'stats.evaluation': 1
 			}
 		});
-	}
-	*/
+	} */
 });

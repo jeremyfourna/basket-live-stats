@@ -4,9 +4,9 @@ import { Meteor } from 'meteor/meteor';
 
 import { FederationConfig } from '../../api/federationConfig/schema.js';
 
-Meteor.startup(function() {
+Meteor.startup(() => {
 	if (FederationConfig.find({}).count() === 0) {
-		let regions = [
+		const regions = [
 			'LR01 - ALPES',
 			'LR02 - ALSACE',
 			'LR03 - AQUITAINE',
@@ -43,7 +43,7 @@ Meteor.startup(function() {
 			'LR99 - HANDI BASKET'
 		];
 
-		let departments = [
+		const departments = [
 			'CD01 - AIN',
 			'CD02 - AISNE',
 			'CD03 - ALLIER',
@@ -154,7 +154,7 @@ Meteor.startup(function() {
 			'CD9N - POLYNESIE F AUSTRALES MARQUISES'
 		];
 
-		let level = ['BASKET ENTREPRISES',
+		const level = ['BASKET ENTREPRISES',
 			'COUPE DE FRANCE JOE JAUNAY 1/32',
 			'COUPE DE FRANCE ROBERT BUSNEL 1/32',
 			'COUPE DE FRANCE U17F 1/32',
@@ -210,7 +210,7 @@ Meteor.startup(function() {
 			'U20 Masculins Division 2'
 		];
 
-		let poule = [
+		const poule = [
 			'A',
 			'B',
 			'C',
@@ -239,23 +239,26 @@ Meteor.startup(function() {
 			'Z'
 		];
 		console.log('Begin adding groups');
-		poule.map((cur, index, array) => {
-			return Meteor.call('addAGroup', { value: cur });
+		poule.map((cur) => {
+			return Meteor.call('FederationConfig.addAGroup', cur);
 		});
 		console.log('Ending adding groups');
+
 		console.log('Begin adding level');
-		level.map((cur, index, array) => {
-			return Meteor.call('addALevel', { value: cur });
+		level.map((cur) => {
+			return Meteor.call('FederationConfig.addALevel', cur);
 		});
 		console.log('Ending adding level');
+
 		console.log('Begin adding departments');
-		departments.map((cur, index, array) => {
-			return Meteor.call('addADepartment', { value: cur });
+		departments.map((cur) => {
+			return Meteor.call('FederationConfig.addADepartment', cur);
 		});
 		console.log('Ending adding departments');
+
 		console.log('Begin adding regions');
-		regions.map((cur, index, array) => {
-			return Meteor.call('addARegion', { value: cur });
+		regions.map((cur) => {
+			return Meteor.call('FederationConfig.addARegion', cur);
 		});
 		console.log('Ending adding regions');
 	}

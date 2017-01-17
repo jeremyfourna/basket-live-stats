@@ -2,17 +2,15 @@ import { Meteor } from 'meteor/meteor';
 
 import { FederationConfig } from '../schema.js';
 
-// Publication who send back everything, use it carrefully
-Meteor.publish('federationConfig', () => {
+Meteor.publish('FederationConfig.allFederationConfig', () => {
 	return FederationConfig.find();
 });
 
-// Publication who send back only the level of the categories
-Meteor.publish('championshipLevel', () => {
+Meteor.publish('FederationConfig.allLevel', () => {
 	return FederationConfig.find({ def: 'level' });
 });
 
 // Publication who send back only the group of categories
-Meteor.publish('championshipGroup', () => {
+Meteor.publish('FederationConfig.allGroup', () => {
 	return FederationConfig.find({ def: 'group' });
 });

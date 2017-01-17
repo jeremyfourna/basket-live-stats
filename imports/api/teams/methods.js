@@ -6,7 +6,7 @@ import { Teams, teamschema } from './schema.js';
 
 // yourClub methods
 Meteor.methods({
-	addTeam(gameId) {
+	'Teams.addTeam': (gameId) => {
 		check(gameId, String);
 
 		const team = {
@@ -47,7 +47,7 @@ Meteor.methods({
 
 		return Teams.insert(team);
 	},
-	assists(teamId) {
+	'Teams.assists': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -59,7 +59,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctAssists(teamId) {
+	'Teams.correctAssists': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -71,7 +71,7 @@ Meteor.methods({
 			}
 		});
 	},
-	blocks(teamId) {
+	'Teams.blocks': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -83,7 +83,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctBlocks(teamId) {
+	'Teams.correctBlocks': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -95,7 +95,7 @@ Meteor.methods({
 			}
 		});
 	},
-	provOffFouls(teamId) {
+	'Teams.provOffFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -107,7 +107,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctProvOffFouls(teamId) {
+	'Teams.correctProvOffFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -119,7 +119,7 @@ Meteor.methods({
 			}
 		});
 	},
-	provDefFouls(teamId) {
+	'Teams.provDefFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -131,7 +131,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctProvDefFouls(teamId) {
+	'Teams.correctProvDefFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -143,7 +143,7 @@ Meteor.methods({
 			}
 		});
 	},
-	offFouls(teamId) {
+	'Teams.offFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -156,7 +156,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctOffFouls(teamId) {
+	'Teams.correctOffFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -169,7 +169,7 @@ Meteor.methods({
 			}
 		});
 	},
-	defFouls(teamId) {
+	'Teams.defFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -182,7 +182,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctDefFouls(teamId) {
+	'Teams.correctDefFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -195,7 +195,7 @@ Meteor.methods({
 			}
 		});
 	},
-	fouls1FT(teamId) {
+	'Teams.fouls1FT': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -208,7 +208,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctFouls1FT(teamId) {
+	'Teams.correctFouls1FT': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -221,7 +221,7 @@ Meteor.methods({
 			}
 		});
 	},
-	fouls2FT(teamId) {
+	'Teams.fouls2FT': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -234,7 +234,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctFouls2FT(teamId) {
+	'Teams.correctFouls2FT': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -247,7 +247,7 @@ Meteor.methods({
 			}
 		});
 	},
-	fouls3FT(teamId) {
+	'Teams.fouls3FT': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -260,7 +260,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctFouls3FT(teamId) {
+	'Teams.correctFouls3FT': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -273,7 +273,7 @@ Meteor.methods({
 			}
 		});
 	},
-	techFouls(teamId) {
+	'Teams.techFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -286,7 +286,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctTechFouls(teamId) {
+	'Teams.correctTechFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -299,7 +299,7 @@ Meteor.methods({
 			}
 		});
 	},
-	antiSportFouls(teamId) {
+	'Teams.antiSportFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -312,7 +312,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctAntiSportFouls(teamId) {
+	'Teams.correctAntiSportFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -325,7 +325,7 @@ Meteor.methods({
 			}
 		});
 	},
-	disqualifyingFouls(teamId) {
+	'Teams.disqualifyingFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -338,7 +338,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctDisqualifyingFouls(teamId) {
+	'Teams.correctDisqualifyingFouls': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -351,7 +351,7 @@ Meteor.methods({
 			}
 		});
 	},
-	onePointIn(teamId) {
+	'Teams.onePointIn': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -364,7 +364,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctOnePointIn(teamId) {
+	'Teams.correctOnePointIn': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -380,7 +380,7 @@ Meteor.methods({
 			}
 		});
 	},
-	onePointOut(teamId) {
+	'Teams.onePointOut': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -392,7 +392,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctOnePointOut(teamId) {
+	'Teams.correctOnePointOut': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -404,7 +404,7 @@ Meteor.methods({
 			}
 		});
 	},
-	twoPointsIn(teamId) {
+	'Teams.twoPointsIn': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -417,7 +417,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctTwoPointsIn(teamId) {
+	'Teams.correctTwoPointsIn': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -433,7 +433,7 @@ Meteor.methods({
 			}
 		});
 	},
-	twoPointsOut(teamId) {
+	'Teams.twoPointsOut': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -445,7 +445,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctTwoPointsOut(teamId) {
+	'Teams.correctTwoPointsOut': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -457,7 +457,7 @@ Meteor.methods({
 			}
 		});
 	},
-	threePointsIn(teamId) {
+	'Teams.threePointsIn': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -470,7 +470,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctThreePointsIn(teamId) {
+	'Teams.correctThreePointsIn': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -486,7 +486,7 @@ Meteor.methods({
 			}
 		});
 	},
-	threePointsOut(teamId) {
+	'Teams.threePointsOut': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -498,7 +498,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctThreePointsOut(teamId) {
+	'Teams.correctThreePointsOut': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -510,7 +510,7 @@ Meteor.methods({
 			}
 		});
 	},
-	offReb(teamId) {
+	'Teams.offReb': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -522,7 +522,7 @@ Meteor.methods({
 			}
 		});
 	},
-	defReb(teamId) {
+	'Teams.defReb': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -534,7 +534,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctOffReb(teamId) {
+	'Teams.correctOffReb': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -546,7 +546,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctDefReb(teamId) {
+	'Teams.correctDefReb': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -558,7 +558,7 @@ Meteor.methods({
 			}
 		});
 	},
-	steals(teamId) {
+	'Teams.steals': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -570,7 +570,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctSteals(teamId) {
+	'Teams.correctSteals': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -582,7 +582,7 @@ Meteor.methods({
 			}
 		});
 	},
-	turnovers(teamId) {
+	'Teams.turnovers': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -594,7 +594,7 @@ Meteor.methods({
 			}
 		});
 	},
-	correctTurnovers(teamId) {
+	'Teams.correctTurnovers': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({

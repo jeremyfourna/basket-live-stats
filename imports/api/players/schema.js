@@ -51,6 +51,11 @@ export const playerSchema = new SimpleSchema({
 		type: String,
 		label: 'Player id'
 	},
+	clubId: {
+		type: String,
+		label: 'Coach\'s club id',
+		optional: true
+	},
 	firstName: {
 		type: String,
 		label: 'Player first name',

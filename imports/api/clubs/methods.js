@@ -2,68 +2,29 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-import { Clubs } from './schema.js';
+import { Clubs, clubSchema } from './schema.js';
+import { clubStatusValues } from '../schemas.js';
 
 Meteor.methods({
-	clubInsert(data) {
-		let methodSchema = new SimpleSchema({
-			name: { type: String },
-			region: { type: String },
-			department: { type: String },
-			zipCode: { type: String },
-			city: { type: String },
-			jerseyColor: { type: String },
-			createdBy: { type: String }
-		});
-		check(data, methodSchema);
-
+	'Clubs.addNewClub': (data) => {
+		// Check method params
+		check(data, clubSchema);
+		// If OK the code continue
 		return Clubs.insert(data);
 	},
-	/*createNewTeam(data) { // Define team schema
-		let methodSchema = new SimpleSchema({
-			team: { type: Object },
+	'Clubs.changeClubStatus': (data) => {
+		// Check method params
+		const methodSchema = new SimpleSchema({
 			clubId: { type: String },
+			status: { type: String, allowedValues: clubStatusValues }
 		});
 		check(data, methodSchema);
-
+		// If OK the code continue
 		return Clubs.update({ _id: data.clubId }, {
-			$push: {
-				teams: data.team
-			}
-		});
-	},*/
-	deleteTeam(data) {
-		let methodSchema = new SimpleSchema({
-			teamId: { type: String },
-			clubId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Clubs.update({ _id: data.clubId }, {
-			$pull: {
-				teams: {
-					teamId: data.teamId
-				}
+			$set: {
+				status: data.status
 			}
 		});
 	}
-	/*updateTeam(team, club, teamId) { // To refactor, add methods for differents fields and actions
-		var teamToUpdate = 'teams.' + teamId;
-		Clubs.update({
-			_id: club
-		}, {
-			$pull: {
-				teams: {
-					teamId: teamId
-				}
-			}
-		});
-		Clubs.update({
-			_id: club
-		}, {
-			$push: {
-				teams: team
-			}
-		});
-	}*/
+
 });

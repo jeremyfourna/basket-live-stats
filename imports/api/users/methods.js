@@ -2,73 +2,61 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
+import { Users } from './schema.js';
+
 Meteor.methods({
-	changeUserName(data) {
+	'Users.changeUserName': (data) => {
+		// Check method params
 		const methodSchema = new SimpleSchema({
 			userId: { type: String },
 			pseudo: { type: String }
 		});
 		check(data, methodSchema);
-
-		return Meteor.users.update({ _id: data.userId }, {
+		// If OK the code continue
+		return Users.update({ _id: data.userId }, {
 			$set: {
 				username: data.pseudo
 			}
 		});
 	},
-	deleteUser(userId) {
+	'Users.renderUserInactive': (userId) => {
+		// Check method params
 		check(userId, String);
-		return Meteor.users.remove({ _id: userId });
-	},
-	updateEmail(data) {
-		const methodSchema = new SimpleSchema({
-			userId: { type: String },
-			email: { type: String }
-		});
-		check(data, methodSchema);
-		return Meteor.users.update({ _id: data.userId }, {
+		// If OK the code continue
+		return Users.update({ _id: userId }, {
 			$set: {
-				'emails.0.address': data.email
+				'profile.status': 'inactive'
 			}
 		});
 	},
-	updateUserProfile(data) {
+	'Users.updateUserProfile': (data) => {
+		// Check method params
 		const methodSchema = new SimpleSchema({
 			userId: { type: String },
 			name: { type: String },
 			firstName: { type: String }
 		});
 		check(data, methodSchema);
-
-		return Meteor.users.update({ _id: data.userId }, {
+		// If OK the code continue
+		return Users.update({ _id: data.userId }, {
 			$set: {
 				'profile.name': user.name,
 				'profile.firstName': user.firstName
 			}
 		});
 	},
-	beClubAdmin(data) {
-		const methodSchema = new SimpleSchema({
-			userId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Meteor.users.update({ _id: data.userId }, {
-			$set: {
-				'profile.clubAdmin': true
-			}
-		});
-	},
-	updateClub(data) {
+	'Users.becomeClubAdmin': (data) => {
+		// Check method params
 		const methodSchema = new SimpleSchema({
 			userId: { type: String },
-			club: { type: String }
+			clubId: { type: String }
 		});
 		check(data, methodSchema);
-
-		return Meteor.users.update({ _id: data.userId }, {
+		// If OK the code continue
+		return Users.update({ _id: data.userId }, {
 			$set: {
-				'profile.club': data.club
+				'profile.clubAdmin': true,
+				'profile.clubId': data.clubId
 			}
 		});
 	}
