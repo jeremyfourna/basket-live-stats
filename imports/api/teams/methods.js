@@ -351,8 +351,17 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.onePointIn': (teamId) => {
+	'Teams.onePointIn': (gameId, teamId, playerId, evolScore) => {
+		// Check method params
+		const evolScoreSchema = new SimpleSchema({
+			gameIndex: { type: Number, min: 0 },
+			scoreGap: { type: Number }
+		});
+		check(gameId, String); // gameId is passed upon the hooks that will run after this method
 		check(teamId, String);
+		check(playerId, String); // teamId is passed upon the hooks that will run after this method
+		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
+		// If OK the code continue
 
 		return Teams.update({
 			_id: teamId
@@ -364,9 +373,12 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctOnePointIn': (teamId) => {
+	'Teams.correctOnePointIn': (gameId, teamId, playerId) => {
+		// Check method params
+		check(gameId, String); // gameId is passed upon the hooks that will run after this method
 		check(teamId, String);
-
+		check(playerId, String); // playerId is passed upon the hooks that will run after this method
+		// If OK the code continue
 		return Teams.update({
 			_id: teamId
 		}, {
@@ -404,9 +416,17 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.twoPointsIn': (teamId) => {
+	'Teams.twoPointsIn': (gameId, teamId, playerId, evolScore) => {
+		// Check method params
+		const evolScoreSchema = new SimpleSchema({
+			gameIndex: { type: Number, min: 0 },
+			scoreGap: { type: Number }
+		});
+		check(gameId, String); // gameId is passed upon the hooks that will run after this method
 		check(teamId, String);
-
+		check(playerId, String); // playerId is passed upon the hooks that will run after this method
+		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
+		// If OK the code continue
 		return Teams.update({
 			_id: teamId
 		}, {
@@ -417,9 +437,12 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctTwoPointsIn': (teamId) => {
+	'Teams.correctTwoPointsIn': (gameId, teamId, playerId) => {
+		// Check method params
+		check(gameId, String); // gameId is passed upon the hooks that will run after this method
 		check(teamId, String);
-
+		check(playerId, String); // playerId is passed upon the hooks that will run after this method
+		// If OK the code continue
 		return Teams.update({
 			_id: teamId
 		}, {

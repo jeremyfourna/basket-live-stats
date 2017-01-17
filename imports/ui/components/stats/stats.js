@@ -11,15 +11,6 @@ import '../stateOfTheGame/stateOfTheGame.js';
 import './modal/playerModal.js';
 import './modal/opponentPlayerModal.js';
 
-Template.stats.onCreated(function() {
-	this.autorun(() => {
-		const gameId = this.data.gameData._id;
-
-		this.subscribe('teamsForAGame', gameId);
-		this.subscribe('playersForAGame', gameId);
-	});
-});
-
 Template.stats.helpers({
 	yourClub() {
 		return this.gameData.yourClub || TAPi18n.__('homeTeam');
@@ -61,44 +52,18 @@ Template.stats.helpers({
 		}).score;
 	},
 	yourClubPlayersInGame() {
-		const gameId = this.gameData._id;
 		const teamId = this.gameData.yourClubTeamId;
 
-		return Players.find({
-			gameId,
-			teamId,
-			inPlay: true
-		}, {
-			fields: {
-				_id: 1,
-				firstName: 1,
-				lastName: 1,
-				jersey: 1
-			},
-			sort: {
-				jersey: 1
-			}
-		}).fetch();
+		return this.playersDataInGame.filter((cur) => {
+			return cur.teamId === teamId;
+		});
 	},
 	opponentPlayersInGame() {
-		const gameId = this.gameData._id;
 		const teamId = this.gameData.opponentTeamId;
 
-		return Players.find({
-			gameId,
-			teamId,
-			inPlay: true
-		}, {
-			fields: {
-				_id: 1,
-				firstName: 1,
-				lastName: 1,
-				jersey: 1
-			},
-			sort: {
-				jersey: 1
-			}
-		}).fetch();
+		return this.playersDataInGame.filter((cur) => {
+			return cur.teamId === teamId;
+		});
 	}
 });
 

@@ -14,13 +14,13 @@ Template.replacementModal.events({
 			secondes: Number($('#secondes').val())
 		};
 		if (Session.get('inPlay')) {
-			Meteor.call('goingOnTheBench', data, (error, result) => {
+			Meteor.call('Players.goingOnTheBench', data, (error, result) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			Meteor.call('goingInPlay', data, (error, result) => {
+			Meteor.call('Players.goingInPlay', data, (error, result) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}

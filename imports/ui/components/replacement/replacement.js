@@ -24,44 +24,18 @@ Template.replacement.helpers({
 		});
 	},
 	yourClubPlayers() {
-		const gameId = this.gameData._id;
 		const teamId = this.gameData.yourClubTeamId;
 
-		return Players.find({
-			gameId,
-			teamId,
-		}, {
-			fields: {
-				_id: 1,
-				firstName: 1,
-				lastName: 1,
-				jersey: 1,
-				inPlay: 1
-			},
-			sort: {
-				jersey: 1
-			}
-		}).fetch();
+		return this.playersData.filter((cur) => {
+			return cur.teamId === teamId;
+		});
 	},
 	opponentPlayers() {
-		const gameId = this.gameData._id;
 		const teamId = this.gameData.opponentTeamId;
 
-		return Players.find({
-			gameId,
-			teamId,
-		}, {
-			fields: {
-				_id: 1,
-				firstName: 1,
-				lastName: 1,
-				jersey: 1,
-				inPlay: 1
-			},
-			sort: {
-				jersey: 1
-			}
-		}).fetch();
+		return this.playersData.filter((cur) => {
+			return cur.teamId === teamId;
+		});
 	}
 });
 

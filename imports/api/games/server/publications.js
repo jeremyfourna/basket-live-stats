@@ -4,12 +4,12 @@ import { check } from 'meteor/check';
 import { Games } from '../schema.js';
 
 // Publication who send back everything, use it carrefully
-Meteor.publish('games', () => {
+Meteor.publish('Games.games', () => {
 	return Games.find({});
 });
 
 // Publication who send back the last 3 live games
-Meteor.publish('last3LiveGames', () => {
+Meteor.publish('Games.last3LiveGames', () => {
 	return Games.find({
 		gameState: {
 			$nin: ['gameEnded', 'notStarted']
@@ -24,7 +24,7 @@ Meteor.publish('last3LiveGames', () => {
 });
 
 // Publication who send back the last 3 ended games
-Meteor.publish('last3EndedGames', () => {
+Meteor.publish('Games.last3EndedGames', () => {
 	return Games.find({
 		gameState: 'gameEnded',
 		privateGame: false
@@ -37,7 +37,7 @@ Meteor.publish('last3EndedGames', () => {
 });
 
 // Send back one game
-Meteor.publish('aGame', (gameId) => {
+Meteor.publish('Games.aGame', (gameId) => {
 	check(gameId, String);
 
 	return Games.find({
@@ -45,7 +45,7 @@ Meteor.publish('aGame', (gameId) => {
 	});
 });
 
-Meteor.publish('oneGameForReplacement', (gameId) => {
+Meteor.publish('Games.oneGameForReplacement', (gameId) => {
 	check(gameId, String);
 	return Games.find({ _id: gameId }, {
 		fields: {
@@ -55,7 +55,7 @@ Meteor.publish('oneGameForReplacement', (gameId) => {
 	});
 });
 
-Meteor.publish('oneGameInfos', (gameId) => {
+Meteor.publish('Games.oneGameInfos', (gameId) => {
 	check(gameId, String);
 	return Games.find({ _id: gameId }, {
 		fields: {
@@ -64,7 +64,7 @@ Meteor.publish('oneGameInfos', (gameId) => {
 	});
 });
 
-Meteor.publish('aGameForOwnership', (gameId) => {
+Meteor.publish('Games.aGameForOwnership', (gameId) => {
 	check(gameId, String);
 	return Games.find({ _id: gameId }, {
 		fields: {
@@ -74,12 +74,12 @@ Meteor.publish('aGameForOwnership', (gameId) => {
 });
 
 // Send back only the user's games
-Meteor.publish('myGames', (userId) => {
+Meteor.publish('Games.myGames', (userId) => {
 	return Games.find({ userId });
 });
 
 // Send back only the games that have been created less than 7 days ago
-Meteor.publish('liveGames', () => {
+Meteor.publish('Games.liveGames', () => {
 	return Games.find({
 		privateGame: false,
 		state: {

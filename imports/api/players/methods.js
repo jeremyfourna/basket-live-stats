@@ -50,12 +50,13 @@ Meteor.methods({
 			turnovers: 0
 		};
 
-		// Check player input before inserting in DB
-		check(player, playerSchema);
 		// Loop 12 times because a team is composed of 12 players at max
 		for (let i = 0; i < 12; i++) {
 			// Change player's jersey
 			player.jersey = 4 + i;
+
+			// Check player input before inserting in DB
+			check(player, playerSchema);
 
 			Players.insert(player);
 		}
@@ -129,7 +130,7 @@ Meteor.methods({
 	},
 	'Players.assistsIn': (teamId, playerId) => {
 		// Check method params
-		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
 		// If OK the code continue
 		return Players.update({ _id: playerId }, {
@@ -141,7 +142,7 @@ Meteor.methods({
 	},
 	'Players.correctAssistsIn': (teamId, playerId) => {
 		// Check method params
-		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
 		// If OK the code continue
 		return Players.update({ _id: playerId }, {
@@ -476,16 +477,9 @@ Meteor.methods({
 				}
 			});
 		},*/
-	'Players.onePointIn': (gameId, teamId, playerId, evolScore) => {
+	'Players.onePointIn': (playerId) => {
 		// Check method params
-		const evolScoreSchema = new SimpleSchema({
-			gameIndex: { type: Number, min: 0 },
-			scoreGap: { type: Number }
-		});
-		check(gameId, String); // GameId is passed upon the hooks that will run after this method
-		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
 		check(playerId, String);
-		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
 		// If OK the code continue
 		return Players.update({ _id: playerId }, {
 			$inc: {
@@ -495,10 +489,8 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.correctOnePointIn': (gameId, teamId, playerId) => {
+	'Players.correctOnePointIn': (playerId) => {
 		// Check method params
-		check(gameId, String); // GameId is passed upon the hooks that will run after this method
-		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
 		check(playerId, String);
 		// If OK the code continue
 		return Players.update({ _id: playerId }, {
@@ -509,8 +501,7 @@ Meteor.methods({
 			}
 		});
 	},
-	/*'Players.
-': 		onePointMiss(data) {=>
+	/*'Players.onePointMiss: (data) {=>
 			let methodSchema = new SimpleSchema({
 				playerId: { type: String }
 			});
@@ -536,16 +527,9 @@ Meteor.methods({
 				}
 			});
 		},*/
-	'Players.twoPointsIn': (gameId, teamId, playerId, evolScore) => {
+	'Players.twoPointsIn': (playerId) => {
 		// Check method params
-		const evolScoreSchema = new SimpleSchema({
-			gameIndex: { type: Number, min: 0 },
-			scoreGap: { type: Number }
-		});
-		check(gameId, String); // GameId is passed upon the hooks that will run after this method
-		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
 		check(playerId, String);
-		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
 		// If OK the code continue
 		return Players.update({
 			_id: playerId
@@ -557,10 +541,8 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.correctTwoPointsIn': (gameId, teamId, playerId) => {
+	'Players.correctTwoPointsIn': (playerId) => {
 		// Check method params
-		check(gameId, String); // GameId is passed upon the hooks that will run after this method
-		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
 		check(playerId, String);
 		// If OK the code continue
 		return Players.update({
@@ -607,8 +589,8 @@ Meteor.methods({
 			gameIndex: { type: Number, min: 0 },
 			scoreGap: { type: Number }
 		});
-		check(gameId, String); // GameId is passed upon the hooks that will run after this method
-		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
+		check(gameId, String); // gameId is passed upon the hooks that will run after this method
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
 		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
 		// If OK the code continue
@@ -624,8 +606,8 @@ Meteor.methods({
 	},
 	'Players.correctThreePointsIn': (gameId, teamId, playerId) => {
 		// Check method params
-		check(gameId, String); // GameId is passed upon the hooks that will run after this method
-		check(teamId, String); // TeamId is passed upon the hooks that will run after this method
+		check(gameId, String); // gameId is passed upon the hooks that will run after this method
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
 		// If OK the code continue
 		return Players.update({

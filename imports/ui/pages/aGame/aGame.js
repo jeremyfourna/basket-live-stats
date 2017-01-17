@@ -4,6 +4,8 @@ import { Router } from 'meteor/iron:router';
 import 'meteor/sacha:spin';
 
 import { Games } from '../../../api/games/schema.js';
+import { Teams } from '../../../api/teams/schema.js';
+import { Players } from '../../../api/players/schema.js';
 
 import './aGame.jade';
 import '../../components/summary/summary.js';
@@ -15,7 +17,9 @@ Template.aGame.onCreated(function() {
 	this.autorun(() => {
 		const gameId = Router.current().params._id;
 
-		this.subscribe('aGame', gameId);
+		this.subscribe('Games.aGame', gameId);
+		this.subscribe('Teams.teamsForAGame', gameId);
+		this.subscribe('Players.playersForAGame', gameId);
 	});
 });
 
@@ -24,9 +28,7 @@ Template.aGame.helpers({
 		const gameId = Router.current().params._id;
 		let userId = Meteor.userId();
 
-		let game = Games.findOne({
-			_id: gameId
-		}, {
+		let game = Games.findOne({ _id: gameId }, {
 			fields: {
 				userId: 1
 			}
@@ -41,9 +43,7 @@ Template.aGame.helpers({
 	gameData() {
 		const gameId = Router.current().params._id;
 
-		return Games.findOne({
-			_id: gameId
-		}, {
+		return Games.findOne({ _id: gameId }, {
 			fields: {
 				gameState: 1,
 				yourClub: 1,
@@ -53,5 +53,48 @@ Template.aGame.helpers({
 				evolution: 1
 			}
 		});
-	}
+	},
+	playersDataInGame() {
+		const gameId = Router.current().params._id;
+
+		return Players.find({
+			gameId,
+			inPlay: true
+		}, {
+			fields: {
+				teamId: 1,
+				firstName: 1,
+				lastName: 1,
+				jersey: 1
+			},
+			sort: {
+				jersey: 1
+			}
+		}).fetch();
+	},
+	teamsScore() {
+		const gameId = Router.current().params._id;
+
+		return Teams.find({ gameId }, {
+			fields: {
+				score: 1
+			}
+		}).fetch();
+	},
+	playersData() {
+		const gameId = Router.current().params._id;
+
+		return Players.find({ gameId }, {
+			fields: {
+				teamId: 1,
+				firstName: 1,
+				lastName: 1,
+				jersey: 1,
+				inPlay: 1
+			},
+			sort: {
+				jersey: 1
+			}
+		}).fetch();
+	},
 });

@@ -1,6 +1,17 @@
 import { Template } from 'meteor/templating';
+import 'meteor/sacha:spin';
+
+import { Teams } from '../../../api/teams/schema.js';
 
 import './gameCard.jade';
+
+Template.gameCard.onCreated(function() {
+	this.autorun(() => {
+		const gameId = this.data._id;
+
+		this.subscribe('Teams.teamsForAGame', gameId);
+	});
+});
 
 Template.gameCard.helpers({
 	yourClub() {
@@ -15,6 +26,28 @@ Template.gameCard.helpers({
 		} else {
 			return false;
 		}
+	},
+	yourClubScore() {
+		const teamId = this.yourClubTeamId;
+
+		return Teams.findOne({
+			_id: teamId,
+		}, {
+			fields: {
+				score: 1
+			}
+		}).score;
+	},
+	opponentScore() {
+		const teamId = this.opponentTeamId;
+
+		return Teams.findOne({
+			_id: teamId,
+		}, {
+			fields: {
+				score: 1
+			}
+		}).score;
 	},
 	q1Running() {
 		if (this.gameState === 'q1Running') {

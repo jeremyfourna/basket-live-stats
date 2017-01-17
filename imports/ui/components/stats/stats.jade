@@ -6,6 +6,7 @@ template(name="stats")
 					span.label.label-default #{yourClubScore} - #{opponentScore}
 					| #{opponent}
 			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				// stateOfTheGame :: Object -> String -> Template
 				+stateOfTheGame(gameState=gameState gameId=gameId)
 		.row
 			.col-xs-12.col-sm-12.col-md-6.col-lg-6

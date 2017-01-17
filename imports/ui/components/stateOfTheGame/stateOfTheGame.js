@@ -111,7 +111,7 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'q1Running'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
@@ -123,7 +123,7 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'q1Ended'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
@@ -135,7 +135,7 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'q2Running'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
@@ -147,7 +147,7 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'halfTime'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
@@ -159,7 +159,7 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'q3Running'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
@@ -171,7 +171,7 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'q3Ended'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
@@ -183,7 +183,7 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'q4Running'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
@@ -195,7 +195,7 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'oT1'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
@@ -207,7 +207,7 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'oT2'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
@@ -219,7 +219,7 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'oT3'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
@@ -231,7 +231,7 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'oT4'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
@@ -243,7 +243,7 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'oT5'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
@@ -255,11 +255,11 @@ Template.stateOfTheGame.events({
 			gameId: this.gameId,
 			status: 'gameEnded'
 		};
-		Meteor.call('gameStateSwitch', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			} else {
-				Meteor.call('endedGamesPlayers', data, (error, result) => {
+				return Meteor.call('Games.endedGamesPlayers', data, (error, result) => {
 					if (error) {
 						return Bert.alert(error.message, 'danger', 'growl-top-right');
 					}

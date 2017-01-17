@@ -10,7 +10,7 @@ Template.creationGame.events({
 		event.preventDefault();
 		const userId = Meteor.userId();
 
-		return Meteor.call('addGame', userId, (error, result) => {
+		return Meteor.call('Games.addGame', userId, (error, result) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			} else {

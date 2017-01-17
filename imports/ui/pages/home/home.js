@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import 'meteor/sacha:spin';
 
 import { Games } from '../../../api/games/schema.js';
 
@@ -7,8 +8,8 @@ import '../../components/creationGame/creationGame.js';
 
 Template.home.onCreated(function() {
 	this.autorun(() => {
-		this.subscribe('last3LiveGames');
-		this.subscribe('last3EndedGames');
+		this.subscribe('Games.last3LiveGames');
+		this.subscribe('Games.last3EndedGames');
 	});
 });
 
@@ -16,9 +17,10 @@ Template.home.helpers({
 	game() {
 		return Games.find({ gameState: { $nin: ['gameEnded', 'notStarted'] }, privateGame: false }, {
 			fields: {
-				gameInfos: 1,
-				'stats.yourClub.score': 1,
-				'stats.opponent.score': 1,
+				yourClub: 1,
+				yourClubTeamId: 1,
+				opponent: 1,
+				opponentTeamId: 1,
 				gameState: 1
 			},
 			limit: 3
@@ -27,9 +29,10 @@ Template.home.helpers({
 	endedGame() {
 		return Games.find({ gameState: 'gameEnded', privateGame: false }, {
 			fields: {
-				gameInfos: 1,
-				'stats.yourClub.score': 1,
-				'stats.opponent.score': 1,
+				yourClub: 1,
+				yourClubTeamId: 1,
+				opponent: 1,
+				opponentTeamId: 1,
 				gameState: 1
 			},
 			limit: 3
