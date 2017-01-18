@@ -74,7 +74,8 @@ template(name='summary')
 					tbody.yourClubPlayers
 						each yourClubPlayers
 							tr(class='#{isInPlay}')
-								th.text-center(scope='row') #{jersey}
+								td.text-center(scope='row')
+									b #{jersey}
 								td.text-center #{playerTime}
 								td.text-center #{points.totalPoints}
 								td.text-center #{points.twoPointsIn}/#{total2PointsShoots}
@@ -94,7 +95,8 @@ template(name='summary')
 								td.text-center #{evaluation}
 						tr.active
 							with yourClubStats
-								th(scope='row') {{_ "total"}}
+								td(scope='row')
+									b {{_ "total"}}
 								td.text-center -
 								td.text-center #{score}
 								td.text-center #{points.twoPointsIn}/#{teamTotal2PointsShoots}
@@ -128,7 +130,8 @@ template(name='summary')
 					tbody.opponentPlayers
 						each opponentPlayers
 							tr(class='#{isInPlay}')
-								th.text-center(scope='row') #{jersey}
+								td.text-center(scope='row')
+									b #{jersey}
 								td.text-center #{playerTime}
 								td.text-center #{points.totalPoints}
 								td.text-center #{points.twoPointsIn}
@@ -136,7 +139,8 @@ template(name='summary')
 								td.text-center #{points.onePointIn}
 						tr.active
 							with opponentStats
-								th.text-center(scope='row') {{_ "total"}}
+								td.text-center(scope='row')
+									b {{_ "total"}}
 								td.text-center -
 								td.text-center #{score}
 								td.text-center #{points.twoPointsIn}
