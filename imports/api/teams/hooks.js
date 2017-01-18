@@ -72,3 +72,32 @@ MethodHooks.after('Teams.correctTwoPointsIn', (options) => {
 		return options.result;
 	}
 });
+
+MethodHooks.after('Teams.threePointsIn', (options) => {
+	if (options.error) {
+		return;
+	} else if (options.result) {
+		const gameId = options.arguments[0];
+		const playerId = options.arguments[2];
+		const evolScore = options.arguments[3];
+
+		Meteor.call('Players.threePointsIn', playerId); // Method to add stats on the player level
+		Meteor.call('Games.newEvolScore', gameId, evolScore); // Method to update the score evolution for the game
+
+		return options.result;
+	}
+});
+
+MethodHooks.after('Teams.correctThreePointsIn', (options) => {
+	if (options.error) {
+		return;
+	} else if (options.result) {
+		const gameId = options.arguments[0];
+		const playerId = options.arguments[2];
+
+		Meteor.call('Players.correctThreePointsIn', playerId); // Method to add stats on the player level
+		Meteor.call('Games.correctNewEvolScore', gameId); // Method to update the score evolution for the game
+
+		return options.result;
+	}
+});

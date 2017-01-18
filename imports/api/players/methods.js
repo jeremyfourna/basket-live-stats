@@ -128,7 +128,27 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.assistsIn': (teamId, playerId) => {
+	'Players.endedGamePlayers': (gameId) => {
+		// Check method params
+		check(gameId, String);
+		// If OK the code continue
+		return Players.update({ gameId }, {
+			$set: {
+				inPlay: false
+			},
+			$push: {
+				gameTime: {
+					minutes: 0,
+					secondes: 0,
+					way: 'out',
+					gameState: 'gameEnded'
+				}
+			}
+		}, {
+			multi: true
+		});
+	},
+	'Players.assist': (teamId, playerId) => {
 		// Check method params
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
@@ -140,7 +160,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.correctAssistsIn': (teamId, playerId) => {
+	'Players.correctAssist': (teamId, playerId) => {
 		// Check method params
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
@@ -152,331 +172,286 @@ Meteor.methods({
 			}
 		});
 	},
-	/*'Players.
-': 		blocks(data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.blocks': 1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		'Players.correctBlocks': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.blocks': -1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.endedGamesPlayers': (data) {=>
-			let methodSchema = new SimpleSchema({
-				gameId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ gameId: data.gameId }, {
-				$set: {
-					inPlay: false
-				},
-				$push: {
-					gameTime: {
-						minutes: 0,
-						secondes: 0,
-						way: 'out',
-						gameState: 'gameEnded'
-					}
-				}
-			}, {
-				multi: true
-			});
-		},
-		'Players.offProvFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.provFouls.offFouls': 1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		'Players.correctOffProvFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.provFouls.offFouls': -1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.defProvFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.provFouls.defFouls': 1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		'Players.correctDefProvFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.provFouls.defFouls': -1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.offFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.offFouls': 1,
-					'stats.fouls.totalFouls': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.correctOffFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.offFouls': -1,
-					'stats.fouls.totalFouls': -1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		'Players.defFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.defFouls': 1,
-					'stats.fouls.totalFouls': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.correctDefFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.defFouls': -1,
-					'stats.fouls.totalFouls': -1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		'Players.defFoulsOneFT': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.foul1FT': 1,
-					'stats.fouls.totalFouls': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.correctDefFoulsOneFT': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.foul1FT': -1,
-					'stats.fouls.totalFouls': -1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		'Players.defFoulsTwoFT': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.foul2FT': 1,
-					'stats.fouls.totalFouls': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.correctDefFoulsTwoFT': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.foul2FT': -1,
-					'stats.fouls.totalFouls': -1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		'Players.defFoulsThreeFT': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.foul3FT': 1,
-					'stats.fouls.totalFouls': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.correctDefFoulsThreeFT': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.foul3FT': -1,
-					'stats.fouls.totalFouls': -1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		'Players.techFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.techFouls': 1,
-					'stats.fouls.totalFouls': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.correctTechFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.techFouls': -1,
-					'stats.fouls.totalFouls': -1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		'Players.antiSportFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.antiSportFouls': 1,
-					'stats.fouls.totalFouls': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.correctAntiSportFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.antiSportFouls': -1,
-					'stats.fouls.totalFouls': -1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		'Players.disqualifyingFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.disqualifyingFouls': 1,
-					'stats.fouls.totalFouls': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.correctDisqualifyingFouls': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.fouls.disqualifyingFouls': -1,
-					'stats.fouls.totalFouls': -1,
-					'stats.evaluation': 1
-				}
-			});
-		},*/
+	'Players.block': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'blocks': 1,
+				evaluation: 1
+			}
+		});
+	},
+	'Players.correctBlock': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'blocks': -1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.offProvFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.provFouls.offFouls': 1,
+				evaluation: 1
+			}
+		});
+	},
+	'Players.correctOffProvFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.provFouls.offFouls': -1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.defProvFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.provFouls.defFouls': 1,
+				evaluation: 1
+			}
+		});
+	},
+	'Players.correctDefProvFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.provFouls.defFouls': -1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.offFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.offFouls': 1,
+				'fouls.totalFouls': 1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.correctOffFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.offFouls': -1,
+				'fouls.totalFouls': -1,
+				evaluation: 1
+			}
+		});
+	},
+	'Players.defFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.defFouls': 1,
+				'fouls.totalFouls': 1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.correctDefFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.defFouls': -1,
+				'fouls.totalFouls': -1,
+				evaluation: 1
+			}
+		});
+	},
+	'Players.defFoulsOneFT': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.foul1FT': 1,
+				'fouls.totalFouls': 1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.correctDefFoulsOneFT': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.foul1FT': -1,
+				'fouls.totalFouls': -1,
+				evaluation: 1
+			}
+		});
+	},
+	'Players.defFoulsTwoFT': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.foul2FT': 1,
+				'fouls.totalFouls': 1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.correctDefFoulsTwoFT': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.foul2FT': -1,
+				'fouls.totalFouls': -1,
+				evaluation: 1
+			}
+		});
+	},
+	'Players.defFoulsThreeFT': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.foul3FT': 1,
+				'fouls.totalFouls': 1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.correctDefFoulsThreeFT': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.foul3FT': -1,
+				'fouls.totalFouls': -1,
+				evaluation: 1
+			}
+		});
+	},
+	'Players.techFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.techFouls': 1,
+				'fouls.totalFouls': 1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.correctTechFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.techFouls': -1,
+				'fouls.totalFouls': -1,
+				evaluation: 1
+			}
+		});
+	},
+	'Players.antiSportFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.antiSportFouls': 1,
+				'fouls.totalFouls': 1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.correctAntiSportFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.antiSportFouls': -1,
+				'fouls.totalFouls': -1,
+				evaluation: 1
+			}
+		});
+	},
+	'Players.disqualifyingFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.disqualifyingFouls': 1,
+				'fouls.totalFouls': 1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.correctDisqualifyingFoul': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'fouls.disqualifyingFouls': -1,
+				'fouls.totalFouls': -1,
+				evaluation: 1
+			}
+		});
+	},
 	'Players.onePointIn': (playerId) => {
 		// Check method params
 		check(playerId, String);
@@ -501,39 +476,35 @@ Meteor.methods({
 			}
 		});
 	},
-	/*'Players.onePointMiss: (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.points.onePointOut': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.correctOnePointMiss': (data) {=>
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.points.onePointOut': -1,
-					'stats.evaluation': 1
-				}
-			});
-		},*/
+	'Players.onePointOut': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'points.onePointOut': 1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.correctOnePointOut': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'points.onePointOut': -1,
+				evaluation: 1
+			}
+		});
+	},
 	'Players.twoPointsIn': (playerId) => {
 		// Check method params
 		check(playerId, String);
 		// If OK the code continue
-		return Players.update({
-			_id: playerId
-		}, {
+		return Players.update({ _id: playerId }, {
 			$inc: {
 				'points.twoPointsIn': 1,
 				'points.totalPoints': 2,
@@ -545,9 +516,7 @@ Meteor.methods({
 		// Check method params
 		check(playerId, String);
 		// If OK the code continue
-		return Players.update({
-			_id: playerId
-		}, {
+		return Players.update({ _id: playerId }, {
 			$inc: {
 				'points.twoPointsIn': -1,
 				'points.totalPoints': -2,
@@ -555,48 +524,35 @@ Meteor.methods({
 			}
 		});
 	},
-	/*
-		'Players.twoPointsMiss': (data) => {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.points.twoPointsOut': 1,
-					'stats.evaluation': -1
-				}
-			});
-		},
-		'Players.correctTwoPointsMiss': (data) => {
-			let methodSchema = new SimpleSchema({
-				playerId: { type: String }
-			});
-			check(data, methodSchema);
-
-			return Players.update({ _id: data.playerId }, {
-				$inc: {
-					'stats.points.twoPointsOut': -1,
-					'stats.evaluation': 1
-				}
-			});
-		},
-		*/
-	'Players.threePointsIn': (gameId, teamId, playerId, evolScore) => {
+	'Players.twoPointsOut': (teamId, playerId) => {
 		// Check method params
-		const evolScoreSchema = new SimpleSchema({
-			gameIndex: { type: Number, min: 0 },
-			scoreGap: { type: Number }
-		});
-		check(gameId, String); // gameId is passed upon the hooks that will run after this method
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
-		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
 		// If OK the code continue
-		return Players.update({
-			_id: playerId
-		}, {
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'points.twoPointsOut': 1,
+				evaluation: -1
+			}
+		});
+	},
+	'Players.correctTwoPointsOut': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
+			$inc: {
+				'points.twoPointsOut': -1,
+				evaluation: 1
+			}
+		});
+	},
+	'Players.threePointsIn': (playerId) => {
+		// Check method params
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
 				'points.threePointsIn': 1,
 				'points.totalPoints': 3,
@@ -604,15 +560,11 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.correctThreePointsIn': (gameId, teamId, playerId) => {
+	'Players.correctThreePointsIn': (playerId) => {
 		// Check method params
-		check(gameId, String); // gameId is passed upon the hooks that will run after this method
-		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
 		// If OK the code continue
-		return Players.update({
-			_id: playerId
-		}, {
+		return Players.update({ _id: playerId }, {
 			$inc: {
 				'points.threePointsIn': -1,
 				'points.totalPoints': -3,
@@ -620,134 +572,124 @@ Meteor.methods({
 			}
 		});
 	},
-	/*'Players.threePointsMiss': (data) => {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
+	'Players.threePointsOut': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
-				'stats.points.threePointsOut': 1,
-				'stats.evaluation': -1
+				'points.threePointsOut': 1,
+				evaluation: -1
 			}
 		});
 	},
-	'Players.correctThreePointsMiss': (data) => {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
+	'Players.correctThreePointsOut': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
-				'stats.points.threePointsOut': -1,
-				'stats.evaluation': 1
+				'points.threePointsOut': -1,
+				evaluation: 1
 			}
 		});
 	},
-	'Players.offReb': (data) => {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
+	'Players.offReb': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
-				'stats.rebounds.offReb': 1,
-				'stats.evaluation': 1
+				offReb: 1,
+				evaluation: 1
 			}
 		});
 	},
-	'Players.defReb': (data) => {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
+	'Players.correctOffReb': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
-				'stats.rebounds.defReb': 1,
-				'stats.evaluation': 1
+				offReb: -1,
+				evaluation: -1
 			}
 		});
 	},
-	'Players.correctOffReb': (data) => {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
+	'Players.defReb': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
-				'stats.rebounds.offReb': -1,
-				'stats.evaluation': -1
+				defReb: 1,
+				evaluation: 1
 			}
 		});
 	},
-	'Players.correctDefReb': (data) => {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
+	'Players.correctDefReb': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
-				'stats.rebounds.defReb': -1,
-				'stats.evaluation': -1
+				defReb: -1,
+				evaluation: -1
 			}
 		});
 	},
-	'Players.steals': (data) => {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
+	'Players.steal': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
-				'stats.steals': 1,
-				'stats.evaluation': 1
+				steals: 1,
+				evaluation: 1
 			}
 		});
 	},
-	'Players.correctSteals': (data) => {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
+	'Players.correctSteal': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
-				'stats.steals': -1,
-				'stats.evaluation': -1
+				steals: -1,
+				evaluation: -1
 			}
 		});
 	},
-	'Players.turnovers': (data) => {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
+	'Players.turnover': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
-				'stats.turnovers': 1,
-				'stats.evaluation': -1
+				turnovers: 1,
+				evaluation: -1
 			}
 		});
 	},
-	'Players.correctTurnovers': (data) => {
-		let methodSchema = new SimpleSchema({
-			playerId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Players.update({ _id: data.playerId }, {
+	'Players.correctTurnover': (teamId, playerId) => {
+		// Check method params
+		check(teamId, String); // teamId is passed upon the hooks that will run after this method
+		check(playerId, String);
+		// If OK the code continue
+		return Players.update({ _id: playerId }, {
 			$inc: {
-				'stats.turnovers': -1,
-				'stats.evaluation': 1
+				turnovers: -1,
+				evaluation: 1
 			}
 		});
-	} */
+	}
 });

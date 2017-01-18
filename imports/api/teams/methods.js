@@ -48,11 +48,10 @@ Meteor.methods({
 		return Teams.insert(team);
 	},
 	'Teams.assists': (teamId) => {
+		// Check method params
 		check(teamId, String);
-
-		return Teams.update({
-			_id: teamId
-		}, {
+		// If OK the code continue
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				assists: 1,
 				evaluation: 1
@@ -60,11 +59,10 @@ Meteor.methods({
 		});
 	},
 	'Teams.correctAssists': (teamId) => {
+		// Check method params
 		check(teamId, String);
-
-		return Teams.update({
-			_id: teamId
-		}, {
+		// If OK the code continue
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				assists: -1,
 				evaluation: -1
@@ -480,9 +478,17 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.threePointsIn': (teamId) => {
+	'Teams.threePointsIn': (gameId, teamId, playerId, evolScore) => {
+		// Check method params
+		const evolScoreSchema = new SimpleSchema({
+			gameIndex: { type: Number, min: 0 },
+			scoreGap: { type: Number }
+		});
+		check(gameId, String); // gameId is passed upon the hooks that will run after this method
 		check(teamId, String);
-
+		check(playerId, String); // playerId is passed upon the hooks that will run after this method
+		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
+		// If OK the code continue
 		return Teams.update({
 			_id: teamId
 		}, {
@@ -493,9 +499,12 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctThreePointsIn': (teamId) => {
+	'Teams.correctThreePointsIn': (gameId, teamId, playerId) => {
+		// Check method params
+		check(gameId, String); // gameId is passed upon the hooks that will run after this method
 		check(teamId, String);
-
+		check(playerId, String); // playerId is passed upon the hooks that will run after this method
+		// If OK the code continue
 		return Teams.update({
 			_id: teamId
 		}, {
