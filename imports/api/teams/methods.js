@@ -47,7 +47,7 @@ Meteor.methods({
 
 		return Teams.insert(team);
 	},
-	'Teams.assists': (teamId) => {
+	'Teams.assist': (teamId) => {
 		// Check method params
 		check(teamId, String);
 		// If OK the code continue
@@ -58,7 +58,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctAssists': (teamId) => {
+	'Teams.correctAssist': (teamId) => {
 		// Check method params
 		check(teamId, String);
 		// If OK the code continue
@@ -69,7 +69,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.blocks': (teamId) => {
+	'Teams.block': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -81,7 +81,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctBlocks': (teamId) => {
+	'Teams.correctBlock': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -93,7 +93,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.provOffFouls': (teamId) => {
+	'Teams.provOffFoul': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
@@ -105,38 +105,38 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctProvOffFouls': (teamId) => {
+	'Teams.correctProvOffFoul': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
 			_id: teamId
 		}, {
 			$inc: {
-				'provFouls.offFouls': -1,
+				'fouls.provOffFouls': -1,
 				evaluation: -1
 			}
 		});
 	},
-	'Teams.provDefFouls': (teamId) => {
+	'Teams.provDefFoul': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
 			_id: teamId
 		}, {
 			$inc: {
-				'provFouls.defFouls': 1,
+				'fouls.provDefFouls': 1,
 				evaluation: 1
 			}
 		});
 	},
-	'Teams.correctProvDefFouls': (teamId) => {
+	'Teams.correctProvDefFoul': (teamId) => {
 		check(teamId, String);
 
 		return Teams.update({
 			_id: teamId
 		}, {
 			$inc: {
-				'provFouls.defFouls': -1,
+				'fouls.provDefFouls': -1,
 				evaluation: -1
 			}
 		});
@@ -554,18 +554,6 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.defReb': (teamId) => {
-		check(teamId, String);
-
-		return Teams.update({
-			_id: teamId
-		}, {
-			$inc: {
-				defReb: 1,
-				evaluation: 1
-			}
-		});
-	},
 	'Teams.correctOffReb': (teamId) => {
 		check(teamId, String);
 
@@ -575,6 +563,18 @@ Meteor.methods({
 			$inc: {
 				offReb: -1,
 				evaluation: -1
+			}
+		});
+	},
+	'Teams.defReb': (teamId) => {
+		check(teamId, String);
+
+		return Teams.update({
+			_id: teamId
+		}, {
+			$inc: {
+				defReb: 1,
+				evaluation: 1
 			}
 		});
 	},

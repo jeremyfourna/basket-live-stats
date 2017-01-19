@@ -29,7 +29,7 @@ template(name="playerModal")
 										button#offReb.btn.btn-block.buttonForAction.btn-success(data-dismiss="modal", type="button") {{_ "offReb"}}
 								.col-xs-4.col-sm-3.col-md-2.col-lg-2
 									.thumbnail
-										button#offProvFouls.btn.btn-block.buttonForAction.btn-success(data-dismiss="modal", type="button") {{_ "provFoul"}}
+										button#provOffFoul.btn.btn-block.buttonForAction.btn-success(data-dismiss="modal", type="button") {{_ "provFoul"}}
 							.row.actions
 								.col-xs-4.col-sm-3.col-md-2.col-lg-2
 									.thumbnail
@@ -42,10 +42,10 @@ template(name="playerModal")
 										button#threePointsOut.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "threePoints"}}
 								.col-xs-4.col-sm-3.col-md-2.col-lg-2
 									.thumbnail
-										button#turnovers.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "turnover"}}
+										button#turnover.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "turnover"}}
 								.col-xs-4.col-sm-3.col-md-2.col-lg-2
 									.thumbnail
-										button#offFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "offFoul"}}
+										button#offFoul.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "offFoul"}}
 					.panel.panel-default
 						.panel-heading
 							h4.panel-title {{_ "defAction"}}
@@ -62,11 +62,11 @@ template(name="playerModal")
 										button#defReb.btn.btn-block.buttonForAction.btn-success(data-dismiss="modal", type="button") {{_ "defReb"}}
 								.col-xs-4.col-sm-3.col-md-2.col-lg-2
 									.thumbnail
-										button#defProvFouls.btn.btn-block.buttonForAction.btn-success(data-dismiss="modal", type="button") {{_ "provFoul"}}
+										button#defProvFoul.btn.btn-block.buttonForAction.btn-success(data-dismiss="modal", type="button") {{_ "provFoul"}}
 							.row.actions
 								.col-xs-4.col-sm-3.col-md-2.col-lg-2
 									.thumbnail
-										button#defFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "foul"}}
+										button#defFoul.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "foul"}}
 								.col-xs-4.col-sm-3.col-md-2.col-lg-2
 									.thumbnail
 										button#defFoulsOneFT.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "foul1FT"}}
@@ -83,13 +83,13 @@ template(name="playerModal")
 							.row.actions
 								.col-xs-6.col-sm-4.col-md-4.col-lg-4
 									.thumbnail
-										button#techFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "techFoul"}}
+										button#techFoul.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "techFoul"}}
 								.col-xs-6.col-sm-4.col-md-4.col-lg-4
 									.thumbnail
-										button#antiSportFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "antiSportFoul"}}
+										button#antiSportFoul.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "antiSportFoul"}}
 								.col-xs-6.col-sm-4.col-md-4.col-lg-4
 									.thumbnail
-										button#disqualifyingFouls.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "disqualifyingFoul"}}
+										button#disqualifyingFoul.btn.btn-block.buttonForAction.btn-danger(data-dismiss="modal", type="button") {{_ "disqualifyingFoul"}}
 				.modal-footer
 					button#correctionAction.btn.pull-left.btn-warning(type="button") {{_ "correctionAction"}}
 					button#closeModalButton.btn.btn-default(type="button", data-dismiss="modal") {{_ "closeModal"}}

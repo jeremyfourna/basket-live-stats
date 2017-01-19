@@ -9,7 +9,7 @@ import { Players } from '../../../../api/players/schema.js';
 import './playerModal.jade';
 
 Template.playerModal.events({
-	'show.bs.modal #playerModal': (event) => {
+	'show.bs.modal #playerModal': function(event) {
 		let button = $(event.relatedTarget); // Button that triggered the modal
 		let jersey = button.data('jersey');
 		let playerId = button.data('playerid');
@@ -20,27 +20,27 @@ Template.playerModal.events({
 		$('#playerModal').data('playerid', playerId);
 		$('.modal-title').text(`${whoIsDoingThisAction} ${num}${jersey} : ${firstName} ${lastName}`);
 	},
-	'click #correctionAction': () => {
+	'click #correctionAction': function() {
 		$('.buttonForAction').prepend('<span class=\'badge actionBadge\'>-1</span> ').addClass('cancelAction');
 		$('#correctionAction').addClass('cancelCorrectionAction').text(TAPi18n.__('cancelCorrectionAction'));
 	},
-	'click #closeModalButton': () => {
+	'click #closeModalButton': function() {
 		$('.actionBadge').remove();
 		$('#correctionAction').removeClass('cancelCorrectionAction');
 		$('.buttonForAction').removeClass('cancelAction');
 	},
-	'click .cancelCorrectionAction': () => {
+	'click .cancelCorrectionAction': function() {
 		$('.actionBadge').remove();
 		$('#correctionAction').removeClass('cancelCorrectionAction').text(TAPi18n.__('correctionAction'));
 		$('.buttonForAction').removeClass('cancelAction');
 	},
-	'hidden.bs.modal .modal': () => {
+	'hidden.bs.modal .modal': function() {
 		$('.actionBadge').remove();
 		$('#correctionAction').removeClass('cancelCorrectionAction');
 		$('.buttonForAction').removeClass('cancelAction');
 	},
 	// Positive action
-	'click #onePoint': (event) => {
+	'click #onePoint': function(event) {
 		event.preventDefault();
 		const gameId = this.gameData._id;
 		const teamId = this.gameData.yourClubTeamId;
@@ -48,7 +48,7 @@ Template.playerModal.events({
 		const isACancelAction = $('#onePoint').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Teams.correctOnePoint', gameId, teamId, playerId, (error) => {
+			return Meteor.call('Teams.correctOnePointIn', gameId, teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
@@ -58,22 +58,22 @@ Template.playerModal.events({
 				gameIndex: this.gameData.evolution.length,
 				scoreGap: lodash.last(this.gameData.evolution)[1] + 1
 			};
-			return Meteor.call('Teams.onePoint', gameId, teamId, playerId, evolScore, (error) => {
+			return Meteor.call('Teams.onePointIn', gameId, teamId, playerId, evolScore, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}
 	},
-	'click #twoPoint': (event) => {
+	'click #twoPoints': function(event) {
 		event.preventDefault();
 		const gameId = this.gameData._id;
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
-		const isACancelAction = $('#twoPoint').hasClass('cancelAction');
+		const isACancelAction = $('#twoPoints').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Teams.correctTwoPoint', gameId, teamId, playerId, (error) => {
+			return Meteor.call('Teams.correctTwoPointsIn', gameId, teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
@@ -84,22 +84,22 @@ Template.playerModal.events({
 				scoreGap: lodash.last(this.gameData.evolution)[1] + 2
 			};
 
-			return Meteor.call('Teams.twoPoint', gameId, teamId, playerId, evolScore, (error) => {
+			return Meteor.call('Teams.twoPointsIn', gameId, teamId, playerId, evolScore, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}
 	},
-	'click #threePoint': (event) => {
+	'click #threePoints': function(event) {
 		event.preventDefault();
 		const gameId = this.gameData._id;
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
-		const isACancelAction = $('#threePoint').hasClass('cancelAction');
+		const isACancelAction = $('#threePoints').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Teams.correctThreePoint', gameId, teamId, playerId, (error) => {
+			return Meteor.call('Teams.correctThreePointsIn', gameId, teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
@@ -109,14 +109,14 @@ Template.playerModal.events({
 				gameIndex: this.gameData.evolution.length,
 				scoreGap: lodash.last(this.gameData.evolution)[1] + 3
 			};
-			return Meteor.call('Teams.threePoint', gameId, teamId, playerId, evolScore, (error) => {
+			return Meteor.call('Teams.threePointsIn', gameId, teamId, playerId, evolScore, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}
 	},
-	'click #assist': (event) => {
+	'click #assist': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -136,7 +136,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #offReb': (event) => {
+	'click #offReb': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -156,7 +156,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #defReb': (event) => {
+	'click #defReb': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -176,27 +176,27 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #offProvFoul': (event) => {
+	'click #provOffFoul': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
 		const isACancelAction = $('#offProvFoul').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctOffProvFoul', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctProvOffFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.offProvFoul', teamId, playerId, (error) => {
+			return Meteor.call('Players.provOffFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}
 	},
-	'click #steal': (event) => {
+	'click #steal': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -216,7 +216,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #block': (event) => {
+	'click #block': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -236,7 +236,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #defProvFoul': (event) => {
+	'click #defProvFoul': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -257,7 +257,7 @@ Template.playerModal.events({
 		}
 	},
 	// Negative action
-	'click #onePointOut': (event) => {
+	'click #onePointOut': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -277,7 +277,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #twoPointsOut': (event) => {
+	'click #twoPointsOut': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -297,7 +297,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #threePointsOut': (event) => {
+	'click #threePointsOut': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -317,7 +317,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #turnover': (event) => {
+	'click #turnover': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -337,7 +337,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #offFoul': (event) => {
+	'click #offFoul': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -357,7 +357,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #defFoul': (event) => {
+	'click #defFoul': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -377,7 +377,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #defFoulsOneFT': (event) => {
+	'click #defFoulsOneFT': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -397,7 +397,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #defFoulsTwoFT': (event) => {
+	'click #defFoulsTwoFT': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -417,7 +417,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #defFoulsThreeFT': (event) => {
+	'click #defFoulsThreeFT': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -437,7 +437,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #techFoul': (event) => {
+	'click #techFoul': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -457,7 +457,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #antiSportFoul': (event) => {
+	'click #antiSportFoul': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
@@ -477,7 +477,7 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #disqualifyingFoul': (event) => {
+	'click #disqualifyingFoul': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');

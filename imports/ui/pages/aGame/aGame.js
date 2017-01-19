@@ -45,6 +45,7 @@ Template.aGame.helpers({
 
 		return Games.findOne({ _id: gameId }, {
 			fields: {
+				_id: 1,
 				gameState: 1,
 				yourClub: 1,
 				yourClubTeamId: 1,
@@ -62,6 +63,7 @@ Template.aGame.helpers({
 			inPlay: true
 		}, {
 			fields: {
+				_id: 1,
 				teamId: 1,
 				firstName: 1,
 				lastName: 1,
@@ -77,6 +79,7 @@ Template.aGame.helpers({
 
 		return Teams.find({ gameId }, {
 			fields: {
+				_id: 1,
 				score: 1
 			}
 		}).fetch();
@@ -86,6 +89,7 @@ Template.aGame.helpers({
 
 		return Players.find({ gameId }, {
 			fields: {
+				_id: 1,
 				teamId: 1,
 				firstName: 1,
 				lastName: 1,

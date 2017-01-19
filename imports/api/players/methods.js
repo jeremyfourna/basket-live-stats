@@ -196,14 +196,14 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.offProvFoul': (teamId, playerId) => {
+	'Players.provOffFoul': (teamId, playerId) => {
 		// Check method params
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
 		// If OK the code continue
 		return Players.update({ _id: playerId }, {
 			$inc: {
-				'fouls.provFouls.offFouls': 1,
+				'fouls.provOffFouls': 1,
 				evaluation: 1
 			}
 		});
@@ -215,7 +215,7 @@ Meteor.methods({
 		// If OK the code continue
 		return Players.update({ _id: playerId }, {
 			$inc: {
-				'fouls.provFouls.offFouls': -1,
+				'fouls.provOffFouls': -1,
 				evaluation: -1
 			}
 		});
@@ -227,7 +227,7 @@ Meteor.methods({
 		// If OK the code continue
 		return Players.update({ _id: playerId }, {
 			$inc: {
-				'fouls.provFouls.defFouls': 1,
+				'fouls.provDefFouls': 1,
 				evaluation: 1
 			}
 		});
@@ -239,7 +239,7 @@ Meteor.methods({
 		// If OK the code continue
 		return Players.update({ _id: playerId }, {
 			$inc: {
-				'fouls.provFouls.defFouls': -1,
+				'fouls.provDefFouls': -1,
 				evaluation: -1
 			}
 		});
