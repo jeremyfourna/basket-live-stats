@@ -72,9 +72,7 @@ Meteor.methods({
 	'Teams.block': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				blocks: 1,
 				evaluation: 1
@@ -84,9 +82,7 @@ Meteor.methods({
 	'Teams.correctBlock': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				blocks: -1,
 				evaluation: -1
@@ -96,9 +92,7 @@ Meteor.methods({
 	'Teams.provOffFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.provOffFouls': 1,
 				evaluation: 1
@@ -108,9 +102,7 @@ Meteor.methods({
 	'Teams.correctProvOffFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.provOffFouls': -1,
 				evaluation: -1
@@ -120,9 +112,7 @@ Meteor.methods({
 	'Teams.provDefFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.provDefFouls': 1,
 				evaluation: 1
@@ -132,21 +122,17 @@ Meteor.methods({
 	'Teams.correctProvDefFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.provDefFouls': -1,
 				evaluation: -1
 			}
 		});
 	},
-	'Teams.offFouls': (teamId) => {
+	'Teams.offFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.offFouls': 1,
 				'fouls.totalFouls': 1,
@@ -154,12 +140,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctOffFouls': (teamId) => {
+	'Teams.correctOffFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.offFouls': -1,
 				'fouls.totalFouls': -1,
@@ -167,12 +151,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.defFouls': (teamId) => {
+	'Teams.defFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.defFouls': 1,
 				'fouls.totalFouls': 1,
@@ -180,12 +162,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctDefFouls': (teamId) => {
+	'Teams.correctDefFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.defFouls': -1,
 				'fouls.totalFouls': -1,
@@ -193,12 +173,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.fouls1FT': (teamId) => {
+	'Teams.foul1FT': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.foul1FT': 1,
 				'fouls.totalFouls': 1,
@@ -206,12 +184,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctFouls1FT': (teamId) => {
+	'Teams.correctFoul1FT': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.foul1FT': -1,
 				'fouls.totalFouls': -1,
@@ -219,12 +195,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.fouls2FT': (teamId) => {
+	'Teams.foul2FT': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.foul2FT': 1,
 				'fouls.totalFouls': 1,
@@ -232,12 +206,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctFouls2FT': (teamId) => {
+	'Teams.correctFoul2FT': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.foul2FT': -1,
 				'fouls.totalFouls': -1,
@@ -245,12 +217,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.fouls3FT': (teamId) => {
+	'Teams.foul3FT': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.foul3FT': 1,
 				'fouls.totalFouls': 1,
@@ -258,12 +228,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctFouls3FT': (teamId) => {
+	'Teams.correctFoul3FT': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.foul3FT': -1,
 				'fouls.totalFouls': -1,
@@ -271,12 +239,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.techFouls': (teamId) => {
+	'Teams.techFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.techFouls': 1,
 				'fouls.totalFouls': 1,
@@ -284,12 +250,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctTechFouls': (teamId) => {
+	'Teams.correctTechFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.techFouls': -1,
 				'fouls.totalFouls': -1,
@@ -297,12 +261,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.antiSportFouls': (teamId) => {
+	'Teams.antiSportFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.antiSportFouls': 1,
 				'fouls.totalFouls': 1,
@@ -310,12 +272,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctAntiSportFouls': (teamId) => {
+	'Teams.correctAntiSportFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.antiSportFouls': -1,
 				'fouls.totalFouls': -1,
@@ -323,12 +283,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.disqualifyingFouls': (teamId) => {
+	'Teams.disqualifyingFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.disqualifyingFouls': 1,
 				'fouls.totalFouls': 1,
@@ -336,12 +294,10 @@ Meteor.methods({
 			}
 		});
 	},
-	'Teams.correctDisqualifyingFouls': (teamId) => {
+	'Teams.correctDisqualifyingFoul': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'fouls.disqualifyingFouls': -1,
 				'fouls.totalFouls': -1,
@@ -361,9 +317,7 @@ Meteor.methods({
 		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
 		// If OK the code continue
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'points.onePointIn': 1,
 				score: 1,
@@ -377,9 +331,7 @@ Meteor.methods({
 		check(teamId, String);
 		check(playerId, String); // playerId is passed upon the hooks that will run after this method
 		// If OK the code continue
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'points.onePointIn': -1,
 				score: -1,
@@ -393,9 +345,7 @@ Meteor.methods({
 	'Teams.onePointOut': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'points.onePointOut': 1,
 				evaluation: -1
@@ -405,9 +355,7 @@ Meteor.methods({
 	'Teams.correctOnePointOut': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'points.onePointOut': -1,
 				evaluation: 1
@@ -425,9 +373,7 @@ Meteor.methods({
 		check(playerId, String); // playerId is passed upon the hooks that will run after this method
 		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
 		// If OK the code continue
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'points.twoPointsIn': 1,
 				score: 2,
@@ -441,9 +387,7 @@ Meteor.methods({
 		check(teamId, String);
 		check(playerId, String); // playerId is passed upon the hooks that will run after this method
 		// If OK the code continue
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'points.twoPointsIn': -1,
 				score: -2,
@@ -457,9 +401,7 @@ Meteor.methods({
 	'Teams.twoPointsOut': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'points.twoPointsOut': 1,
 				evaluation: -1
@@ -469,9 +411,7 @@ Meteor.methods({
 	'Teams.correctTwoPointsOut': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'points.twoPointsOut': -1,
 				evaluation: 1
@@ -489,9 +429,7 @@ Meteor.methods({
 		check(playerId, String); // playerId is passed upon the hooks that will run after this method
 		check(evolScore, evolScoreSchema); // evolScore is passed upon the hooks that will run after this method
 		// If OK the code continue
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'points.threePointsIn': 1,
 				score: 3,
@@ -505,9 +443,7 @@ Meteor.methods({
 		check(teamId, String);
 		check(playerId, String); // playerId is passed upon the hooks that will run after this method
 		// If OK the code continue
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'points.threePointsIn': -1,
 				score: -3,
@@ -521,9 +457,7 @@ Meteor.methods({
 	'Teams.threePointsOut': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'points.threePointsOut': 1,
 				evaluation: -1
@@ -533,9 +467,7 @@ Meteor.methods({
 	'Teams.correctThreePointsOut': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				'points.threePointsOut': -1,
 				evaluation: 1
@@ -545,9 +477,7 @@ Meteor.methods({
 	'Teams.offReb': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				offReb: 1,
 				evaluation: 1
@@ -557,9 +487,7 @@ Meteor.methods({
 	'Teams.correctOffReb': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				offReb: -1,
 				evaluation: -1
@@ -569,9 +497,7 @@ Meteor.methods({
 	'Teams.defReb': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				defReb: 1,
 				evaluation: 1
@@ -581,57 +507,47 @@ Meteor.methods({
 	'Teams.correctDefReb': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				defReb: -1,
 				evaluation: -1
 			}
 		});
 	},
-	'Teams.steals': (teamId) => {
+	'Teams.steal': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				steals: 1,
 				evaluation: 1
 			}
 		});
 	},
-	'Teams.correctSteals': (teamId) => {
+	'Teams.correctSteal': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				steals: -1,
 				evaluation: -1
 			}
 		});
 	},
-	'Teams.turnovers': (teamId) => {
+	'Teams.turnover': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				turnovers: 1,
 				evaluation: -1
 			}
 		});
 	},
-	'Teams.correctTurnovers': (teamId) => {
+	'Teams.correctTurnover': (teamId) => {
 		check(teamId, String);
 
-		return Teams.update({
-			_id: teamId
-		}, {
+		return Teams.update({ _id: teamId }, {
 			$inc: {
 				turnovers: -1,
 				evaluation: 1

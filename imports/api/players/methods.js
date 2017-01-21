@@ -208,7 +208,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.correctOffProvFoul': (teamId, playerId) => {
+	'Players.correctProvOffFoul': (teamId, playerId) => {
 		// Check method params
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
@@ -220,7 +220,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.defProvFoul': (teamId, playerId) => {
+	'Players.provDefFoul': (teamId, playerId) => {
 		// Check method params
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
@@ -232,7 +232,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.correctDefProvFoul': (teamId, playerId) => {
+	'Players.correctProvDefFoul': (teamId, playerId) => {
 		// Check method params
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
@@ -296,7 +296,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.defFoulsOneFT': (teamId, playerId) => {
+	'Players.foul1FT': (teamId, playerId) => {
 		// Check method params
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
@@ -309,7 +309,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.correctDefFoulsOneFT': (teamId, playerId) => {
+	'Players.correctFoul1FT': (teamId, playerId) => {
 		// Check method params
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
@@ -322,7 +322,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.defFoulsTwoFT': (teamId, playerId) => {
+	'Players.foul2FT': (teamId, playerId) => {
 		// Check method params
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
@@ -335,7 +335,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.correctDefFoulsTwoFT': (teamId, playerId) => {
+	'Players.correctFoul2FT': (teamId, playerId) => {
 		// Check method params
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
@@ -348,7 +348,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.defFoulsThreeFT': (teamId, playerId) => {
+	'Players.foul3FT': (teamId, playerId) => {
 		// Check method params
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);
@@ -361,7 +361,7 @@ Meteor.methods({
 			}
 		});
 	},
-	'Players.correctDefFoulsThreeFT': (teamId, playerId) => {
+	'Players.correctFoul3FT': (teamId, playerId) => {
 		// Check method params
 		check(teamId, String); // teamId is passed upon the hooks that will run after this method
 		check(playerId, String);

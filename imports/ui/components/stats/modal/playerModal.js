@@ -180,7 +180,7 @@ Template.playerModal.events({
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
-		const isACancelAction = $('#offProvFoul').hasClass('cancelAction');
+		const isACancelAction = $('#provOffFoul').hasClass('cancelAction');
 
 		if (isACancelAction) {
 			return Meteor.call('Players.correctProvOffFoul', teamId, playerId, (error) => {
@@ -236,20 +236,20 @@ Template.playerModal.events({
 			});
 		}
 	},
-	'click #defProvFoul': function(event) {
+	'click #provDefFoul': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
-		const isACancelAction = $('#defProvFoul').hasClass('cancelAction');
+		const isACancelAction = $('#provDefFoul').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctProvDefFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.provDefFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
@@ -264,13 +264,13 @@ Template.playerModal.events({
 		const isACancelAction = $('#onePointOut').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctOnePointOut', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.onePointOut', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
@@ -284,13 +284,13 @@ Template.playerModal.events({
 		const isACancelAction = $('#twoPointsOut').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctTwoPointsOut', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.twoPointsOut', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
@@ -304,13 +304,13 @@ Template.playerModal.events({
 		const isACancelAction = $('#threePointsOut').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctThreePointsOut', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.threePointsOut', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
@@ -324,13 +324,13 @@ Template.playerModal.events({
 		const isACancelAction = $('#turnover').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctTurnover', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.turnover', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
@@ -344,13 +344,13 @@ Template.playerModal.events({
 		const isACancelAction = $('#offFoul').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctOffFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.offFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
@@ -364,73 +364,73 @@ Template.playerModal.events({
 		const isACancelAction = $('#defFoul').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctDefFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.defFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}
 	},
-	'click #defFoulsOneFT': function(event) {
+	'click #foul1FT': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
-		const isACancelAction = $('#defFoulsOneFT').hasClass('cancelAction');
+		const isACancelAction = $('#foul1FT').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctFoul1FT', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.foul1FT', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}
 	},
-	'click #defFoulsTwoFT': function(event) {
+	'click #foul2FT': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
-		const isACancelAction = $('#defFoulsTwoFT').hasClass('cancelAction');
+		const isACancelAction = $('#foul2FT').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctFoul2FT', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.foul2FT', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		}
 	},
-	'click #defFoulsThreeFT': function(event) {
+	'click #foul3FT': function(event) {
 		event.preventDefault();
 		const teamId = this.gameData.yourClubTeamId;
 		const playerId = $('#playerModal').data('playerid');
-		const isACancelAction = $('#defFoulsThreeFT').hasClass('cancelAction');
+		const isACancelAction = $('#foul3FT').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctFoul3FT', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.foul3FT', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
@@ -444,13 +444,13 @@ Template.playerModal.events({
 		const isACancelAction = $('#techFoul').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctTechFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.techFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
@@ -464,13 +464,13 @@ Template.playerModal.events({
 		const isACancelAction = $('#antiSportFoul').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctAntiSportFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.antiSportFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
@@ -484,13 +484,13 @@ Template.playerModal.events({
 		const isACancelAction = $('#disqualifyingFoul').hasClass('cancelAction');
 
 		if (isACancelAction) {
-			return Meteor.call('Players.correctAssist', teamId, playerId, (error) => {
+			return Meteor.call('Players.correctDisqualifyingFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}
 			});
 		} else {
-			return Meteor.call('Players.assist', teamId, playerId, (error) => {
+			return Meteor.call('Players.disqualifyingFoul', teamId, playerId, (error) => {
 				if (error) {
 					return Bert.alert(error.message, 'danger', 'growl-top-right');
 				}

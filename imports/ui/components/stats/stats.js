@@ -32,9 +32,7 @@ Template.stats.helpers({
 	yourClubScore() {
 		const teamId = this.gameData.yourClubTeamId;
 
-		return Teams.findOne({
-			_id: teamId,
-		}, {
+		return Teams.findOne({ _id: teamId }, {
 			fields: {
 				score: 1
 			}
@@ -43,9 +41,7 @@ Template.stats.helpers({
 	opponentScore() {
 		const teamId = this.gameData.opponentTeamId;
 
-		return Teams.findOne({
-			_id: teamId,
-		}, {
+		return Teams.findOne({ _id: teamId }, {
 			fields: {
 				score: 1
 			}
