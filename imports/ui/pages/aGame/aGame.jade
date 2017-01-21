@@ -24,9 +24,9 @@ template(name="aGame")
 					// replacement :: Object -> Array -> Template
 					+replacement(gameData=gameData playersData=playersData)
 				#playersSettings.tab-pane(role="tabpanel")
-					//+playerBio
+					+playersSettings
 			else
 				#resume.tab-pane.active(role="tabpanel")
-					//+summary
+					+summary(gameData=gameData)
 	else
 		+spinner

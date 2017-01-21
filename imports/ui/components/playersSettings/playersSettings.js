@@ -5,18 +5,18 @@ import 'meteor/sacha:spin';
 import { Games } from '../../../api/games/schema.js';
 import { Players } from '../../../api/players/schema.js';
 
-import './playerBio.jade';
+import './playersSettings.jade';
 import './gameInfos.js';
 import './playerUpdate.js';
 import './coachUpdate.js';
 
-Template.playerBio.onCreated(function() {
+Template.playersSettings.onCreated(function() {
 	this.autorun(() => {
 		this.subscribe('oneGameInfos', Router.current().params._id);
 	});
 });
 
-Template.playerBio.helpers({
+Template.playersSettings.helpers({
 	gameData() {
 		return Games.findOne({ _id: Router.current().params._id }, {
 			fields: {

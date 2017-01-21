@@ -33,15 +33,15 @@ Meteor.methods({
 		// Check method params
 		const methodSchema = new SimpleSchema({
 			userId: { type: String },
-			name: { type: String },
+			lastName: { type: String },
 			firstName: { type: String }
 		});
 		check(data, methodSchema);
 		// If OK the code continue
 		return Users.update({ _id: data.userId }, {
 			$set: {
-				'profile.name': user.name,
-				'profile.firstName': user.firstName
+				'profile.lastName': data.lastName,
+				'profile.firstName': data.firstName
 			}
 		});
 	},

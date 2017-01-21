@@ -44,28 +44,20 @@ Template.myAccount.events({
 			return Bert.alert('Please enter a valid email address', 'danger', 'growl-top-right');
 		}
 	},
-	'click #deleteAccount': (event) => {
-		event.preventDefault();
-		return Meteor.call('deleteUser', Meteor.userId(), (error) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			} else {
-				Meteor.logout();
-				return Router.go('home');
-			}
-		});
-	},
 	'click #personalInfosValidate': (event) => {
 		event.preventDefault();
 
 		const user = {
-			id: Meteor.userId(),
-			name: $('#name').val(),
+			userId: Meteor.userId(),
+			lastName: $('#lastName').val(),
 			firstName: $('#firstName').val()
 		};
-		return Meteor.call('updateUserProfile', user, (error) => {
+
+		return Meteor.call('Users.updateUserProfile', user, (error) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
+			} else {
+				return Bert.alert(TAPi18n.__('updateSuccess'), 'success', 'growl-top-right');
 			}
 		});
 	},

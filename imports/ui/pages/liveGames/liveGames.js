@@ -10,8 +10,8 @@ import '../../components/gameCard/gameCard.js';
 
 Template.liveGames.onCreated(function() {
 	this.autorun(() => {
-		this.subscribe('liveGames');
-		this.subscribe('myGames', Meteor.userId());
+		this.subscribe('Games.liveGames');
+		this.subscribe('Games.myGames', Meteor.userId());
 	});
 });
 
@@ -24,10 +24,11 @@ Template.liveGames.helpers({
 			}
 		}, {
 			fields: {
-				gameInfos: 1,
-				gameState: 1,
-				'stats.yourClub.score': 1,
-				'stats.opponent.score': 1
+				yourClub: 1,
+				yourClubTeamId: 1,
+				opponent: 1,
+				opponentTeamId: 1,
+				gameState: 1
 			}
 		});
 	},
@@ -37,10 +38,11 @@ Template.liveGames.helpers({
 			privateGame: false
 		}, {
 			fields: {
-				gameInfos: 1,
-				gameState: 1,
-				'stats.yourClub.score': 1,
-				'stats.opponent.score': 1
+				yourClub: 1,
+				yourClubTeamId: 1,
+				opponent: 1,
+				opponentTeamId: 1,
+				gameState: 1
 			}
 		});
 	},
@@ -52,17 +54,13 @@ Template.liveGames.helpers({
 		}
 	},
 	myGame() {
-		return Games.find({
-			userId: Meteor.userId(),
-			gameState: {
-				$nin: ['gameEnded']
-			}
-		}, {
+		return Games.find({ userId: Meteor.userId() }, {
 			fields: {
-				gameInfos: 1,
-				gameState: 1,
-				'stats.yourClub.score': 1,
-				'stats.opponent.score': 1
+				yourClub: 1,
+				yourClubTeamId: 1,
+				opponent: 1,
+				opponentTeamId: 1,
+				gameState: 1
 			}
 		});
 	}
