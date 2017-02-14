@@ -3,7 +3,6 @@ dependencies:
     - ~/.meteor
   override:
     - meteor || curl https://install.meteor.com | /bin/sh
-    - npm install -g eslint
     - meteor npm install
 
 test:
