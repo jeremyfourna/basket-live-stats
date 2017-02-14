@@ -1,0 +1,47 @@
+template(name="stats")
+	if Template.subscriptionsReady
+		.row
+			.col-xs-12.col-sm-7.col-md-6.col-lg-6
+				p.lead #{yourClub}
+					span.label.label-default #{yourClubScore} - #{opponentScore}
+					| #{opponent}
+			.col-xs-12.col-sm-5.col-md-6.col-lg-6
+				// stateOfTheGame :: Object -> String -> Template
+				+stateOfTheGame(gameState=gameState gameId=gameId)
+		.row
+			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				.panel.panel-default
+					.panel-heading
+						p.panel-title {{_ "team"}} : #{yourClub}
+					.panel-body
+						p.bg-info {{_ "explanationHowToAddAStat"}}
+						.yourClub.row.playerRow
+							each yourClubPlayersInGame
+								.col-xs-4.col-sm-2.col-md-2.col-lg-2
+									.thumbnail
+										button.btn.btn-block.btn-info(data-toggle="modal" data-target="#playerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}" data-playerid="#{_id}")
+											strong #{jersey}
+							else
+								button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
+					.panel-footer
+						button.doReplacement.btn.btn-default(type="button") {{_ "makeAReplacement"}}
+			.col-xs-12.col-sm-12.col-md-6.col-lg-6
+				.panel.panel-default
+					.panel-heading
+						p.panel-title {{_ "team"}} : #{opponent}
+					.panel-body
+						p.bg-info {{_ "explanationHowToAddAStat"}}
+						.opponent.row.playerRow
+							each opponentPlayersInGame
+								.col-xs-4.col-sm-2.col-md-2.col-lg-2
+									.thumbnail
+										button.btn.btn-block.btn-warning(data-toggle="modal" data-target="#opponentPlayerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}" data-playerid="#{_id}")
+											strong #{jersey}
+							else
+								button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
+					.panel-footer
+						button.doReplacement.btn.btn-default(type="button") {{_ "makeAReplacement"}}
+		+playerModal
+		+opponentPlayerModal
+	else
+		+spinner

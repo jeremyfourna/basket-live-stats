@@ -1,0 +1,28 @@
+template(name='createNewClub')
+	h1 {{_ "addClub"}}
+		form
+			.input-group.shadow.input-group-sm
+				span.input-group-addon {{_ "clubName"}}
+				input#clubName.form-control(type='text')
+			.input-group.shadow.input-group-sm
+				span.input-group-addon {{_ "region"}}
+				input#region.awesomplete.form-control(type='text', list='regionList', value='')
+				datalist#regionList
+					each regions
+						option #{val}
+			.input-group.shadow.input-group-sm
+				span.input-group-addon {{_ "department"}}
+				input#department.awesomplete.form-control(type='text', list='departmentList', value='')
+				datalist#departmentList
+					each departments
+						option #{val}
+			.input-group.shadow.input-group-sm
+				span.input-group-addon {{_ "zipCode"}}
+				input#zipCode.form-control(type='text', value='')
+			.input-group.shadow.input-group-sm
+				span.input-group-addon {{_ "city"}}
+				input#city.form-control(type='text', value='')
+			.input-group.shadow.jerseyClubColor.input-group-sm
+				input#jerseyClubColor.form-control(type='text', value='')
+				span.input-group-addon {{_ "clickToChangeColor"}}
+			button#validateClubCreation.btn.btn-primary(type='submit') Submit

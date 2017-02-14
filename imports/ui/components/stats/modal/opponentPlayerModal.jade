@@ -1,0 +1,26 @@
+template(name='opponentPlayerModal')
+	#opponentPlayerModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+		.modal-dialog.modal-lg
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+						span(aria-hidden='true') &times;
+					h4#myModalLabel.modal-title {{_ "whoIsDoingThisAction"}}
+				.modal-body
+					.panel.panel-default
+						.panel-heading
+							h4.panel-title {{_ "offAction"}}
+						.panel-body
+							.row.actions
+								.col-xs-4.col-sm-4.col-md-4.col-lg-4
+									.thumbnail
+										button#onePoint.btn.buttonForAction.btn-block.btn-success(data-dismiss='modal', type='button') {{_ "oneFT"}}
+								.col-xs-4.col-sm-4.col-md-4.col-lg-4
+									.thumbnail
+										button#twoPoints.btn.buttonForAction.btn-block.btn-success(data-dismiss='modal', type='button') {{_ "twoPoints"}}
+								.col-xs-4.col-sm-4.col-md-4.col-lg-4
+									.thumbnail
+										button#threePoints.btn.buttonForAction.btn-block.btn-success(data-dismiss='modal', type='button') {{_ "threePoints"}}
+				.modal-footer
+					button#oppCorrectionAction.btn.pull-left.btn-warning(type='button') {{_ "correctionAction"}}
+					button#oppCloseModalButton.btn.btn-default(type='button', data-dismiss='modal') {{_ "closeModal"}}
