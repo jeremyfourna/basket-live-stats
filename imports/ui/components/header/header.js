@@ -1,15 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { Router } from 'meteor/iron:router';
+import R from 'ramda';
 
 import './header.jade';
 
 Template.header.helpers({
 	isClubAdmin() {
-		if (Meteor.user().profile.clubAdmin) {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(R.path(['profile', 'clubAdmin'], Meteor.user()), true);
 	}
 });
