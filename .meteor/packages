@@ -8,11 +8,9 @@ iron:router
 sacha:spin
 accounts-password@1.3.3
 jquery@1.11.10
-ian:accounts-ui-bootstrap-3
 tap:i18n
 reactive-var@1.0.11
 reactive-dict@1.1.8
-twbs:bootstrap
 risul:bootstrap-colorpicker
 mquandalle:jade
 peernohell:c3
