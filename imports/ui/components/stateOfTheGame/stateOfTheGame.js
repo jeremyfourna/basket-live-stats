@@ -68,138 +68,51 @@ Template.stateOfTheGame.events({
 	},
 	'click #q1Running': function(event) {
 		event.preventDefault();
-		const data = {
-			gameId: this.gameId,
-			status: 'q1Ended'
-		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
+		return changeState('q1Ended', Template.instance());
 	},
 	'click #q1Ended': function(event) {
 		event.preventDefault();
-		const data = {
-			gameId: this.gameId,
-			status: 'q2Running'
-		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
+		return changeState('q2Running', Template.instance());
 	},
 	'click #q2Running': function(event) {
 		event.preventDefault();
-		const data = {
-			gameId: this.gameId,
-			status: 'halfTime'
-		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
+		return changeState('halfTime', Template.instance());
 	},
 	'click #halfTime': function(event) {
 		event.preventDefault();
-		const data = {
-			gameId: this.gameId,
-			status: 'q3Running'
-		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
+		return changeState('q3Running', Template.instance());
 	},
 	'click #q3Running': function(event) {
 		event.preventDefault();
-		const data = {
-			gameId: this.gameId,
-			status: 'q3Ended'
-		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
+		return changeState('q3Ended', Template.instance());
 	},
 	'click #q3Ended': function(event) {
 		event.preventDefault();
-		const data = {
-			gameId: this.gameId,
-			status: 'q4Running'
-		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
+		return changeState('q4Running', Template.instance());
 	},
 	'click #oT': function(event) {
 		event.preventDefault();
-		const data = {
-			gameId: this.gameId,
-			status: 'oT1'
-		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
+		return changeState('oT1', Template.instance());
 	},
 	'click #oT1': function(event) {
 		event.preventDefault();
-		const data = {
-			gameId: this.gameId,
-			status: 'oT2'
-		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
+		return changeState('oT2', Template.instance());
 	},
 	'click #oT2': function(event) {
 		event.preventDefault();
-		const data = {
-			gameId: this.gameId,
-			status: 'oT3'
-		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
+		return changeState('oT3', Template.instance());
 	},
 	'click #oT3': function(event) {
 		event.preventDefault();
-		const data = {
-			gameId: this.gameId,
-			status: 'oT4'
-		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
+		return changeState('oT4', Template.instance());
 	},
 	'click #oT4': function(event) {
 		event.preventDefault();
-		const data = {
-			gameId: this.gameId,
-			status: 'oT5'
-		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
+		return changeState('oT5', Template.instance());
 	},
 	'click #endedGames': function(event) {
 		event.preventDefault();
+		console.log("Need to refactor this function");
 		const data = {
 			gameId: this.gameId,
 			status: 'gameEnded'

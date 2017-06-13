@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { Router } from 'meteor/iron:router';
 import { TAPi18n } from 'meteor/tap:i18n';
+import R from 'ramda';
 import 'meteor/sacha:spin';
 
 import { Teams } from '../../../api/teams/schema.js';
@@ -25,7 +26,7 @@ Template.stats.helpers({
 		return this.gameData._id;
 	},
 	gameEndedOrNot() {
-		if (this.gameState === 'gameEnded') {
+		if (R.equals(this.gameState, 'gameEnded')) {
 			return 'hidden';
 		}
 	},
@@ -64,10 +65,10 @@ Template.stats.helpers({
 });
 
 Template.stats.events({
-	'click .displayReplacement': function(event) {
+	'click .displayReplacement': (event) => {
 		$('#tabsForAGame a[href="#replacement"]').tab('show');
 	},
-	'click .doReplacement': function(event) {
+	'click .doReplacement': (event) => {
 		$('#tabsForAGame a[href="#replacement"]').tab('show');
 	}
 });

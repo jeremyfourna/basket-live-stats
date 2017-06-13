@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { Router } from 'meteor/iron:router';
 import { TAPi18n } from 'meteor/tap:i18n';
+import R from 'ramda';
 import 'meteor/sacha:spin';
 
 import { Teams } from '../../../api/teams/schema.js';
@@ -91,102 +92,46 @@ Template.summary.helpers({
 		}).fetch();
 	},
 	notStarted() {
-		if (this.gameData.gameState === 'notStarted') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'notStarted');
 	},
 	q1Running() {
-		if (this.gameData.gameState === 'q1Running') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'q1Running');
 	},
 	q1Ended() {
-		if (this.gameData.gameState === 'q1Ended') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'q1Ended');
 	},
 	q2Running() {
-		if (this.gameData.gameState === 'q2Running') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'q2Running');
 	},
 	halfTime() {
-		if (this.gameData.gameState === 'halfTime') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'halfTime');
 	},
 	q3Running() {
-		if (this.gameData.gameState === 'q3Running') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'q3Running');
 	},
 	q3Ended() {
-		if (this.gameData.gameState === 'q3Ended') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'q3Ended');
 	},
 	q4Running() {
-		if (this.gameData.gameState === 'q4Running') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'q4Running');
 	},
 	gameEnded() {
-		if (this.gameData.gameState === 'gameEnded') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'gameEnded');
 	},
 	oT1() {
-		if (this.gameData.gameState === 'oT1') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'oT1');
 	},
 	oT2() {
-		if (this.gameData.gameState === 'oT2') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'oT2');
 	},
 	oT3() {
-		if (this.gameData.gameState === 'oT3') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'oT3');
 	},
 	oT4() {
-		if (this.gameData.gameState === 'oT4') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'oT4');
 	},
 	oT5() {
-		if (this.gameData.gameState === 'oT5') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'oT5');
 	},
 	total2PointsShoots() {
 		return this.points.twoPointsIn + this.points.twoPointsOut;
