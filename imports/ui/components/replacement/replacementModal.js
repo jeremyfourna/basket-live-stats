@@ -5,7 +5,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import './replacementModal.jade';
 
 Template.replacementModal.events({
-	'click #validateSwitch': function(event) {
+	'click #validateSwitch': (event) => {
 		event.preventDefault();
 		const data = {
 			playerId: Session.get('playerId'),
@@ -27,7 +27,7 @@ Template.replacementModal.events({
 			});
 		}
 	},
-	'click #cancelSwitch': function(event) {
+	'click #cancelSwitch': (event) => {
 		event.preventDefault();
 		$('#replacementModal').modal('hide');
 	}

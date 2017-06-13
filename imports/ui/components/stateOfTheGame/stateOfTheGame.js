@@ -1,121 +1,70 @@
 import { Template } from 'meteor/templating';
 import { Bert } from 'meteor/themeteorchef:bert';
+import R from 'ramda';
 
 import './stateOfTheGame.jade';
 
 Template.stateOfTheGame.helpers({
 	notStarted() {
-		if (this.gameState === 'notStarted') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'notStarted');
 	},
 	q1Running() {
-		if (this.gameState === 'q1Running') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'q1Running');
 	},
 	q1Ended() {
-		if (this.gameState === 'q1Ended') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'q1Ended');
 	},
 	q2Running() {
-		if (this.gameState === 'q2Running') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'q2Running');
 	},
 	halfTime() {
-		if (this.gameState === 'halfTime') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'halfTime');
 	},
 	q3Running() {
-		if (this.gameState === 'q3Running') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'q3Running');
 	},
 	q3Ended() {
-		if (this.gameState === 'q3Ended') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'q3Ended');
 	},
 	q4Running() {
-		if (this.gameState === 'q4Running') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'q4Running');
 	},
 	gameEnded() {
-		if (this.gameState === 'gameEnded') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'gameEnded');
 	},
 	oT1() {
-		if (this.gameState === 'oT1') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'oT1');
 	},
 	oT2() {
-		if (this.gameState === 'oT2') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'oT2');
 	},
 	oT3() {
-		if (this.gameState === 'oT3') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'oT3');
 	},
 	oT4() {
-		if (this.gameState === 'oT4') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'oT4');
 	},
 	oT5() {
-		if (this.gameState === 'oT5') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameState, 'oT5');
 	}
 });
 
+function changeState(gameNewStatus, templateInstance) {
+	const data = {
+		gameId: R.path(['data', 'gameId'], templateInstance),
+		status: gameNewStatus
+	};
+	return Meteor.call('Games.switchGameState', data, (error) => {
+		if (error) {
+			return Bert.alert(error.message, 'danger', 'growl-top-right');
+		}
+	});
+}
+
 Template.stateOfTheGame.events({
-	'click #notStarted': function(event) {
+	'click #notStarted': (event) => {
 		event.preventDefault();
-		const data = {
-			gameId: this.gameId,
-			status: 'q1Running'
-		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
+		return changeState('q1Running', Template.instance());
 	},
 	'click #q1Running': function(event) {
 		event.preventDefault();
