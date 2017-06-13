@@ -15,11 +15,13 @@ Template.scoreGapChart.onRendered(function() {
 			right: 50
 		},
 		data: {
-			xs: { `${TAPi18n.__('gameGap')}`: 'x' },
+			xs: {
+				[`${TAPi18n.__('gameGap')}`]: 'x' },
 			columns: [
 				[`${TAPi18n.__('gameGap')}`]
 			],
-			axes: { `${TAPi18n.__('gameGap')}`: 'y2' }
+			axes: {
+				[`${TAPi18n.__('gameGap')}`]: 'y2' }
 		},
 		axis: {
 			x: { show: false },
