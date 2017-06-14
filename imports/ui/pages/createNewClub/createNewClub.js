@@ -27,12 +27,12 @@ Template.createNewClub.events({
 			jerseyColor: $('#jerseyClubColor').val(),
 			createdBy: Meteor.userId()
 		};
-		Meteor.call('clubInsert', clubInfos, function(error, result) {
+		Meteor.call('clubInsert', clubInfos, function(error) {
 			if (error) {
 				return throwError(error.message);
 			}
 		});
-		Meteor.call('beClubAdmin', Meteor.userId(), function(error, result) {
+		Meteor.call('beClubAdmin', Meteor.userId(), function(error) {
 			if (error) {
 				return throwError(error.message);
 			}

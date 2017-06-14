@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { MethodHooks } from 'meteor/doctorpangloss:method-hooks';
-import { lodash } from 'meteor/stevezhu:lodash';
 
 MethodHooks.after('Games.addGame', (options) => {
 	if (options.error) {

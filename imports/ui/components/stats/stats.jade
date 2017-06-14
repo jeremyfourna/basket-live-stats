@@ -7,7 +7,10 @@ template(name="stats")
 					| #{opponent}
 			.col-xs-12.col-sm-5.col-md-6.col-lg-6
 				// stateOfTheGame :: Object -> String -> Template
-				+stateOfTheGame(gameState=gameState gameId=gameId)
+				+stateOfTheGame(
+					gameState=gameState
+					gameId=gameId
+				)
 		.row
 			.col-xs-12.col-sm-12.col-md-6.col-lg-6
 				.panel.panel-default
@@ -19,10 +22,20 @@ template(name="stats")
 							each yourClubPlayersInGame
 								.col-xs-4.col-sm-2.col-md-2.col-lg-2
 									.thumbnail
-										button.btn.btn-block.btn-info(data-toggle="modal" data-target="#playerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}" data-playerid="#{_id}")
+										button.btn.btn-block.btn-info(
+											data-toggle="modal"
+											data-target="#playerModal"
+											data-jersey="#{jersey}"
+											data-firstname="#{firstName}"
+											data-lastname="#{lastName}"
+											data-playerid="#{_id}"
+										)
 											strong #{jersey}
 							else
-								button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
+								button.displayReplacement.btn.btn-warning(
+									type="button",
+									class="#{gameEndedOrNot}"
+								) {{_ "fiveStarter"}}
 					.panel-footer
 						button.doReplacement.btn.btn-default(type="button") {{_ "makeAReplacement"}}
 			.col-xs-12.col-sm-12.col-md-6.col-lg-6
@@ -35,10 +48,20 @@ template(name="stats")
 							each opponentPlayersInGame
 								.col-xs-4.col-sm-2.col-md-2.col-lg-2
 									.thumbnail
-										button.btn.btn-block.btn-warning(data-toggle="modal" data-target="#opponentPlayerModal" data-jersey="#{jersey}" data-firstname="#{firstName}" data-lastname="#{lastName}" data-playerid="#{_id}")
+										button.btn.btn-block.btn-warning(
+											data-toggle="modal"
+											data-target="#opponentPlayerModal"
+											data-jersey="#{jersey}"
+											data-firstname="#{firstName}"
+											data-lastname="#{lastName}"
+											data-playerid="#{_id}"
+										)
 											strong #{jersey}
 							else
-								button.displayReplacement.btn.btn-warning(type="button", class="#{gameEndedOrNot}") {{_ "fiveStarter"}}
+								button.displayReplacement.btn.btn-warning(
+									type="button",
+									class="#{gameEndedOrNot}"
+								) {{_ "fiveStarter"}}
 					.panel-footer
 						button.doReplacement.btn.btn-default(type="button") {{_ "makeAReplacement"}}
 		+playerModal

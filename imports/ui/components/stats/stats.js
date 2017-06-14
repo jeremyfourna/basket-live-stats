@@ -1,11 +1,9 @@
 import { Template } from 'meteor/templating';
-import { Router } from 'meteor/iron:router';
 import { TAPi18n } from 'meteor/tap:i18n';
 import R from 'ramda';
 import 'meteor/sacha:spin';
 
 import { Teams } from '../../../api/teams/schema.js';
-import { Players } from '../../../api/players/schema.js';
 
 import './stats.jade';
 import '../stateOfTheGame/stateOfTheGame.js';
@@ -65,10 +63,10 @@ Template.stats.helpers({
 });
 
 Template.stats.events({
-	'click .displayReplacement': (event) => {
+	'click .displayReplacement': () => {
 		$('#tabsForAGame a[href="#replacement"]').tab('show');
 	},
-	'click .doReplacement': (event) => {
+	'click .doReplacement': () => {
 		$('#tabsForAGame a[href="#replacement"]').tab('show');
 	}
 });

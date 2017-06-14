@@ -2,7 +2,7 @@ Template.teamEdition.helpers({
 	team: function() {
 		var data = this.teams;
 		var teamToDisplay = {};
-		data.forEach(function(element, index) {
+		data.forEach(function(element) {
 			if (element.teamId === Session.get('teamToEdit')) {
 				teamToDisplay = element;
 			}
@@ -59,7 +59,7 @@ Template.teamEdition.events({
 			team.coachs.push(coach);
 		});
 
-		Meteor.call('updateTeam', team, clubId, teamId, function(error, result) {
+		Meteor.call('updateTeam', team, clubId, teamId, function(error) {
 			if (error) {
 				return throwError(error.message);
 			}

@@ -8,8 +8,8 @@ iron:router
 sacha:spin
 accounts-password@1.3.6
 jquery@1.11.10
-chuikoff:bootstrap-4
-chuikoff:accounts-ui-bootstrap-4
+twbs:bootstrap
+ian:accounts-ui-bootstrap-3
 tap:i18n
 reactive-var@1.0.11
 reactive-dict@1.1.9

@@ -14,7 +14,7 @@ Template.playerUpdate.events({
 		};
 		Meteor.call('playerUpdate', playerInfo, (error) => {
 			if (error) {
-				return throwError(error.message);
+				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			}
 		});
 	}

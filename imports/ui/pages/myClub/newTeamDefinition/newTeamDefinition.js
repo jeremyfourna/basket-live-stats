@@ -74,7 +74,7 @@ Template.newTeamDefinition.events({
 			team.coachs.push(coach);
 		});
 
-		Meteor.call('createNewTeam', team, clubId, function(error, result) {
+		Meteor.call('createNewTeam', team, clubId, function(error) {
 			if (error) {
 				return throwError(error.message);
 			}

@@ -7,43 +7,43 @@ template(name='summary')
 					| #{opponent}
 			.col-xs-12.col-sm-12.col-md-6.col-lg-6
 				if notStarted
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "notStarted"}}
 				if q1Running
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "q1Running"}}
 				if q1Ended
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "q1Ended"}}
 				if q2Running
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "q2Running"}}
 				if halfTime
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "halfTime"}}
 				if q3Running
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "q3Running"}}
 				if q3Ended
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "q3Ended"}}
 				if q4Running
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "q4Running"}}
 				if oT1
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "oT1"}}
 				if oT2
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "oT2"}}
 				if oT3
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "oT3"}}
 				if oT4
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "oT4"}}
 				if oT5
-					p.lead.text-right {{_ "stateOfTheGame"}} :
+					p.lead {{_ "stateOfTheGame"}} :
 						span.label.label-default {{_ "oT5"}}
 		+scoreGapChart(evolution=evolution)
 		.panel.panel-default

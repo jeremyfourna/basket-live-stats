@@ -4,8 +4,6 @@ import { TAPi18n } from 'meteor/tap:i18n';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { lodash } from 'meteor/stevezhu:lodash';
 
-import { Players } from '../../../../api/players/schema.js';
-
 import './opponentPlayerModal.jade';
 
 Template.opponentPlayerModal.events({

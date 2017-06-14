@@ -1,8 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
 
-import { Players } from '../../../api/players/schema.js';
-
 import './replacement.jade';
 import './replacementModal.js';
 
@@ -40,7 +38,7 @@ Template.replacement.helpers({
 });
 
 Template.replacement.events({
-	'click button': function(event) {
+	'click button': function() {
 		return Session.set({
 			playerId: this._id,
 			inPlay: this.inPlay,

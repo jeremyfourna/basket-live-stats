@@ -48,7 +48,7 @@ moment.locale('fr', {
 	// meridiemHour : function (hour, meridiem) {
 	//     return /* 0-23 hour, given meridiem token and hour 1-12 */
 	// },
-	meridiem(hours, minutes, isLower) {
+	meridiem(hours) {
 		return hours < 12 ? 'PD' : 'MD';
 	},
 	week: {

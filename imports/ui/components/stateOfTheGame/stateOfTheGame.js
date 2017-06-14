@@ -112,16 +112,15 @@ Template.stateOfTheGame.events({
 	},
 	'click #endedGames': function(event) {
 		event.preventDefault();
-		console.log("Need to refactor this function");
 		const data = {
 			gameId: this.gameId,
 			status: 'gameEnded'
 		};
-		return Meteor.call('Games.switchGameState', data, (error, result) => {
+		return Meteor.call('Games.switchGameState', data, (error) => {
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			} else {
-				return Meteor.call('Players.endedGamePlayers', data.gameId, (error, result) => {
+				return Meteor.call('Players.endedGamePlayers', data.gameId, (error) => {
 					if (error) {
 						return Bert.alert(error.message, 'danger', 'growl-top-right');
 					}

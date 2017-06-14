@@ -4,6 +4,7 @@ import 'meteor/sacha:spin';
 
 import { Games } from '../../../api/games/schema.js';
 import { Players } from '../../../api/players/schema.js';
+import { Coachs } from '../../../api/coachs/schema.js';
 
 import './playersSettings.jade';
 import './gameInfos.js';

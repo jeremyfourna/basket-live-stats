@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Router } from 'meteor/iron:router';
+import R from 'ramda';
 import 'meteor/sacha:spin';
 
 import { Games } from '../../../api/games/schema.js';
@@ -15,7 +16,7 @@ import '../../components/playersSettings/playersSettings.js';
 
 Template.aGame.onCreated(function() {
 	this.autorun(() => {
-		const gameId = Router.current().params._id;
+		const gameId = R.path(['params', '_id'], Router.current());
 
 		this.subscribe('Games.aGame', gameId);
 		this.subscribe('Teams.teamsForAGame', gameId);
@@ -25,23 +26,19 @@ Template.aGame.onCreated(function() {
 
 Template.aGame.helpers({
 	isOwnerOfTheGame() {
-		const gameId = Router.current().params._id;
-		let userId = Meteor.userId();
+		const gameId = R.path(['params', '_id'], Router.current());
+		const userId = Meteor.userId();
 
-		let game = Games.findOne({ _id: gameId }, {
+		const game = Games.findOne({ _id: gameId }, {
 			fields: {
 				userId: 1
 			}
 		});
 
-		if (userId === game.userId) {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(userId, R.prop('userId', game));
 	},
 	gameData() {
-		const gameId = Router.current().params._id;
+		const gameId = R.path(['params', '_id'], Router.current());
 
 		return Games.findOne({ _id: gameId }, {
 			fields: {
@@ -56,7 +53,7 @@ Template.aGame.helpers({
 		});
 	},
 	playersDataInGame() {
-		const gameId = Router.current().params._id;
+		const gameId = R.path(['params', '_id'], Router.current());
 
 		return Players.find({
 			gameId,
@@ -75,7 +72,7 @@ Template.aGame.helpers({
 		}).fetch();
 	},
 	teamsScore() {
-		const gameId = Router.current().params._id;
+		const gameId = R.path(['params', '_id'], Router.current());
 
 		return Teams.find({ gameId }, {
 			fields: {
@@ -85,7 +82,7 @@ Template.aGame.helpers({
 		}).fetch();
 	},
 	playersData() {
-		const gameId = Router.current().params._id;
+		const gameId = R.path(['params', '_id'], Router.current());
 
 		return Players.find({ gameId }, {
 			fields: {

@@ -1,5 +1,4 @@
 import { Template } from 'meteor/templating';
-import { Router } from 'meteor/iron:router';
 import { TAPi18n } from 'meteor/tap:i18n';
 import R from 'ramda';
 import 'meteor/sacha:spin';
