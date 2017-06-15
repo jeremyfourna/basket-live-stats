@@ -1,8 +1,5 @@
-import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { TAPi18n } from 'meteor/tap:i18n';
-import { Bert } from 'meteor/themeteorchef:bert';
-import R from 'ramda';
 import { savePoints } from './utils.js';
 
 import './opponentPlayerModal.jade';

@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import R from 'ramda';
 import { errorHandlingInMethod } from '../../../../startup/client/lib/utils.js';
 

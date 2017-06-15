@@ -1,8 +1,5 @@
-import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { TAPi18n } from 'meteor/tap:i18n';
-import { Bert } from 'meteor/themeteorchef:bert';
-import { lodash } from 'meteor/stevezhu:lodash';
 import { savePoints, saveAction } from './utils.js';
 
 import './playerModal.jade';

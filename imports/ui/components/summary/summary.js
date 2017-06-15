@@ -4,9 +4,6 @@ import R from 'ramda';
 import 'meteor/sacha:spin';
 import { getTeamScore, getTeamStats, getPlayersStats } from '../utils.js';
 
-import { Teams } from '../../../api/teams/schema.js';
-import { Players } from '../../../api/players/schema.js';
-
 import './summary.jade';
 import '../scoreGapChart/scoreGapChart.js';
 

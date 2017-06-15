@@ -1,3 +1,6 @@
+import { Teams } from '../../api/teams/schema.js';
+import { Players } from '../../api/players/schema.js';
+
 export function getTeamScore(teamId) {
 	return Teams.findOne({ _id: teamId }, {
 		fields: {
