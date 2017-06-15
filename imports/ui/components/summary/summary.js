@@ -266,12 +266,12 @@ Template.summary.helpers({
 				quarterPower = fnForQPower(R.prop('state', cur));
 
 				if (R.equals(R.prop('way', cur), 'in')) {
-					playerTimeMinutes += R.equals(R.prop('minutes', cur));
-					playerTimeSecondes += R.equals(R.prop('secondes', cur));
+					playerTimeMinutes += R.prop('minutes', cur);
+					playerTimeSecondes += R.prop('secondes', cur);
 					playerTimeMinutes -= quarterPower;
 				} else if (R.equals(R.prop('way', cur), 'out')) {
-					playerTimeMinutes -= R.equals(R.prop('minutes', cur));
-					playerTimeSecondes -= R.equals(R.prop('secondes', cur));
+					playerTimeMinutes -= R.prop('minutes', cur);
+					playerTimeSecondes -= R.prop('secondes', cur);
 					playerTimeMinutes += quarterPower;
 					if (R.lt(playerTimeSecondes, 0)) {
 						playerTimeMinutes -= 1;
