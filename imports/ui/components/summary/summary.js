@@ -17,12 +17,7 @@ Template.summary.onCreated(function() {
 });
 
 function getPercentageForShoots(shootsIn, shootsOut) {
-	return Math.floor(
-		R.divide(
-			shootsIn,
-			R.multiply(R.add(shootsIn, shootsOut), 100)
-		)
-	) || 0;
+	return Math.floor(R.multiply(R.divide(shootsIn, R.add(shootsIn, shootsOut)), 100)) || 0;
 }
 
 Template.summary.helpers({
@@ -236,11 +231,11 @@ Template.summary.helpers({
 					R.equals('q1Running'),
 					R.equals('q1Ended')
 				]);
-				let qPower20 = R.either([
+				let qPower20 = R.anyPass([
 					R.equals('q2Running'),
 					R.equals('halfTime')
 				]);
-				let qPower30 = R.either([
+				let qPower30 = R.anyPass([
 					R.equals('q3Running'),
 					R.equals('q3Ended')
 				]);

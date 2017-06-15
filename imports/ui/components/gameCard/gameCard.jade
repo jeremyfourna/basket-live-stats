@@ -5,34 +5,7 @@ template(name="gameCard")
 				p.panel-title.text-center #{yourClub} - #{opponent}
 			.panel-body
 				h3.text-center #{yourClubScore} - #{opponentScore}
-				if notStarted
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "notStarted"}}
-				if q1Running
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "q1Running"}}
-				if q1Ended
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "q1Ended"}}
-				if q2Running
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "q2Running"}}
-				if halfTime
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "halfTime"}}
-				if q3Running
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "q3Running"}}
-				if q3Ended
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "q3Ended"}}
-				if q4Running
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "q4Running"}}
-				if gameEnded
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "gameEnded"}}
-				if oT1
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "oT1"}}
-				if oT2
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "oT2"}}
-				if oT3
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "oT3"}}
-				if oT4
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "oT4"}}
-				if oT5
-					p.small.text-center {{_ "stateOfTheGame"}} : {{_ "oT5"}}
+				+stateOfTheGameText(stateOfTheGame=stateOfTheGame)
 			.panel-footer
 				a.btn.btn-primary.btn-block(role="button" href="{{pathFor 'aGame'}}") {{_ "followTheLive"}}
 	else

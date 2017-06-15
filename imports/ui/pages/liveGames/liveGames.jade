@@ -1,12 +1,27 @@
 template(name="liveGames")
 	ul.nav.nav-tabs(role="tablist")
 		li.active(role="presentation")
-			a(href="#ongoingGames", role="tab", data-toggle="tab" aria-controls="ongoingGames") {{_ "runningGames"}}
+			a(
+				href="#ongoingGames",
+				role="tab",
+				data-toggle="tab"
+				aria-controls="ongoingGames"
+			) {{_ "runningGames"}}
 		li(role="presentation")
-			a(href="#completedGames", role="tab", data-toggle="tab" aria-controls="completedGames") {{_ "endedGames"}}
+			a(
+				href="#completedGames",
+				role="tab",
+				data-toggle="tab"
+				aria-controls="completedGames"
+			) {{_ "endedGames"}}
 		if currentUser
 			li(role="presentation")
-				a(href="#myGames", role="tab", data-toggle="tab" aria-controls="myGames") {{_ "myGames"}}
+				a(
+					href="#myGames",
+					role="tab",
+					data-toggle="tab"
+					aria-controls="myGames"
+				) {{_ "myGames"}}
 	if Template.subscriptionsReady
 		.tab-content
 			#ongoingGames.tab-pane.active(role="tabpanel")

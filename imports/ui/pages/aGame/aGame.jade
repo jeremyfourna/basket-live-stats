@@ -25,9 +25,9 @@ template(name="aGame")
 					) {{_ "replacement"}}
 				li(role="presentation")
 					a(
-						aria-controls="playersSettings"
+						aria-controls="gameSettings"
 						data-toggle="tab"
-						href="#playersSettings"
+						href="#gameSettings"
 						role="tab"
 					) {{_ "gameSettings"}}
 			else
@@ -56,8 +56,8 @@ template(name="aGame")
 						gameData=gameData
 						playersData=playersData
 					)
-				#playersSettings.tab-pane(role="tabpanel")
-					+playersSettings
+				#gameSettings.tab-pane(role="tabpanel")
+					+gameSettings
 			else
 				#resume.tab-pane.active(role="tabpanel")
 					// summary :: Object -> Template

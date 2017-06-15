@@ -9,14 +9,14 @@ Meteor.publish('Games.games', () => {
 });
 
 // Publication who send back the last 3 live games
-Meteor.publish('Games.last3LiveGames', () => {
+Meteor.publish('Games.last12LiveGames', () => {
 	return Games.find({
 		gameState: {
-			$nin: ['gameEnded', 'notStarted']
+			$nin: ['gameEnded']
 		},
 		privateGame: false
 	}, {
-		limit: 3,
+		limit: 12,
 		sort: {
 			createdAt: -1
 		}

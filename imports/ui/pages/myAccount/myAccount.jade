@@ -1,22 +1,31 @@
 template(name="myAccount")
 	if Template.subscriptionsReady
 		with userData
-			section
-				h3 {{_ "loginInfos"}}
-				form
-					.form-group
-						label(for="email") {{_ "email"}}
-						input#email.form-control(type="text" value="#{address}")
-					button.btn.btn-success#emailValidate(type='button') {{_ "saveYourUpdates"}}
-			section
-				h3 {{_ "personalInfos"}}
-				form
-					.form-group
-						label(for="name") {{_ "lastName"}}
-						input#lastName.form-control(type="text" value="#{profile.lastName}")
-					.form-group
-						label(for="firstName") {{_ "firstName"}}
-						input#firstName.form-control(type="text" value="#{profile.firstName}")
-					button.btn.btn-success#personalInfosValidate(type='button') {{_ "saveYourUpdates"}}
+			.row
+				.col-xs-12.col-sm-12.col-md-6.col-lg-6
+					.panel.panel-default
+						.panel-heading
+							p.panel-title {{_ "loginInfos"}}
+						.panel-body
+							form
+								.form-group
+									label(for="email") {{_ "email"}}
+									input#email.form-control(type="text" value="#{address}")
+						.panel-footer
+							button.btn.btn-success#emailValidate(type='button') {{_ "saveYourUpdates"}}
+				.col-xs-12.col-sm-12.col-md-6.col-lg-6
+					.panel.panel-default
+						.panel-heading
+							p.panel-title {{_ "personalInfos"}}
+						.panel-body
+							form
+								.form-group
+									label(for="name") {{_ "lastName"}}
+									input#lastName.form-control(type="text" value="#{profile.lastName}")
+								.form-group
+									label(for="firstName") {{_ "firstName"}}
+									input#firstName.form-control(type="text" value="#{profile.firstName}")
+						.panel-footer
+							button.btn.btn-success#personalInfosValidate(type='button') {{_ "saveYourUpdates"}}
 	else
 		+spinner

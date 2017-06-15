@@ -34,8 +34,7 @@ Template.playerModal.events({
 	},
 	'hidden.bs.modal .modal': removeCancelAction,
 	// Positive action
-	'click #onePoint': function(event) {
-		event.preventDefault();
+	'click #onePoint': function() {
 		return savePoints.bind(
 			this,
 			'#onePoint',
@@ -44,10 +43,9 @@ Template.playerModal.events({
 			'Teams.correctOnePointIn',
 			'Teams.onePointIn',
 			1
-		);
+		)();
 	},
-	'click #twoPoints': function(event) {
-		event.preventDefault();
+	'click #twoPoints': function() {
 		return savePoints.bind(
 			this,
 			'#twoPoints',
@@ -56,10 +54,9 @@ Template.playerModal.events({
 			'Teams.correctTwoPointsIn',
 			'Teams.twoPointsIn',
 			2
-		);
+		)();
 	},
-	'click #threePoints': function(event) {
-		event.preventDefault();
+	'click #threePoints': function() {
 		return savePoints.bind(
 			this,
 			'#threePoints',
@@ -68,10 +65,9 @@ Template.playerModal.events({
 			'Teams.correctThreePointsIn',
 			'Teams.threePointsIn',
 			3
-		);
+		)();
 	},
-	'click #assist': function(event) {
-		event.preventDefault();
+	'click #assist': function() {
 		return saveAction.bind(
 			this,
 			'#assist',
@@ -79,10 +75,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctAssist',
 			'Players.assist'
-		);
+		)();
 	},
-	'click #offReb': function(event) {
-		event.preventDefault();
+	'click #offReb': function() {
 		return saveAction.bind(
 			this,
 			'#offReb',
@@ -90,10 +85,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctOffReb',
 			'Players.offReb'
-		);
+		)();
 	},
-	'click #defReb': function(event) {
-		event.preventDefault();
+	'click #defReb': function() {
 		return saveAction.bind(
 			this,
 			'#defReb',
@@ -101,10 +95,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctDefReb',
 			'Players.defReb'
-		);
+		)();
 	},
-	'click #provOffFoul': function(event) {
-		event.preventDefault();
+	'click #provOffFoul': function() {
 		return saveAction.bind(
 			this,
 			'#provOffFoul',
@@ -112,10 +105,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctProvOffFoul',
 			'Players.provOffFoul'
-		);
+		)();
 	},
-	'click #steal': function(event) {
-		event.preventDefault();
+	'click #steal': function() {
 		return saveAction.bind(
 			this,
 			'#steal',
@@ -123,10 +115,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctSteal',
 			'Players.steal'
-		);
+		)();
 	},
-	'click #block': function(event) {
-		event.preventDefault();
+	'click #block': function() {
 		return saveAction.bind(
 			this,
 			'#block',
@@ -134,10 +125,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctBlock',
 			'Players.block'
-		);
+		)();
 	},
-	'click #provDefFoul': function(event) {
-		event.preventDefault();
+	'click #provDefFoul': function() {
 		return saveAction.bind(
 			this,
 			'#provDefFoul',
@@ -145,11 +135,10 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctProvDefFoul',
 			'Players.provDefFoul'
-		);
+		)();
 	},
 	// Negative action
-	'click #onePointOut': function(event) {
-		event.preventDefault();
+	'click #onePointOut': function() {
 		return saveAction.bind(
 			this,
 			'#onePointOut',
@@ -157,10 +146,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctOnePointOut',
 			'Players.onePointOut'
-		);
+		)();
 	},
-	'click #twoPointsOut': function(event) {
-		event.preventDefault();
+	'click #twoPointsOut': function() {
 		return saveAction.bind(
 			this,
 			'#twoPointsOut',
@@ -168,10 +156,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctTwoPointsOut',
 			'Players.twoPointsOut'
-		);
+		)();
 	},
-	'click #threePointsOut': function(event) {
-		event.preventDefault();
+	'click #threePointsOut': function() {
 		return saveAction.bind(
 			this,
 			'#threePointsOut',
@@ -179,10 +166,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctThreePointsOut',
 			'Players.threePointsOut'
-		);
+		)();
 	},
-	'click #turnover': function(event) {
-		event.preventDefault();
+	'click #turnover': function() {
 		return saveAction.bind(
 			this,
 			'#turnover',
@@ -190,10 +176,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctTurnover',
 			'Players.turnover'
-		);
+		)();
 	},
-	'click #offFoul': function(event) {
-		event.preventDefault();
+	'click #offFoul': function() {
 		return saveAction.bind(
 			this,
 			'#offFoul',
@@ -201,10 +186,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctOffFoul',
 			'Players.offFoul'
-		);
+		)();
 	},
-	'click #defFoul': function(event) {
-		event.preventDefault();
+	'click #defFoul': function() {
 		return saveAction.bind(
 			this,
 			'#defFoul',
@@ -212,10 +196,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctDefFoul',
 			'Players.defFoul'
-		);
+		)();
 	},
-	'click #foul1FT': function(event) {
-		event.preventDefault();
+	'click #foul1FT': function() {
 		return saveAction.bind(
 			this,
 			'#foul1FT',
@@ -223,10 +206,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctFoul1FT',
 			'Players.foul1FT'
-		);
+		)();
 	},
-	'click #foul2FT': function(event) {
-		event.preventDefault();
+	'click #foul2FT': function() {
 		return saveAction.bind(
 			this,
 			'#foul2FT',
@@ -234,10 +216,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctFoul2FT',
 			'Players.foul2FT'
-		);
+		)();
 	},
-	'click #foul3FT': function(event) {
-		event.preventDefault();
+	'click #foul3FT': function() {
 		return saveAction.bind(
 			this,
 			'#foul3FT',
@@ -245,10 +226,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctFoul3FT',
 			'Players.foul3FT'
-		);
+		)();
 	},
-	'click #techFoul': function(event) {
-		event.preventDefault();
+	'click #techFoul': function() {
 		return saveAction.bind(
 			this,
 			'#techFoul',
@@ -256,10 +236,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctTechFoul',
 			'Players.techFoul'
-		);
+		)();
 	},
-	'click #antiSportFoul': function(event) {
-		event.preventDefault();
+	'click #antiSportFoul': function() {
 		return saveAction.bind(
 			this,
 			'#antiSportFoul',
@@ -267,10 +246,9 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctAntiSportFoul',
 			'Players.antiSportFoul'
-		);
+		)();
 	},
-	'click #disqualifyingFoul': function(event) {
-		event.preventDefault();
+	'click #disqualifyingFoul': function() {
 		return saveAction.bind(
 			this,
 			'#disqualifyingFoul',
@@ -278,6 +256,6 @@ Template.playerModal.events({
 			'yourClubTeamId',
 			'Players.correctDisqualifyingFoul',
 			'Players.disqualifyingFoul'
-		);
+		)();
 	}
 });

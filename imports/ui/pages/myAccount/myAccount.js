@@ -60,17 +60,5 @@ Template.myAccount.events({
 				return Bert.alert(TAPi18n.__('updateSuccess'), 'success', 'growl-top-right');
 			}
 		});
-	},
-	'click #personalInfosClubValidate': (event) => {
-		event.preventDefault();
-		const user = {
-			userId: Meteor.userId(),
-			club: $('#club').val()
-		};
-		return Meteor.call('updateClub', user, (error) => {
-			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
-			}
-		});
 	}
 });

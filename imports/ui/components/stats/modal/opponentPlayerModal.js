@@ -34,8 +34,7 @@ Template.opponentPlayerModal.events({
 	},
 	'hidden.bs.modal .modal': removeCancelAction,
 	// Positive action
-	'click #onePoint': function(event) {
-		event.preventDefault();
+	'click #onePoint': function() {
 		return savePoints.bind(
 			this,
 			'#onePoint',
@@ -43,10 +42,9 @@ Template.opponentPlayerModal.events({
 			'opponentTeamId',
 			'Teams.correctOnePointIn',
 			'Teams.onePointIn', -1
-		);
+		)();
 	},
-	'click #twoPoints': function(event) {
-		event.preventDefault();
+	'click #twoPoints': function() {
 		return savePoints.bind(
 			this,
 			'#twoPoints',
@@ -54,10 +52,9 @@ Template.opponentPlayerModal.events({
 			'opponentTeamId',
 			'Teams.correctTwoPointsIn',
 			'Teams.twoPointsIn', -2
-		);
+		)();
 	},
-	'click #threePoints': function(event) {
-		event.preventDefault();
+	'click #threePoints': function() {
 		return savePoints.bind(
 			this,
 			'#threePoints',
@@ -65,6 +62,6 @@ Template.opponentPlayerModal.events({
 			'opponentTeamId',
 			'Teams.correctThreePointsIn',
 			'Teams.threePointsIn', -3
-		);
+		)();
 	},
 });

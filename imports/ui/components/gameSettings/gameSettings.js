@@ -6,18 +6,18 @@ import { Games } from '../../../api/games/schema.js';
 import { Players } from '../../../api/players/schema.js';
 import { Coachs } from '../../../api/coachs/schema.js';
 
-import './playersSettings.jade';
+import './gameSettings.jade';
 import './gameInfos.js';
 import './playerUpdate.js';
 import './coachUpdate.js';
 
-Template.playersSettings.onCreated(function() {
+Template.gameSettings.onCreated(function() {
 	this.autorun(() => {
 		this.subscribe('oneGameInfos', Router.current().params._id);
 	});
 });
 
-Template.playersSettings.helpers({
+Template.gameSettings.helpers({
 	gameData() {
 		return Games.findOne({ _id: Router.current().params._id }, {
 			fields: {

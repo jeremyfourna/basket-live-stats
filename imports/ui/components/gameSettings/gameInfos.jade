@@ -1,0 +1,20 @@
+template(name='gameInfos')
+	.panel.panel-default
+		.panel-heading
+			p.panel-title {{_ "gameDefinition"}}
+		.panel-body
+			.form
+				.form-group
+					label(for="teamHome") {{_ "yourClub"}}
+					input#teamHome.form-control(type='text', value='#{gameInfos.yourClub}')
+				.form-group
+					label(for="teamAway") {{_ "opponent"}}
+					input#teamAway.form-control(type='text', value='#{gameInfos.opponent}')
+				.form-group
+					label(for="level") {{_ "level"}}
+					input#level.form-control(type='text', value='#{gameInfos.level}')
+				.form-group
+					label(for="group") {{_ "group"}}
+					input#group.form-control(type='text', value='#{gameInfos.group}')
+		.panel-footer
+			button.btn.btn-success.gameInfosValidation(type='button') {{_ "saveYourUpdates"}}
