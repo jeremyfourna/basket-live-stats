@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import { TAPi18n } from 'meteor/tap:i18n';
 import R from 'ramda';
 import 'meteor/sacha:spin';
+import { getTeamScore } from '../utils.js';
 
 import { Teams } from '../../../api/teams/schema.js';
 
@@ -29,22 +30,10 @@ Template.stats.helpers({
 		}
 	},
 	yourClubScore() {
-		const teamId = this.gameData.yourClubTeamId;
-
-		return Teams.findOne({ _id: teamId }, {
-			fields: {
-				score: 1
-			}
-		}).score;
+		return getTeamScore(R.path(['gameData', 'yourClubTeamId'], this));
 	},
 	opponentScore() {
-		const teamId = this.gameData.opponentTeamId;
-
-		return Teams.findOne({ _id: teamId }, {
-			fields: {
-				score: 1
-			}
-		}).score;
+		return getTeamScore(R.path(['gameData', 'opponentTeamId'], this));
 	},
 	yourClubPlayersInGame() {
 		const teamId = this.gameData.yourClubTeamId;
