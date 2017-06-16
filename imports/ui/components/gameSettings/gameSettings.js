@@ -13,28 +13,26 @@ import './coachUpdate.js';
 
 Template.gameSettings.onCreated(function() {
 	this.autorun(() => {
-		this.subscribe('oneGameInfos', Router.current().params._id);
+		this.subscribe('Games.oneGameInfos', R.path(['params', '_id'], Router.current()));
+		this.subscribe('Players.playersForAGame', R.path(['params', '_id'], Router.current()));
+		this.subscribe('Coachs.coachsForAGame', R.path(['params', '_id'], Router.current()));
 	});
 });
 
 Template.gameSettings.helpers({
 	gameData() {
-		return Games.findOne({ _id: Router.current().params._id }, {
-			fields: {
-				gameInfos: 1
-			}
-		});
+		return Games.findOne({ _id: R.path(['params', '_id'], Router.current()) });
 	},
 	playerData() {
 		return Players.find({
-			gameId: Router.current().params._id,
-			teamId: 'yourClub'
+			gameId: R.path(['params', '_id'], Router.current()),
+			teamId: R.prop('yourClubTeamId', this)
 		});
 	},
 	coachData() {
 		return Coachs.find({
-			gameId: Router.current().params._id,
-			teamId: 'yourClub'
+			gameId: R.path(['params', '_id'], Router.current()),
+			teamId: R.prop('opponentTeamId', this)
 		});
 	}
 });
