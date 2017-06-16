@@ -217,114 +217,144 @@ Template.summary.helpers({
 			return false;
 		}
 	},
-	playerTime() {
+	playerTime() { // This function need a big refactoring !!!
+		// To know if the player is in play or not
+		// modulo === 1 means player is in play
+		// modulo === 0 the player is on the bench
 		const modulo = R.modulo(R.length(R.prop('gameTime', this)), 2);
+		const gameTime = R.prop('gameTime', this);
 		let playerTimeMinutes = 0;
 		let playerTimeSecondes = 0;
 		let quarterPower = 0;
-		if (R.equals(R.length(R.prop('gameTime', this)), 0)) {
+		// Conditions for the number of minutes if the player
+		// neven went out of the court
+		const qPower10 = R.anyPass([
+			R.equals('notStarted'),
+			R.equals('q1Running'),
+			R.equals('q1Ended')
+		]);
+		const qPower20 = R.anyPass([
+			R.equals('q2Running'),
+			R.equals('halfTime')
+		]);
+		const qPower30 = R.anyPass([
+			R.equals('q3Running'),
+			R.equals('q3Ended')
+		]);
+		const qPower40 = R.anyPass([
+			R.equals('q4Running'),
+			R.equals('gameEnded')
+		]);
+		// Conditional function
+		const fnForQPower = R.cond([
+			[qPower10, R.always(10)],
+			[qPower20, R.always(20)],
+			[qPower30, R.always(30)],
+			[qPower40, R.always(40)],
+			[R.equals('oT1'), R.always(45)],
+			[R.equals('oT2'), R.always(50)],
+			[R.equals('oT3'), R.always(55)],
+			[R.equals('oT4'), R.always(60)],
+			[R.equals('oT5'), R.always(65)],
+			[R.T, R.always(0)]
+		]);
+
+		if (R.equals(R.length(gameTime), 0)) {
 			return '00:00';
 		} else if (R.equals(modulo, 0)) {
-			R.forEach(cur => {
-				let qPower10 = R.anyPass([
-					R.equals('notStarted'),
-					R.equals('q1Running'),
-					R.equals('q1Ended')
-				]);
-				let qPower20 = R.anyPass([
-					R.equals('q2Running'),
-					R.equals('halfTime')
-				]);
-				let qPower30 = R.anyPass([
-					R.equals('q3Running'),
-					R.equals('q3Ended')
-				]);
-				let qPower40 = R.anyPass([
-					R.equals('q4Running'),
-					R.equals('gameEnded')
-				]);
-				let fnForQPower = R.cond([
-					[qPower10, R.always(10)],
-					[qPower20, R.always(20)],
-					[qPower30, R.always(30)],
-					[qPower40, R.always(40)],
-					[R.equals('oT1'), R.always(45)],
-					[R.equals('oT2'), R.always(50)],
-					[R.equals('oT3'), R.always(55)],
-					[R.equals('oT4'), R.always(60)],
-					[R.equals('oT5'), R.always(65)],
-					[R.T, R.always(0)]
-				]);
-				quarterPower = fnForQPower(R.prop('state', cur));
+			const cumulativeTime = R.reduce((prev, cur) => {
+				const quarterPower = fnForQPower(R.prop('state', cur));
 
 				if (R.equals(R.prop('way', cur), 'in')) {
-					playerTimeMinutes += R.prop('minutes', cur);
-					playerTimeSecondes += R.prop('secondes', cur);
-					playerTimeMinutes -= quarterPower;
+					const transformations = {
+						min: R.add(R.subtract(R.prop('minutes', cur), quarterPower)),
+						sec: R.add(R.prop('secondes', cur))
+					};
+					return R.evolve(transformations, prev);
+
 				} else if (R.equals(R.prop('way', cur), 'out')) {
-					playerTimeMinutes -= R.prop('minutes', cur);
-					playerTimeSecondes -= R.prop('secondes', cur);
-					playerTimeMinutes += quarterPower;
+					const transformations = {
+						min: R.add(R.subtract(quarterPower, R.prop('minutes', cur))),
+						sec: R.subtract(R.prop('secondes', cur))
+					};
+					const newPrev = R.evolve(transformations, prev);
+
 					if (R.lt(playerTimeSecondes, 0)) {
-						playerTimeMinutes -= 1;
-						playerTimeSecondes += 60;
+						const transformations = {
+							min: R.dec(R.prop('min')),
+							sec: R.add(R.prop('sec'), 60)
+						};
+						return R.evolve(transformations, newPrev);
+
+					} else {
+						return newPrev;
 					}
 				}
-			}, R.prop('gameTime', this));
-			if (R.lt(playerTimeSecondes, 10)) {
-				playerTimeSecondes = '0' + playerTimeSecondes;
+			}, { min: 0, sec: 0 }, gameTime);
+
+			if (R.lt(R.prop('sec', cumulativeTime), 10)) {
+				playerTimeSecondes = `0${R.prop('sec', cumulativeTime)}`;
+			} else {
+				playerTimeSecondes = R.prop('sec', cumulativeTime);
 			}
 			if (R.lt(playerTimeMinutes, 10)) {
-				playerTimeMinutes = '0' + playerTimeMinutes;
+				playerTimeMinutes = `0${R.prop('min', cumulativeTime)}`;
+			} else {
+				playerTimeMinutes = R.prop('min', cumulativeTime);
 			}
-			return playerTimeMinutes + ':' + playerTimeSecondes;
+
+			return `${playerTimeMinutes}:${playerTimeSecondes}`;
+
 		} else if (R.equals(modulo, 1)) {
-			for (let i = 0; i < this.gameTime.length - 1; i++) {
-				if (this.gameTime[i].state === 'notStarted' || this.gameTime[i].state === 'q1Running' || this.gameTime[i].state === 'q1Ended') {
-					quarterPower = 10;
-				} else if (this.gameTime[i].state === 'q2Running' || this.gameTime[i].state === 'halfTime') {
-					quarterPower = 20;
-				} else if (this.gameTime[i].state === 'q3Running' || this.gameTime[i].state === 'q3Ended') {
-					quarterPower = 30;
-				} else if (this.gameTime[i].state === 'q4Running' || this.gameTime[i].state === 'gameEnded') {
-					quarterPower = 40;
-				} else if (this.gameTime[i].state === 'oT1') {
-					quarterPower = 45;
-				} else if (this.gameTime[i].state === 'oT2') {
-					quarterPower = 50;
-				} else if (this.gameTime[i].state === 'oT3') {
-					quarterPower = 55;
-				} else if (this.gameTime[i].state === 'oT4') {
-					quarterPower = 60;
-				} else if (this.gameTime[i].state === 'oT5') {
-					quarterPower = 65;
-				} else {
-					quarterPower = 0;
-				}
-				if (i === this.gameTime.length - 1) {
-					playerTimeMinutes += this.gameTime[i].minutes;
-					playerTimeSecondes += this.gameTime[i].secondes;
-				} else if (this.gameTime[i].way === 'in') {
-					playerTimeMinutes += this.gameTime[i].minutes;
-					playerTimeSecondes += this.gameTime[i].secondes;
-					playerTimeMinutes -= quarterPower;
-				} else if (this.gameTime[i].way === 'out') {
-					playerTimeMinutes -= this.gameTime[i].minutes;
-					playerTimeSecondes -= this.gameTime[i].secondes;
-					playerTimeMinutes += quarterPower;
-					if (playerTimeSecondes < 0) {
-						playerTimeMinutes -= 1;
-						playerTimeSecondes += 60;
+			const cumulativeTime = R.reduce((prev, cur) => {
+				const quarterPower = fnForQPower(R.prop('state', cur));
+
+				if (R.equals(R.prop('way', cur), 'in')) {
+					const transformations = {
+						min: R.add(R.subtract(R.prop('minutes', cur), quarterPower)),
+						sec: R.add(R.prop('secondes', cur))
+					};
+					return R.evolve(transformations, prev);
+
+				} else if (R.equals(R.prop('way', cur), 'out')) {
+					const transformations = {
+						min: R.add(R.subtract(quarterPower, R.prop('minutes', cur))),
+						sec: R.subtract(R.prop('secondes', cur))
+					};
+					const newPrev = R.evolve(transformations, prev);
+
+					if (R.lt(playerTimeSecondes, 0)) {
+						const transformations = {
+							min: R.dec(R.prop('min')),
+							sec: R.add(R.prop('sec'), 60)
+						};
+						return R.evolve(transformations, newPrev);
+
+					} else {
+						return newPrev;
 					}
 				}
+			}, { min: 0, sec: 0 }, gameTime);
+
+			const lastElement = R.last(gameTime);
+			const transformations = {
+				min: R.add(R.prop('minutes', lastElement)),
+				sec: R.add(R.prop('secondes', lastElement))
+			};
+			const newCumulativeTime = R.evolve(transformations, cumulativeTime);
+
+			if (R.lt(R.prop('sec', cumulativeTime), 10)) {
+				playerTimeSecondes = `0${R.prop('sec', cumulativeTime)}`;
+			} else {
+				playerTimeSecondes = R.prop('sec', cumulativeTime);
 			}
-			if (playerTimeSecondes < 10) {
-				playerTimeSecondes = '0' + playerTimeSecondes;
+			if (R.lt(playerTimeMinutes, 10)) {
+				playerTimeMinutes = `0${R.prop('min', cumulativeTime)}`;
+			} else {
+				playerTimeMinutes = R.prop('min', cumulativeTime);
 			}
-			if (playerTimeMinutes < 10) {
-				playerTimeMinutes = '0' + playerTimeMinutes;
-			}
-			return playerTimeMinutes + ':' + playerTimeSecondes;
+
+			return `${playerTimeMinutes}:${playerTimeSecondes}`;
 		}
 	}
 });
