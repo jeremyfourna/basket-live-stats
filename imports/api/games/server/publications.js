@@ -49,7 +49,10 @@ Meteor.publish('Games.oneGameForReplacement', (gameId) => {
 	check(gameId, String);
 	return Games.find({ _id: gameId }, {
 		fields: {
-			gameInfos: 1,
+			yourClub: 1,
+			yourClubTeamId: 1,
+			opponent: 1,
+			opponentTeamId: 1,
 			gameState: 1
 		}
 	});
@@ -59,7 +62,10 @@ Meteor.publish('Games.oneGameInfos', (gameId) => {
 	check(gameId, String);
 	return Games.find({ _id: gameId }, {
 		fields: {
-			gameInfos: 1
+			yourClub: 1,
+			yourClubTeamId: 1,
+			opponent: 1,
+			opponentTeamId: 1
 		}
 	});
 });

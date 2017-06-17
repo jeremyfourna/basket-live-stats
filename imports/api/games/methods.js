@@ -62,10 +62,10 @@ Meteor.methods({
 
 		return Games.update({ _id: data.gameId }, {
 			$set: {
-				'gameInfos.yourClub': data.yourClub,
-				'gameInfos.opponent': data.opponent,
-				'gameInfos.level': data.level,
-				'gameInfos.group': data.group
+				yourClub: data.yourClub,
+				opponent: data.opponent,
+				level: data.level,
+				group: data.group
 			}
 		});
 	},

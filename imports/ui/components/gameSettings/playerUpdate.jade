@@ -6,12 +6,16 @@ template(name='playerUpdate')
 			.panel-body
 				form
 					.form-group
-						.input-group
-							span.input-group-addon {{_ "name"}}
-							input.lastName.form-control(type='text', value='#{lastName}')
+						label(for="lastName") {{_ "lastName"}}
+						input.lastName.form-control(
+							type='text',
+							value='#{lastName}'
+						)
 					.form-group
-						.input-group
-							span.input-group-addon {{_ "firstName"}}
-							input.firstName.form-control(type='text', value='#{firstName}')
+						label(for="firstName") {{_ "firstName"}}
+						input.firstName.form-control(
+							type='text',
+							value='#{firstName}'
+						)
 			.panel-footer
-				button.btn.btn-success.playerValidation(type='submit') {{_ "validate"}}
+				button.btn.btn-success.playerValidation(type='submit') {{_ "saveYourUpdates"}}

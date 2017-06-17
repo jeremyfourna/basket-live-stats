@@ -11,6 +11,7 @@ import './modal/opponentPlayerModal.js';
 
 Template.stats.helpers({
 	yourClub() {
+		console.log(this);
 		return this.gameData.yourClub || TAPi18n.__('homeTeam');
 	},
 	opponent() {

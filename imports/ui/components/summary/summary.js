@@ -297,7 +297,7 @@ Template.summary.helpers({
 			} else {
 				playerTimeSecondes = R.prop('sec', cumulativeTime);
 			}
-			if (R.lt(playerTimeMinutes, 10)) {
+			if (R.lt(R.prop('min', cumulativeTime), 10)) {
 				playerTimeMinutes = `0${R.prop('min', cumulativeTime)}`;
 			} else {
 				playerTimeMinutes = R.prop('min', cumulativeTime);
@@ -348,7 +348,7 @@ Template.summary.helpers({
 			} else {
 				playerTimeSecondes = R.prop('sec', cumulativeTime);
 			}
-			if (R.lt(playerTimeMinutes, 10)) {
+			if (R.lt(R.prop('min', cumulativeTime), 10)) {
 				playerTimeMinutes = `0${R.prop('min', cumulativeTime)}`;
 			} else {
 				playerTimeMinutes = R.prop('min', cumulativeTime);

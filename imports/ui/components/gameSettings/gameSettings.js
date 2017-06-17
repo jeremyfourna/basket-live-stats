@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Router } from 'meteor/iron:router';
+import R from 'ramda';
 import 'meteor/sacha:spin';
 
 import { Games } from '../../../api/games/schema.js';
