@@ -29,4 +29,6 @@ template(name='gameInfos')
 						value='#{gameInfos.group}'
 					)
 		.panel-footer
-			button.btn.btn-success.gameInfosValidation(type='button') {{_ "saveYourUpdates"}}
+			button.btn.btn-success.gameInfosValidation(type='button')
+				span.glyphicon.glyphicon-floppy-save(aria-hidden="true")
+				| {{_ "saveYourUpdates"}}

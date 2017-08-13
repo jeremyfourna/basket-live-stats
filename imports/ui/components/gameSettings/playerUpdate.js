@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { Bert } from 'meteor/themeteorchef:bert';
+import { sendToast } from '../../../startup/client/lib/utils.js';
+import { TAPi18n } from 'meteor/tap:i18n';
 
 import './playerUpdate.jade';
 
@@ -14,7 +15,9 @@ Template.playerUpdate.events({
 		};
 		Meteor.call('playerUpdate', playerInfo, (error) => {
 			if (error) {
-				return Bert.alert(error.message, 'danger', 'growl-top-right');
+				return sendToast('danger', R.prop('message', error));
+			} else {
+				return sendToast('success', TAPi18n.__('updateDone'));
 			}
 		});
 	}

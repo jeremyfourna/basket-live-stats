@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import 'meteor/sacha:spin';
 import R from 'ramda';
 import { getTeamScore } from '../utils.js';
+import { TAPi18n } from 'meteor/tap:i18n';
 
 import { Teams } from '../../../api/teams/schema.js';
 

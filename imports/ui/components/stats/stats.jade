@@ -37,7 +37,9 @@ template(name="stats")
 									class="#{gameEndedOrNot}"
 								) {{_ "fiveStarter"}}
 					.panel-footer
-						button.doReplacement.btn.btn-default(type="button") {{_ "makeAReplacement"}}
+						button.doReplacement.btn.btn-default(type="button")
+							span.glyphicon.glyphicon-transfer(aria-hidden="true")
+							| {{_ "makeAReplacement"}}
 			.col-xs-12.col-sm-12.col-md-6.col-lg-6
 				.panel.panel-default
 					.panel-heading
@@ -63,7 +65,9 @@ template(name="stats")
 									class="#{gameEndedOrNot}"
 								) {{_ "fiveStarter"}}
 					.panel-footer
-						button.doReplacement.btn.btn-default(type="button") {{_ "makeAReplacement"}}
+						button.doReplacement.btn.btn-default(type="button")
+							span.glyphicon.glyphicon-transfer(aria-hidden="true")
+							| {{_ "makeAReplacement"}}
 		+playerModal
 		+opponentPlayerModal
 	else

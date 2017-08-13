@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Bert } from 'meteor/themeteorchef:bert';
+import { TAPi18n } from 'meteor/tap:i18n';
 import 'meteor/sacha:spin';
 
 import './myAccount.jade';

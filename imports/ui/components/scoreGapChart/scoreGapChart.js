@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import 'meteor/peernohell:c3';
+import { TAPi18n } from 'meteor/tap:i18n';
 
 import './scoreGapChart.jade';
 

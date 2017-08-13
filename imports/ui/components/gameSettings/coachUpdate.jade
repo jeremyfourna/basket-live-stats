@@ -18,4 +18,6 @@ template(name='coachUpdate')
 							value='#{firstName}'
 						)
 			.panel-footer
-				button.btn.btn-success.coachValidation(type='submit') {{_ "saveYourUpdates"}}
+				button.btn.btn-success.coachValidation(type='submit')
+					span.glyphicon.glyphicon-floppy-save(aria-hidden="true")
+					| {{_ "saveYourUpdates"}}

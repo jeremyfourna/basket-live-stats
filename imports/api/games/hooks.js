@@ -1,31 +1,38 @@
 import { Meteor } from 'meteor/meteor';
 import { MethodHooks } from 'meteor/doctorpangloss:method-hooks';
+import R from 'ramda';
 
 MethodHooks.after('Games.addGame', (options) => {
-	if (options.error) {
+	if (R.prop('error', options)) {
 		return;
-	} else if (options.result) {
-		const gameId = options.result;
+	} else if (R.prop('result', options)) {
+		const gameId = R.prop('result', options);
 
 		const yourClubTeamId = Meteor.call('Teams.addTeam', gameId);
 		const opponentTeamId = Meteor.call('Teams.addTeam', gameId);
 
 		Meteor.call('Games.addTeamsId', gameId, yourClubTeamId, opponentTeamId);
 
-		return options.result;
+		return gameId;
 	}
 });
 
 MethodHooks.after('Games.deleteGame', (options) => {
-	if (options.error) {
+	if (R.prop('error', options)) {
 		return;
-	} else if (options.result) {
-		const gameId = options.arguments[0];
+	} else if (R.prop('result', options)) {
+		const gameId = R.head(R.prop('arguments', options));
 
-		Meteor.call('Teams.deleteTeams', gameId);
-		Meteor.call('Players.deletePlayers', gameId);
-		Meteor.call('Coachs.deleteCoachs', gameId);
+		const listOfMethodToCall = [
+			'Teams.deleteTeams',
+			'Players.deletePlayers',
+			'Coachs.deleteCoachs'
+		];
 
-		return options.result;
+		R.forEach((method) => {
+			Meteor.call(method, gameId);
+		}, listOfMethodToCall);
+
+		return R.prop('result', options);
 	}
 });
