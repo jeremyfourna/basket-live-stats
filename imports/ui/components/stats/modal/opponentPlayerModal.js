@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { TAPi18n } from 'meteor/tap:i18n';
 import { savePoints } from './utils.js';
+import R from 'ramda';
 
 import './opponentPlayerModal.jade';
 
@@ -29,39 +30,40 @@ Template.opponentPlayerModal.events({
 	'click #oppCloseModalButton': removeCancelAction,
 	'click .cancelCorrectionAction': function() {
 		$('.actionBadge').remove();
-		$('#oppCorrectionAction').removeClass('cancelCorrectionAction').text(TAPi18n.__('oppCorrectionAction'));
+		$('#oppCorrectionAction').removeClass('cancelCorrectionAction').text(TAPi18n.__('correctionAction'));
 		$('.buttonForAction').removeClass('cancelAction');
 	},
 	'hidden.bs.modal .modal': removeCancelAction,
 	// Positive action
-	'click #onePoint': function() {
-		return savePoints.bind(
-			this,
-			'#onePoint',
-			'#opponentPlayerModal',
+	'click #onePoint': function(event, template) {
+		console.log(this, event, template);
+		return savePoints(
+			$('#onePoint').hasClass('cancelAction'),
+			$('#opponentPlayerModal').data('playerid'),
 			'opponentTeamId',
 			'Teams.correctOnePointIn',
-			'Teams.onePointIn', -1
-		)();
+			'Teams.onePointIn', -1,
+			R.path(['data', 'gameData'], Template.instance())
+		);
 	},
 	'click #twoPoints': function() {
-		return savePoints.bind(
-			this,
-			'#twoPoints',
-			'#opponentPlayerModal',
+		return savePoints(
+			$('#twoPoints').hasClass('cancelAction'),
+			$('#opponentPlayerModal').data('playerid'),
 			'opponentTeamId',
 			'Teams.correctTwoPointsIn',
-			'Teams.twoPointsIn', -2
-		)();
+			'Teams.twoPointsIn', -2,
+			R.path(['data', 'gameData'], Template.instance())
+		);
 	},
 	'click #threePoints': function() {
-		return savePoints.bind(
-			this,
-			'#threePoints',
-			'#opponentPlayerModal',
+		return savePoints(
+			$('#threePoints').hasClass('cancelAction'),
+			$('#opponentPlayerModal').data('playerid'),
 			'opponentTeamId',
 			'Teams.correctThreePointsIn',
-			'Teams.threePointsIn', -3
-		)();
+			'Teams.threePointsIn', -3,
+			R.path(['data', 'gameData'], Template.instance())
+		);
 	},
 });

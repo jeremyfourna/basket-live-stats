@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { TAPi18n } from 'meteor/tap:i18n';
 import { savePoints, saveAction } from './utils.js';
+import R from 'ramda';
 
 import './playerModal.jade';
 
@@ -12,13 +13,13 @@ function removeCancelAction() {
 
 Template.playerModal.events({
 	'show.bs.modal #playerModal': function(event) {
-		let button = $(event.relatedTarget); // Button that triggered the modal
-		let jersey = button.data('jersey');
-		let playerId = button.data('playerid');
-		let firstName = button.data('firstname') || TAPi18n.__('firstName');
-		let lastName = button.data('lastname') || TAPi18n.__('lastName');
-		let whoIsDoingThisAction = TAPi18n.__('whoIsDoingThisAction');
-		let num = TAPi18n.__('num');
+		const button = $(event.relatedTarget); // Button that triggered the modal
+		const jersey = button.data('jersey');
+		const playerId = button.data('playerid');
+		const firstName = button.data('firstname') || TAPi18n.__('firstName');
+		const lastName = button.data('lastname') || TAPi18n.__('lastName');
+		const whoIsDoingThisAction = TAPi18n.__('whoIsDoingThisAction');
+		const num = TAPi18n.__('num');
 		$('#playerModal').data('playerid', playerId);
 		$('.modal-title').text(`${whoIsDoingThisAction} ${num}${jersey} : ${firstName} ${lastName}`);
 	},

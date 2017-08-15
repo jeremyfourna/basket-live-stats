@@ -2,12 +2,9 @@ import { Meteor } from 'meteor/meteor';
 import R from 'ramda';
 import { errorHandlingInMethod } from '../../../../startup/client/lib/utils.js';
 
-export function savePoints(element, modal, team, correctionMethod, method, points) {
-	// Use this function with bind : savePoints.bind(this, ...)
-	const gameId = this.gameData._id;
-	const teamId = this.gameData[team];
-	const playerId = $(modal).data('playerid');
-	const isACancelAction = $(element).hasClass('cancelAction');
+export function savePoints(isACancelAction, playerId, team, correctionMethod, method, points, scope) {
+	const gameId = R.prop('_id', scope);
+	const teamId = R.prop(team, scope);
 
 	if (isACancelAction) {
 		return Meteor.call(
@@ -19,9 +16,9 @@ export function savePoints(element, modal, team, correctionMethod, method, point
 		);
 	} else {
 		const evolScore = {
-			gameIndex: R.length(R.path(['gameData', 'evolution'], this)),
+			gameIndex: R.length(R.prop('evolution', scope)),
 			scoreGap: R.add(
-				R.nth(1, R.last(R.path(['gameData', 'evolution'], this))),
+				R.nth(1, R.last(R.prop('evolution', scope))),
 				points
 			)
 		};

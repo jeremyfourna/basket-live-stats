@@ -11,42 +11,43 @@ import './modal/opponentPlayerModal.js';
 
 Template.stats.helpers({
 	yourClub() {
-		console.log(this);
-		return this.gameData.yourClub || TAPi18n.__('homeTeam');
+		return R.path(['data', 'gameData', 'yourClub'], Template.instance()) || TAPi18n.__('homeTeam');
 	},
 	opponent() {
-		return this.gameData.opponent || TAPi18n.__('awayTeam');
+		return R.path(['data', 'gameData', 'opponent'], Template.instance()) || TAPi18n.__('awayTeam');
 	},
 	gameState() {
-		return this.gameData.gameState;
+		return R.path(['data', 'gameData', 'gameState'], Template.instance());
 	},
 	gameId() {
-		return this.gameData._id;
+		return R.path(['data', 'gameData', '_id'], Template.instance());
 	},
 	gameEndedOrNot() {
-		if (R.equals(this.gameState, 'gameEnded')) {
+		if (R.equals(
+				R.path(['data', 'gameData', 'gameState'], Template.instance()),
+				'gameEnded')) {
 			return 'hidden';
 		}
 	},
 	yourClubScore() {
-		return getTeamScore(R.path(['gameData', 'yourClubTeamId'], this));
+		return getTeamScore(R.path(['data', 'gameData', 'yourClubTeamId'], Template.instance()));
 	},
 	opponentScore() {
-		return getTeamScore(R.path(['gameData', 'opponentTeamId'], this));
+		return getTeamScore(R.path(['data', 'gameData', 'opponentTeamId'], Template.instance()));
 	},
 	yourClubPlayersInGame() {
-		const teamId = this.gameData.yourClubTeamId;
+		const teamId = R.path(['data', 'gameData', 'yourClubTeamId'], Template.instance());
 
-		return this.playersDataInGame.filter((cur) => {
+		return R.filter((cur) => {
 			return cur.teamId === teamId;
-		});
+		}, R.path(['data', 'playersDataInGame'], Template.instance()));
 	},
 	opponentPlayersInGame() {
-		const teamId = this.gameData.opponentTeamId;
+		const teamId = R.path(['data', 'gameData', 'opponentTeamId'], Template.instance());
 
-		return this.playersDataInGame.filter((cur) => {
+		return R.filter((cur) => {
 			return cur.teamId === teamId;
-		});
+		}, R.path(['data', 'playersDataInGame'], Template.instance()));
 	}
 });
 
