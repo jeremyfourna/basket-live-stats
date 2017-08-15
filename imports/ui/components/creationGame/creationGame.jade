@@ -2,5 +2,4 @@ template(name='creationGame')
 	if currentUser
 		button#creationGame.btn.btn-primary.btn-lg(type='button') {{_ "goStats"}}
 	else
-		p
-			span.label.label-default {{_ "loginToBeginTakingStats"}}
+		p.bg-info {{_ "loginToBeginTakingStats"}}

@@ -7,7 +7,10 @@ import R from 'ramda';
 import './creationGame.jade';
 
 Template.creationGame.events({
-	'click #creationGame': () => {
+	'click #creationGame': (event, template) => {
+		// Disable button to prevent double click and the creation of multiple games
+		$(R.prop('target', event)).attr('disabled', 'disabled');
+
 		const userId = Meteor.userId();
 
 		return Meteor.call('Games.addGame', userId, (error, result) => {
