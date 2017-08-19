@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import R from 'ramda';
+import $ from 'jquery';
 import { errorHandlingInMethod } from '../../../../startup/client/lib/utils.js';
 
 export function savePoints(isACancelAction, playerId, team, correctionMethod, method, points, scope) {
@@ -33,11 +34,7 @@ export function savePoints(isACancelAction, playerId, team, correctionMethod, me
 	}
 }
 
-export function saveAction(element, modal, team, correctionMethod, method) {
-	const teamId = this.gameData[team];
-	const playerId = $(modal).data('playerid');
-	const isACancelAction = $(element).hasClass('cancelAction');
-
+export function saveAction(isACancelAction, playerId, teamId, correctionMethod, method) {
 	if (isACancelAction) {
 		return Meteor.call(
 			correctionMethod,
@@ -53,4 +50,16 @@ export function saveAction(element, modal, team, correctionMethod, method) {
 			errorHandlingInMethod
 		);
 	}
+}
+
+export function getDataFromElement(element, dataProp) {
+	return $(element).data(dataProp);
+}
+
+export function setDataInsideElement(element, dataProp, value) {
+	return $(element).data(dataProp, value);
+}
+
+export function setTextInsideElement(element, value) {
+	return $(element).text(value);
 }
