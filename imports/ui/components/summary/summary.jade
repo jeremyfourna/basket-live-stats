@@ -48,7 +48,7 @@ template(name='summary')
 		+scoreGapChart(evolution=evolution)
 		.panel.panel-default
 			.panel-heading
-				h4.panel-title {{_ "team"}} : #{yourClub}
+				h4.panel-title #{yourClub}
 			.table-responsive
 				table.table.table-condensed.table-bordered
 					thead
@@ -73,26 +73,7 @@ template(name='summary')
 							th.text-center {{_ "eval"}}
 					tbody.yourClubPlayers
 						each yourClubPlayers
-							tr(class='#{isInPlay}')
-								td.text-center(scope='row')
-									b #{jersey}
-								td.text-center #{playerTime}
-								td.text-center #{points.totalPoints}
-								td.text-center #{points.twoPointsIn}/#{total2PointsShoots}
-								td.text-center #{percentage2PointsShoots}
-								td.text-center #{points.threePointsIn}/#{total3PointsShoots}
-								td.text-center #{percentage3PointsShoots}
-								td.text-center #{points.onePointIn}/#{total1PointShoots}
-								td.text-center #{percentage1PointShoots}
-								td.text-center #{offReb}-#{defReb}
-								td.text-center #{totalRebounds}
-								td.text-center #{assists}
-								td.text-center #{steals}
-								td.text-center #{turnovers}
-								td.text-center #{blocks}
-								td.text-center #{provokedFouls}/#{fouls.totalFouls}
-								td.text-center #{foulsRatio}
-								td.text-center #{evaluation}
+							+yourClubRow
 						tr.active
 							with yourClubStats
 								td(scope='row')
@@ -116,7 +97,7 @@ template(name='summary')
 								td.text-center #{evaluation}
 		.panel.panel-default
 			.panel-heading
-				h4.panel-title {{_ "team"}} : #{opponent}
+				h4.panel-title #{opponent}
 			.table-responsive
 				table.table.table-condensed.table-bordered
 					thead
@@ -132,7 +113,7 @@ template(name='summary')
 							tr(class='#{isInPlay}')
 								td.text-center(scope='row')
 									b #{jersey}
-								td.text-center #{playerTime}
+								+playerTime
 								td.text-center #{points.totalPoints}
 								td.text-center #{points.twoPointsIn}
 								td.text-center #{points.threePointsIn}
@@ -148,3 +129,28 @@ template(name='summary')
 								td.text-center #{points.onePointIn}
 	else
 		+spinner
+
+template(name="yourClubRow")
+	tr(class='#{isInPlay}')
+		td.text-center(scope='row')
+			b #{jersey}
+		+playerTime
+		td.text-center #{points.totalPoints}
+		td.text-center #{points.twoPointsIn}/#{total2PointsShoots}
+		td.text-center #{percentage2PointsShoots}
+		td.text-center #{points.threePointsIn}/#{total3PointsShoots}
+		td.text-center #{percentage3PointsShoots}
+		td.text-center #{points.onePointIn}/#{total1PointShoots}
+		td.text-center #{percentage1PointShoots}
+		td.text-center #{offReb}-#{defReb}
+		td.text-center #{totalRebounds}
+		td.text-center #{assists}
+		td.text-center #{steals}
+		td.text-center #{turnovers}
+		td.text-center #{blocks}
+		td.text-center #{provokedFouls}/#{fouls.totalFouls}
+		td.text-center #{foulsRatio}
+		td.text-center #{evaluation}
+
+template(name="playerTime")
+	td.text-center #{playerTime}

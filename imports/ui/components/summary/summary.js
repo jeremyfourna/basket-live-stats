@@ -209,14 +209,79 @@ Template.summary.helpers({
 			R.path(['fouls', 'provOffFouls'], this),
 			R.path(['fouls', 'provDefFouls'], this)
 		);
-	},
+	}
+});
+
+Template.yourClubRow.helpers({
 	isInPlay() {
-		if (this.inPlay) {
+		if (R.gte(R.path(['data', 'fouls', 'totalFouls'], Template.instance()), 5)) {
+			return 'danger';
+		} else if (R.equals(true, R.path(['data', 'inPlay'], Template.instance()))) {
 			return 'inPlay';
 		} else {
 			return false;
 		}
 	},
+	total2PointsShoots() {
+		return R.add(
+			R.path(['data', 'points', 'twoPointsIn'], Template.instance()),
+			R.path(['data', 'points', 'twoPointsOut'], Template.instance())
+		);
+	},
+	percentage2PointsShoots() {
+		return getPercentageForShoots(
+			R.path(['data', 'points', 'twoPointsIn'], Template.instance()),
+			R.path(['data', 'points', 'twoPointsOut'], Template.instance())
+		);
+	},
+	total3PointsShoots() {
+		return R.add(
+			R.path(['data', 'points', 'threePointsIn'], Template.instance()),
+			R.path(['data', 'points', 'threePointsOut'], Template.instance())
+		);
+	},
+	percentage3PointsShoots() {
+		return getPercentageForShoots(
+			R.path(['data', 'points', 'threePointsIn'], Template.instance()),
+			R.path(['data', 'points', 'threePointsOut'], Template.instance())
+		);
+	},
+	total1PointShoots() {
+		return R.add(
+			R.path(['data', 'points', 'onePointIn'], Template.instance()),
+			R.path(['data', 'points', 'onePointOut'], Template.instance())
+		);
+	},
+	percentage1PointShoots() {
+		return getPercentageForShoots(
+			R.path(['data', 'points', 'onePointIn'], Template.instance()),
+			R.path(['data', 'points', 'onePointOut'], Template.instance())
+		);
+	},
+	totalRebounds() {
+		return R.add(
+			R.path(['data', 'offReb'], Template.instance()),
+			R.path(['data', 'defReb'], Template.instance())
+		);
+	},
+	provokedFouls() {
+		return R.add(
+			R.path(['data', 'fouls', 'provOffFouls'], Template.instance()),
+			R.path(['data', 'fouls', 'provDefFouls'], Template.instance())
+		);
+	},
+	foulsRatio() {
+		return R.subtract(
+			R.add(
+				R.path(['data', 'fouls', 'provOffFouls'], Template.instance()),
+				R.path(['data', 'fouls', 'provDefFouls'], Template.instance())
+			),
+			R.path(['data', 'fouls', 'totalFouls'], Template.instance())
+		);
+	}
+});
+
+Template.playerTime.helpers({
 	playerTime() { // This function need a big refactoring !!!
 		// To know if the player is in play or not
 		// modulo === 1 means player is in play
