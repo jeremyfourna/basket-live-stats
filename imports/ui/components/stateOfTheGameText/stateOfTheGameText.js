@@ -46,4 +46,4 @@ Template.stateOfTheGameText.helpers({
 	oT5() {
 		return R.equals(R.path(['data', 'stateOfTheGame'], Template.instance()), 'oT5');
 	}
-})
+});

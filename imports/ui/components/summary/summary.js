@@ -290,7 +290,6 @@ Template.playerTime.helpers({
 		const gameTime = R.prop('gameTime', this);
 		let playerTimeMinutes = 0;
 		let playerTimeSecondes = 0;
-		let quarterPower = 0;
 		// Conditions for the number of minutes if the player
 		// neven went out of the court
 		const qPower10 = R.anyPass([
@@ -400,14 +399,15 @@ Template.playerTime.helpers({
 					}
 				}
 			}, { min: 0, sec: 0 }, gameTime);
-
+			/*
 			const lastElement = R.last(gameTime);
+
 			const transformations = {
 				min: R.add(R.prop('minutes', lastElement)),
 				sec: R.add(R.prop('secondes', lastElement))
 			};
 			const newCumulativeTime = R.evolve(transformations, cumulativeTime);
-
+			*/
 			if (R.lt(R.prop('sec', cumulativeTime), 10)) {
 				playerTimeSecondes = `0${R.prop('sec', cumulativeTime)}`;
 			} else {

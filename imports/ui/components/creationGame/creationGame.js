@@ -7,7 +7,7 @@ import R from 'ramda';
 import './creationGame.jade';
 
 Template.creationGame.events({
-	'click #creationGame': (event, template) => {
+	'click #creationGame': (event) => {
 		// Disable button to prevent double click and the creation of multiple games
 		$(R.prop('target', event)).attr('disabled', 'disabled');
 

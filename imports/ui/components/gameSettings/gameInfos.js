@@ -17,7 +17,7 @@ Template.gameInfos.events({
 			level: $('#level').val(),
 			group: $('#group').val()
 		};
-		Meteor.call('Games.updateGameInfos', data, (error, result) => {
+		Meteor.call('Games.updateGameInfos', data, (error) => {
 			if (error) {
 				return sendToast('danger', R.prop('message', error));
 			} else {

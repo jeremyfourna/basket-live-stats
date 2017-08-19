@@ -36,7 +36,7 @@ Template.playerModal.events({
 	},
 	'hidden.bs.modal .modal': removeCancelAction,
 	// Positive action
-	'click #onePoint': function() {
+	'click #onePoint': function(event) {
 		return savePoints(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -47,7 +47,7 @@ Template.playerModal.events({
 			R.path(['data', 'gameData'], Template.instance())
 		);
 	},
-	'click #twoPoints': function() {
+	'click #twoPoints': function(event) {
 		return savePoints(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -58,7 +58,7 @@ Template.playerModal.events({
 			R.path(['data', 'gameData'], Template.instance())
 		);
 	},
-	'click #threePoints': function() {
+	'click #threePoints': function(event) {
 		return savePoints(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -69,7 +69,7 @@ Template.playerModal.events({
 			R.path(['data', 'gameData'], Template.instance())
 		);
 	},
-	'click #assist': function() {
+	'click #assist': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -78,7 +78,7 @@ Template.playerModal.events({
 			'Players.assist'
 		);
 	},
-	'click #offReb': function() {
+	'click #offReb': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -87,7 +87,7 @@ Template.playerModal.events({
 			'Players.offReb'
 		);
 	},
-	'click #defReb': function() {
+	'click #defReb': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -96,7 +96,7 @@ Template.playerModal.events({
 			'Players.defReb'
 		);
 	},
-	'click #provOffFoul': function() {
+	'click #provOffFoul': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -105,7 +105,7 @@ Template.playerModal.events({
 			'Players.provOffFoul'
 		);
 	},
-	'click #steal': function() {
+	'click #steal': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -114,7 +114,7 @@ Template.playerModal.events({
 			'Players.steal'
 		);
 	},
-	'click #block': function() {
+	'click #block': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -123,7 +123,7 @@ Template.playerModal.events({
 			'Players.block'
 		);
 	},
-	'click #provDefFoul': function() {
+	'click #provDefFoul': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -133,7 +133,7 @@ Template.playerModal.events({
 		);
 	},
 	// Negative action
-	'click #onePointOut': function() {
+	'click #onePointOut': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -142,7 +142,7 @@ Template.playerModal.events({
 			'Players.onePointOut'
 		);
 	},
-	'click #twoPointsOut': function() {
+	'click #twoPointsOut': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -151,7 +151,7 @@ Template.playerModal.events({
 			'Players.twoPointsOut'
 		);
 	},
-	'click #threePointsOut': function() {
+	'click #threePointsOut': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -160,7 +160,7 @@ Template.playerModal.events({
 			'Players.threePointsOut'
 		);
 	},
-	'click #turnover': function() {
+	'click #turnover': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -169,7 +169,7 @@ Template.playerModal.events({
 			'Players.turnover'
 		);
 	},
-	'click #offFoul': function() {
+	'click #offFoul': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -178,7 +178,7 @@ Template.playerModal.events({
 			'Players.offFoul'
 		);
 	},
-	'click #defFoul': function() {
+	'click #defFoul': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -187,7 +187,7 @@ Template.playerModal.events({
 			'Players.defFoul'
 		);
 	},
-	'click #foul1FT': function() {
+	'click #foul1FT': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -196,7 +196,7 @@ Template.playerModal.events({
 			'Players.foul1FT'
 		);
 	},
-	'click #foul2FT': function() {
+	'click #foul2FT': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -205,7 +205,7 @@ Template.playerModal.events({
 			'Players.foul2FT'
 		);
 	},
-	'click #foul3FT': function() {
+	'click #foul3FT': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -214,7 +214,7 @@ Template.playerModal.events({
 			'Players.foul3FT'
 		);
 	},
-	'click #techFoul': function() {
+	'click #techFoul': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -223,7 +223,7 @@ Template.playerModal.events({
 			'Players.techFoul'
 		);
 	},
-	'click #antiSportFoul': function() {
+	'click #antiSportFoul': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),
@@ -232,7 +232,7 @@ Template.playerModal.events({
 			'Players.antiSportFoul'
 		);
 	},
-	'click #disqualifyingFoul': function() {
+	'click #disqualifyingFoul': function(event) {
 		return saveAction(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#playerModal', 'playerid'),

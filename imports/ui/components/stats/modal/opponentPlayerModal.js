@@ -36,7 +36,7 @@ Template.opponentPlayerModal.events({
 	},
 	'hidden.bs.modal .modal': removeCancelAction,
 	// Positive action
-	'click #onePoint': function(event, template) {
+	'click #onePoint': function(event) {
 		return savePoints(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#opponentPlayerModal', 'playerid'),
@@ -46,7 +46,7 @@ Template.opponentPlayerModal.events({
 			R.path(['data', 'gameData'], Template.instance())
 		);
 	},
-	'click #twoPoints': function() {
+	'click #twoPoints': function(event) {
 		return savePoints(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#opponentPlayerModal', 'playerid'),
@@ -56,7 +56,7 @@ Template.opponentPlayerModal.events({
 			R.path(['data', 'gameData'], Template.instance())
 		);
 	},
-	'click #threePoints': function() {
+	'click #threePoints': function(event) {
 		return savePoints(
 			$(R.prop('currentTarget', event)).hasClass('cancelAction'),
 			getDataFromElement('#opponentPlayerModal', 'playerid'),
