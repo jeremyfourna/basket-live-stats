@@ -58,7 +58,7 @@ Template.myAccount.events({
 			if (error) {
 				return Bert.alert(error.message, 'danger', 'growl-top-right');
 			} else {
-				return Bert.alert(TAPi18n.__('updateSuccess'), 'success', 'growl-top-right');
+				return Bert.alert(TAPi18n.__('updateDone'), 'success', 'growl-top-right');
 			}
 		});
 	}
