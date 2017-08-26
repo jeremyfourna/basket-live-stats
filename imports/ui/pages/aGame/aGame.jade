@@ -3,30 +3,64 @@ template(name="aGame")
 		ul#tabsForAGame.nav.nav-tabs(role="tablist")
 			if isOwnerOfTheGame
 				li.active(role="presentation")
-					a(href="#stats" role="tab" data-toggle="tab" aria-controls="stats") {{_ "stats"}}
+					a(
+						aria-controls="stats"
+						data-toggle="tab"
+						href="#stats"
+						role="tab"
+					) {{_ "stats"}}
 				li(role="presentation")
-					a(href="#resume" role="tab" data-toggle="tab" aria-controls="resume") {{_ "summary"}}
+					a(
+						aria-controls="resume"
+						data-toggle="tab"
+						href="#resume"
+						role="tab"
+					) {{_ "summary"}}
 				li#replacement-tab(role="presentation")
-					a(href="#replacement" role="tab" data-toggle="tab" aria-controls="replacement") {{_ "replacement"}}
+					a(
+						aria-controls="replacement"
+						data-toggle="tab"
+						href="#replacement"
+						role="tab"
+					) {{_ "replacement"}}
 				li(role="presentation")
-					a(href="#playersSettings" role="tab" data-toggle="tab" aria-controls="playersSettings") {{_ "gameSettings"}}
+					a(
+						aria-controls="gameSettings"
+						data-toggle="tab"
+						href="#gameSettings"
+						role="tab"
+					) {{_ "gameSettings"}}
 			else
 				li.active(role="presentation")
-					a(href="#resume" role="tab" data-toggle="tab" aria-controls="resume") {{_ "summary"}}
+					a(
+						aria-controls="resume"
+						data-toggle="tab"
+						href="#resume"
+						role="tab"
+					) {{_ "summary"}}
 		.tab-content
 			if isOwnerOfTheGame
 				#stats.tab-pane.active(role="tabpanel")
-					// stats :: Object -> Array -> Array -> Template
-					+stats(gameData=gameData playersDataInGame=playersDataInGame teamsScore=teamsScore)
+					// stats :: (Object , Array, Array) -> Template
+					+stats(
+						gameData=gameData
+						playersDataInGame=playersDataInGame
+						teamsScore=teamsScore
+					)
 				#resume.tab-pane(role="tabpanel")
+					// summary :: Object -> Template
 					+summary(gameData=gameData)
 				#replacement.tab-pane(role="tabpanel")
-					// replacement :: Object -> Array -> Template
-					+replacement(gameData=gameData playersData=playersData)
-				#playersSettings.tab-pane(role="tabpanel")
-					+playersSettings
+					// replacement :: (Object, Array) Template
+					+replacement(
+						gameData=gameData
+						playersData=playersData
+					)
+				#gameSettings.tab-pane(role="tabpanel")
+					+gameSettings
 			else
 				#resume.tab-pane.active(role="tabpanel")
+					// summary :: Object -> Template
 					+summary(gameData=gameData)
 	else
 		+spinner

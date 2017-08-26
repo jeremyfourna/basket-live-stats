@@ -1,10 +1,9 @@
 template(name="replacement")
-	p.lead {{_ "whoReplaceWho"}}
 	.row
 		.col-xs-12.col-sm-12.col-md-6.col-lg-6
 			.panel.panel-default
 				.panel-heading
-					p.panel-title {{_ "yourClub"}} : #{yourClub}
+					p.panel-title #{yourClub}
 				.panel-body
 					p.bg-info {{_ "explanationHowToMakeAReplacement"}}
 					with yourClubPlayers
@@ -31,7 +30,7 @@ template(name="replacement")
 		.col-xs-12.col-sm-12.col-md-6.col-lg-6
 			.panel.panel-default
 				.panel-heading
-					p.panel-title {{_ "opponent"}} : #{opponent}
+					p.panel-title #{opponent}
 				.panel-body
 					p.bg-info {{_ "explanationHowToMakeAReplacement"}}
 					with opponentPlayers

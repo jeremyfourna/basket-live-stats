@@ -2,7 +2,11 @@ template(name="header")
 	nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
 		.container
 			.navbar-header
-				button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navigation")
+				button.navbar-toggle.collapsed(
+					type="button",
+					data-toggle="collapse",
+					data-target="#navigation"
+				)
 					span.sr-only {{_ "toggleNav"}}
 					span.icon-bar
 					span.icon-bar
@@ -13,16 +17,28 @@ template(name="header")
 					li
 						a.hidden-xs(href="{{pathFor 'liveGames'}}") {{_ "liveStats"}}
 					li
-						a.visible-xs(href="{{pathFor 'liveGames'}}" data-toggle="collapse", data-target=".navbar-collapse") {{_ "liveStats"}}
+						a.visible-xs(
+							href="{{pathFor 'liveGames'}}"
+							data-toggle="collapse"
+							data-target=".navbar-collapse"
+						) {{_ "liveStats"}}
 					if currentUser
 						if isClubAdmin
 							li
 								a.hidden-xs(href="{{pathFor 'myClub'}}") {{_ "myClub"}}
 							li
-								a.visible-xs(href="{{pathFor 'myClub'}}" data-toggle="collapse", data-target=".navbar-collapse") {{_ "myClub"}}
+								a.visible-xs(
+									href="{{pathFor 'myClub'}}"
+									data-toggle="collapse"
+									data-target=".navbar-collapse"
+								) {{_ "myClub"}}
 						li
 							a.hidden-xs(href="{{pathFor 'myAccount'}}") {{_ "myAccount"}}
 						li
-							a.visible-xs(href="{{pathFor 'myAccount'}}" data-toggle="collapse", data-target=".navbar-collapse") {{_ "myAccount"}}
+							a.visible-xs(
+								href="{{pathFor 'myAccount'}}"
+								data-toggle="collapse"
+								data-target=".navbar-collapse"
+							) {{_ "myAccount"}}
 				.nav.navbar-nav.navbar-right
 					+loginButtons

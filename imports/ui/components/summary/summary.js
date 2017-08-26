@@ -1,10 +1,8 @@
 import { Template } from 'meteor/templating';
-import { Router } from 'meteor/iron:router';
 import { TAPi18n } from 'meteor/tap:i18n';
+import R from 'ramda';
 import 'meteor/sacha:spin';
-
-import { Teams } from '../../../api/teams/schema.js';
-import { Players } from '../../../api/players/schema.js';
+import { getTeamScore, getTeamStats, getPlayersStats } from '../utils.js';
 
 import './summary.jade';
 import '../scoreGapChart/scoreGapChart.js';
@@ -18,6 +16,10 @@ Template.summary.onCreated(function() {
 	});
 });
 
+function getPercentageForShoots(shootsIn, shootsOut) {
+	return Math.floor(R.multiply(R.divide(shootsIn, R.add(shootsIn, shootsOut)), 100)) || 0;
+}
+
 Template.summary.helpers({
 	yourClub() {
 		return this.gameData.yourClub || TAPi18n.__('homeTeam');
@@ -29,325 +31,395 @@ Template.summary.helpers({
 		return this.gameData.evolution;
 	},
 	yourClubScore() {
-		const teamId = this.gameData.yourClubTeamId;
-
-		return Teams.findOne({
-			_id: teamId,
-		}, {
-			fields: {
-				score: 1
-			}
-		}).score;
+		return getTeamScore(R.path(['gameData', 'yourClubTeamId'], this));
 	},
 	opponentScore() {
-		const teamId = this.gameData.opponentTeamId;
-
-		return Teams.findOne({
-			_id: teamId,
-		}, {
-			fields: {
-				score: 1
-			}
-		}).score;
+		return getTeamScore(R.path(['gameData', 'opponentTeamId'], this));
 	},
 	yourClubStats() {
-		const teamId = this.gameData.yourClubTeamId;
-
-		return Teams.findOne({
-			_id: teamId,
-		});
+		return getTeamStats(R.path(['gameData', 'yourClubTeamId'], this));
 	},
 	opponentStats() {
-		const teamId = this.gameData.opponentTeamId;
-
-		return Teams.findOne({
-			_id: teamId,
-		});
+		return getTeamStats(R.path(['gameData', 'opponentTeamId'], this));
 	},
 	yourClubPlayers() {
-		const gameId = this.gameData._id;
-		const teamId = this.gameData.yourClubTeamId;
-
-		return Players.find({
-			gameId,
-			teamId
-		}, {
-			sort: {
-				jersey: 1
-			}
-		}).fetch();
+		return getPlayersStats(
+			R.path(['gameData', '_id'], this),
+			R.path(['gameData', 'yourClubTeamId'], this)
+		);
 	},
 	opponentPlayers() {
-		const gameId = this.gameData._id;
-		const teamId = this.gameData.opponentTeamId;
-
-		return Players.find({
-			gameId,
-			teamId
-		}, {
-			sort: {
-				jersey: 1
-			}
-		}).fetch();
+		return getPlayersStats(
+			R.path(['gameData', '_id'], this),
+			R.path(['gameData', 'opponentTeamId'], this)
+		);
 	},
 	notStarted() {
-		if (this.gameData.gameState === 'notStarted') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'notStarted');
 	},
 	q1Running() {
-		if (this.gameData.gameState === 'q1Running') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'q1Running');
 	},
 	q1Ended() {
-		if (this.gameData.gameState === 'q1Ended') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'q1Ended');
 	},
 	q2Running() {
-		if (this.gameData.gameState === 'q2Running') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'q2Running');
 	},
 	halfTime() {
-		if (this.gameData.gameState === 'halfTime') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'halfTime');
 	},
 	q3Running() {
-		if (this.gameData.gameState === 'q3Running') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'q3Running');
 	},
 	q3Ended() {
-		if (this.gameData.gameState === 'q3Ended') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'q3Ended');
 	},
 	q4Running() {
-		if (this.gameData.gameState === 'q4Running') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'q4Running');
 	},
 	gameEnded() {
-		if (this.gameData.gameState === 'gameEnded') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'gameEnded');
 	},
 	oT1() {
-		if (this.gameData.gameState === 'oT1') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'oT1');
 	},
 	oT2() {
-		if (this.gameData.gameState === 'oT2') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'oT2');
 	},
 	oT3() {
-		if (this.gameData.gameState === 'oT3') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'oT3');
 	},
 	oT4() {
-		if (this.gameData.gameState === 'oT4') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'oT4');
 	},
 	oT5() {
-		if (this.gameData.gameState === 'oT5') {
-			return true;
-		} else {
-			return false;
-		}
+		return R.equals(this.gameData.gameState, 'oT5');
 	},
 	total2PointsShoots() {
-		return this.points.twoPointsIn + this.points.twoPointsOut;
+		return R.add(
+			R.path(['points', 'twoPointsIn'], this),
+			R.path(['points', 'twoPointsOut'], this)
+		);
 	},
 	percentage2PointsShoots() {
-		return Math.floor(this.points.twoPointsIn / (this.points.twoPointsIn + this.points.twoPointsOut) * 100) || 0;
+		return getPercentageForShoots(
+			R.path(['points', 'twoPointsIn'], this),
+			R.path(['points', 'twoPointsOut'], this)
+		);
 	},
 	total3PointsShoots() {
-		return this.points.threePointsIn + this.points.threePointsOut;
+		return R.add(
+			R.path(['points', 'threePointsIn'], this),
+			R.path(['points', 'threePointsOut'], this)
+		);
 	},
 	percentage3PointsShoots() {
-		return Math.floor(this.points.threePointsIn / (this.points.threePointsIn + this.points.threePointsOut) * 100) || 0;
+		return getPercentageForShoots(
+			R.path(['points', 'threePointsIn'], this),
+			R.path(['points', 'threePointsOut'], this)
+		);
 	},
 	total1PointShoots() {
-		return this.points.onePointIn + this.points.onePointOut;
+		return R.add(
+			R.path(['points', 'onePointIn'], this),
+			R.path(['points', 'onePointOut'], this)
+		);
 	},
 	percentage1PointShoots() {
-		return Math.floor(this.points.onePointIn / (this.points.onePointIn + this.points.onePointOut) * 100) || 0;
+		return getPercentageForShoots(
+			R.path(['points', 'onePointIn'], this),
+			R.path(['points', 'onePointOut'], this)
+		);
 	},
 	totalRebounds() {
-		return this.offReb + this.defReb;
+		return R.add(
+			R.prop('offReb', this),
+			R.prop('defReb', this)
+		);
 	},
 	provokedFouls() {
-		return this.fouls.provOffFouls + this.fouls.provDefFouls;
+		return R.add(
+			R.path(['fouls', 'provOffFouls'], this),
+			R.path(['fouls', 'provDefFouls'], this)
+		);
 	},
 	foulsRatio() {
-		return this.fouls.provOffFouls + this.fouls.provDefFouls - this.fouls.totalFouls;
+		return R.subtract(
+			R.add(
+				R.path(['fouls', 'provOffFouls'], this),
+				R.path(['fouls', 'provDefFouls'], this)
+			),
+			R.path(['fouls', 'totalFouls'], this)
+		);
 	},
 	teamFoulsRatio() {
-		return this.fouls.provOffFouls + this.fouls.provDefFouls - this.fouls.totalFouls;
+		return R.subtract(
+			R.add(
+				R.path(['fouls', 'provOffFouls'], this),
+				R.path(['fouls', 'provDefFouls'], this)
+			),
+			R.path(['fouls', 'totalFouls'], this)
+		);
 	},
 	teamTotal2PointsShoots() {
-		return this.points.twoPointsIn + this.points.twoPointsOut;
+		return R.add(
+			R.path(['points', 'twoPointsIn'], this),
+			R.path(['points', 'twoPointsOut'], this)
+		);
 	},
 	teamPercentage2PointsShoots() {
-		return Math.floor(this.points.twoPointsIn / (this.points.twoPointsIn + this.points.twoPointsOut) * 100) || 0;
+		return getPercentageForShoots(
+			R.path(['points', 'twoPointsIn'], this),
+			R.path(['points', 'twoPointsOut'], this)
+		);
 	},
 	teamTotal3PointsShoots() {
-		return this.points.threePointsIn + this.points.threePointsOut;
+		return R.add(
+			R.path(['points', 'threePointsIn'], this),
+			R.path(['points', 'threePointsOut'], this)
+		);
 	},
 	teamPercentage3PointsShoots() {
-		return Math.floor(this.points.threePointsIn / (this.points.threePointsIn + this.points.threePointsOut) * 100) || 0;
+		return getPercentageForShoots(
+			R.path(['points', 'threePointsIn'], this),
+			R.path(['points', 'threePointsOut'], this)
+		);
 	},
 	teamTotal1PointShoots() {
-		return this.points.onePointIn + this.points.onePointOut;
+		return R.add(
+			R.path(['points', 'onePointIn'], this),
+			R.path(['points', 'onePointOut'], this)
+		);
 	},
 	teamPercentage1PointShoots() {
-		return Math.floor(this.points.onePointIn / (this.points.onePointIn + this.points.onePointOut) * 100) || 0;
+		return getPercentageForShoots(
+			R.path(['points', 'onePointIn'], this),
+			R.path(['points', 'onePointOut'], this)
+		);
 	},
 	teamTotalRebounds() {
-		return this.offReb + this.defReb;
+		return R.add(
+			R.prop('offReb', this),
+			R.prop('defReb', this)
+		);
 	},
 	teamProvokedFouls() {
-		return this.fouls.provOffFouls + this.fouls.provDefFouls;
-	},
+		return R.add(
+			R.path(['fouls', 'provOffFouls'], this),
+			R.path(['fouls', 'provDefFouls'], this)
+		);
+	}
+});
+
+Template.yourClubRow.helpers({
 	isInPlay() {
-		if (this.inPlay) {
+		if (R.gte(R.path(['data', 'fouls', 'totalFouls'], Template.instance()), 5)) {
+			return 'danger';
+		} else if (R.equals(true, R.path(['data', 'inPlay'], Template.instance()))) {
 			return 'inPlay';
 		} else {
 			return false;
 		}
 	},
-	playerTime() {
+	total2PointsShoots() {
+		return R.add(
+			R.path(['data', 'points', 'twoPointsIn'], Template.instance()),
+			R.path(['data', 'points', 'twoPointsOut'], Template.instance())
+		);
+	},
+	percentage2PointsShoots() {
+		return getPercentageForShoots(
+			R.path(['data', 'points', 'twoPointsIn'], Template.instance()),
+			R.path(['data', 'points', 'twoPointsOut'], Template.instance())
+		);
+	},
+	total3PointsShoots() {
+		return R.add(
+			R.path(['data', 'points', 'threePointsIn'], Template.instance()),
+			R.path(['data', 'points', 'threePointsOut'], Template.instance())
+		);
+	},
+	percentage3PointsShoots() {
+		return getPercentageForShoots(
+			R.path(['data', 'points', 'threePointsIn'], Template.instance()),
+			R.path(['data', 'points', 'threePointsOut'], Template.instance())
+		);
+	},
+	total1PointShoots() {
+		return R.add(
+			R.path(['data', 'points', 'onePointIn'], Template.instance()),
+			R.path(['data', 'points', 'onePointOut'], Template.instance())
+		);
+	},
+	percentage1PointShoots() {
+		return getPercentageForShoots(
+			R.path(['data', 'points', 'onePointIn'], Template.instance()),
+			R.path(['data', 'points', 'onePointOut'], Template.instance())
+		);
+	},
+	totalRebounds() {
+		return R.add(
+			R.path(['data', 'offReb'], Template.instance()),
+			R.path(['data', 'defReb'], Template.instance())
+		);
+	},
+	provokedFouls() {
+		return R.add(
+			R.path(['data', 'fouls', 'provOffFouls'], Template.instance()),
+			R.path(['data', 'fouls', 'provDefFouls'], Template.instance())
+		);
+	},
+	foulsRatio() {
+		return R.subtract(
+			R.add(
+				R.path(['data', 'fouls', 'provOffFouls'], Template.instance()),
+				R.path(['data', 'fouls', 'provDefFouls'], Template.instance())
+			),
+			R.path(['data', 'fouls', 'totalFouls'], Template.instance())
+		);
+	}
+});
+
+Template.playerTime.helpers({
+	playerTime() { // This function need a big refactoring !!!
+		// To know if the player is in play or not
+		// modulo === 1 means player is in play
+		// modulo === 0 the player is on the bench
+		const modulo = R.modulo(R.length(R.prop('gameTime', this)), 2);
+		const gameTime = R.prop('gameTime', this);
 		let playerTimeMinutes = 0;
 		let playerTimeSecondes = 0;
-		let modulo = this.gameTime.length % 2;
-		let i = 0;
-		let quarterPower = 0;
-		if (this.gameTime.length === 0) {
+		// Conditions for the number of minutes if the player
+		// neven went out of the court
+		const qPower10 = R.anyPass([
+			R.equals('notStarted'),
+			R.equals('q1Running'),
+			R.equals('q1Ended')
+		]);
+		const qPower20 = R.anyPass([
+			R.equals('q2Running'),
+			R.equals('halfTime')
+		]);
+		const qPower30 = R.anyPass([
+			R.equals('q3Running'),
+			R.equals('q3Ended')
+		]);
+		const qPower40 = R.anyPass([
+			R.equals('q4Running'),
+			R.equals('gameEnded')
+		]);
+		// Conditional function
+		const fnForQPower = R.cond([
+			[qPower10, R.always(10)],
+			[qPower20, R.always(20)],
+			[qPower30, R.always(30)],
+			[qPower40, R.always(40)],
+			[R.equals('oT1'), R.always(45)],
+			[R.equals('oT2'), R.always(50)],
+			[R.equals('oT3'), R.always(55)],
+			[R.equals('oT4'), R.always(60)],
+			[R.equals('oT5'), R.always(65)],
+			[R.T, R.always(0)]
+		]);
+
+		if (R.equals(R.length(gameTime), 0)) {
 			return '00:00';
-		} else if (modulo === 0) {
-			for (i = 0; i < this.gameTime.length; i++) {
-				if (this.gameTime[i].state === 'notStarted' || this.gameTime[i].state === 'q1Running' || this.gameTime[i].state === 'q1Ended') {
-					quarterPower = 10;
-				} else if (this.gameTime[i].state === 'q2Running' || this.gameTime[i].state === 'halfTime') {
-					quarterPower = 20;
-				} else if (this.gameTime[i].state === 'q3Running' || this.gameTime[i].state === 'q3Ended') {
-					quarterPower = 30;
-				} else if (this.gameTime[i].state === 'q4Running' || this.gameTime[i].state === 'gameEnded') {
-					quarterPower = 40;
-				} else if (this.gameTime[i].state === 'oT1') {
-					quarterPower = 45;
-				} else if (this.gameTime[i].state === 'oT2') {
-					quarterPower = 50;
-				} else if (this.gameTime[i].state === 'oT3') {
-					quarterPower = 55;
-				} else if (this.gameTime[i].state === 'oT4') {
-					quarterPower = 60;
-				} else if (this.gameTime[i].state === 'oT5') {
-					quarterPower = 65;
-				} else {
-					quarterPower = 0;
-				}
-				if (this.gameTime[i].way === 'in') {
-					playerTimeMinutes += this.gameTime[i].minutes;
-					playerTimeSecondes += this.gameTime[i].secondes;
-					playerTimeMinutes -= quarterPower;
-				} else if (this.gameTime[i].way === 'out') {
-					playerTimeMinutes -= this.gameTime[i].minutes;
-					playerTimeSecondes -= this.gameTime[i].secondes;
-					playerTimeMinutes += quarterPower;
-					if (playerTimeSecondes < 0) {
-						playerTimeMinutes -= 1;
-						playerTimeSecondes += 60;
+		} else if (R.equals(modulo, 0)) {
+			const cumulativeTime = R.reduce((prev, cur) => {
+				const quarterPower = fnForQPower(R.prop('state', cur));
+
+				if (R.equals(R.prop('way', cur), 'in')) {
+					const transformations = {
+						min: R.add(R.subtract(R.prop('minutes', cur), quarterPower)),
+						sec: R.add(R.prop('secondes', cur))
+					};
+					return R.evolve(transformations, prev);
+
+				} else if (R.equals(R.prop('way', cur), 'out')) {
+					const transformations = {
+						min: R.add(R.subtract(quarterPower, R.prop('minutes', cur))),
+						sec: R.subtract(R.prop('secondes', cur))
+					};
+					const newPrev = R.evolve(transformations, prev);
+
+					if (R.lt(playerTimeSecondes, 0)) {
+						const transformations = {
+							min: R.dec(R.prop('min')),
+							sec: R.add(R.prop('sec'), 60)
+						};
+						return R.evolve(transformations, newPrev);
+
+					} else {
+						return newPrev;
 					}
 				}
+			}, { min: 0, sec: 0 }, gameTime);
+
+			if (R.lt(R.prop('sec', cumulativeTime), 10)) {
+				playerTimeSecondes = `0${R.prop('sec', cumulativeTime)}`;
+			} else {
+				playerTimeSecondes = R.prop('sec', cumulativeTime);
 			}
-			if (playerTimeSecondes < 10) {
-				playerTimeSecondes = '0' + playerTimeSecondes;
+			if (R.lt(R.prop('min', cumulativeTime), 10)) {
+				playerTimeMinutes = `0${R.prop('min', cumulativeTime)}`;
+			} else {
+				playerTimeMinutes = R.prop('min', cumulativeTime);
 			}
-			if (playerTimeMinutes < 10) {
-				playerTimeMinutes = '0' + playerTimeMinutes;
-			}
-			return playerTimeMinutes + ':' + playerTimeSecondes;
-		} else if (modulo === 1) {
-			for (i = 0; i < this.gameTime.length - 1; i++) {
-				if (this.gameTime[i].state === 'notStarted' || this.gameTime[i].state === 'q1Running' || this.gameTime[i].state === 'q1Ended') {
-					quarterPower = 10;
-				} else if (this.gameTime[i].state === 'q2Running' || this.gameTime[i].state === 'halfTime') {
-					quarterPower = 20;
-				} else if (this.gameTime[i].state === 'q3Running' || this.gameTime[i].state === 'q3Ended') {
-					quarterPower = 30;
-				} else if (this.gameTime[i].state === 'q4Running' || this.gameTime[i].state === 'gameEnded') {
-					quarterPower = 40;
-				} else if (this.gameTime[i].state === 'oT1') {
-					quarterPower = 45;
-				} else if (this.gameTime[i].state === 'oT2') {
-					quarterPower = 50;
-				} else if (this.gameTime[i].state === 'oT3') {
-					quarterPower = 55;
-				} else if (this.gameTime[i].state === 'oT4') {
-					quarterPower = 60;
-				} else if (this.gameTime[i].state === 'oT5') {
-					quarterPower = 65;
-				} else {
-					quarterPower = 0;
-				}
-				if (i === this.gameTime.length - 1) {
-					playerTimeMinutes += this.gameTime[i].minutes;
-					playerTimeSecondes += this.gameTime[i].secondes;
-				} else if (this.gameTime[i].way === 'in') {
-					playerTimeMinutes += this.gameTime[i].minutes;
-					playerTimeSecondes += this.gameTime[i].secondes;
-					playerTimeMinutes -= quarterPower;
-				} else if (this.gameTime[i].way === 'out') {
-					playerTimeMinutes -= this.gameTime[i].minutes;
-					playerTimeSecondes -= this.gameTime[i].secondes;
-					playerTimeMinutes += quarterPower;
-					if (playerTimeSecondes < 0) {
-						playerTimeMinutes -= 1;
-						playerTimeSecondes += 60;
+
+			return `${playerTimeMinutes}:${playerTimeSecondes}`;
+
+		} else if (R.equals(modulo, 1)) {
+			const cumulativeTime = R.reduce((prev, cur) => {
+				const quarterPower = fnForQPower(R.prop('state', cur));
+
+				if (R.equals(R.prop('way', cur), 'in')) {
+					const transformations = {
+						min: R.add(R.subtract(R.prop('minutes', cur), quarterPower)),
+						sec: R.add(R.prop('secondes', cur))
+					};
+					return R.evolve(transformations, prev);
+
+				} else if (R.equals(R.prop('way', cur), 'out')) {
+					const transformations = {
+						min: R.add(R.subtract(quarterPower, R.prop('minutes', cur))),
+						sec: R.subtract(R.prop('secondes', cur))
+					};
+					const newPrev = R.evolve(transformations, prev);
+
+					if (R.lt(playerTimeSecondes, 0)) {
+						const transformations = {
+							min: R.dec(R.prop('min')),
+							sec: R.add(R.prop('sec'), 60)
+						};
+						return R.evolve(transformations, newPrev);
+
+					} else {
+						return newPrev;
 					}
 				}
+			}, { min: 0, sec: 0 }, gameTime);
+			/*
+			const lastElement = R.last(gameTime);
+
+			const transformations = {
+				min: R.add(R.prop('minutes', lastElement)),
+				sec: R.add(R.prop('secondes', lastElement))
+			};
+			const newCumulativeTime = R.evolve(transformations, cumulativeTime);
+			*/
+			if (R.lt(R.prop('sec', cumulativeTime), 10)) {
+				playerTimeSecondes = `0${R.prop('sec', cumulativeTime)}`;
+			} else {
+				playerTimeSecondes = R.prop('sec', cumulativeTime);
 			}
-			if (playerTimeSecondes < 10) {
-				playerTimeSecondes = '0' + playerTimeSecondes;
+			if (R.lt(R.prop('min', cumulativeTime), 10)) {
+				playerTimeMinutes = `0${R.prop('min', cumulativeTime)}`;
+			} else {
+				playerTimeMinutes = R.prop('min', cumulativeTime);
 			}
-			if (playerTimeMinutes < 10) {
-				playerTimeMinutes = '0' + playerTimeMinutes;
-			}
-			return playerTimeMinutes + ':' + playerTimeSecondes;
+
+			return `${playerTimeMinutes}:${playerTimeSecondes}`;
 		}
 	}
 });

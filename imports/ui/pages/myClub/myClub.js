@@ -8,12 +8,13 @@ Template.myClub.helpers({
 });
 
 Template.myClub.events({
-	'click .deleteTeam': function(e, t) {
+	'click .deleteTeam': function(event) {
+		event.preventDefault();
 		var teamToDelete = {
 			club: Template.parentData(1)._id,
 			team: this.teamId
 		};
-		Meteor.call('deleteTeam', teamToDelete, function(error, result) {
+		Meteor.call('deleteTeam', teamToDelete, function(error) {
 			if (error) {
 				return throwError(error.message);
 			}

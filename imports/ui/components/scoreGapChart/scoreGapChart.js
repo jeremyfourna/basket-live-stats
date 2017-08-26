@@ -1,7 +1,6 @@
 import { Template } from 'meteor/templating';
 import 'meteor/peernohell:c3';
-
-import { Games } from '../../../api/games/schema.js';
+import { TAPi18n } from 'meteor/tap:i18n';
 
 import './scoreGapChart.jade';
 
@@ -15,11 +14,15 @@ Template.scoreGapChart.onRendered(function() {
 			right: 50
 		},
 		data: {
-			xs: { 'Ecart du match': 'x' },
+			xs: {
+				[`${TAPi18n.__('gameGap')}`]: 'x'
+			},
 			columns: [
-				['Ecart du match']
+				[`${TAPi18n.__('gameGap')}`]
 			],
-			axes: { 'Ecart du match': 'y2' }
+			axes: {
+				[`${TAPi18n.__('gameGap')}`]: 'y2'
+			}
 		},
 		axis: {
 			x: { show: false },
@@ -28,16 +31,16 @@ Template.scoreGapChart.onRendered(function() {
 		},
 		tooltip: {
 			format: {
-				title(x) {
-					return 'Ecart du match';
+				title() {
+					return `${TAPi18n.__('gameGap')}`;
 				}
 			}
 		}
 	});
 
-	this.autorun(function(tracker) {
+	this.autorun(function() {
 		let xArray = ['x'];
-		let yArray = ['Ecart du match'];
+		let yArray = [`${TAPi18n.__('gameGap')}`];
 		Template.parentData(1).gameData.evolution.map((cur) => {
 			xArray.push(cur[0]);
 			yArray.push(cur[1]);

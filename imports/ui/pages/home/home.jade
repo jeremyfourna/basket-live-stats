@@ -1,28 +1,17 @@
 template(name='home')
 	if Template.subscriptionsReady
-		.page-header
-			h1 {{_ "ApplicationName"}}
-		p.lead {{_ "appTeaserPhrase"}}
-		+creationGame
-		section
-			h2 {{_ "followDirect"}}
-			.row
-				each game
-					.col-xs-12.col-sm-12.col-md-4.col-lg-4
-						// gameCard :: Object -> Template
-						+gameCard
-				else
-					p.no-games {{_ "noLiveGames"}}
-			a(href="{{pathFor 'liveGames'}}") {{_ "orSelectARunningGame"}}
-		section
-			h2 {{_ "seeEndedGames"}}
-			.row
-				each endedGame
-					.col-xs-12.col-sm-12.col-md-4.col-lg-4
-						// gameCard :: Object -> Template
-						+gameCard
-				else
-					p.no-games {{_ "noLiveGames"}}
-			a(href="{{pathFor 'liveGames'}}") {{_ "orSelectAnEndedGame"}}
+		.hero
+			.page-header
+				h1 {{_ "ApplicationName"}}
+			p.lead {{_ "appTeaserPhrase"}}
+			+creationGame
+		.panel.panel-default
+			.panel-heading
+				p.panel-title {{_ "runningGames"}}
+			.panel-body
+				.row
+					each last12LiveGames
+						.col-xs-12.col-sm-6.col-md-4.col-lg-4
+							+gameCard
 	else
 		+spinner

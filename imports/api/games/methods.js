@@ -62,10 +62,10 @@ Meteor.methods({
 
 		return Games.update({ _id: data.gameId }, {
 			$set: {
-				'gameInfos.yourClub': data.yourClub,
-				'gameInfos.opponent': data.opponent,
-				'gameInfos.level': data.level,
-				'gameInfos.group': data.group
+				yourClub: data.yourClub,
+				opponent: data.opponent,
+				level: data.level,
+				group: data.group
 			}
 		});
 	},
@@ -107,110 +107,6 @@ Meteor.methods({
 		}, {
 			$pop: {
 				evolution: 1
-			}
-		});
-	},
-	'Games.offReb': (data) => {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.rebounds.offReb': 1,
-				'stats.yourClub.evaluation': 1
-			}
-		});
-	},
-	'Games.defReb': (data) => {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.rebounds.defReb': 1,
-				'stats.yourClub.evaluation': 1
-			}
-		});
-	},
-	'Games.correctionOffReb': (data) => {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.rebounds.offReb': -1,
-				'stats.yourClub.evaluation': -1
-			}
-		});
-	},
-	'Games.correctionDefReb': (data) => {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.rebounds.defReb': -1,
-				'stats.yourClub.evaluation': -1
-			}
-		});
-	},
-	'Games.steals': (data) => {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.steals': 1,
-				'stats.yourClub.evaluation': 1
-			}
-		});
-	},
-	'Games.correctionSteals': (data) => {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.steals': -1,
-				'stats.yourClub.evaluation': -1
-			}
-		});
-	},
-	'Games.turnovers': (data) => {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.turnovers': 1,
-				'stats.yourClub.evaluation': -1
-			}
-		});
-	},
-	'Games.correctionTurnovers': (data) => {
-		const methodSchema = new SimpleSchema({
-			gameId: { type: String }
-		});
-		check(data, methodSchema);
-
-		return Games.update({ _id: data.gameId }, {
-			$inc: {
-				'stats.yourClub.turnovers': -1,
-				'stats.yourClub.evaluation': 1
 			}
 		});
 	}

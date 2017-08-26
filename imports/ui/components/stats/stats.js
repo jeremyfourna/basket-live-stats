@@ -1,10 +1,8 @@
 import { Template } from 'meteor/templating';
-import { Router } from 'meteor/iron:router';
 import { TAPi18n } from 'meteor/tap:i18n';
+import R from 'ramda';
 import 'meteor/sacha:spin';
-
-import { Teams } from '../../../api/teams/schema.js';
-import { Players } from '../../../api/players/schema.js';
+import { getTeamScore } from '../utils.js';
 
 import './stats.jade';
 import '../stateOfTheGame/stateOfTheGame.js';
@@ -13,61 +11,49 @@ import './modal/opponentPlayerModal.js';
 
 Template.stats.helpers({
 	yourClub() {
-		return this.gameData.yourClub || TAPi18n.__('homeTeam');
+		return R.path(['data', 'gameData', 'yourClub'], Template.instance()) || TAPi18n.__('homeTeam');
 	},
 	opponent() {
-		return this.gameData.opponent || TAPi18n.__('awayTeam');
+		return R.path(['data', 'gameData', 'opponent'], Template.instance()) || TAPi18n.__('awayTeam');
 	},
 	gameState() {
-		return this.gameData.gameState;
+		return R.path(['data', 'gameData', 'gameState'], Template.instance());
 	},
 	gameId() {
-		return this.gameData._id;
+		return R.path(['data', 'gameData', '_id'], Template.instance());
 	},
 	gameEndedOrNot() {
-		if (this.gameState === 'gameEnded') {
+		if (R.equals(R.path(['data', 'gameData', 'gameState'], Template.instance()), 'gameEnded')) {
 			return 'hidden';
 		}
 	},
 	yourClubScore() {
-		const teamId = this.gameData.yourClubTeamId;
-
-		return Teams.findOne({ _id: teamId }, {
-			fields: {
-				score: 1
-			}
-		}).score;
+		return getTeamScore(R.path(['data', 'gameData', 'yourClubTeamId'], Template.instance()));
 	},
 	opponentScore() {
-		const teamId = this.gameData.opponentTeamId;
-
-		return Teams.findOne({ _id: teamId }, {
-			fields: {
-				score: 1
-			}
-		}).score;
+		return getTeamScore(R.path(['data', 'gameData', 'opponentTeamId'], Template.instance()));
 	},
 	yourClubPlayersInGame() {
-		const teamId = this.gameData.yourClubTeamId;
+		const teamId = R.path(['data', 'gameData', 'yourClubTeamId'], Template.instance());
 
-		return this.playersDataInGame.filter((cur) => {
+		return R.filter((cur) => {
 			return cur.teamId === teamId;
-		});
+		}, R.path(['data', 'playersDataInGame'], Template.instance()));
 	},
 	opponentPlayersInGame() {
-		const teamId = this.gameData.opponentTeamId;
+		const teamId = R.path(['data', 'gameData', 'opponentTeamId'], Template.instance());
 
-		return this.playersDataInGame.filter((cur) => {
+		return R.filter((cur) => {
 			return cur.teamId === teamId;
-		});
+		}, R.path(['data', 'playersDataInGame'], Template.instance()));
 	}
 });
 
 Template.stats.events({
-	'click .displayReplacement': function(event) {
+	'click .displayReplacement': () => {
 		$('#tabsForAGame a[href="#replacement"]').tab('show');
 	},
-	'click .doReplacement': function(event) {
+	'click .doReplacement': () => {
 		$('#tabsForAGame a[href="#replacement"]').tab('show');
 	}
 });

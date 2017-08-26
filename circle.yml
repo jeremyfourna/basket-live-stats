@@ -7,4 +7,4 @@ dependencies:
 
 test:
   override:
-    - eslint client/ imports/ server/
+    - meteor npm run lint
