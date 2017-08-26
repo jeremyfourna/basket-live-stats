@@ -23,9 +23,7 @@ Template.stats.helpers({
 		return R.path(['data', 'gameData', '_id'], Template.instance());
 	},
 	gameEndedOrNot() {
-		if (R.equals(
-				R.path(['data', 'gameData', 'gameState'], Template.instance()),
-				'gameEnded')) {
+		if (R.equals(R.path(['data', 'gameData', 'gameState'], Template.instance()), 'gameEnded')) {
 			return 'hidden';
 		}
 	},

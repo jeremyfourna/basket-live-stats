@@ -16,35 +16,6 @@ Template.myAccount.helpers({
 });
 
 Template.myAccount.events({
-	'click #emailValidate': (event) => {
-		event.preventDefault();
-
-		function validateEmail(mail) {
-			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-				return mail;
-			} else {
-				return false;
-			}
-		}
-
-		const data = {
-			userId: Meteor.userId(),
-			email: validateEmail($('#email').val())
-		};
-
-		if (data.email) {
-			return Meteor.call('updateEmail', data, (error) => {
-				if (error) {
-					return Bert.alert(error.message, 'danger', 'growl-top-right');
-				} else {
-					Meteor.logout();
-					return Router.go('home');
-				}
-			});
-		} else {
-			return Bert.alert('Please enter a valid email address', 'danger', 'growl-top-right');
-		}
-	},
 	'click #personalInfosValidate': (event) => {
 		event.preventDefault();
 

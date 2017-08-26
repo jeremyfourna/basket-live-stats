@@ -1,12 +1,14 @@
 {
-  "name": "LiveBBStats",
+  "name": "Basket-Live-Stats",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "lint": "eslint client/ imports/ server/"
   },
   "dependencies": {
     "babel-runtime": "^6.20.0",
     "bcrypt": "^0.8.7",
+    "eslint": "^4.5.0",
     "jquery": "2.2.4",
     "meteor-node-stubs": "~0.2.0",
     "ramda": "^0.24.1"

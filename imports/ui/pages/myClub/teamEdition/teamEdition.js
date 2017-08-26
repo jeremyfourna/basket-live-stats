@@ -19,11 +19,6 @@ Template.teamEdition.events({
 		return Blaze.render(Template.teamCoachDefinition, t.$('.coachData').get(0));
 	},
 	'click .updateTeam': function() {
-		var filterInt = function(value) {
-			if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value))
-				return Number(value);
-			return NaN;
-		};
 		var isFilled = function(element) {
 			if ($(element).val() === '') {
 				return null;
@@ -45,7 +40,7 @@ Template.teamEdition.events({
 			var player = {
 				firstName: isFilled($(element).find('.firstName')),
 				lastName: isFilled($(element).find('.lastName')),
-				jersey: filterInt($(element).find('.jersey').val()),
+				jersey: Number($(element).find('.jersey').val()),
 				playerIndex: index,
 			};
 			team.players.push(player);
