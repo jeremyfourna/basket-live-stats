@@ -1,11 +1,8 @@
 template(name="stats")
 	if Template.subscriptionsReady
 		.row
-			.col-xs-12.col-sm-7.col-md-6.col-lg-6
-				p.lead #{yourClub}
-					span.label.label-default #{yourClubScore} - #{opponentScore}
-					| #{opponent}
-			.col-xs-12.col-sm-5.col-md-6.col-lg-6
+			+teamsAndScore(props=dataForTeamsAndScore)
+			.col-xs-12.col-sm-6.col-md-6.col-lg-6
 				// stateOfTheGame :: Object -> String -> Template
 				+stateOfTheGame(
 					gameState=gameState

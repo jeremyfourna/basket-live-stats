@@ -1,0 +1,14 @@
+template(name="teamsAndScore")
+	.col-xs-12.col-sm-6.hidden-md.hidden-lg
+		.panel.panel-default
+			.panel-heading
+				p.panel-title.text-center #{yourClub} - #{opponent}
+			.panel-body
+				p.text-center
+					span.bg-default.score #{yourClubScore} - #{opponentScore}
+	.hidden-xs.hidden-sm.col-md-6.col-lg-6
+		.panel.panel-default
+			.panel-body
+				p.lead #{yourClub}
+					span.bg-default.score #{yourClubScore} - #{opponentScore}
+					| #{opponent}
