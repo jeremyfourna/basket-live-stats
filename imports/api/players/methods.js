@@ -1,9 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import R from 'ramda';
 
 import { Players, playerSchema } from './schema.js';
 import { gameStateValues } from '../schemas.js';
+
+import { Games } from '../games/schema.js';
 
 Meteor.methods({
 	'Players.addPlayers': (teamId, gameId) => {
@@ -47,7 +50,8 @@ Meteor.methods({
 			},
 			steals: 0,
 			blocks: 0,
-			turnovers: 0
+			turnovers: 0,
+			scoreEffect: 0
 		};
 
 		// Loop 12 times because a team is composed of 12 players at max
@@ -147,6 +151,55 @@ Meteor.methods({
 		}, {
 			multi: true
 		});
+	},
+	'Players.scoreEffect': (gameId, teamId, numberToAdd) => {
+		check(gameId, String);
+		check(teamId, String);
+		check(numberToAdd, Number);
+		const bothTeams = Games.findOne({
+			_id: gameId,
+		}, {
+			fields: {
+				yourClubTeamId: 1,
+				opponentTeamId: 1
+			}
+		});
+		if (R.equals(teamId, R.prop('yourClubTeamId', bothTeams))) {
+			Players.update({
+				teamId,
+				inPlay: true
+			}, {
+				$inc: {
+					scoreEffect: numberToAdd
+				}
+			}, { multi: true });
+			Players.update({
+				teamId: R.prop('opponentTeamId', bothTeams),
+				inPlay: true
+			}, {
+				$inc: {
+					scoreEffect: R.negate(numberToAdd)
+				}
+			}, { multi: true });
+		} else {
+			Players.update({
+				teamId,
+				inPlay: true
+			}, {
+				$inc: {
+					scoreEffect: numberToAdd
+				}
+			}, { multi: true });
+			Players.update({
+				teamId: R.prop('yourClubTeamId', bothTeams),
+				inPlay: true
+			}, {
+				$inc: {
+					scoreEffect: R.negate(numberToAdd)
+				}
+			}, { multi: true });
+		}
+		return true;
 	},
 	'Players.assist': (teamId, playerId) => {
 		// Check method params

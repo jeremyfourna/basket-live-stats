@@ -122,6 +122,10 @@ export const playerSchema = new SimpleSchema({
 		type: Number,
 		label: 'Player turnovers',
 		min: 0
+	},
+	scoreEffect: {
+		type: Number,
+		label: 'Evolution of the score when this player was in game'
 	}
 });
 

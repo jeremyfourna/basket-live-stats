@@ -9,6 +9,7 @@
 	"goStats": "Prends les stats d'un match !",
 	"stats": "Stats",
 	"summary": "Résumé",
+	"scoreEffect": "+/-",
 	"historical": "Historique",
 	"whoIsDoingThisAction": "Quelle action a été réalisée par le joueur",
 	"offAction": "Action offensive",

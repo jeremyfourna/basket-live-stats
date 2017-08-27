@@ -70,6 +70,7 @@ template(name='summary')
 							th.text-center {{_ "block"}}
 							th.text-center {{_ "foulProvComm"}}
 							th.text-center {{_ "foulRatio"}}
+							th.text-center {{_ "scoreEffect"}}
 							th.text-center {{_ "eval"}}
 					tbody.yourClubPlayers
 						each yourClubPlayers
@@ -94,6 +95,7 @@ template(name='summary')
 								td.text-center #{blocks}
 								td.text-center #{teamProvokedFouls}/#{fouls.totalFouls}
 								td.text-center #{teamFoulsRatio}
+								td.text-center -
 								td.text-center #{evaluation}
 		.panel.panel-default
 			.panel-heading
@@ -108,6 +110,7 @@ template(name='summary')
 							th.text-center {{_ "twoPoints"}}
 							th.text-center {{_ "threePoints"}}
 							th.text-center {{_ "ft"}}
+							th.text-center {{_ "scoreEffect"}}
 					tbody.opponentPlayers
 						each opponentPlayers
 							tr(class='#{isInPlay}')
@@ -118,6 +121,7 @@ template(name='summary')
 								td.text-center #{points.twoPointsIn}
 								td.text-center #{points.threePointsIn}
 								td.text-center #{points.onePointIn}
+								td.text-center #{scoreEffect}
 						tr.active
 							with opponentStats
 								td.text-center(scope='row')
@@ -127,6 +131,7 @@ template(name='summary')
 								td.text-center #{points.twoPointsIn}
 								td.text-center #{points.threePointsIn}
 								td.text-center #{points.onePointIn}
+								td.text-center -
 	else
 		+spinner
 
@@ -150,6 +155,7 @@ template(name="yourClubRow")
 		td.text-center #{blocks}
 		td.text-center #{provokedFouls}/#{fouls.totalFouls}
 		td.text-center #{foulsRatio}
+		td.text-center #{scoreEffect}
 		td.text-center #{evaluation}
 
 template(name="playerTime")

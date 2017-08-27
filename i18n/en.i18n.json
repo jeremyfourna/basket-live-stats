@@ -8,6 +8,7 @@
 	"404": "Sorry, this is not the page you are looking for...",
 	"goStats": "Take a game's stats !",
 	"stats": "Stats",
+	"scoreEffect": "+/-",
 	"summary": "Summary",
 	"historical": "History",
 	"whoIsDoingThisAction": "What action has been done by the player",
