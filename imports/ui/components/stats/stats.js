@@ -7,6 +7,16 @@ import '../stateOfTheGame/stateOfTheGame.js';
 import './modal/playerModal.js';
 import './modal/opponentPlayerModal.js';
 import '../teamsAndScore/teamsAndScore.js';
+import '../playersInGame/playersInGame.js';
+
+function getDataForPlayersInGame(team, teamId, isHomeTeam, templateInstance) {
+	const clubProps = R.pick([team, teamId], R.path(['data', 'gameData'], templateInstance));
+	const homeTeam = R.assoc('isHomeTeam', isHomeTeam, clubProps);
+	const clubPlayers = R.filter((cur) => {
+		return cur.teamId === R.prop(teamId, clubProps);
+	}, R.path(['data', 'playersDataInGame'], templateInstance));
+	return R.assoc('playersInGame', clubPlayers, homeTeam);
+}
 
 Template.stats.helpers({
 	dataForTeamsAndScore() {
@@ -23,19 +33,11 @@ Template.stats.helpers({
 			return 'hidden';
 		}
 	},
-	yourClubPlayersInGame() {
-		const teamId = R.path(['data', 'gameData', 'yourClubTeamId'], Template.instance());
-
-		return R.filter((cur) => {
-			return cur.teamId === teamId;
-		}, R.path(['data', 'playersDataInGame'], Template.instance()));
+	dataForPlayersInGameYourClub() {
+		return getDataForPlayersInGame('yourClub', 'yourClubTeamId', true, Template.instance());
 	},
-	opponentPlayersInGame() {
-		const teamId = R.path(['data', 'gameData', 'opponentTeamId'], Template.instance());
-
-		return R.filter((cur) => {
-			return cur.teamId === teamId;
-		}, R.path(['data', 'playersDataInGame'], Template.instance()));
+	dataForPlayersInGameOpponent() {
+		return getDataForPlayersInGame('opponent', 'opponentTeamId', false, Template.instance());
 	}
 });
 

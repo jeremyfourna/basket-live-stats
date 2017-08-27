@@ -63,7 +63,7 @@
 	"player": "Player",
 	"gameScore": "Score",
 	"playerInGame": "In game players:",
-	"explanationHowToAddAStat": "Click on a number to add for this player an action",
+	"explanationHowToAddAStat": "Click a number to add an action for a player",
 	"labelNotStarted": "Let the game begin !",
 	"labelQ1Running": "End of 1st QT",
 	"labelQ1Ended": "Start of 2nd QT",

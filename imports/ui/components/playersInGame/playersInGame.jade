@@ -1,0 +1,30 @@
+template(name="playersInGame")
+	.col-xs-12.col-sm-12.col-md-6.col-lg-6
+		.panel.panel-default
+			.panel-heading
+				p.panel-title #{clubName}
+			.panel-body
+				p.bg-info {{_ "explanationHowToAddAStat"}}
+				.yourClub.row.playerRow
+					each players
+						.col-xs-4.col-sm-2.col-md-2.col-lg-2
+							.thumbnail
+								button.btn.btn-block(
+									class="#{teamColor}"
+									data-toggle="modal"
+									data-target="#{teamModal}"
+									data-jersey="#{jersey}"
+									data-firstname="#{firstName}"
+									data-lastname="#{lastName}"
+									data-playerid="#{_id}"
+								)
+									strong #{jersey}
+					else
+						button.displayReplacement.btn.btn-warning(
+							type="button",
+							class="#{gameEndedOrNot}"
+						) {{_ "fiveStarter"}}
+			.panel-footer
+				button.doReplacement.btn.btn-default(type="button")
+					span.glyphicon.glyphicon-transfer(aria-hidden="true")
+					| {{_ "makeAReplacement"}}

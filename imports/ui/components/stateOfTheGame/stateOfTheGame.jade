@@ -1,35 +1,77 @@
 template(name="stateOfTheGame")
-	p.lead {{_ "stateOfTheGame"}} :
-		if notStarted
-			button#notStarted.btn.btn-primary(type='button') {{_ "labelNotStarted"}}
-		if q1Running
-			button#q1Running.btn.btn-primary(type='button') {{_ "labelQ1Running"}}
-		if q1Ended
-			button#q1Ended.btn.btn-primary(type='button') {{_ "labelQ1Ended"}}
-		if q2Running
-			button#q2Running.btn.btn-primary(type='button') {{_ "labelQ2Running"}}
-		if halfTime
-			button#halfTime.btn.btn-primary(type='button') {{_ "labelHalfTime"}}
-		if q3Running
-			button#q3Running.btn.btn-primary(type='button') {{_ "labelQ3Running"}}
-		if q3Ended
-			button#q3Ended.btn.btn-primary(type='button') {{_ "labelQ3Ended"}}
-		if q4Running
-			button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
-			button#oT.oT.btn.btn-warning(type='button') {{_ "labelOT"}}
-		if gameEnded
-			button#gameEnded.btn.btn-primary(disabled='disabled', type='button') {{_ "labelGameEnded"}}
-		if oT1
-			button#oT1.oT.btn.btn-warning(type='button') {{_ "labelOT1"}}
-			button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
-		if oT2
-			button#oT2.oT.btn.btn-warning(type='button') {{_ "labelOT2"}}
-			button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
-		if oT3
-			button#oT3.oT.btn.btn-warning(type='button') {{_ "labelOT3"}}
-			button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
-		if oT4
-			button#oT4.oT.btn.btn-warning(type='button') {{_ "labelOT4"}}
-			button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
-		if oT5
-			button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
+	.col-xs-12.col-sm-6.hidden-md.hidden-lg
+		.panel.panel-default
+			.panel-heading
+				p.panel-title.text-center {{_ "stateOfTheGame"}}
+			.panel-body
+				if notStarted
+					button#notStarted.btn.btn-primary.center-block(type='button') {{_ "labelNotStarted"}}
+				if q1Running
+					button#q1Running.btn.btn-warning.center-block(type='button') {{_ "labelQ1Running"}}
+				if q1Ended
+					button#q1Ended.btn.btn-primary.center-block(type='button') {{_ "labelQ1Ended"}}
+				if q2Running
+					button#q2Running.btn.btn-warning.center-block(type='button') {{_ "labelQ2Running"}}
+				if halfTime
+					button#halfTime.btn.btn-primary.center-block(type='button') {{_ "labelHalfTime"}}
+				if q3Running
+					button#q3Running.btn.btn-warning.center-block(type='button') {{_ "labelQ3Running"}}
+				if q3Ended
+					button#q3Ended.btn.btn-primary.center-block(type='button') {{_ "labelQ3Ended"}}
+				if q4Running
+					button#endedGames.btn.btn-success.center-block(type='button') {{_ "labelEndedGames"}}
+					button#oT.oT.btn.btn-warning.center-block(type='button') {{_ "labelOT"}}
+				if gameEnded
+					button#gameEnded.btn.btn-success.center-block(disabled='disabled', type='button') {{_ "labelGameEnded"}}
+				if oT1
+					button#oT1.oT.btn.btn-warning.center-block(type='button') {{_ "labelOT1"}}
+					button#endedGames.btn.btn-success.center-block(type='button') {{_ "labelEndedGames"}}
+				if oT2
+					button#oT2.oT.btn.btn-warning.center-block(type='button') {{_ "labelOT2"}}
+					button#endedGames.btn.btn-success.center-block(type='button') {{_ "labelEndedGames"}}
+				if oT3
+					button#oT3.oT.btn.btn-warning.center-block(type='button') {{_ "labelOT3"}}
+					button#endedGames.btn.btn-success.center-block(type='button') {{_ "labelEndedGames"}}
+				if oT4
+					button#oT4.oT.btn.btn-warning.center-block(type='button') {{_ "labelOT4"}}
+					button#endedGames.btn.btn-success.center-block(type='button') {{_ "labelEndedGames"}}
+				if oT5
+					button#endedGames.btn.btn-success.center-block(type='button') {{_ "labelEndedGames"}}
+	.hidden-xs.hidden-sm.col-md-6.col-lg-6
+		.panel.panel-default
+			.panel-body
+				p.lead {{_ "stateOfTheGame"}}
+					span
+						if notStarted
+							button#notStarted.btn.btn-primary(type='button') {{_ "labelNotStarted"}}
+						if q1Running
+							button#q1Running.btn.btn-primary(type='button') {{_ "labelQ1Running"}}
+						if q1Ended
+							button#q1Ended.btn.btn-primary(type='button') {{_ "labelQ1Ended"}}
+						if q2Running
+							button#q2Running.btn.btn-primary(type='button') {{_ "labelQ2Running"}}
+						if halfTime
+							button#halfTime.btn.btn-primary(type='button') {{_ "labelHalfTime"}}
+						if q3Running
+							button#q3Running.btn.btn-primary(type='button') {{_ "labelQ3Running"}}
+						if q3Ended
+							button#q3Ended.btn.btn-primary(type='button') {{_ "labelQ3Ended"}}
+						if q4Running
+							button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
+							button#oT.oT.btn.btn-warning(type='button') {{_ "labelOT"}}
+						if gameEnded
+							button#gameEnded.btn.btn-primary(disabled='disabled', type='button') {{_ "labelGameEnded"}}
+						if oT1
+							button#oT1.oT.btn.btn-warning(type='button') {{_ "labelOT1"}}
+							button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
+						if oT2
+							button#oT2.oT.btn.btn-warning(type='button') {{_ "labelOT2"}}
+							button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
+						if oT3
+							button#oT3.oT.btn.btn-warning(type='button') {{_ "labelOT3"}}
+							button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
+						if oT4
+							button#oT4.oT.btn.btn-warning(type='button') {{_ "labelOT4"}}
+							button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}
+						if oT5
+							button#endedGames.btn.btn-primary(type='button') {{_ "labelEndedGames"}}

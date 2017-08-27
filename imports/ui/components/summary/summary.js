@@ -209,7 +209,16 @@ Template.summary.helpers({
 			R.path(['fouls', 'provOffFouls'], this),
 			R.path(['fouls', 'provDefFouls'], this)
 		);
-	}
+	},
+	isInPlay() {
+		if (R.gte(R.path(['fouls', 'totalFouls'], this), 5)) {
+			return 'danger';
+		} else if (R.equals(true, R.prop('inPlay', this))) {
+			return 'inPlay';
+		} else {
+			return false;
+		}
+	},
 });
 
 Template.yourClubRow.helpers({
