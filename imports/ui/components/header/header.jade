@@ -23,15 +23,6 @@ template(name="header")
 							data-target=".navbar-collapse"
 						) {{_ "liveStats"}}
 					if currentUser
-						if isClubAdmin
-							li
-								a.hidden-xs(href="{{pathFor 'myClub'}}") {{_ "myClub"}}
-							li
-								a.visible-xs(
-									href="{{pathFor 'myClub'}}"
-									data-toggle="collapse"
-									data-target=".navbar-collapse"
-								) {{_ "myClub"}}
 						li
 							a.hidden-xs(href="{{pathFor 'myAccount'}}") {{_ "myAccount"}}
 						li

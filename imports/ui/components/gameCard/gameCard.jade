@@ -5,8 +5,7 @@ template(name="gameCard")
 				p.panel-title.text-center #{yourClub} - #{opponent}
 			.panel-body
 				h3.text-center #{yourClubScore} - #{opponentScore}
-				+stateOfTheGameText(stateOfTheGame=stateOfTheGame)
 			.panel-footer
-				a.btn.btn-primary.btn-block(role="button" href="{{pathFor 'aGame'}}") {{_ "followTheLive"}}
+				a.btn.btn-primary.btn-block(role="button" href="{{pathFor 'game'}}") {{_ "followTheLive"}}
 	else
 		+spinner

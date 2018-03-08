@@ -5,13 +5,10 @@ template(name='home')
 				h1 {{_ "ApplicationName"}}
 			p.lead {{_ "appTeaserPhrase"}}
 			+creationGame
-		.panel.panel-default
-			.panel-heading
-				p.panel-title {{_ "runningGames"}}
-			.panel-body
-				.row
-					each last12LiveGames
-						.col-xs-12.col-sm-6.col-md-4.col-lg-4
-							+gameCard
+		.page-header
+			h2 {{_ "runningGames"}}
+		each last12LiveGames
+			.col-xs-12.col-sm-6.col-md-6.col-lg-4
+				+gameCard
 	else
 		+spinner
