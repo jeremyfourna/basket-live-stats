@@ -6,23 +6,22 @@ import '../../components/creationGame/creationGame.js';
 import '../../components/gameCard/gameCard.js';
 
 Template.home.onCreated(function() {
-	this.autorun(() => {
-		this.subscribe('Games.last12LiveGames');
-	});
+  this.autorun(() => {
+    this.subscribe('Games.lastLiveGames');
+  });
 });
 
 Template.home.helpers({
-	last12LiveGames() {
-		return Games.find({
-			gameState: {
-				$nin: ['gameEnded']
-			},
-			privateGame: false
-		}, {
-			limit: 12,
-			sort: {
-				createdAt: -1
-			}
-		});
-	}
+  lastLiveGames() {
+    return Games.find({
+      gameState: {
+        $nin: ['gameEnded']
+      },
+      privateGame: false
+    }, {
+      sort: {
+        createdAt: -1
+      }
+    });
+  }
 });

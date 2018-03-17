@@ -8,21 +8,19 @@ import { TAPi18n } from 'meteor/tap:i18n';
 import './gameInfos.jade';
 
 Template.gameInfos.events({
-	'click .gameInfosValidation': function(event) {
-		event.preventDefault();
-		const data = {
-			gameId: R.path(['params', '_id'], Router.current()),
-			yourClub: $('#teamHome').val(),
-			opponent: $('#teamAway').val(),
-			level: $('#level').val(),
-			group: $('#group').val()
-		};
-		Meteor.call('Games.updateGameInfos', data, (error) => {
-			if (error) {
-				return sendToast('danger', R.prop('message', error));
-			} else {
-				return sendToast('success', TAPi18n.__('updateDone'));
-			}
-		});
-	}
+  'click .gameInfosValidation': function(event) {
+    event.preventDefault();
+    const data = {
+      gameId: R.path(['params', '_id'], Router.current()),
+      yourClub: $('#teamHome').val(),
+      opponent: $('#teamAway').val()
+    };
+    Meteor.call('Games.updateGameInfos', data, (error) => {
+      if (error) {
+        return sendToast('danger', R.prop('message', error));
+      } else {
+        return sendToast('success', TAPi18n.__('updateDone'));
+      }
+    });
+  }
 });

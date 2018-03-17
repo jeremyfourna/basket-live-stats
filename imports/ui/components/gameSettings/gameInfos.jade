@@ -16,18 +16,6 @@ template(name='gameInfos')
 						type='text',
 						value='#{gameInfos.opponent}'
 					)
-				.form-group
-					label(for="level") {{_ "level"}}
-					input#level.form-control(
-						type='text',
-						value='#{gameInfos.level}'
-					)
-				.form-group
-					label(for="group") {{_ "group"}}
-					input#group.form-control(
-						type='text',
-						value='#{gameInfos.group}'
-					)
 		.panel-footer
 			button.btn.btn-success.gameInfosValidation(type='button')
 				span.glyphicon.glyphicon-floppy-save(aria-hidden="true")
