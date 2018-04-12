@@ -10,7 +10,7 @@ function getUserLanguage(user) {
 }
 
 if (Meteor.isClient) {
-  return Meteor.startup(() => {
+  Meteor.startup(() => {
     return TAPi18n
       .setLanguage(getUserLanguage(Meteor.user()))
       .fail(message => sendToast('danger', message));

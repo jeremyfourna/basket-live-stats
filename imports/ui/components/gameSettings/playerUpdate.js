@@ -1,9 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import {
-  sendToast,
-  updateHandlingInMethod
-} from '../../../startup/client/lib/utils.js';
+import { updateHandlingInMethod } from '../../../startup/client/lib/utils.js';
 import R from 'ramda';
 
 import './playerUpdate.jade';
