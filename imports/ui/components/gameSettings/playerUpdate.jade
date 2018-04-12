@@ -4,17 +4,19 @@ template(name='playerUpdate')
 			.panel-heading
 				h4.panel-title {{_ "player"}} #{jersey}
 			.panel-body
-				form
+				form(id='#{_id}')
 					.form-group
 						label(for="lastName") {{_ "lastName"}}
 						input.lastName.form-control(
-							type='text',
+							type='text'
+							name='lastName'
 							value='#{lastName}'
 						)
 					.form-group
 						label(for="firstName") {{_ "firstName"}}
 						input.firstName.form-control(
-							type='text',
+							type='text'
+							name='firstName'
 							value='#{firstName}'
 						)
 			.panel-footer

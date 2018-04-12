@@ -6,9 +6,7 @@ import '../../components/creationGame/creationGame.js';
 import '../../components/gameCard/gameCard.js';
 
 Template.home.onCreated(function() {
-  this.autorun(() => {
-    this.subscribe('Games.lastLiveGames');
-  });
+  this.autorun(() => this.subscribe('Games.lastLiveGames'));
 });
 
 Template.home.helpers({

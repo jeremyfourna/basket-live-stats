@@ -1,10 +1,9 @@
+import R from 'ramda';
 import { Accounts } from 'meteor/accounts-base';
 
 Accounts.onCreateUser((options, user) => {
-  user.profile = options.profile;
-  user.profile.name = '';
-  user.profile.firstName = '';
-  user.profile.status = 'active';
-  user.profile.language = 'en';
-  return user;
+  return R.compose(
+    R.assocPath(['profile', 'language'], 'en'),
+    R.assoc('profile', R.prop('profile', options))
+  )(user);
 });

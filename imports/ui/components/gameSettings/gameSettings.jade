@@ -8,10 +8,3 @@ template(name='gameSettings')
 				.players.row
 					each playerData
 						+playerUpdate
-		.panel.panel-default
-			.panel-heading
-				p.panel-title {{_ "coachDefinition"}} : #{yourClub}
-			.panel-body
-				.coachs.row
-					each coachData
-						+coachUpdate

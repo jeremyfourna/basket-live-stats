@@ -1,24 +1,27 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { sendToast } from '../../../startup/client/lib/utils.js';
-import { TAPi18n } from 'meteor/tap:i18n';
+import {
+  sendToast,
+  updateHandlingInMethod
+} from '../../../startup/client/lib/utils.js';
+import R from 'ramda';
 
 import './playerUpdate.jade';
 
 Template.playerUpdate.events({
-	'click .playerValidation': (event) => {
-		event.preventDefault();
-		const playerInfo = {
-			lastName: event.target.parentElement[0].value,
-			firstName: event.target.parentElement[1].value,
-			playerId: this._id
-		};
-		Meteor.call('playerUpdate', playerInfo, (error) => {
-			if (error) {
-				return sendToast('danger', R.prop('message', error));
-			} else {
-				return sendToast('success', TAPi18n.__('updateDone'));
-			}
-		});
-	}
+  'click .playerValidation': (event, template) => {
+    const playerId = R.path(['data', '_id'], template);
+    const formData = document.forms[playerId];
+    const playerInfo = {
+      playerId,
+      lastName: R.path(['lastName', 'value'], formData),
+      firstName: R.path(['firstName', 'value'], formData),
+    };
+
+    return Meteor.call(
+      'Players.updatePlayerInfos',
+      playerInfo,
+      updateHandlingInMethod
+    );
+  }
 });
