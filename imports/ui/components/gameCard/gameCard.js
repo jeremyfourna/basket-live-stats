@@ -7,24 +7,20 @@ import { TAPi18n } from 'meteor/tap:i18n';
 import './gameCard.jade';
 
 Template.gameCard.onCreated(function() {
-  this.autorun(() => {
-    const gameId = this.data._id;
-
-    this.subscribe('Teams.teamsForAGame', gameId);
-  });
+  this.autorun(() => this.subscribe('Teams.teamsForAGame', R.path(['data', '_id'], this)));
 });
 
 Template.gameCard.helpers({
   yourClub() {
-    return this.yourClub || TAPi18n.__('homeTeam');
+    return R.path(['data', 'yourClub'], Template.instance()) || TAPi18n.__('homeTeam');
   },
   opponent() {
-    return this.opponent || TAPi18n.__('awayTeam');
+    return R.path(['data', 'opponent'], Template.instance()) || TAPi18n.__('awayTeam');
   },
   yourClubScore() {
-    return getTeamScore(R.prop('yourClubTeamId', this));
+    return getTeamScore(R.path(['data', 'yourClubTeamId'], Template.instance()));
   },
   opponentScore() {
-    return getTeamScore(R.prop('opponentTeamId', this));
+    return getTeamScore(R.path(['data', 'opponentTeamId'], Template.instance()));
   },
 });

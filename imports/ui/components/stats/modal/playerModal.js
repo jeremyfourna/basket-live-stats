@@ -1,6 +1,12 @@
 import { Template } from 'meteor/templating';
 import { TAPi18n } from 'meteor/tap:i18n';
-import { savePoints, saveAction, getDataFromElement, setDataInsideElement, setTextInsideElement } from './utils.js';
+import {
+  savePoints,
+  saveAction,
+  getDataFromElement,
+  setDataInsideElement,
+  setTextInsideElement
+} from './utils.js';
 import R from 'ramda';
 import $ from 'jquery';
 
@@ -47,7 +53,7 @@ Template.playerModal.events({
       R.path(['data', 'gameData'], Template.instance())
     );
   },
-  'click #twoPoints': function(event) {
+  'click #twoPoints': event => {
     return savePoints(
       $(R.prop('currentTarget', event)).hasClass('cancelAction'),
       getDataFromElement('#playerModal', 'playerid'),
