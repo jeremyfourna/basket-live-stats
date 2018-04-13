@@ -9,14 +9,7 @@ MethodHooks.after('Teams.addTeam', (options) => {
     const teamId = options.result;
     const gameId = R.head(R.prop('arguments', options));
 
-    const listOfMethodToCall = [
-      'Players.addPlayers',
-      'Coachs.addCoachs'
-    ];
-
-    R.forEach((method) => {
-      Meteor.call(method, teamId, gameId);
-    }, listOfMethodToCall);
+    Meteor.call('Players.addPlayers', teamId, gameId);
 
     return R.prop('result', options);
   }

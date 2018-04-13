@@ -6,7 +6,7 @@ import { Games, gameSchema } from './schema.js';
 import { gameStateValues } from '../schemas.js';
 
 Meteor.methods({
-  'Games.addGame': (userId) => {
+  'Games.addGame': userId => {
     check(userId, String);
 
     const game = {

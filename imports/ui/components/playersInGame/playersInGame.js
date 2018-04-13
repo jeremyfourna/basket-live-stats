@@ -5,11 +5,12 @@ import './playersInGame.jade';
 
 Template.playersInGame.helpers({
   clubName() {
-    const teamName = R.path(['data', 'props', 'clubName'], Template.instance());
+    const props = R.path(['data', 'props'], Template.instance());
+
     if (R.equals(true, R.path(['data', 'props', 'isHomeTeam'], Template.instance()))) {
-      return teamName || TAPi18n.__('homeTeam');
+      return R.prop('yourClub', props) || TAPi18n.__('homeTeam');
     } else {
-      return teamName || TAPi18n.__('awayTeam');
+      return R.prop('opponent', props) || TAPi18n.__('awayTeam');
     }
   },
   players() {

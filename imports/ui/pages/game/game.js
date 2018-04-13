@@ -3,6 +3,7 @@ import { Template } from 'meteor/templating';
 import { Router } from 'meteor/iron:router';
 import R from 'ramda';
 import 'meteor/sacha:spin';
+import { getGameId } from '../utils.js';
 
 import { Games } from '../../../api/games/schema.js';
 import { Teams } from '../../../api/teams/schema.js';
@@ -26,10 +27,10 @@ Template.game.onCreated(function() {
 
 Template.game.helpers({
   isOwnerOfTheGame() {
-    const gameId = R.path(['params', '_id'], Router.current());
     const userId = Meteor.userId();
-
-    const game = Games.findOne({ _id: gameId }, {
+    const game = Games.findOne({
+      _id: getGameId(Router.current())
+    }, {
       fields: {
         userId: 1
       }
@@ -38,9 +39,9 @@ Template.game.helpers({
     return R.equals(userId, R.prop('userId', game));
   },
   gameData() {
-    const gameId = R.path(['params', '_id'], Router.current());
-
-    return Games.findOne({ _id: gameId }, {
+    return Games.findOne({
+      _id: getGameId(Router.current())
+    }, {
       fields: {
         _id: 1,
         gameState: 1,
@@ -53,10 +54,8 @@ Template.game.helpers({
     });
   },
   playersDataInGame() {
-    const gameId = R.path(['params', '_id'], Router.current());
-
     return Players.find({
-      gameId,
+      gameId: getGameId(Router.current()),
       inPlay: true
     }, {
       fields: {
@@ -72,9 +71,9 @@ Template.game.helpers({
     }).fetch();
   },
   teamsScore() {
-    const gameId = R.path(['params', '_id'], Router.current());
-
-    return Teams.find({ gameId }, {
+    return Teams.find({
+      gameId: getGameId(Router.current())
+    }, {
       fields: {
         _id: 1,
         score: 1
@@ -82,9 +81,9 @@ Template.game.helpers({
     }).fetch();
   },
   playersData() {
-    const gameId = R.path(['params', '_id'], Router.current());
-
-    return Players.find({ gameId }, {
+    return Players.find({
+      gameId: getGameId(Router.current())
+    }, {
       fields: {
         _id: 1,
         teamId: 1,

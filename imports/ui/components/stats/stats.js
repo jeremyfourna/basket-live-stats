@@ -11,6 +11,7 @@ import '../playersInGame/playersInGame.js';
 import '../share/share.js';
 
 function getDataForPlayersInGame(team, teamId, isHomeTeam, templateInstance) {
+  console.log('getDataForPlayersInGame', templateInstance.data);
   const clubProps = R.pickAll(
     [team, teamId, 'isHomeTeam', 'playersInGame'],
     R.path(['data', 'gameData'], templateInstance)
