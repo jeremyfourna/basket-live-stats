@@ -13,7 +13,6 @@ ian:accounts-ui-bootstrap-3
 tap:i18n
 reactive-var@1.0.11
 reactive-dict@1.1.9
-risul:bootstrap-colorpicker
 mquandalle:jade
 peernohell:c3
 momentjs:moment
@@ -36,11 +35,8 @@ standard-minifier-js@2.1.1
 aldeed:simple-schema
 templating
 ecmascript@0.8.1
-stevezhu:lodash
-dburles:collection-helpers
 themeteorchef:bert
 doctorpangloss:method-hooks
-peerlibrary:reactive-field
 shell-server@0.2.4
 dynamic-import@0.1.1
 joshowens:shareit
