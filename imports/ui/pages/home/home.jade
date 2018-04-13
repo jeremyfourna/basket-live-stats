@@ -7,8 +7,9 @@ template(name='home')
 			+creationGame
 		.page-header
 			h2 {{_ "runningGames"}}
-		each lastLiveGames
-			.col-xs-12.col-sm-6.col-md-6.col-lg-4
-				+gameCard
+		.row
+			each lastLiveGames
+				.col-xs-12.col-sm-6.col-md-6.col-lg-4
+					+gameCard
 	else
 		+spinner
