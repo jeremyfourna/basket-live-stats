@@ -3,35 +3,33 @@ import R from 'ramda';
 import $ from 'jquery';
 import { errorHandlingInMethod } from '../../../../startup/client/lib/utils.js';
 
-export function savePoints(isACancelAction, playerId, team, correctionMethod, method, points, scope) {
-  const gameId = R.prop('_id', scope);
-  const teamId = R.prop(team, scope);
+// savePoints2 :: (boolean -> object) -> IO
+export function savePoints(isACancelAction, scope) {
+  const p = R.prop(R.__, scope);
 
-  if (isACancelAction) {
-    return Meteor.call(
-      correctionMethod,
-      gameId,
-      teamId,
-      playerId,
-      errorHandlingInMethod
-    );
-  } else {
-    const evolScore = {
-      gameIndex: R.length(R.prop('evolution', scope)),
-      scoreGap: R.add(
-        R.nth(1, R.last(R.prop('evolution', scope))),
-        points
-      )
-    };
-    return Meteor.call(
-      method,
-      gameId,
-      teamId,
-      playerId,
-      evolScore,
-      errorHandlingInMethod
-    );
-  }
+  return R.ifElse(
+    R.equals(true),
+    () => Meteor.call(
+      p('correctionMethod'),
+      p('gameId'),
+      p('teamId'),
+      p('playerId'),
+      errorHandlingInMethod),
+    () => {
+      const evolScore = {
+        gameIndex: p('evolutionLength'),
+        scoreGap: R.add(p('scoreGap'), p('points'))
+      };
+      return Meteor.call(
+        p('method'),
+        p('gameId'),
+        p('teamId'),
+        p('playerId'),
+        evolScore,
+        errorHandlingInMethod
+      );
+    }
+  )(isACancelAction);
 }
 
 export function saveAction(isACancelAction, playerId, teamId, correctionMethod, method) {
@@ -52,7 +50,11 @@ export function saveAction(isACancelAction, playerId, teamId, correctionMethod, 
   }
 }
 
-export function getDataFromElement(element, dataProp) {
+export function isACancelAction(element) {
+  return $(element).hasClass('cancelAction');
+}
+
+export function getDataFromElement(dataProp, element) {
   return $(element).data(dataProp);
 }
 

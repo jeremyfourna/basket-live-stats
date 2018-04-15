@@ -1,6 +1,12 @@
 import { Template } from 'meteor/templating';
 import { TAPi18n } from 'meteor/tap:i18n';
-import { savePoints, getDataFromElement, setDataInsideElement, setTextInsideElement } from './utils.js';
+import {
+  savePoints,
+  getDataFromElement,
+  isACancelAction,
+  setDataInsideElement,
+  setTextInsideElement
+} from './utils.js';
 import R from 'ramda';
 import $ from 'jquery';
 
@@ -13,7 +19,7 @@ function removeCancelAction() {
 }
 
 Template.opponentPlayerModal.events({
-  'show.bs.modal #opponentPlayerModal': function(event) {
+  'show.bs.modal #opponentPlayerModal': event => {
     const button = $(R.prop('relatedTarget', event)); // Button that triggered the modal
     const firstName = button.data('firstname') || TAPi18n.__('firstName');
     const lastName = button.data('lastname') || TAPi18n.__('lastName');
@@ -36,34 +42,49 @@ Template.opponentPlayerModal.events({
   },
   'hidden.bs.modal .modal': removeCancelAction,
   // Positive action
-  'click #onePoint': function(event) {
-    return savePoints(
-      $(R.prop('currentTarget', event)).hasClass('cancelAction'),
-      getDataFromElement('#opponentPlayerModal', 'playerid'),
-      'opponentTeamId',
-      'Teams.correctOnePointIn',
-      'Teams.onePointIn', -1,
-      R.path(['data', 'gameData'], Template.instance())
-    );
+  'click #onePoint': event => {
+    const p = R.prop(R.__, R.path(['data', 'gameData'], Template.instance()));
+    const scope = {
+      correctionMethod: 'Teams.correctOnePointIn',
+      evolutionLength: R.length(p('evolution')),
+      gameId: p('_id'),
+      method: 'Teams.onePointIn',
+      playerId: getDataFromElement('playerid', '#opponentPlayerModal'),
+      points: -1,
+      scoreGap: R.last(R.last(p('evolution'))),
+      teamId: p('opponentTeamId'),
+    };
+
+    return savePoints(isACancelAction(R.prop('currentTarget', event)), scope);
   },
-  'click #twoPoints': function(event) {
-    return savePoints(
-      $(R.prop('currentTarget', event)).hasClass('cancelAction'),
-      getDataFromElement('#opponentPlayerModal', 'playerid'),
-      'opponentTeamId',
-      'Teams.correctTwoPointsIn',
-      'Teams.twoPointsIn', -2,
-      R.path(['data', 'gameData'], Template.instance())
-    );
+  'click #twoPoints': event => {
+    const p = R.prop(R.__, R.path(['data', 'gameData'], Template.instance()));
+    const scope = {
+      correctionMethod: 'Teams.correctTwoPointsIn',
+      evolutionLength: R.length(p('evolution')),
+      gameId: p('_id'),
+      method: 'Teams.twoPointsIn',
+      playerId: getDataFromElement('playerid', '#opponentPlayerModal'),
+      points: -2,
+      scoreGap: R.last(R.last(p('evolution'))),
+      teamId: p('opponentTeamId'),
+    };
+
+    return savePoints(isACancelAction(R.prop('currentTarget', event)), scope);
   },
-  'click #threePoints': function(event) {
-    return savePoints(
-      $(R.prop('currentTarget', event)).hasClass('cancelAction'),
-      getDataFromElement('#opponentPlayerModal', 'playerid'),
-      'opponentTeamId',
-      'Teams.correctThreePointsIn',
-      'Teams.threePointsIn', -3,
-      R.path(['data', 'gameData'], Template.instance())
-    );
+  'click #threePoints': event => {
+    const p = R.prop(R.__, R.path(['data', 'gameData'], Template.instance()));
+    const scope = {
+      correctionMethod: 'Teams.correctThreePointsIn',
+      evolutionLength: R.length(p('evolution')),
+      gameId: p('_id'),
+      method: 'Teams.threePointsIn',
+      playerId: getDataFromElement('playerid', '#opponentPlayerModal'),
+      points: -3,
+      scoreGap: R.last(R.last(p('evolution'))),
+      teamId: p('opponentTeamId'),
+    };
+
+    return savePoints(isACancelAction(R.prop('currentTarget', event)), scope);
   },
 });
