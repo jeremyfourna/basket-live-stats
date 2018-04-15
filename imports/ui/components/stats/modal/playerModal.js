@@ -22,11 +22,11 @@ function removeCancelAction() {
 Template.playerModal.events({
   'show.bs.modal #playerModal': function(event) {
     const button = $(R.prop('relatedTarget', event)); // Button that triggered the modal
-    const firstName = button.data('firstname') || TAPi18n.__('firstName');
-    const lastName = button.data('lastname') || TAPi18n.__('lastName');
+    const firstName = button.data('firstname');
+    const lastName = button.data('lastname');
 
     setDataInsideElement('#playerModal', 'playerid', button.data('playerid'));
-    setTextInsideElement('.modal-title', `${TAPi18n.__('whoIsDoingThisAction')} ${TAPi18n.__('num')}${button.data('jersey')} : ${firstName} ${lastName}`);
+    setTextInsideElement('.modal-title', `${TAPi18n.__('whoIsDoingThisAction')} ${TAPi18n.__('num')}${button.data('jersey')}: ${firstName} ${lastName}`);
   },
   'click #correctionAction': function() {
     $('.buttonForAction').prepend('<span class=\'badge actionBadge\'>-1</span> ')
