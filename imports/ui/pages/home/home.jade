@@ -1,15 +1,6 @@
 template(name='home')
-	if Template.subscriptionsReady
-		.hero
-			.page-header
-				h1 {{_ "ApplicationName"}}
-			p.lead {{_ "appTeaserPhrase"}}
-			+creationGame
+	.hero
 		.page-header
-			h2 {{_ "runningGames"}}
-		.row
-			each lastLiveGames
-				.col-xs-12.col-sm-6.col-md-6.col-lg-4
-					+gameCard
-	else
-		+spinner
+			h1 {{_ "ApplicationName"}}
+		p.lead {{_ "appTeaserPhrase"}}
+		+creationGame

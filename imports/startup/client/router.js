@@ -6,7 +6,7 @@ import '../../ui/components/notFound.jade';
 
 // Pages
 import '../../ui/pages/home/home.js';
-import '../../ui/pages/liveGames/liveGames.js';
+import '../../ui/pages/me/me.js';
 import '../../ui/pages/game/game.js';
 
 Router.configure({
@@ -18,8 +18,8 @@ Router.route('/', {
   name: 'home'
 });
 
-Router.route('/live', {
-  name: 'liveGames'
+Router.route('/me', {
+  name: 'me'
 });
 
 Router.route('/game/:_id', {

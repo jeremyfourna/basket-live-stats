@@ -113,9 +113,3 @@ export const gameStateValues = [
   'oT4',
   'oT5'
 ];
-
-export const clubStatusValues = [
-  'active',
-  'inactive',
-  'paymentProblem'
-];

@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Router } from 'meteor/iron:router';
 import { sendToast } from '../../../startup/client/lib/utils.js';
-import R from 'ramda';
+import { prop } from 'ramda';
 
 import './creationGame.jade';
 
@@ -11,11 +11,9 @@ Template.creationGame.events({
     // Disable button to prevent double click and the creation of multiple games
     event.target.disabled = true;
 
-    const userId = Meteor.userId();
-
-    return Meteor.call('Games.addGame', userId, (error, result) => {
+    return Meteor.call('Games.addGame', Meteor.userId(), (error, result) => {
       if (error) {
-        return sendToast('danger', R.prop('message', error));
+        return sendToast('danger', prop('message', error));
       } else {
         return Router.go('game', { _id: result });
       }

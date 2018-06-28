@@ -1,7 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Router } from 'meteor/iron:router';
-import R from 'ramda';
+import {
+  equals,
+  prop
+} from 'ramda';
 import 'meteor/sacha:spin';
 import { getGameId } from '../utils.js';
 
@@ -17,7 +20,7 @@ import '../../components/gameSettings/gameSettings.js';
 
 Template.game.onCreated(function() {
   this.autorun(() => {
-    const gameId = R.path(['params', '_id'], Router.current());
+    const gameId = getGameId(Router.current());
 
     this.subscribe('Games.aGame', gameId);
     this.subscribe('Teams.teamsForAGame', gameId);
@@ -36,7 +39,7 @@ Template.game.helpers({
       }
     });
 
-    return R.equals(userId, R.prop('userId', game));
+    return equals(userId, prop('userId', game));
   },
   gameData() {
     return Games.findOne({

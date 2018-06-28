@@ -1,10 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import { TAPi18n } from 'meteor/tap:i18n';
 import { sendToast } from './lib/utils.js';
-import R from 'ramda';
+import { path } from 'ramda';
 
 function getUserLanguage(user) {
-  const userLanguage = R.path(['profile', 'language'], user);
+  const userLanguage = path(['profile', 'language'], user);
 
   return userLanguage || 'en';
 }

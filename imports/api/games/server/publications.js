@@ -36,7 +36,7 @@ Meteor.publish('Games.last3EndedGames', () => {
 });
 
 // Send back one game
-Meteor.publish('Games.aGame', (gameId) => {
+Meteor.publish('Games.aGame', gameId => {
   check(gameId, String);
 
   return Games.find({
@@ -44,7 +44,7 @@ Meteor.publish('Games.aGame', (gameId) => {
   });
 });
 
-Meteor.publish('Games.oneGameForReplacement', (gameId) => {
+Meteor.publish('Games.oneGameForReplacement', gameId => {
   check(gameId, String);
   return Games.find({ _id: gameId }, {
     fields: {
@@ -57,7 +57,7 @@ Meteor.publish('Games.oneGameForReplacement', (gameId) => {
   });
 });
 
-Meteor.publish('Games.oneGameInfos', (gameId) => {
+Meteor.publish('Games.oneGameInfos', gameId => {
   check(gameId, String);
   return Games.find({ _id: gameId }, {
     fields: {
@@ -69,7 +69,7 @@ Meteor.publish('Games.oneGameInfos', (gameId) => {
   });
 });
 
-Meteor.publish('Games.aGameForOwnership', (gameId) => {
+Meteor.publish('Games.aGameForOwnership', gameId => {
   check(gameId, String);
   return Games.find({ _id: gameId }, {
     fields: {
@@ -79,8 +79,17 @@ Meteor.publish('Games.aGameForOwnership', (gameId) => {
 });
 
 // Send back only the user's games
-Meteor.publish('Games.myGames', (userId) => {
-  return Games.find({ userId });
+Meteor.publish('Games.myGames', userId => {
+  return Games.find({ userId }, {
+    fields: {
+      userId: 1,
+      yourClub: 1,
+      yourClubTeamId: 1,
+      opponent: 1,
+      opponentTeamId: 1,
+      gameState: 1
+    }
+  });
 });
 
 // Send back only the games that have been created less than 7 days ago

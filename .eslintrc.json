@@ -1,28 +1,24 @@
 {
-  "env":
-  {
+  "env": {
     "browser": true,
     "es6": true,
     "meteor": true
   },
   "extends": "eslint:recommended",
-  "parserOptions":
-  {
+  "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
-    "ecmaFeatures":
-    {
+    "ecmaFeatures": {
       "jsx": false
     }
   },
-  "rules":
-  {
+  "rules": {
     "eqeqeq": [
       "error",
       "allow-null"
     ],
     "no-undef": [
-      "off"
+      "error"
     ],
     "indent": [
       "error",

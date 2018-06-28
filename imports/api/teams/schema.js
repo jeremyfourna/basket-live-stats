@@ -1,7 +1,10 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-import { shootsSchema, foulsSchema } from '../schemas.js';
+import {
+  shootsSchema,
+  foulsSchema
+} from '../schemas.js';
 
 export const Teams = new Mongo.Collection('teams');
 

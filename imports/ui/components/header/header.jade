@@ -14,22 +14,14 @@ template(name="header")
 				a.navbar-brand(href="{{pathFor 'home'}}") {{_ "ApplicationName"}}
 			#navigation.collapse.navbar-collapse
 				ul.nav.navbar-nav
-					li
-						a.hidden-xs(href="{{pathFor 'liveGames'}}") {{_ "liveStats"}}
-					li
-						a.visible-xs(
-							href="{{pathFor 'liveGames'}}"
-							data-toggle="collapse"
-							data-target=".navbar-collapse"
-						) {{_ "liveStats"}}
-					//if currentUser
+					if currentUser
 						li
-							a.hidden-xs(href="{{pathFor 'myAccount'}}") {{_ "myAccount"}}
+							a.hidden-xs(href="{{pathFor 'me'}}") {{_ "myAccount"}}
 						li
 							a.visible-xs(
-								href="{{pathFor 'myAccount'}}"
-								data-toggle="collapse"
-								data-target=".navbar-collapse"
-							) {{_ "myAccount"}}
+							href="{{pathFor 'me'}}"
+							data-toggle="collapse"
+							data-target=".navbar-collapse"
+						) {{_ "myAccount"}}
 				.nav.navbar-nav.navbar-right
 					+loginButtons
