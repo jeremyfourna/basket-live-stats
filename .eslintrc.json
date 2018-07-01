@@ -12,6 +12,9 @@
       "jsx": false
     }
   },
+  "globals": {
+    "c3": false
+  },
   "rules": {
     "eqeqeq": [
       "error",

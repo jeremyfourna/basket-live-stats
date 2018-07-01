@@ -1,38 +1,43 @@
 import { Meteor } from 'meteor/meteor';
 import { MethodHooks } from 'meteor/doctorpangloss:method-hooks';
-import R from 'ramda';
+import {
+  forEach,
+  head,
+  prop
+} from 'ramda';
+import { methodHookHelper } from '../utils.js';
 
-MethodHooks.after('Games.addGame', (options) => {
-  if (R.prop('error', options)) {
-    return;
-  } else if (R.prop('result', options)) {
-    const gameId = R.prop('result', options);
+function addTeamsForGame(resultOfGameCreation) {
+  const gameId = prop('result', resultOfGameCreation);
 
-    const yourClubTeamId = Meteor.call('Teams.addTeam', gameId);
-    const opponentTeamId = Meteor.call('Teams.addTeam', gameId);
+  const yourClubTeamId = Meteor.call('Teams.addTeam', gameId);
+  const opponentTeamId = Meteor.call('Teams.addTeam', gameId);
 
-    Meteor.call('Games.addTeamsId', gameId, yourClubTeamId, opponentTeamId);
+  Meteor.call('Games.addTeamsId', {
+    gameId,
+    yourClubTeamId,
+    opponentTeamId
+  });
 
-    return gameId;
-  }
-});
+  return gameId;
+}
 
-MethodHooks.after('Games.deleteGame', (options) => {
-  if (R.prop('error', options)) {
-    return;
-  } else if (R.prop('result', options)) {
-    const gameId = R.head(R.prop('arguments', options));
+function stuffToDeleteWhenGameIsDeleted(resultOfGameDeletion) {
+  const gameId = head(prop('arguments', resultOfGameDeletion));
 
-    const listOfMethodToCall = [
-      'Teams.deleteTeams',
-      'Players.deletePlayers',
-      'Coachs.deleteCoachs'
-    ];
+  const listOfMethodToCall = [
+    'Teams.deleteTeams',
+    'Players.deletePlayers',
+    'Coachs.deleteCoachs'
+  ];
 
-    R.forEach((method) => {
-      Meteor.call(method, gameId);
-    }, listOfMethodToCall);
+  forEach(method => {
+    Meteor.call(method, gameId);
+  }, listOfMethodToCall);
 
-    return R.prop('result', options);
-  }
-});
+  return prop('result', resultOfGameDeletion);
+}
+
+// Hooks
+MethodHooks.after('Games.addGame', methodHookHelper(addTeamsForGame));
+MethodHooks.after('Games.deleteGame', methodHookHelper(stuffToDeleteWhenGameIsDeleted));

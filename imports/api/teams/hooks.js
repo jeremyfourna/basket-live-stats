@@ -25,7 +25,7 @@ MethodHooks.after('Teams.onePointIn', (options) => {
     const evolScore = R.nth(3, R.prop('arguments', options));
 
     Meteor.call('Players.onePointIn', playerId); // Method to add stats on the player level
-    Meteor.call('Games.newEvolScore', gameId, evolScore); // Method to update the score evolution for the game
+    Meteor.call('Games.newEvolScore', { gameId, evolScore }); // Method to update the score evolution for the game
     Meteor.call('Players.scoreEffect', gameId, teamId, 1); // Method to update the scoreEffect of the players in the game
 
     return R.prop('result', options);
@@ -58,7 +58,7 @@ MethodHooks.after('Teams.twoPointsIn', (options) => {
     const evolScore = R.nth(3, R.prop('arguments', options));
 
     Meteor.call('Players.twoPointsIn', playerId); // Method to add stats on the player level
-    Meteor.call('Games.newEvolScore', gameId, evolScore); // Method to update the score evolution for the game
+    Meteor.call('Games.newEvolScore', { gameId, evolScore }); // Method to update the score evolution for the game
     Meteor.call('Players.scoreEffect', gameId, teamId, 2); // Method to update the scoreEffect of the players in the game
 
     return R.prop('result', options);
@@ -91,7 +91,7 @@ MethodHooks.after('Teams.threePointsIn', (options) => {
     const evolScore = R.nth(3, R.prop('arguments', options));
 
     Meteor.call('Players.threePointsIn', playerId); // Method to add stats on the player level
-    Meteor.call('Games.newEvolScore', gameId, evolScore); // Method to update the score evolution for the game
+    Meteor.call('Games.newEvolScore', { gameId, evolScore }); // Method to update the score evolution for the game
     Meteor.call('Players.scoreEffect', gameId, teamId, 3); // Method to update the scoreEffect of the players in the game
 
     return R.prop('result', options);

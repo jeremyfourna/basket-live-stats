@@ -13,8 +13,7 @@ Meteor.publish('Games.lastLiveGames', () => {
   return Games.find({
     gameState: {
       $nin: ['gameEnded']
-    },
-    privateGame: false
+    }
   }, {
     sort: {
       createdAt: -1
@@ -25,8 +24,7 @@ Meteor.publish('Games.lastLiveGames', () => {
 // Publication who send back the last 3 ended games
 Meteor.publish('Games.last3EndedGames', () => {
   return Games.find({
-    gameState: 'gameEnded',
-    privateGame: false
+    gameState: 'gameEnded'
   }, {
     limit: 3,
     sort: {

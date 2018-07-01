@@ -32,10 +32,6 @@ export const gameSchema = new SimpleSchema({
     label: 'State of the game',
     allowedValues: gameStateValues
   },
-  privateGame: {
-    type: Boolean,
-    label: 'Game privacy'
-  },
   evolution: {
     type: [
       [Number, Number]
@@ -60,16 +56,6 @@ export const gameSchema = new SimpleSchema({
   opponentTeamId: {
     type: String,
     label: 'Your club team id in the Teams collection',
-    optional: true
-  },
-  level: {
-    type: String,
-    label: 'Game level',
-    optional: true
-  },
-  group: {
-    type: String,
-    label: 'Group of the both teams',
     optional: true
   }
 });
